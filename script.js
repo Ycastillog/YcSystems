@@ -159,7 +159,7 @@ nav?.querySelectorAll("a").forEach((link) => {
 });
 
 const animatedElements = document.querySelectorAll(
-  ".section-head, .product-card, .brand-story, .apparel-showcase, .about-grid, .stack-grid"
+  ".product-card, .brand-story, .apparel-showcase, .about-grid, .stack-grid"
 );
 
 animatedElements.forEach((element) => element.setAttribute("data-animate", ""));

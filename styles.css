@@ -1362,6 +1362,37 @@ p {
   background: rgba(255, 255, 255, 0.08);
 }
 
+.trust-signals {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.trust-signals span {
+  display: grid;
+  gap: 5px;
+  min-height: 76px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.trust-signals strong {
+  color: var(--white);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.trust-signals small {
+  color: #bcd0e6;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.25;
+}
+
 .apparel-showcase {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1882,6 +1913,7 @@ p {
   .services-grid,
   .brand-swatches,
   .ghost-strip-grid,
+  .trust-signals,
   .launch-grid,
   .product-meta-grid,
   .ownership-pillars,

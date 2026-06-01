@@ -429,6 +429,10 @@ p {
   min-height: 310px;
 }
 
+.mobile-investor-strip {
+  display: none;
+}
+
 .identity-preview {
   display: block;
   width: 100%;
@@ -2202,12 +2206,16 @@ p {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .container {
-    width: min(100% - 28px, 1180px);
+    width: min(calc(100% - 32px), 1180px);
   }
 
   .section-pad {
-    padding: 72px 0;
+    padding: 58px 0;
   }
 
   .showcase-band {
@@ -2215,8 +2223,13 @@ p {
   }
 
   .site-header {
-    min-height: 70px;
+    min-height: 64px;
     padding-inline: 14px;
+  }
+
+  .brand-logo {
+    width: min(138px, 46vw);
+    height: 40px;
   }
 
   .brand-copy small {
@@ -2229,7 +2242,7 @@ p {
 
   .main-nav {
     position: fixed;
-    inset: 70px 14px auto;
+    inset: 64px 14px auto;
     display: none;
     grid-template-columns: 1fr;
     gap: 0;
@@ -2255,25 +2268,136 @@ p {
   }
 
   h1 {
-    font-size: clamp(36px, 10vw, 46px);
-    line-height: 1.03;
+    max-width: 100%;
+    font-size: clamp(30px, 8.8vw, 36px);
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+
+  h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1.08;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
   }
 
   .hero {
-    padding-top: 56px;
-    padding-bottom: 42px;
+    padding-top: 42px;
+    padding-bottom: 38px;
   }
 
   .hero-lede {
     font-size: 16px;
+    line-height: 1.58;
+    overflow-wrap: break-word;
+  }
+
+  .hero-grid,
+  .hero-copy {
+    min-width: 0;
   }
 
   .hero-actions {
-    margin: 24px 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 22px 0 18px;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .hero-proof {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .hero-proof span {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .mobile-investor-strip {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .mobile-investor-strip article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: center;
+    min-height: 78px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius);
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .mobile-investor-strip strong,
+  .mobile-investor-strip span {
+    display: block;
+  }
+
+  .mobile-investor-strip strong {
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1.1;
+  }
+
+  .mobile-investor-strip span {
+    margin-top: 0;
+    color: #c8d8e6;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.25;
   }
 
   .hero-visual {
-    display: none;
+    display: block;
+    margin-top: 24px;
+  }
+
+  .solution-card {
+    padding: 12px;
+  }
+
+  .solution-logo {
+    width: min(220px, 72vw);
+  }
+
+  .solution-card .identity-meta {
+    margin: 12px 0 0;
+    padding: 14px;
+  }
+
+  .solution-card .identity-meta strong {
+    font-size: 14px;
+  }
+
+  .solution-screens {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .solution-screens img,
+  .solution-screens img:first-child {
+    grid-row: auto;
+    min-height: 92px;
+    aspect-ratio: 1 / 1;
   }
 
   .service-identity {
@@ -2377,6 +2501,31 @@ p {
     min-height: auto;
   }
 
+  .services-grid article,
+  .service-offers article,
+  .process-grid article,
+  .case-build-grid article {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .case-card {
+    min-height: auto;
+  }
+
+  .case-card div {
+    padding: 20px;
+  }
+
+  .case-card h3 {
+    font-size: 23px;
+  }
+
+  .case-card p {
+    font-size: 14px;
+    line-height: 1.58;
+  }
+
   .screen-card {
     min-height: 320px;
   }
@@ -2397,7 +2546,17 @@ p {
   }
 
   .contact-panel {
-    padding: 28px;
+    padding: 24px;
+  }
+
+  .contact-panel h1,
+  .contact-panel h2 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .contact-links a:first-child,
+  .contact-links a:last-child {
+    grid-column: auto;
   }
 
   .footer-inner {

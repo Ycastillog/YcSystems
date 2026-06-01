@@ -1311,6 +1311,7 @@ p {
     linear-gradient(90deg, #080b1a, #10172f);
 }
 
+.brands h1,
 .brands h2,
 .brands h3 {
   color: var(--white);

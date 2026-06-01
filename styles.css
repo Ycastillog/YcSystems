@@ -2806,14 +2806,23 @@ p {
   }
 
   .projects-page .case-detail-grid article {
+    display: block;
+    position: relative;
+    overflow: hidden;
     border-color: rgba(15, 23, 42, 0.16);
     background: #ffffff;
     box-shadow: 0 18px 44px rgba(8, 11, 26, 0.14);
   }
 
   .projects-page .case-detail-grid img {
+    display: block;
+    position: relative;
+    z-index: 1;
+    width: 100%;
     height: 176px;
     border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+    background: #eef4f7;
+    object-fit: cover;
     object-position: top center;
   }
 
@@ -2822,8 +2831,14 @@ p {
   }
 
   .projects-page .case-detail-grid div {
+    display: block;
+    position: relative;
+    z-index: 2;
     gap: 8px;
+    margin: 0;
     padding: 20px;
+    color: #050816;
+    background: #ffffff;
   }
 
   .case-detail-grid h3 {
@@ -2876,6 +2891,7 @@ p {
   }
 
   .projects-page .case-detail-grid a {
+    display: block;
     margin-top: 10px;
     border-top: 1px solid rgba(15, 23, 42, 0.08);
     padding-top: 12px;

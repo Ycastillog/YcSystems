@@ -1639,6 +1639,48 @@ p {
     linear-gradient(180deg, #10172f, #080b1a) !important;
 }
 
+.case-build {
+  background: #eef4f7;
+}
+
+.case-build-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.case-build-grid article {
+  min-height: 220px;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 22px;
+  background:
+    linear-gradient(180deg, #ffffff, #f7fbff);
+  box-shadow: 0 16px 42px rgba(8, 11, 26, 0.07);
+}
+
+.case-build-grid span {
+  display: inline-flex;
+  margin-bottom: 16px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.case-build-grid strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.14;
+}
+
+.case-build-grid p {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
 .about-panel {
   display: grid;
   gap: 18px;
@@ -1911,6 +1953,7 @@ p {
 
   .ecosystem-grid,
   .services-grid,
+  .case-build-grid,
   .brand-swatches,
   .ghost-strip-grid,
   .trust-signals,

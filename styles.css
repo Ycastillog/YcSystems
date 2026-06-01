@@ -788,6 +788,10 @@ p {
   font-weight: 900;
 }
 
+.mobile-project-proof {
+  display: none;
+}
+
 .products,
 .technology {
   background:
@@ -2211,7 +2215,9 @@ p {
   }
 
   .container {
-    width: min(calc(100% - 32px), 1180px);
+    width: auto;
+    max-width: none;
+    margin-inline: 16px;
   }
 
   .section-pad {
@@ -2495,6 +2501,78 @@ p {
 
   .product-hero-grid {
     grid-template-columns: 1fr;
+  }
+
+  .projects-page .product-hero {
+    padding: 42px 0 36px;
+  }
+
+  .projects-page .hero-lede {
+    max-width: 31ch;
+  }
+
+  .projects-page .product-page-shot {
+    display: none;
+  }
+
+  .mobile-project-proof {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin: 18px 0 22px;
+  }
+
+  .mobile-project-proof span {
+    border: 1px solid rgba(24, 215, 255, 0.24);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 13px;
+    font-weight: 900;
+  }
+
+  .projects-page .case-grid {
+    gap: 14px;
+  }
+
+  .projects-page .case-card {
+    grid-template-columns: 1fr;
+    border-radius: 8px;
+  }
+
+  .projects-page .case-card img {
+    height: 138px;
+    min-height: 138px;
+    object-position: top center;
+  }
+
+  .projects-page .case-card div {
+    min-width: 0;
+    padding: 17px;
+  }
+
+  .projects-page .case-card span {
+    margin-bottom: 9px;
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+
+  .projects-page .case-card h3 {
+    font-size: 21px;
+    line-height: 1.05;
+  }
+
+  .projects-page .case-card p {
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.48;
+    overflow-wrap: anywhere;
+  }
+
+  .projects-page .case-card a {
+    margin-top: 2px;
+    font-size: 14px;
   }
 
   .product-card {

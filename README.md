@@ -63,6 +63,6 @@ contact@ycsystems.dev
 
 ## Contact Values To Finalize
 
-- Official WhatsApp number
-- Official LinkedIn company/founder profile
+- Public WhatsApp number, when ready
+- Public LinkedIn company/founder profile, when ready
 - Purchased domain

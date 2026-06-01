@@ -1517,6 +1517,97 @@ p {
   font-weight: 800;
 }
 
+.ghost-product-strip {
+  padding: 44px 0 72px;
+  background:
+    linear-gradient(180deg, #080b1a, #eef4f7 74%);
+}
+
+.strip-head {
+  max-width: 760px;
+  margin-bottom: 24px;
+}
+
+.strip-head h2 {
+  max-width: 780px;
+  color: var(--white);
+  font-size: clamp(28px, 3.4vw, 42px);
+}
+
+.ghost-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ghost-strip-grid article {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 270px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--radius);
+  padding: 18px;
+  color: var(--white);
+  background:
+    linear-gradient(180deg, transparent 0 42%, rgba(8, 11, 26, 0.78) 100%),
+    #10172f;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 22px 62px rgba(8, 11, 26, 0.18);
+}
+
+.ghost-strip-grid article:nth-child(3) {
+  background-position: top left;
+}
+
+.ghost-strip-grid span {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ghost-strip-grid strong,
+.ghost-strip-grid p,
+.ghost-strip-grid a {
+  position: relative;
+  z-index: 1;
+}
+
+.ghost-strip-grid strong {
+  max-width: 180px;
+  font-size: 18px;
+  line-height: 1.16;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+
+.ghost-strip-grid p {
+  margin: 12px 0 18px;
+  color: #dcecf6;
+  font-size: 14px;
+}
+
+.ghost-strip-grid a {
+  color: var(--blue);
+  font-weight: 900;
+}
+
+.ghost-commerce-card {
+  background:
+    linear-gradient(145deg, rgba(24, 215, 255, 0.18), transparent 42%),
+    linear-gradient(180deg, #10172f, #080b1a) !important;
+}
+
 .about-panel {
   display: grid;
   gap: 18px;
@@ -1790,6 +1881,7 @@ p {
   .ecosystem-grid,
   .services-grid,
   .brand-swatches,
+  .ghost-strip-grid,
   .launch-grid,
   .product-meta-grid,
   .ownership-pillars,

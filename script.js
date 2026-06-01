@@ -13,7 +13,7 @@ const translations = {
   es: {
     "nav.ecosystem": "Servicios",
     "nav.products": "Proyectos",
-    "nav.brands": "Marcas",
+    "nav.brands": "Casos",
     "nav.launch": "Proceso",
     "nav.technology": "Tecnología",
     "nav.contact": "Contacto",

@@ -392,6 +392,43 @@ p {
   box-shadow: 0 30px 90px rgba(24, 215, 255, 0.22);
 }
 
+.yc-hero {
+  padding-top: 82px;
+}
+
+.solution-card {
+  display: grid;
+  gap: 16px;
+}
+
+.solution-logo {
+  display: block;
+  width: min(360px, 100%);
+  margin: 0 auto;
+}
+
+.solution-screens {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 12px;
+}
+
+.solution-screens img {
+  display: block;
+  width: 100%;
+  min-height: 148px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #ffffff;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.solution-screens img:first-child {
+  grid-row: span 2;
+  min-height: 310px;
+}
+
 .identity-preview {
   display: block;
   width: 100%;
@@ -693,6 +730,60 @@ p {
   font-weight: 800;
 }
 
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.case-card {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.82fr) minmax(0, 1fr);
+  overflow: hidden;
+  min-height: 300px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 18px 52px rgba(8, 11, 26, 0.1);
+}
+
+.case-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background: #eef4f7;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.case-card div {
+  display: grid;
+  align-content: center;
+  padding: 26px;
+}
+
+.case-card span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--blue);
+  background: rgba(24, 215, 255, 0.12);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.case-card p {
+  font-size: 15px;
+}
+
+.case-card a {
+  color: var(--blue);
+  font-weight: 900;
+}
+
 .products,
 .technology {
   background:
@@ -963,6 +1054,10 @@ p {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 251, 248, 0.96));
   box-shadow: 0 18px 52px rgba(8, 11, 26, 0.08);
+}
+
+.service-offers article {
+  min-height: 300px;
 }
 
 .services-grid article::after {
@@ -1482,6 +1577,48 @@ p {
   color: var(--navy);
   font-size: 20px;
   line-height: 1.35;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.process-grid article {
+  min-height: 230px;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: linear-gradient(180deg, #ffffff, #f5fbff);
+  box-shadow: 0 14px 40px rgba(8, 11, 26, 0.08);
+}
+
+.process-grid span {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border-radius: var(--radius);
+  color: #071018;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.process-grid strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.process-grid p {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.62;
 }
 
 .product-hero {
@@ -2048,6 +2185,7 @@ p {
   .ecosystem-grid,
   .services-grid,
   .delivery-strip,
+  .case-grid,
   .case-build-grid,
   .brand-swatches,
   .ghost-strip-grid,
@@ -2061,6 +2199,18 @@ p {
   .apparel-showcase,
   .contact-links {
     grid-template-columns: 1fr;
+  }
+
+  .case-card,
+  .solution-screens,
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card img,
+  .solution-screens img:first-child,
+  .solution-screens img {
+    min-height: 220px;
   }
 
   .portfolio-showcase {

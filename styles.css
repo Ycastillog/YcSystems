@@ -58,8 +58,8 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  min-height: 78px;
-  padding: 14px max(24px, calc((100vw - 1180px) / 2));
+  min-height: 68px;
+  padding: 10px max(24px, calc((100vw - 1180px) / 2));
   border-bottom: 1px solid rgba(24, 215, 255, 0.16);
   background: rgba(8, 11, 26, 0.82);
   backdrop-filter: blur(18px);
@@ -75,8 +75,8 @@ a {
 
 .brand-logo {
   display: block;
-  width: min(210px, 42vw);
-  height: 56px;
+  width: min(166px, 38vw);
+  height: 46px;
   line-height: 0;
 }
 
@@ -928,6 +928,25 @@ p {
   box-shadow: 0 10px 26px rgba(9, 30, 56, 0.06);
 }
 
+.delivery-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: -14px 0 24px;
+}
+
+.delivery-strip span {
+  min-height: 58px;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  color: var(--navy);
+  background: linear-gradient(180deg, #ffffff, #f3fff6);
+  font-size: 14px;
+  font-weight: 850;
+  box-shadow: 0 12px 32px rgba(9, 30, 56, 0.06);
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1508,6 +1527,72 @@ p {
   object-position: top left;
 }
 
+.process-preview {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(24, 215, 255, 0.24);
+  border-radius: var(--radius);
+  padding: 22px;
+  background:
+    linear-gradient(145deg, rgba(24, 215, 255, 0.14), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    #071018;
+  box-shadow:
+    0 34px 100px rgba(8, 11, 26, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+.process-preview article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  min-height: 112px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.process-preview span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  color: #071018;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.process-preview strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--white);
+  font-size: 21px;
+}
+
+.process-preview p {
+  margin: 0;
+  color: #c8d8e6;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.process-note {
+  border: 1px solid rgba(130, 247, 47, 0.24);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  color: var(--white);
+  background: rgba(130, 247, 47, 0.1);
+  font-size: 15px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
 .product-meta-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1725,6 +1810,7 @@ p {
 .contact-panel {
   position: relative;
   overflow: hidden;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.82fr);
   padding: 44px;
   background:
     linear-gradient(120deg, rgba(130, 247, 47, 0.16), transparent 38%),
@@ -1732,8 +1818,15 @@ p {
     var(--navy);
 }
 
+.contact-panel h1,
 .contact-panel h2 {
   color: var(--white);
+}
+
+.contact-panel h1 {
+  max-width: 640px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.02;
 }
 
 .contact-panel p {
@@ -1750,13 +1843,16 @@ p {
 .contact-links span {
   display: flex;
   align-items: center;
+  min-width: 0;
   min-height: 58px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--radius);
-  padding: 0 18px;
+  padding: 14px 18px;
   color: var(--white);
   background: rgba(255, 255, 255, 0.08);
   font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
   transition:
     background 180ms ease,
     transform 180ms ease;
@@ -1765,6 +1861,14 @@ p {
 .contact-links a:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.13);
+}
+
+.contact-links a:first-child {
+  grid-column: 1 / -1;
+}
+
+.contact-links a:last-child {
+  grid-column: 1 / -1;
 }
 
 .contact-links span {
@@ -1943,6 +2047,7 @@ p {
 
   .ecosystem-grid,
   .services-grid,
+  .delivery-strip,
   .case-build-grid,
   .brand-swatches,
   .ghost-strip-grid,

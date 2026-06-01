@@ -52,6 +52,9 @@ const translations = {
     "ecosystem.eyebrow": "Portafolio de proyectos",
     "service.identity.copy": "Esta es la identidad que aparece en paginas web, sistemas, dashboards y productos digitales desarrollados bajo YC Systems.",
     "service.identity.signature": "Firma oficial de proyecto: Desarrollado por YC Systems",
+    "delivery.one": "Paginas reales, no maquetas vacias",
+    "delivery.two": "Presentacion lista para movil",
+    "delivery.three": "Desarrollado por YC Systems",
     "services.eyebrow": "Servicios para clientes",
     "services.title": "Lo que los clientes pueden contratar con YC Systems.",
     "services.copy": "Desde una landing page profesional hasta un dashboard de negocio, YC Systems convierte una idea en una experiencia digital limpia con estructura, diseno y logica funcional.",
@@ -125,8 +128,6 @@ const translations = {
     "contact.eyebrow": "Contacto",
     "contact.title": "Hablemos de tu proxima pagina web, sistema o proyecto digital.",
     "contact.copy": "Para paginas web, sistemas de negocio, dashboards, automatizaciones o consultas de proyecto, contacta por los canales de YC Systems.",
-    "contact.whatsapp": "WhatsApp: agregar número oficial",
-    "contact.linkedin": "LinkedIn: agregar perfil oficial",
     "footer.value": "Construyendo software. Creando marcas.",
   },
 };

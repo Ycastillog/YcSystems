@@ -371,12 +371,6 @@ p {
   min-width: 0;
 }
 
-.hero-lockup {
-  display: block;
-  width: min(360px, 80%);
-  margin-bottom: 26px;
-}
-
 .identity-card,
 .window-card,
 .screen-card,
@@ -1920,10 +1914,6 @@ p {
 
   .hero-visual {
     display: none;
-  }
-
-  .hero-lockup {
-    width: min(280px, 86%);
   }
 
   .service-identity {

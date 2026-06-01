@@ -182,7 +182,7 @@ window.addEventListener("scroll", () => {
 });
 
 const savedLang = localStorage.getItem("yc-lang");
-applyLanguage(savedLang === "es" ? "es" : "en");
+applyLanguage(savedLang === "en" ? "en" : "es");
 
 langToggle?.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "es" ? "en" : "es";

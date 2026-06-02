@@ -190,3 +190,160 @@ langToggle?.addEventListener("click", () => {
   localStorage.setItem("yc-lang", nextLang);
   applyLanguage(nextLang);
 });
+
+const currentScript = document.currentScript || document.querySelector('script[src*="script.js"]');
+const siteRoot = currentScript ? new URL(".", currentScript.src) : new URL("/", window.location.href);
+const contactUrl = new URL("contact/", siteRoot).href;
+
+const intakeQuestions = [
+  {
+    key: "solution",
+    label: "Que quieres construir",
+    options: ["Tienda online", "Pagina web", "Sistema interno / CRM", "SaaS o app", "Mantenimiento"],
+  },
+  {
+    key: "stage",
+    label: "En que etapa estas",
+    options: ["Solo tengo la idea", "Ya tengo contenido", "Ya existe y quiero mejorarlo", "Necesito lanzarlo pronto"],
+  },
+  {
+    key: "priority",
+    label: "Que es lo mas importante",
+    options: ["Vender mas", "Organizar operaciones", "Automatizar procesos", "Verse mas profesional"],
+  },
+  {
+    key: "timeline",
+    label: "Tiempo ideal",
+    options: ["Esta semana", "Este mes", "1 a 3 meses", "Estoy explorando"],
+  },
+];
+
+function createConceptChat() {
+  if (document.querySelector("[data-concept-chat]")) return;
+
+  const chat = document.createElement("section");
+  chat.className = "concept-chat";
+  chat.dataset.conceptChat = "";
+  chat.innerHTML = `
+    <button class="concept-chat-launcher" type="button" aria-expanded="false" aria-controls="concept-chat-panel">
+      <span>YC</span>
+      <strong>Cotizar</strong>
+    </button>
+    <div class="concept-chat-panel" id="concept-chat-panel" aria-live="polite">
+      <div class="concept-chat-head">
+        <div>
+          <span>YC Systems</span>
+          <strong>Cuéntame tu idea</strong>
+        </div>
+        <button type="button" aria-label="Cerrar chat" data-chat-close>×</button>
+      </div>
+      <div class="concept-chat-body" data-chat-body></div>
+    </div>
+  `;
+
+  document.body.appendChild(chat);
+
+  const launcher = chat.querySelector(".concept-chat-launcher");
+  const panel = chat.querySelector(".concept-chat-panel");
+  const close = chat.querySelector("[data-chat-close]");
+  const body = chat.querySelector("[data-chat-body]");
+  const answers = {};
+  let step = 0;
+
+  function setOpen(isOpen) {
+    chat.classList.toggle("is-open", isOpen);
+    launcher.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function renderQuestion() {
+    const question = intakeQuestions[step];
+    const progress = `${step + 1} / ${intakeQuestions.length}`;
+    body.innerHTML = `
+      <div class="chat-message chat-message-yc">Responde rapido y preparo tu mensaje inicial.</div>
+      <div class="chat-question">
+        <span>${progress}</span>
+        <strong>${question.label}</strong>
+      </div>
+      <div class="chat-options">
+        ${question.options.map((option) => `<button type="button" data-chat-answer="${option}">${option}</button>`).join("")}
+      </div>
+    `;
+  }
+
+  function renderContactStep() {
+    body.innerHTML = `
+      <div class="chat-message chat-message-yc">Perfecto. Ahora deja un contacto o una nota corta para incluirla en el correo.</div>
+      <label class="chat-field">
+        <span>Contacto o nota</span>
+        <textarea rows="4" data-chat-note placeholder="Ej: Soy Carlos, quiero una tienda para ropa y puedo hablar esta semana."></textarea>
+      </label>
+      <button class="chat-primary" type="button" data-chat-finish>Preparar mensaje</button>
+    `;
+  }
+
+  function buildSummary(note = "") {
+    const lines = [
+      "Hola YC Systems, quiero iniciar una propuesta.",
+      "",
+      `Tipo de solucion: ${answers.solution}`,
+      `Etapa actual: ${answers.stage}`,
+      `Prioridad: ${answers.priority}`,
+      `Tiempo ideal: ${answers.timeline}`,
+    ];
+
+    if (note.trim()) {
+      lines.push("", `Nota/contacto: ${note.trim()}`);
+    }
+
+    return lines.join("\n");
+  }
+
+  function renderResult() {
+    const note = body.querySelector("[data-chat-note]")?.value || "";
+    const summary = buildSummary(note);
+    const mailSubject = encodeURIComponent("Nueva idea para YC Systems");
+    const mailBody = encodeURIComponent(summary);
+
+    body.innerHTML = `
+      <div class="chat-message chat-message-yc">Listo. Este es el concepto inicial que recibire para responder con una propuesta.</div>
+      <pre class="chat-summary">${summary}</pre>
+      <div class="chat-actions">
+        <a class="chat-primary" href="mailto:yeicastillog@gmail.com?subject=${mailSubject}&body=${mailBody}">Enviar por Gmail</a>
+        <a href="${contactUrl}">Ver contacto</a>
+      </div>
+    `;
+  }
+
+  launcher.addEventListener("click", () => {
+    setOpen(!chat.classList.contains("is-open"));
+    if (!body.dataset.ready) {
+      body.dataset.ready = "true";
+      renderQuestion();
+    }
+  });
+
+  close.addEventListener("click", () => setOpen(false));
+
+  body.addEventListener("click", (event) => {
+    const answer = event.target.closest("[data-chat-answer]");
+    if (answer) {
+      answers[intakeQuestions[step].key] = answer.dataset.chatAnswer;
+      step += 1;
+      if (step < intakeQuestions.length) renderQuestion();
+      else renderContactStep();
+      return;
+    }
+
+    if (event.target.closest("[data-chat-finish]")) {
+      renderResult();
+    }
+  });
+
+  if (new URLSearchParams(window.location.search).get("chat") === "open") {
+    body.dataset.ready = "true";
+    renderQuestion();
+    setOpen(true);
+  }
+}
+
+createConceptChat();

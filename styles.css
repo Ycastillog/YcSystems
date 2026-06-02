@@ -153,6 +153,21 @@ a {
   cursor: pointer;
 }
 
+.language-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  border: 1px solid rgba(24, 215, 255, 0.28);
+  border-radius: var(--radius);
+  padding: 0 11px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
 body:not(.lang-es) .lang-es,
 body.lang-es .lang-en {
   display: none;
@@ -2455,6 +2470,12 @@ p {
   .main-nav a {
     padding: 14px;
     border-radius: var(--radius);
+  }
+
+  .language-chip {
+    justify-content: flex-start;
+    margin-top: 6px;
+    padding: 12px 14px;
   }
 
   .main-nav a:hover {

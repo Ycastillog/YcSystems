@@ -815,13 +815,58 @@ p {
 .contract-grid,
 .solution-paths,
 .case-detail-grid,
-.process-roadmap {
+.process-roadmap,
+.solution-overview-grid,
+.project-match-grid {
   display: grid;
   gap: 18px;
 }
 
 .contract-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.solution-overview {
+  background:
+    linear-gradient(180deg, #f8fbf7, #ffffff);
+}
+
+.solution-overview-grid,
+.project-match-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.solution-overview-grid article {
+  min-height: 220px;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: var(--radius);
+  padding: 22px;
+  background:
+    linear-gradient(160deg, rgba(24, 215, 255, 0.12), transparent 44%),
+    #ffffff;
+  box-shadow: 0 16px 46px rgba(8, 11, 26, 0.08);
+}
+
+.solution-overview-grid span {
+  display: inline-flex;
+  margin-bottom: 16px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.solution-overview-grid strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--navy);
+  font-size: 20px;
+  line-height: 1.18;
+}
+
+.solution-overview-grid p {
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.58;
 }
 
 .contract-grid article,
@@ -956,6 +1001,48 @@ p {
 
 .case-detail-grid p strong {
   color: var(--navy);
+}
+
+.project-match {
+  background:
+    linear-gradient(180deg, #ffffff, #eef4f7);
+}
+
+.project-match-grid a {
+  display: grid;
+  place-items: center;
+  min-height: 76px;
+  border: 1px solid rgba(24, 215, 255, 0.24);
+  border-radius: var(--radius);
+  padding: 16px;
+  color: #071018;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  box-shadow: 0 16px 42px rgba(24, 215, 255, 0.22);
+  font-weight: 900;
+  text-align: center;
+}
+
+.project-tech-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  background: #ffffff;
+}
+
+.project-tech-note span {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.project-tech-note a {
+  color: var(--blue);
+  font-weight: 900;
 }
 
 .contact-steps {
@@ -2665,6 +2752,8 @@ p {
   .services-grid,
   .contract-grid,
   .solution-paths,
+  .solution-overview-grid,
+  .project-match-grid,
   .case-detail-grid,
   .process-roadmap,
   .delivery-strip,
@@ -2814,10 +2903,30 @@ p {
   }
 
   .contract-grid article,
+  .solution-overview-grid article,
   .solution-paths article,
   .process-roadmap article {
+    min-width: 0;
+    max-width: 100%;
     min-height: auto;
     padding: 20px;
+  }
+
+  .solution-overview-grid strong,
+  .solution-overview-grid p,
+  .project-match-grid a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .project-match-grid a {
+    min-height: 60px;
+  }
+
+  .project-tech-note {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .case-detail-grid img {

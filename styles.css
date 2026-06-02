@@ -902,6 +902,10 @@ p {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.mobile-case-list {
+  display: none;
+}
+
 .case-detail-grid article {
   overflow: hidden;
   background:

@@ -22,6 +22,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 92px;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -29,6 +31,8 @@ body {
   font-family: "Inter", Arial, sans-serif;
   color: var(--ink);
   background: #f8fbf7;
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.nav-open {
@@ -2717,13 +2721,17 @@ p {
 }
 
 @media (max-width: 760px) {
+  html,
   body {
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
   }
 
   .container {
-    width: calc(100vw - 32px);
-    max-width: 1180px;
+    width: min(100%, 1180px);
+    max-width: calc(100% - 32px);
     margin-inline: auto;
   }
 
@@ -3324,17 +3332,18 @@ p {
   }
 
   .concept-chat {
-    right: auto;
+    right: 14px;
     bottom: 14px;
     left: 14px;
-    width: calc(100vw - 28px);
+    width: auto;
+    max-width: calc(100% - 28px);
   }
 
   .concept-chat-panel {
     left: 0;
-    right: auto;
+    right: 0;
     bottom: 64px;
-    width: 100%;
+    width: auto;
     max-width: 100%;
   }
 

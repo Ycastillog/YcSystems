@@ -195,6 +195,29 @@ const currentScript = document.currentScript || document.querySelector('script[s
 const siteRoot = currentScript ? new URL(".", currentScript.src) : new URL("/", window.location.href);
 const contactUrl = new URL("contact/", siteRoot).href;
 
+const projectBriefForm = document.querySelector("[data-project-brief]");
+projectBriefForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(projectBriefForm);
+  const message = [
+    "Hola YC Systems, quiero iniciar una propuesta.",
+    "",
+    `Nombre o negocio: ${data.get("name") || "Pendiente"}`,
+    `Tipo de solucion: ${data.get("solution")}`,
+    `Objetivo principal: ${data.get("goal") || "Pendiente"}`,
+    `Tiempo ideal: ${data.get("timeline")}`,
+    `Rango o referencia de inversion: ${data.get("budget")}`,
+    "",
+    "Detalles:",
+    data.get("details") || "Pendiente",
+  ].join("\n");
+  const subject = encodeURIComponent("Brief de proyecto para YC Systems");
+  const body = encodeURIComponent(message);
+  const status = projectBriefForm.querySelector("[data-brief-status]");
+  if (status) status.textContent = "Mensaje preparado. Se abrira tu correo para enviarlo a YC Systems.";
+  window.location.href = `mailto:yeicastillog@gmail.com?subject=${subject}&body=${body}`;
+});
+
 const intakeQuestions = [
   {
     key: "solution",

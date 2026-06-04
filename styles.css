@@ -170,6 +170,19 @@ a {
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.04em;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.language-chip:hover,
+.language-chip:focus-visible {
+  border-color: rgba(24, 215, 255, 0.62);
+  background: rgba(24, 215, 255, 0.16);
+  outline: none;
 }
 
 body:not(.lang-es) .lang-es,

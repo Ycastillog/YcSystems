@@ -1,7 +1,7 @@
 const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
-const langToggle = document.querySelector("[data-lang-toggle]");
+const langToggle = document.querySelector("[data-lang-toggle]") || document.querySelector(".language-chip");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 
 const defaultTextByKey = {};
@@ -132,16 +132,146 @@ const translations = {
   },
 };
 
+const textTranslations = {
+  "Servicios": "Services",
+  "Proyectos": "Projects",
+  "Casos": "Cases",
+  "Nosotros": "About",
+  "Proceso": "Process",
+  "Tecnologia": "Technology",
+  "Contacto": "Contact",
+  "Web, apps, SaaS y sistemas": "Web, apps, SaaS and systems",
+  "YC Systems crea soluciones digitales para vender, operar y crecer.": "YC Systems builds digital solutions to sell, operate and grow.",
+  "Paginas profesionales, tiendas online, dashboards, aplicaciones web, sistemas internos y plataformas SaaS con presentacion lista para clientes reales.": "Professional websites, online stores, dashboards, web apps, internal systems and SaaS platforms ready for real clients.",
+  "Ver proyectos reales": "View real projects",
+  "Solicitar una solucion": "Request a solution",
+  "Que puedes contratar": "What you can hire",
+  "Seis caminos claros para trabajar con YC Systems.": "Six clear ways to work with YC Systems.",
+  "Elige el tipo de solucion que necesitas ahora. Luego se define alcance, contenido, tecnologia y plan de entrega.": "Choose the type of solution you need now. Then we define scope, content, technology and delivery plan.",
+  "Pagina web profesional": "Professional website",
+  "Tienda online": "Online store",
+  "Sistema interno": "Internal system",
+  "SaaS o app a medida": "Custom SaaS or app",
+  "Mantenimiento web": "Website maintenance",
+  "Sitios multiidioma": "Multilingual websites",
+  "Servicios claros para negocios que necesitan verse mejor y operar mejor.": "Clear services for businesses that need to look better and operate better.",
+  "Soluciones digitales": "Digital solutions",
+  "Solicitar solucion": "Request solution",
+  "Ver pruebas reales": "View real proof",
+  "Paquetes comerciales": "Commercial packages",
+  "Formas claras de contratar YC Systems.": "Clear ways to hire YC Systems.",
+  "Web profesional": "Professional web",
+  "Sistema interno / CRM": "Internal system / CRM",
+  "SaaS o app MVP": "SaaS or app MVP",
+  "Mantenimiento mensual": "Monthly maintenance",
+  "Soluciones reales": "Real solutions",
+  "4 soluciones reales construidas por YC Systems.": "4 real solutions built by YC Systems.",
+  "Proyecto real": "Real project",
+  "Listo para vender": "Ready to sell",
+  "Mantenimiento disponible": "Maintenance available",
+  "Quiero algo como esto": "I want something like this",
+  "Vitrina de soluciones": "Solution showcase",
+  "Casos reales": "Real cases",
+  "Casos reales listos para vender y operar.": "Real cases ready to sell and operate.",
+  "Cliente real": "Real client",
+  "Dominio activo": "Active domain",
+  "Pedido por WhatsApp": "WhatsApp ordering",
+  "Sistema funcional": "Functional system",
+  "Panel / CRM": "Panel / CRM",
+  "Operaciones": "Operations",
+  "Dashboard operativo": "Operational dashboard",
+  "Siguiente paso": "Next step",
+  "Quiero una tienda": "I want a store",
+  "Quiero un sistema interno": "I want an internal system",
+  "Quiero un SaaS": "I want a SaaS",
+  "Quiero mantenimiento": "I want maintenance",
+  "Smart Solutions. Real Results.": "Smart Solutions. Real Results.",
+  "Una empresa digital creada para construir soluciones reales, no solo paginas bonitas.": "A digital company built to create real solutions, not just pretty pages.",
+  "Iniciar proyecto": "Start project",
+  "Quienes somos": "Who we are",
+  "Como trabajamos": "How we work",
+  "Orden, claridad y resultados visibles.": "Order, clarity and visible results.",
+  "Señales de confianza": "Trust signals",
+  "Una base real para clientes, socios e inversionistas.": "A real foundation for clients, partners and investors.",
+  "Contacto": "Contact",
+  "Cuentame que quieres construir, mejorar o mantener.": "Tell me what you want to build, improve or maintain.",
+  "Nombre o negocio": "Name or business",
+  "Tipo de solucion": "Solution type",
+  "Objetivo principal": "Main goal",
+  "Tiempo ideal": "Ideal timeline",
+  "Rango o referencia de inversion": "Investment range or reference",
+  "Detalles importantes": "Important details",
+  "Preparar mensaje": "Prepare message",
+  "WhatsApp pendiente": "WhatsApp pending",
+  "LinkedIn pendiente": "LinkedIn pending",
+  "Que puedes solicitar": "What you can request",
+  "Sitio web, app, sistema, SaaS, mantenimiento o idioma.": "Website, app, system, SaaS, maintenance or language.",
+  "Cotizar": "Quote",
+  "Cuéntame tu idea": "Tell me your idea",
+  "Responde rapido y preparo tu mensaje inicial.": "Answer quickly and I will prepare your initial message.",
+  "Que quieres construir": "What do you want to build",
+  "Pagina web": "Website",
+  "SaaS o app": "SaaS or app",
+  "Mantenimiento": "Maintenance",
+};
+
+const translatedTextNodes = new WeakMap();
+const translatedAttributes = new WeakMap();
+
+function translatePlainText(lang) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent || ["SCRIPT", "STYLE", "TEXTAREA"].includes(parent.tagName)) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    },
+  });
+
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach((node) => {
+    if (!translatedTextNodes.has(node)) translatedTextNodes.set(node, node.textContent);
+    const original = translatedTextNodes.get(node);
+    const trimmed = original.trim();
+    const translated = textTranslations[trimmed];
+    node.textContent = lang === "en" && translated ? original.replace(trimmed, translated) : original;
+  });
+
+  document.querySelectorAll("input[placeholder], textarea[placeholder], option").forEach((element) => {
+    const key = element.tagName === "OPTION" ? "text" : "placeholder";
+    if (!translatedAttributes.has(element)) {
+      translatedAttributes.set(element, {
+        text: element.textContent,
+        placeholder: element.getAttribute("placeholder"),
+      });
+    }
+    const original = translatedAttributes.get(element)[key];
+    if (!original) return;
+    const translated = textTranslations[original.trim()];
+    if (key === "text") element.textContent = lang === "en" && translated ? translated : original;
+    else element.setAttribute("placeholder", lang === "en" && translated ? translated : original);
+  });
+}
+
 function applyLanguage(lang) {
   document.documentElement.lang = lang;
   document.body.classList.toggle("lang-es", lang === "es");
+  document.body.classList.toggle("lang-en", lang === "en");
 
   translatableElements.forEach((element) => {
     const key = element.dataset.i18n;
     element.textContent = translations[lang]?.[key] ?? defaultTextByKey[key] ?? element.textContent;
   });
 
-  if (langToggle) langToggle.textContent = lang === "es" ? "EN" : "ES";
+  translatePlainText(lang);
+
+  if (langToggle) {
+    langToggle.textContent = lang === "es" ? "EN" : "ES";
+    langToggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
+  }
 }
 
 navToggle?.addEventListener("click", () => {
@@ -185,10 +315,22 @@ window.addEventListener("scroll", () => {
 const savedLang = localStorage.getItem("yc-lang");
 applyLanguage(savedLang === "en" ? "en" : "es");
 
+if (langToggle) {
+  langToggle.setAttribute("role", "button");
+  langToggle.setAttribute("tabindex", "0");
+}
+
 langToggle?.addEventListener("click", () => {
   const nextLang = document.documentElement.lang === "es" ? "en" : "es";
   localStorage.setItem("yc-lang", nextLang);
   applyLanguage(nextLang);
+});
+
+langToggle?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    langToggle.click();
+  }
 });
 
 const currentScript = document.currentScript || document.querySelector('script[src*="script.js"]');

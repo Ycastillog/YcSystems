@@ -2060,7 +2060,29 @@ p {
 }
 
 .service-offers article {
-  min-height: 300px;
+  display: grid;
+  align-content: start;
+  min-height: 370px;
+  background:
+    linear-gradient(145deg, rgba(24, 215, 255, 0.13), transparent 38%),
+    linear-gradient(180deg, #ffffff, #f7fffb);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.service-offers article:first-child,
+.service-offers article:nth-child(2) {
+  background:
+    linear-gradient(135deg, rgba(24, 215, 255, 0.22), transparent 36%),
+    linear-gradient(180deg, #ffffff, #f2fff7);
+}
+
+.service-offers article:hover {
+  transform: translateY(-4px);
+  border-color: rgba(24, 215, 255, 0.44);
+  box-shadow: 0 24px 64px rgba(8, 11, 26, 0.13);
 }
 
 .services-grid article::after {
@@ -2076,9 +2098,10 @@ p {
 
 .services-grid article > img {
   display: block;
-  width: 54px;
-  height: 54px;
+  width: 62px;
+  height: 62px;
   margin-bottom: 18px;
+  filter: drop-shadow(0 14px 22px rgba(37, 99, 235, 0.16));
 }
 
 .services-grid span {
@@ -2098,8 +2121,44 @@ p {
 }
 
 .services-grid p {
-  margin-bottom: 0;
+  margin-bottom: 18px;
   font-size: 15px;
+  line-height: 1.62;
+}
+
+.offer-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: auto 0 18px;
+}
+
+.offer-points small {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid rgba(24, 215, 255, 0.2);
+  border-radius: 999px;
+  padding: 8px 10px;
+  color: #05728f;
+  background: rgba(24, 215, 255, 0.12);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.service-offers article > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 42px;
+  border-radius: var(--radius);
+  padding: 10px 13px;
+  color: #071018;
+  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  font-size: 14px;
+  font-weight: 950;
+  box-shadow: 0 12px 28px rgba(24, 215, 255, 0.18);
 }
 
 .signature-strip {
@@ -3913,6 +3972,14 @@ p {
   .case-build-grid article {
     min-height: auto;
     padding: 20px;
+  }
+
+  .service-offers article > a {
+    width: 100%;
+  }
+
+  .offer-points {
+    margin-top: 2px;
   }
 
   .case-card {

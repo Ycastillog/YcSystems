@@ -377,10 +377,11 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 10px 13px;
-  color: #dcecf6;
-  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  background: rgba(8, 11, 26, 0.38);
   font-size: 14px;
   font-weight: 700;
+  backdrop-filter: blur(12px);
 }
 
 .hero-proof span:nth-child(1) {
@@ -3053,6 +3054,12 @@ p {
     padding-bottom: 38px;
   }
 
+  .yc-hero .container {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 16px;
+  }
+
   .hero-lede {
     font-size: 16px;
     line-height: 1.58;
@@ -3069,6 +3076,12 @@ p {
   .hero-copy,
   .product-hero-grid > div:first-child {
     max-width: min(100%, 340px);
+  }
+
+  .yc-hero .hero-copy {
+    width: min(100%, 340px);
+    max-width: calc(100vw - 32px);
+    margin-inline: 0;
   }
 
   .hero-actions,
@@ -3107,6 +3120,8 @@ p {
     place-items: center;
     min-height: 44px;
     padding: 10px;
+    color: #ffffff;
+    background: rgba(16, 23, 47, 0.72);
     text-align: center;
   }
 

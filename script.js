@@ -251,7 +251,7 @@ const textTranslations = {
   "SaaS o app": "SaaS or app",
   "Mantenimiento": "Maintenance",
   "Casos profundos": "Deep case studies",
-  "Casos reales con problema, solucion, resultado y compra posible.": "Real cases with problem, solution, result and purchase path.",
+  "Casos reales que muestran crecimiento.": "Real cases that show growth.",
   "Asi un cliente entiende rapido que se construyo y que podria contratar para su propio negocio.": "So a client quickly understands what was built and what they could hire for their own business.",
   "Problema": "Problem",
   "Solucion": "Solution",

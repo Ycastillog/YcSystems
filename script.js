@@ -202,6 +202,8 @@ const textTranslations = {
   "Rango o referencia de inversion": "Investment range or reference",
   "Detalles importantes": "Important details",
   "Preparar mensaje": "Prepare message",
+  "Enviar brief directo": "Send brief directly",
+  "Este formulario envia tu brief directo a YC Systems sin abrir el correo. La primera vez FormSubmit puede pedir confirmacion del email receptor.": "This form sends your brief directly to YC Systems without opening email. FormSubmit may request receiver email confirmation the first time.",
   "WhatsApp pendiente": "WhatsApp pending",
   "LinkedIn pendiente": "LinkedIn pending",
   "Que puedes solicitar": "What you can request",
@@ -213,6 +215,31 @@ const textTranslations = {
   "Pagina web": "Website",
   "SaaS o app": "SaaS or app",
   "Mantenimiento": "Maintenance",
+  "Casos profundos": "Deep case studies",
+  "Casos reales con problema, solucion, resultado y compra posible.": "Real cases with problem, solution, result and purchase path.",
+  "Asi un cliente entiende rapido que se construyo y que podria contratar para su propio negocio.": "So a client quickly understands what was built and what they could hire for their own business.",
+  "Problema": "Problem",
+  "Solucion": "Solution",
+  "Resultado": "Result",
+  "Cliente similar puede comprar": "Similar client can buy",
+  "Quiero una tienda como esta": "I want a store like this",
+  "Quiero un dashboard": "I want a dashboard",
+  "Oferta empresarial": "Business offer",
+  "Soluciones digitales para empresas que necesitan operar mejor.": "Digital solutions for companies that need to operate better.",
+  "Solicitar propuesta": "Request proposal",
+  "Que puede contratar una empresa": "What a company can hire",
+  "Cuatro lineas comerciales para crecer con orden.": "Four commercial lines to grow with order.",
+  "Sistemas internos": "Internal systems",
+  "Transformacion digital": "Digital transformation",
+  "Material comercial": "Commercial material",
+  "Documentos base para convertir clientes con orden.": "Base documents to convert clients with order.",
+  "Propuesta comercial": "Commercial proposal",
+  "Contrato base": "Base contract",
+  "Checklist de onboarding": "Onboarding checklist",
+  "Plan de mantenimiento": "Maintenance plan",
+  "Privacidad": "Privacy",
+  "Terminos": "Terms",
+  "Terminos de servicio": "Terms of service",
 };
 
 const translatedTextNodes = new WeakMap();
@@ -337,10 +364,63 @@ const currentScript = document.currentScript || document.querySelector('script[s
 const siteRoot = currentScript ? new URL(".", currentScript.src) : new URL("/", window.location.href);
 const contactUrl = new URL("contact/", siteRoot).href;
 
+function trackYCEvent(eventName, payload = {}) {
+  const eventPayload = {
+    page: window.location.pathname,
+    language: document.documentElement.lang || "es",
+    timestamp: new Date().toISOString(),
+    ...payload,
+  };
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...eventPayload });
+
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, eventPayload);
+  }
+
+  if (typeof window.plausible === "function") {
+    window.plausible(eventName, { props: eventPayload });
+  }
+
+  try {
+    localStorage.setItem("yc-last-event", JSON.stringify({ event: eventName, ...eventPayload }));
+  } catch {
+    // Analytics should never block the visitor experience.
+  }
+}
+
+trackYCEvent("page_view");
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[href]");
+  if (!link) return;
+  const href = link.getAttribute("href") || "";
+  if (!href.includes("contact") && !href.includes("projects") && !href.includes("partners") && !href.includes("documents") && !href.startsWith("mailto:")) {
+    return;
+  }
+  trackYCEvent("cta_click", {
+    label: link.textContent.trim().slice(0, 80),
+    href,
+  });
+});
+
 const projectBriefForm = document.querySelector("[data-project-brief]");
 projectBriefForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
   const data = new FormData(projectBriefForm);
+  trackYCEvent("contact_submit", {
+    solution: data.get("solution") || "Pendiente",
+    timeline: data.get("timeline") || "Pendiente",
+    budget: data.get("budget") || "Pendiente",
+  });
+
+  if (projectBriefForm.dataset.directSubmit === "true") {
+    const status = projectBriefForm.querySelector("[data-brief-status]");
+    if (status) status.textContent = "Enviando brief directo a YC Systems...";
+    return;
+  }
+
+  event.preventDefault();
   const message = [
     "Hola YC Systems, quiero iniciar una propuesta.",
     "",
@@ -418,6 +498,7 @@ function createConceptChat() {
   function setOpen(isOpen) {
     chat.classList.toggle("is-open", isOpen);
     launcher.setAttribute("aria-expanded", String(isOpen));
+    if (isOpen) trackYCEvent("chat_open");
   }
 
   function renderQuestion() {
@@ -493,6 +574,10 @@ function createConceptChat() {
     const answer = event.target.closest("[data-chat-answer]");
     if (answer) {
       answers[intakeQuestions[step].key] = answer.dataset.chatAnswer;
+      trackYCEvent("chat_answer", {
+        step: intakeQuestions[step].key,
+        answer: answer.dataset.chatAnswer,
+      });
       step += 1;
       if (step < intakeQuestions.length) renderQuestion();
       else renderContactStep();
@@ -500,6 +585,7 @@ function createConceptChat() {
     }
 
     if (event.target.closest("[data-chat-finish]")) {
+      trackYCEvent("chat_finish", answers);
       renderResult();
     }
   });

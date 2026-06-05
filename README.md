@@ -40,9 +40,17 @@ Deployment configs are included:
 - `netlify.toml`
 - `.github/workflows/deploy-pages.yml`
 
+## Public URL
+
+Current public URL:
+
+```text
+https://ycastillog.github.io/YcSystems/
+```
+
 ## Domain Setup
 
-Recommended primary domain:
+Future domain options:
 
 ```text
 ycsystems.dev
@@ -58,7 +66,7 @@ ycsystems.do
 Recommended email:
 
 ```text
-contact@ycsystems.dev
+yeicastillog@gmail.com
 ```
 
 ## Contact Values To Finalize

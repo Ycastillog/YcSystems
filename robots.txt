@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ycsystems.dev/sitemap.xml
+Sitemap: https://ycastillog.github.io/YcSystems/sitemap.xml

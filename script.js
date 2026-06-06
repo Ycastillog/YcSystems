@@ -1,4 +1,4 @@
-﻿const navToggle = document.querySelector("[data-nav-toggle]");
+const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const langToggle = document.querySelector("[data-lang-toggle]") || document.querySelector(".language-chip");
@@ -11,15 +11,15 @@ translatableElements.forEach((element) => {
 
 const translations = {
   es: {
-    "nav.ecosystem": "Servicios",
+    "nav.ecosystem": "Productos",
     "nav.products": "Proyectos",
     "nav.brands": "Casos",
     "nav.launch": "Proceso",
-    "nav.technology": "TecnologÃ­a",
+    "nav.technology": "Tecnologia",
     "nav.contact": "Contacto",
-    "hero.eyebrow": "Desarrollo de software, paginas web y sistemas de negocio",
-    "hero.title": "YC Systems crea paginas web, dashboards y sistemas digitales para negocios reales.",
-    "hero.lede": "Una marca de portafolio y servicios creada por Yeison Castillo, enfocada en paginas limpias, software operacional, automatizaciones y productos digitales que los clientes pueden usar de verdad.",
+    "hero.eyebrow": "Software Products & Digital Brands",
+    "hero.title": "YC Systems construye productos de software que resuelven problemas operativos reales.",
+    "hero.lede": "SOC, BrokerControl y CleanLoop son el centro del ecosistema: plataformas para operaciones, CRM inmobiliario y gestion de lavanderias, junto a casos de cliente y marcas digitales.",
     "hero.cta.products": "Ver que puedo crear",
     "hero.cta.contact": "Contactar",
     "identity.label": "Resultados visibles",
@@ -43,8 +43,8 @@ const translations = {
     "ownership.three.title": "Firma YC Systems",
     "ownership.three.copy": "Los proyectos pueden llevar la marca \"Desarrollado por YC Systems\" como firma confiable de desarrollo.",
     "brand.eyebrow": "Sistema de marca",
-    "brand.title": "Una identidad limpia basada en tecnologÃ­a, confianza y ejecuciÃ³n.",
-    "brand.copy": "El sistema visual de YC Systems usa una marca YC precisa, contraste navy, azul principal, gris y espacio blanco para comunicar innovaciÃ³n sin perder seriedad.",
+    "brand.title": "Una identidad limpia basada en tecnologia, confianza y ejecucion.",
+    "brand.copy": "El sistema visual de YC Systems usa una marca YC precisa, contraste navy, azul principal, gris y espacio blanco para comunicar innovacion sin perder seriedad.",
     "brand.blue": "Azul principal",
     "brand.navy": "Azul oscuro",
     "brand.gray": "Gris",
@@ -56,8 +56,8 @@ const translations = {
     "delivery.two": "Presentacion lista para movil",
     "delivery.three": "Desarrollado por YC Systems",
     "services.eyebrow": "Servicios para clientes",
-    "services.title": "Lo que los clientes pueden contratar con YC Systems.",
-    "services.copy": "Desde una landing page profesional hasta un dashboard de negocio, YC Systems convierte una idea en una experiencia digital limpia con estructura, diseno y logica funcional.",
+    "services.title": "Lo que los clientes pueden contratar con YC Systems",
+    "services.copy": "Desde una landing page profesional hasta un producto SaaS, YC Systems convierte una idea en una experiencia digital limpia con estructura, diseno y logica funcional.",
     "services.web.title": "Paginas web y landing pages",
     "services.web.copy": "Paginas modernas para negocios, marcas personales, servicios, portafolios, campanas y lanzamientos de productos.",
     "services.systems.title": "Sistemas de negocio y dashboards",
@@ -71,7 +71,7 @@ const translations = {
     "status.broker": "MVP operativo",
     "card.broker.copy": "Para equipos inmobiliarios que necesitan controlar prospectos, reservas, documentos, planes de pago y comisiones.",
     "status.soc": "Prototipo en desarrollo",
-    "card.soc.copy": "Para constructoras y equipos de ventas que necesitan un centro de mando para equipos, reservas y analÃ­tica.",
+    "card.soc.copy": "Para constructoras y equipos de ventas que necesitan un centro de mando para equipos, reservas y analitica.",
     "status.clean": "Ecosistema demo construido",
     "card.clean.copy": "Para lavanderias que necesitan membresias, recogida y entrega, drivers, apps de usuarios y control administrativo.",
     "status.ghost": "Caso e-commerce de cliente",
@@ -80,7 +80,7 @@ const translations = {
     "products.eyebrow": "Trabajos de desarrollo",
     "products.title": "Proyectos creados para mostrar software real, dashboards y ejecucion web.",
     "broker.pill": "CRM inmobiliario",
-    "broker.copy": "Un sistema operativo inmobiliario que reemplaza el seguimiento en hojas de cÃ¡lculo por un flujo controlado desde prospecto hasta cierre.",
+    "broker.copy": "Un sistema operativo inmobiliario que reemplaza el seguimiento en hojas de calculo por un flujo controlado desde prospecto hasta cierre.",
     "broker.li1": "Pipeline, reservas, documentos y comisiones en un solo lugar",
     "broker.li2": "Creado para brokers, equipos inmobiliarios y salas de ventas",
     "broker.li3": "MVP operativo con pantallas reales de dashboard",
@@ -88,20 +88,20 @@ const translations = {
     "soc.pill": "Prototipo de operaciones comerciales",
     "soc.copy": "Una plataforma de operaciones comerciales que da a los gerentes una vista viva de reservas, actividad de ventas y ejecucion del equipo.",
     "soc.li1": "Centro de mando para inventario, reservas y estatus comercial",
-    "soc.li2": "DiseÃ±ado para equipos de ventas de constructoras y gerentes",
+    "soc.li2": "Disenado para equipos de ventas de constructoras y gerentes",
     "soc.li3": "Prototipo enfocado en visibilidad operacional",
     "soc.caption": "Dashboard SOC: disponibilidad, reservas y etapas operativas.",
-    "clean.pill": "Ecosistema SaaS para lavanderÃ­as",
-    "clean.copy": "Una plataforma SaaS de lavanderÃ­a que convierte recogida, entrega, suscripciones, drivers y administraciÃ³n en un flujo repetible.",
-    "clean.li1": "MembresÃ­as, recogida, entrega, drivers y administraciÃ³n",
-    "clean.li2": "Construido como ecosistema demo SaaS con mÃºltiples roles",
-    "clean.li3": "DiseÃ±ado para ingresos recurrentes y logÃ­stica moderna",
+    "clean.pill": "Ecosistema SaaS para lavanderias",
+    "clean.copy": "Una plataforma SaaS de lavanderia que convierte recogida, entrega, suscripciones, drivers y administracion en un flujo repetible.",
+    "clean.li1": "Membresias, recogida, entrega, drivers y administracion",
+    "clean.li2": "Construido como ecosistema demo SaaS con multiples roles",
+    "clean.li3": "Disenado para ingresos recurrentes y logistica moderna",
     "clean.caption": "Hub de roles CleanLoop: experiencia admin, usuario y driver.",
     "brands.eyebrow": "Casos de cliente",
     "brands.copy": "GhostWear es un proyecto streetwear de cliente construido por YC Systems: drops, identidad visual, catalogo, carrito y presentacion e-commerce para una tienda real.",
     "brands.point.identity": "Identidad de marca",
     "brands.point.apparel": "Ropa",
-    "brands.point.vision": "VisiÃ³n lifestyle",
+    "brands.point.vision": "Vision lifestyle",
     "launch.eyebrow": "Proceso con clientes",
     "launch.title": "Un proceso simple desde la idea hasta el lanzamiento.",
     "launch.copy": "YC Systems puede ayudar a ordenar la idea, disenar la experiencia, construir la primera version y preparar el proyecto para entrega o despliegue.",
@@ -115,16 +115,16 @@ const translations = {
     "launch.deploy.value": "Listo para presentar, publicar o mejorar",
     "launch.deploy.copy": "El resultado final queda preparado para revision, lanzamiento, cambios futuros y uso del cliente.",
     "about.eyebrow": "Sobre YC Systems",
-    "about.title": "Un portafolio tecnologico personal creado alrededor de software, paginas web y sistemas.",
-    "about.copy": "YC Systems es el espacio donde Yeison Castillo presenta trabajos de desarrollo, sistemas de negocio, paginas web, ideas SaaS, conceptos de automatizacion y marcas digitales.",
-    "about.mission": "MisiÃ³n",
+    "about.title": "Una empresa tecnologica enfocada en productos de software, SaaS y soluciones digitales.",
+    "about.copy": "YC Systems desarrolla productos propios, sistemas operativos por industria, dashboards, marcas digitales y soluciones para negocios reales.",
+    "about.mission": "Mision",
     "about.mission.copy": "Crear software util, paginas limpias y herramientas digitales que resuelvan problemas practicos.",
-    "about.vision": "VisiÃ³n",
+    "about.vision": "Vision",
     "about.vision.copy": "Convertir YC Systems en un portafolio fuerte de proyectos de software, trabajos reales y marcas digitales.",
-    "tech.eyebrow": "TecnologÃ­a",
-    "tech.title": "Construido sobre un stack moderno, prÃ¡ctico y escalable.",
-    "tech.copy": "YC Systems usa tecnologÃ­as probadas para SaaS, APIs, herramientas de negocio, infraestructura cloud y experiencias mÃ³viles.",
-    "tech.mobile": "Desarrollo mÃ³vil",
+    "tech.eyebrow": "Tecnologia",
+    "tech.title": "Construido sobre un stack moderno, practico y escalable.",
+    "tech.copy": "YC Systems usa tecnologias probadas para SaaS, APIs, herramientas de negocio, infraestructura cloud y experiencias moviles.",
+    "tech.mobile": "Desarrollo movil",
     "contact.eyebrow": "Contacto",
     "contact.title": "Hablemos de tu proxima pagina web, sistema o proyecto digital.",
     "contact.copy": "Para paginas web, sistemas de negocio, dashboards, automatizaciones o consultas de proyecto, escribe por email o revisa el GitHub publico de YC Systems.",
@@ -271,7 +271,7 @@ const textTranslations = {
   "Que puedes solicitar": "What you can request",
   "Sitio web, app, sistema, SaaS, mantenimiento o idioma.": "Website, app, system, SaaS, maintenance or language.",
   "Cotizar": "Quote",
-  "CuÃ©ntame tu idea": "Tell me your idea",
+  "Cuentame tu idea": "Tell me your idea",
   "Responde rapido y preparo tu mensaje inicial.": "Answer quickly and I will prepare your initial message.",
   "Que quieres construir": "What do you want to build",
   "Pagina web": "Website",
@@ -359,7 +359,7 @@ function applyLanguage(lang) {
 
   if (langToggle) {
     langToggle.textContent = lang === "es" ? "EN" : "ES";
-    langToggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a espaÃ±ol");
+    langToggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a espanol");
   }
 }
 
@@ -540,9 +540,9 @@ function createConceptChat() {
       <div class="concept-chat-head">
         <div>
           <span>YC Systems</span>
-          <strong>CuÃ©ntame tu idea</strong>
+          <strong>Cuentame tu idea</strong>
         </div>
-        <button type="button" aria-label="Cerrar chat" data-chat-close>Ã—</button>
+        <button type="button" aria-label="Cerrar chat" data-chat-close>x</button>
       </div>
       <div class="concept-chat-body" data-chat-body></div>
     </div>

@@ -400,6 +400,46 @@ p {
   border-color: rgba(246, 183, 60, 0.44);
 }
 
+.status-pill {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 10px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.status-pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.status-pill.ready {
+  color: #097a2d;
+  background: rgba(130, 247, 47, 0.18);
+  border: 1px solid rgba(9, 122, 45, 0.2);
+}
+
+.status-pill.pilot {
+  color: #7c5d00;
+  background: rgba(255, 210, 84, 0.18);
+  border: 1px solid rgba(124, 93, 0, 0.2);
+}
+
+.why-yc {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(130, 247, 47, 0.1), transparent 30%),
+    linear-gradient(180deg, #ffffff, #f4fbff);
+}
+
 .hero-visual {
   min-width: 0;
 }
@@ -3376,12 +3416,49 @@ p {
   background: #f8fbf7;
 }
 
+.footer-map {
+  display: grid;
+  grid-template-columns: 1.25fr repeat(3, 1fr);
+  gap: 24px;
+  padding-bottom: 20px;
+}
+
+.footer-map div {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.footer-map strong {
+  color: var(--navy);
+  font-size: 15px;
+}
+
+.footer-map p,
+.footer-map span,
+.footer-map a {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.footer-map a:hover {
+  color: var(--blue);
+}
+
 .footer-inner {
   display: flex;
   justify-content: space-between;
   gap: 16px;
   color: var(--muted);
   font-size: 14px;
+}
+
+.footer-legal {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
 }
 
 [data-animate] {
@@ -4360,34 +4437,39 @@ p {
     flex-direction: column;
   }
 
+  .footer-map {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
   .concept-chat {
-    right: 14px;
+    right: 12px;
     bottom: 14px;
-    left: 14px;
+    left: auto;
     width: auto;
-    max-width: calc(100% - 28px);
+    max-width: calc(100% - 24px);
   }
 
   .concept-chat-panel {
-    left: 0;
+    left: auto;
     right: 0;
-    bottom: 64px;
-    width: auto;
-    max-width: 100%;
+    bottom: 58px;
+    width: min(340px, calc(100vw - 24px));
+    max-width: calc(100vw - 24px);
   }
 
   .concept-chat-launcher {
-    width: 100%;
-    min-height: 52px;
+    width: auto;
+    min-height: 48px;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     border-radius: var(--radius);
-    padding: 7px 12px;
+    padding: 7px 11px 7px 7px;
   }
 
   .concept-chat-launcher span {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
   }
 
   .concept-chat-launcher strong {

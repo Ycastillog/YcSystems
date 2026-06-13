@@ -2,6 +2,7 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const langToggle = document.querySelector("[data-lang-toggle]") || document.querySelector(".language-chip");
+const langToggles = document.querySelectorAll("[data-lang-toggle], .language-chip");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 
 const defaultTextByKey = {};
@@ -134,12 +135,42 @@ const translations = {
 
 const textTranslations = {
   "Productos": "Products",
+  "Proyectos de clientes": "Client Projects",
   "Proyectos": "Projects",
   "Casos": "Cases",
   "Nosotros": "About",
   "Proceso": "Process",
   "Tecnologia": "Technology",
   "Contacto": "Contact",
+  "Desarrollamos productos SaaS, plataformas operativas y soluciones digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help companies grow, sell better and operate with more control.",
+  "YC Systems en numeros": "YC Systems in Numbers",
+  "4 productos. 4 proyectos de clientes. 3 dominios activos. 1 empresa tecnologica.": "4 Products. 4 Client Projects. 3 Active Domains. 1 Technology Company.",
+  "Productos de software con mercados claros.": "Software products with clear markets.",
+  "Casos de cliente en una vista clara.": "Client projects in one clear view.",
+  "Sobre YC Systems": "About YC Systems",
+  "Mision, vision y valores construidos alrededor de productos de software.": "Mission, vision and values built around software products.",
+  "Hablemos de tu proxima pagina, aplicacion, sistema o plataforma.": "Let's talk about your next website, app, system or platform.",
+  "Ver productos": "View products",
+  "Ver proyectos de clientes": "View client projects",
+  "Explorar productos": "Explore products",
+  "Productos de software construidos alrededor de problemas operativos reales.": "Software products built around real operational problems.",
+  "YC Systems desarrolla productos SaaS, plataformas operativas y soluciones digitales que pueden convertirse en activos escalables para industrias reales.": "YC Systems develops SaaS products, operational platforms and digital solutions that can become scalable assets for real industries.",
+  "Ecosistema de productos": "Product Ecosystem",
+  "Tres productos fuertes y una plataforma en camino definen la direccion de YC Systems.": "Three strong products and one platform on the way define YC Systems direction.",
+  "Empresa de productos": "Product company",
+  "Casos reales entregados para marcas, empresas y operaciones en crecimiento.": "Real cases delivered for brands, companies and growing operations.",
+  "GhostWear, Antony Real Estate, LucianoWash y LPS Company muestran la capacidad de YC Systems para construir presencia digital, e-commerce, branding y flujos comerciales reales.": "GhostWear, Antony Real Estate, LucianoWash and LPS Company show YC Systems' ability to build digital presence, e-commerce, branding and real commercial flows.",
+  "Trabajo de clientes": "Client Work",
+  "Client projects con problema, solucion, entrega y resultado.": "Client projects with problem, solution, delivery and result.",
+  "Casos de estudio": "Case Studies",
+  "Prueba de producto": "Product Proof",
+  "Cual de estos proyectos se parece a lo que necesitas?": "Which of these projects looks like what you need?",
+  "YC Systems es una empresa tecnologica enfocada en productos de software, plataformas SaaS y soluciones digitales.": "YC Systems is a technology company focused on software products, SaaS platforms and digital solutions.",
+  "Construimos productos propios y soluciones digitales para operaciones reales: CleanLoop, SOC, BrokerControl, sistemas internos, dashboards, marcas digitales y plataformas por industria.": "We build owned products and digital solutions for real operations: CleanLoop, SOC, BrokerControl, internal systems, dashboards, digital brands and industry platforms.",
+  "Quienes somos": "Who we are",
+  "Una empresa tecnologica con productos, casos reales y capacidad de ejecucion.": "A technology company with products, real cases and execution capacity.",
+  "Valores principales": "Core Values",
+  "Los valores que guian YC Systems.": "The values that guide YC Systems.",
   "Software Products & Digital Brands": "Software Products & Digital Brands",
   "YC Systems construye productos de software que resuelven problemas operativos reales.": "YC Systems builds software products that solve real operational problems.",
   "SOC, BrokerControl y CleanLoop son el centro del ecosistema: plataformas para operaciones, CRM inmobiliario y gestion de lavanderias, junto a casos de cliente y marcas digitales.": "SOC, BrokerControl and CleanLoop are the center of the ecosystem: platforms for operations, real estate CRM and laundry management, alongside client cases and digital brands.",
@@ -310,6 +341,34 @@ const textTranslations = {
   "Terminos de servicio": "Terms of service",
 };
 
+const spanishTextTranslations = Object.entries(textTranslations).reduce((translations, [spanish, english]) => {
+  if (!translations[english]) translations[english] = spanish;
+  return translations;
+}, {});
+
+const englishTextTranslations = {
+  "Products": "Productos",
+  "Client Projects": "Proyectos de clientes",
+  "Technology": "Tecnologia",
+  "About": "Nosotros",
+  "Contact": "Contacto",
+  "Software Products & Business Systems": "Productos de software y sistemas de negocio",
+  "YC Systems builds software that solves real business problems.": "YC Systems construye software que resuelve problemas reales de negocio.",
+  "YC Systems in Numbers": "YC Systems en numeros",
+  "4 Products. 4 Client Projects. 3 Active Domains. 1 Technology Company.": "4 productos. 4 proyectos de clientes. 3 dominios activos. 1 empresa tecnologica.",
+  "About YC Systems": "Sobre YC Systems",
+  "Mission, vision and values built around software products.": "Mision, vision y valores construidos alrededor de productos de software.",
+  "Software Products": "Productos de software",
+  "Software products built around real operational problems.": "Productos de software construidos alrededor de problemas operativos reales.",
+  "Product Ecosystem": "Ecosistema de productos",
+  "Product company": "Empresa de productos",
+  "Client Work": "Trabajo de clientes",
+  "Case Studies": "Casos de estudio",
+  "Product Proof": "Prueba de producto",
+  "Who we are": "Quienes somos",
+  "Core Values": "Valores principales",
+};
+
 const translatedTextNodes = new WeakMap();
 const translatedAttributes = new WeakMap();
 
@@ -331,8 +390,8 @@ function translatePlainText(lang) {
     if (!translatedTextNodes.has(node)) translatedTextNodes.set(node, node.textContent);
     const original = translatedTextNodes.get(node);
     const trimmed = original.trim();
-    const translated = textTranslations[trimmed];
-    node.textContent = lang === "en" && translated ? original.replace(trimmed, translated) : original;
+    const translated = lang === "en" ? textTranslations[trimmed] : spanishTextTranslations[trimmed] || englishTextTranslations[trimmed];
+    node.textContent = translated ? original.replace(trimmed, translated) : original;
   });
 
   document.querySelectorAll("input[placeholder], textarea[placeholder], option").forEach((element) => {
@@ -345,9 +404,9 @@ function translatePlainText(lang) {
     }
     const original = translatedAttributes.get(element)[key];
     if (!original) return;
-    const translated = textTranslations[original.trim()];
-    if (key === "text") element.textContent = lang === "en" && translated ? translated : original;
-    else element.setAttribute("placeholder", lang === "en" && translated ? translated : original);
+    const translated = lang === "en" ? textTranslations[original.trim()] : spanishTextTranslations[original.trim()] || englishTextTranslations[original.trim()];
+    if (key === "text") element.textContent = translated || original;
+    else element.setAttribute("placeholder", translated || original);
   });
 }
 
@@ -363,10 +422,11 @@ function applyLanguage(lang) {
 
   translatePlainText(lang);
 
-  if (langToggle) {
-    langToggle.textContent = lang === "es" ? "EN" : "ES";
-    langToggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a espanol");
-  }
+  langToggles.forEach((toggle) => {
+    toggle.textContent = lang === "es" ? "EN" : "ES";
+    toggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a espanol");
+    toggle.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+  });
 }
 
 navToggle?.addEventListener("click", () => {
@@ -410,22 +470,25 @@ window.addEventListener("scroll", () => {
 const savedLang = localStorage.getItem("yc-lang");
 applyLanguage(savedLang === "en" ? "en" : "es");
 
-if (langToggle) {
-  langToggle.setAttribute("role", "button");
-  langToggle.setAttribute("tabindex", "0");
-}
+langToggles.forEach((toggle) => {
+  toggle.setAttribute("role", "button");
+  toggle.setAttribute("tabindex", "0");
+});
 
-langToggle?.addEventListener("click", () => {
+function toggleLanguage() {
   const nextLang = document.documentElement.lang === "es" ? "en" : "es";
   localStorage.setItem("yc-lang", nextLang);
   applyLanguage(nextLang);
-});
+}
 
-langToggle?.addEventListener("keydown", (event) => {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-    langToggle.click();
-  }
+langToggles.forEach((toggle) => {
+  toggle.addEventListener("click", toggleLanguage);
+  toggle.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      toggleLanguage();
+    }
+  });
 });
 
 const currentScript = document.currentScript || document.querySelector('script[src*="script.js"]');

@@ -519,10 +519,26 @@ p {
 
 .product-card h3,
 .client-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   margin: 0;
   color: var(--navy);
   font-size: 22px;
   line-height: 1.05;
+}
+
+.client-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(24, 215, 255, 0.22);
+  border-radius: var(--radius);
+  background: rgba(24, 215, 255, 0.08);
+  font-size: 18px;
+  line-height: 1;
 }
 
 .product-card p,

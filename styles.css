@@ -525,6 +525,42 @@ p {
   line-height: 1.05;
 }
 
+.project-logo-mark {
+  display: grid;
+  place-items: center;
+  min-height: 48px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  color: var(--navy);
+  background: #ffffff;
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.project-logo-mark.ghost {
+  color: #111827;
+  background: linear-gradient(135deg, #fffbea, #ffffff);
+}
+
+.project-logo-mark.luciano {
+  color: #075985;
+  background: linear-gradient(135deg, #e0f7ff, #ffffff);
+}
+
+.project-logo-mark.antony {
+  color: #0f172a;
+  background: linear-gradient(135deg, #eef2ff, #ffffff);
+}
+
+.project-logo-mark.lps {
+  color: #1e3a8a;
+  background: linear-gradient(135deg, #eff6ff, #ffffff);
+}
+
 .product-card p,
 .client-card p,
 .mission-card p {
@@ -1857,6 +1893,16 @@ p {
     #ffffff;
 }
 
+.founder-profile-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: 60% center;
+}
+
 .founder-panel span,
 .trust-grid span,
 .package-grid span {
@@ -3029,6 +3075,12 @@ p {
   grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1fr);
   gap: 56px;
   align-items: center;
+}
+
+.about-hero h1,
+.projects-page .product-hero h1 {
+  font-size: clamp(42px, 5.2vw, 64px);
+  line-height: 1.02;
 }
 
 .breadcrumb {

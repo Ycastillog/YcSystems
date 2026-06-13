@@ -103,7 +103,7 @@ if (-not (Test-Path $QueuePath)) {
   throw "Queue not found: $QueuePath"
 }
 
-$rows = Import-Csv $QueuePath -Delimiter "`t"
+$rows = Import-Csv $QueuePath -Delimiter "`t" -Encoding UTF8
 $slot = Get-CurrentSlot
 $row = $rows | Where-Object { $_.status -eq "Ready" -and $_.slot -eq $slot } | Select-Object -First 1
 if (-not $row) {
@@ -167,7 +167,7 @@ if (-not $fbPublish.post_id -and -not $fbPublish.id) {
 }
 
 $row.status = "Posted"
-$rows | Export-Csv $QueuePath -Delimiter "`t" -NoTypeInformation
+$rows | Export-Csv $QueuePath -Delimiter "`t" -NoTypeInformation -Encoding UTF8
 
 Write-Host "Published successfully." -ForegroundColor Green
 Write-Host "Instagram media id: $($igPublish.id)"

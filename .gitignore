@@ -3,3 +3,4 @@ artifacts/
 .env
 .env.*
 *.token
+content/meta-token-checks.log

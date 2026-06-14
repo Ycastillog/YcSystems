@@ -27,6 +27,8 @@ Set these in PowerShell or in a local `.env` file before running:
 $env:META_PAGE_ID = "1078101082062602"
 $env:META_IG_USER_ID = "YOUR_INSTAGRAM_BUSINESS_ACCOUNT_ID"
 $env:META_PAGE_ACCESS_TOKEN = "YOUR_LONG_LIVED_PAGE_ACCESS_TOKEN"
+$env:META_APP_ID = "YOUR_META_APP_ID"
+$env:META_APP_SECRET = "YOUR_META_APP_SECRET"
 ```
 
 Do not commit tokens.
@@ -36,6 +38,30 @@ Do not commit tokens.
 ```powershell
 .\scripts\meta\Test-MetaConfig.ps1
 ```
+
+## Precheck before scheduled posts
+
+The automation runs this check 10 minutes before each publishing slot:
+
+```powershell
+.\scripts\meta\Check-MetaToken.ps1
+```
+
+It writes a local log to:
+
+```text
+content/meta-token-checks.log
+```
+
+## Renew a long-lived token
+
+Graph Explorer tokens are temporary. For stable automation, generate a user token with the required permissions, then exchange it with:
+
+```powershell
+.\scripts\meta\Renew-MetaLongLivedToken.ps1 -UserAccessToken "PASTE_USER_ACCESS_TOKEN_HERE"
+```
+
+This requires `META_APP_ID` and `META_APP_SECRET` in `.env`.
 
 ## Publish the next queued post
 

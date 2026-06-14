@@ -33,13 +33,6 @@ function Require-Env([string]$Name) {
 
 Import-DotEnv
 
-function Get-CurrentSlot {
-  $hour = (Get-Date).Hour
-  if ($hour -lt 12) { return "AM" }
-  if ($hour -lt 17) { return "PM" }
-  return "NIGHT"
-}
-
 function Convert-ToSpanishCaption($row) {
   return @"
 $($row.caption)
@@ -62,11 +55,7 @@ if (-not (Test-Path $QueuePath)) {
 }
 
 $rows = Import-Csv $QueuePath -Delimiter "`t" -Encoding UTF8
-$slot = Get-CurrentSlot
-$row = $rows | Where-Object { $_.status -eq "Ready" -and $_.slot -eq $slot } | Select-Object -First 1
-if (-not $row) {
-  $row = $rows | Where-Object { $_.status -eq "Ready" } | Select-Object -First 1
-}
+$row = $rows | Where-Object { $_.status -eq "Ready" } | Select-Object -First 1
 if (-not $row) {
   throw "No Ready row found in queue."
 }

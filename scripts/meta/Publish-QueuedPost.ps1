@@ -41,57 +41,15 @@ function Get-CurrentSlot {
 }
 
 function Convert-ToSpanishCaption($row) {
-  switch -Regex ($row.topic) {
-    "Excel to system" {
-      return @"
-Si tu negocio depende de Excel, WhatsApp y notas sueltas para operar, ya es momento de convertir ese proceso en un sistema.
-
-YC Systems construye plataformas para organizar clientes, pagos, reservas, tareas, reportes y seguimiento operativo en un solo lugar.
-
-Ideal para negocios que necesitan:
-- menos desorden
-- mas control
-- reportes claros
-- procesos digitales
-- una operacion lista para crecer
-
-Escribe SISTEMA y revisamos que se puede construir para tu empresa.
-
-Smart Solutions. Real Results.
-
-#YCSystems #SoftwareParaNegocios #SistemasInternos #Automatizacion #SaaS #BusinessSystems #RepublicaDominicana
-"@
-    }
-    "GhostWear" {
-      return @"
-GhostWear demuestra como una marca puede pasar de una idea a una tienda online real.
-
-YC Systems construyo una experiencia e-commerce con catalogo visual, productos, carrito, experiencia movil y flujo de pedido por WhatsApp.
-
-Esto es lo que puede comprar una marca similar:
-- tienda online
-- catalogo de productos
-- carrito
-- pedido por WhatsApp
-- presencia lista para vender
-
-Smart Solutions. Real Results.
-
-#YCSystems #Ecommerce #TiendaOnline #SoftwareProducts #DigitalBusiness #GhostWear
-"@
-    }
-    default {
-      return @"
+  return @"
 $($row.caption)
 
 $($row.cta)
 
 Smart Solutions. Real Results.
 
-#YCSystems #SoftwareProducts #BusinessSystems #SaaS #DigitalBusiness
+#YCSystems #SoftwareParaNegocios #SaaS #Automatizacion #BusinessSystems #RepublicaDominicana
 "@
-    }
-  }
 }
 
 function Invoke-GraphPost($Path, $Body) {

@@ -42,20 +42,20 @@ https://ycastillog.github.io/YcSystems/
 Use these highlight covers:
 
 - Productos: `assets/social/profile-identity/highlight-products.jpg`
-- Proyectos: `assets/social/profile-identity/highlight-projects.jpg`
-- Clientes: `assets/social/profile-identity/highlight-clients.jpg`
-- Contacto: `assets/social/profile-identity/highlight-contact.jpg`
-- Ofertas: `assets/social/profile-identity/highlight-offers.jpg`
-- Tecnologia: `assets/social/profile-identity/highlight-tech.jpg`
+- Cases: `assets/social/profile-identity/highlight-cases.jpg`
+- Clients: `assets/social/profile-identity/highlight-clients.jpg`
+- Technology: `assets/social/profile-identity/highlight-technology.jpg`
+- Contact: `assets/social/profile-identity/highlight-contact.jpg`
+- Start Here: `assets/social/profile-identity/highlight-start-here.jpg`
 
 Recommended order:
 
 1. Productos
-2. Proyectos
-3. Clientes
-4. Ofertas
-5. Tecnologia
-6. Contacto
+2. Cases
+3. Clients
+4. Technology
+5. Contact
+6. Start Here
 
 ## Highlight Content
 

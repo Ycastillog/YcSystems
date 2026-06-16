@@ -15,6 +15,172 @@
   --radius: 8px;
 }
 
+/* Nexus brand system */
+.nexus-home {
+  background: #f8fbff;
+}
+
+.nexus-strip {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  gap: 26px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 8% 20%, rgba(34, 197, 94, 0.12), transparent 28%),
+    linear-gradient(135deg, #081224, #102342 58%, #0b1730);
+  color: #fff;
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
+}
+
+.nexus-strip img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nexus-strip h2,
+.nexus-identity h2,
+.nexus-guide-section h2,
+.nexus-contact h2 {
+  margin: 0 0 12px;
+}
+
+.nexus-strip p,
+.nexus-identity p,
+.nexus-guide-section p,
+.nexus-contact p {
+  color: inherit;
+}
+
+.nexus-strip .eyebrow,
+.nexus-identity .eyebrow,
+.nexus-guide-section .eyebrow,
+.nexus-contact .eyebrow {
+  color: #00c9ff;
+}
+
+.nexus-identity {
+  background: #071225;
+  color: #fff;
+}
+
+.nexus-identity-grid,
+.nexus-guide-grid,
+.nexus-contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 42px;
+  align-items: center;
+}
+
+.nexus-identity-grid > img,
+.nexus-guide-grid > img {
+  width: 100%;
+  border-radius: 22px;
+  border: 1px solid rgba(0, 201, 255, 0.22);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
+}
+
+.nexus-identity blockquote {
+  margin: 28px 0 0;
+  padding: 22px;
+  border-left: 3px solid #00c9ff;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #eaf4ff;
+  font-weight: 700;
+}
+
+.nexus-identity blockquote span {
+  display: block;
+  margin-top: 10px;
+  color: #00c9ff;
+}
+
+.nexus-guide-section {
+  background: linear-gradient(180deg, #ffffff, #f4f8fc);
+}
+
+.nexus-guide-grid {
+  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+}
+
+.nexus-process {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.nexus-process span {
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: #081224;
+  color: #fff;
+  font-weight: 800;
+  text-align: center;
+}
+
+.nexus-contact {
+  padding-top: 0;
+}
+
+.nexus-contact-card {
+  grid-template-columns: 120px minmax(0, 1fr) auto;
+  padding: 28px;
+  border-radius: 20px;
+  background: #081224;
+  color: #fff;
+  border: 1px solid rgba(0, 201, 255, 0.2);
+}
+
+.nexus-contact-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+@media (max-width: 760px) {
+  .nexus-strip,
+  .nexus-contact-card {
+    grid-template-columns: 82px 1fr;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .nexus-strip img,
+  .nexus-contact-card img {
+    width: 82px;
+    height: 82px;
+    border-radius: 20px;
+  }
+
+  .nexus-strip .button,
+  .nexus-contact-card .button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .nexus-identity-grid,
+  .nexus-guide-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nexus-guide-grid > img {
+    order: 2;
+  }
+
+  .nexus-process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 * {
   box-sizing: border-box;
 }

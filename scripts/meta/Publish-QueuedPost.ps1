@@ -1,4 +1,4 @@
-param(
+﻿param(
   [switch]$DryRun,
   [string]$QueuePath = "content/yc-systems-facebook-30-day-3x-queue.tsv",
   [string]$BasePublicUrl = "https://ycastillog.github.io/YcSystems",
@@ -50,6 +50,35 @@ function Invoke-GraphPost($Path, $Body) {
   return Invoke-RestMethod -Method Post -Uri $uri -Body $Body
 }
 
+function Invoke-GraphGet($Path, $Query) {
+  $pairs = @()
+  foreach ($key in $Query.Keys) {
+    $pairs += "$key=$([uri]::EscapeDataString([string]$Query[$key]))"
+  }
+  $uri = "https://graph.facebook.com/$GraphVersion/$Path`?$(($pairs -join '&'))"
+  return Invoke-RestMethod -Method Get -Uri $uri
+}
+
+function Wait-InstagramContainer($ContainerId, $Token) {
+  $lastStatus = "UNKNOWN"
+  for ($attempt = 1; $attempt -le 12; $attempt++) {
+    Start-Sleep -Seconds 5
+    $status = Invoke-GraphGet $ContainerId @{
+      fields       = "status_code,status"
+      access_token = $Token
+    }
+    $lastStatus = $status.status_code
+    Write-Host "Instagram container status attempt ${attempt}: $lastStatus"
+
+    if ($status.status_code -eq "FINISHED") { return }
+    if ($status.status_code -eq "ERROR" -or $status.status_code -eq "EXPIRED") {
+      throw "Instagram container failed with status $($status.status_code): $($status.status)"
+    }
+  }
+
+  throw "Instagram container was not ready after waiting. Last status: $lastStatus"
+}
+
 if (-not (Test-Path $QueuePath)) {
   throw "Queue not found: $QueuePath"
 }
@@ -91,6 +120,8 @@ if (-not $igContainer.id) {
   throw "Instagram container was not created."
 }
 
+Wait-InstagramContainer $igContainer.id $token
+
 Write-Host "Publishing Instagram container $($igContainer.id)..." -ForegroundColor Cyan
 $igPublish = Invoke-GraphPost "$igUserId/media_publish" @{
   creation_id  = $igContainer.id
@@ -119,3 +150,4 @@ $rows | Export-Csv $QueuePath -Delimiter "`t" -NoTypeInformation -Encoding UTF8
 Write-Host "Published successfully." -ForegroundColor Green
 Write-Host "Instagram media id: $($igPublish.id)"
 Write-Host "Facebook post id: $($fbPublish.post_id)"
+

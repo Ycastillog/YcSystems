@@ -453,7 +453,7 @@ nav?.querySelectorAll("a").forEach((link) => {
 });
 
 const animatedElements = document.querySelectorAll(
-  ".product-card, .brand-story, .apparel-showcase, .about-grid, .stack-grid"
+  ".brand-story, .apparel-showcase, .about-grid, .stack-grid"
 );
 
 animatedElements.forEach((element) => element.setAttribute("data-animate", ""));

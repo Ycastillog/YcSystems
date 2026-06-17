@@ -1,0 +1,48 @@
+{
+  "brand": "YC Systems",
+  "language": "es",
+  "default_reply": "Hola, gracias por escribir a YC Systems. Para orientarte mejor, dime si buscas pagina web, tienda online, sistema interno, CRM, dashboard, automatizacion, SaaS/app o mantenimiento.",
+  "lead_questions": [
+    "Que negocio tienes?",
+    "Que problema quieres resolver?",
+    "Ya tienes logo, dominio o contenido?",
+    "Lo necesitas pronto o estas explorando?"
+  ],
+  "intents": [
+    {
+      "name": "web",
+      "keywords": ["web", "pagina", "landing", "sitio", "website"],
+      "reply": "Una web profesional debe explicar tu oferta, generar confianza y convertir visitas en contacto. Puedo ayudarte con landing page, web corporativa, portafolio, SEO basico, contacto y version movil. Escribe WEB y cuentame que negocio tienes."
+    },
+    {
+      "name": "store",
+      "keywords": ["tienda", "ecommerce", "e-commerce", "catalogo", "productos"],
+      "reply": "Una tienda online debe vender, no solo verse bonita. Puedo ayudarte con catalogo, carrito, pedido por WhatsApp, pagos, dominio, contenido y experiencia movil. Escribe TIENDA y dime que productos vendes."
+    },
+    {
+      "name": "system",
+      "keywords": ["sistema", "crm", "clientes", "excel", "whatsapp", "dashboard", "panel"],
+      "reply": "Si tu operacion depende de Excel, WhatsApp o memoria, un sistema interno puede darte mas control. Puedo ayudarte con clientes, roles, estados, documentos, reportes y dashboards. Escribe SISTEMA y dime que proceso quieres ordenar."
+    },
+    {
+      "name": "automation",
+      "keywords": ["automatizar", "automatizacion", "automatico", "flujo", "alerta", "reportes"],
+      "reply": "Automatizar reduce tareas repetidas, errores y tiempos muertos. Puedo ayudarte con formularios, alertas, reportes, integraciones y flujos de trabajo. Escribe AUTO y cuentame que tarea quieres reducir."
+    },
+    {
+      "name": "saas",
+      "keywords": ["saas", "app", "mvp", "plataforma", "software"],
+      "reply": "Un SaaS MVP empieza con un problema claro y una primera version medible. Puedo ayudarte con usuarios, roles, admin, base de datos, pagos, API, app movil o panel web. Escribe SAAS y cuentame tu idea."
+    },
+    {
+      "name": "maintenance",
+      "keywords": ["mantenimiento", "soporte", "cambios", "actualizar", "mejoras"],
+      "reply": "Una web o sistema necesita mejoras, contenido, soporte y ajustes constantes. Puedo ayudarte con mantenimiento mensual, cambios, seguridad, nuevas secciones y soporte tecnico. Escribe SOPORTE y dime que tienes publicado."
+    },
+    {
+      "name": "price",
+      "keywords": ["precio", "costo", "cuanto", "cotizacion", "presupuesto"],
+      "reply": "El precio depende del alcance: web, tienda, sistema, SaaS o mantenimiento. Si me dices que quieres construir, tiempo ideal y objetivo principal, preparo una ruta inicial."
+    }
+  ]
+}

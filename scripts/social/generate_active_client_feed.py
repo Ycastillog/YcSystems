@@ -41,6 +41,13 @@ F = {
     "h1": font(86, True),
 }
 
+POSES = [
+    ROOT / "assets" / "brand" / "nexus" / "poses" / "nexus-pointing.png",
+    ROOT / "assets" / "brand" / "nexus" / "poses" / "nexus-dashboard.png",
+    ROOT / "assets" / "brand" / "nexus" / "poses" / "nexus-confident.png",
+    ROOT / "assets" / "brand" / "nexus" / "poses" / "nexus-process.png",
+]
+
 
 POSTS = [
     ("01-web-confianza", "WEB PROFESIONAL", "Tu negocio necesita una web que venda confianza", "Presenta tu oferta, genera confianza y convierte visitas en contactos reales.", "Escribe WEB"),
@@ -90,28 +97,26 @@ def draw_wrapped(draw, text, xy, width, fnt, fill, gap=8, max_lines=None):
     return y
 
 
-def background():
-    img = Image.new("RGBA", (W, H), NAVY + (255,))
-    px = img.load()
-    for y in range(H):
-        for x in range(W):
-            dx = (x - W * 0.80) / W
-            dy = (y - H * 0.22) / H
-            glow = max(0, 1 - math.sqrt(dx * dx + dy * dy) * 3.0)
-            dx2 = (x - W * 0.05) / W
-            dy2 = (y - H * 0.90) / H
-            glow2 = max(0, 1 - math.sqrt(dx2 * dx2 + dy2 * dy2) * 4.2)
-            px[x, y] = (
-                int(NAVY[0] + glow * 12),
-                int(NAVY[1] + glow * 24 + glow2 * 14),
-                int(NAVY[2] + glow * 58 + glow2 * 18),
-                255,
-            )
+def cover(path, size=(W, H)):
+    src = Image.open(path).convert("RGBA")
+    scale = max(size[0] / src.width, size[1] / src.height)
+    src = src.resize((int(src.width * scale), int(src.height * scale)), Image.LANCZOS)
+    left = (src.width - size[0]) // 2
+    top = (src.height - size[1]) // 2
+    return src.crop((left, top, left + size[0], top + size[1]))
+
+
+def background(pose_path):
+    img = cover(pose_path)
     d = ImageDraw.Draw(img, "RGBA")
-    for r in (360, 480, 600):
-        d.arc((510, 110, 510 + r * 2, 110 + r * 2), 188, 326, fill=BLUE + (70,), width=3)
-    d.ellipse((760, 200, 1260, 700), outline=CYAN + (18,), width=2)
-    d.ellipse((-240, 720, 300, 1260), outline=GREEN + (18,), width=2)
+    # Dark editorial text area on the left, keeping the character visible.
+    d.rectangle((0, 0, 650, H), fill=(3, 12, 28, 172))
+    for x in range(650):
+        alpha = int(150 * max(0, 1 - x / 650))
+        d.line((x, 0, x, H), fill=(3, 12, 28, alpha), width=1)
+    d.rectangle((0, 850, W, H), fill=(3, 12, 28, 132))
+    d.rectangle((0, 0, W, 125), fill=(3, 12, 28, 112))
+    d.ellipse((-180, 720, 300, 1260), outline=GREEN + (20,), width=2)
     return img
 
 
@@ -128,29 +133,6 @@ def paste_logo(base):
     base.alpha_composite(logo, (772, 44))
 
 
-def paste_nexus(base):
-    src = Image.open(ROOT / "assets" / "brand" / "nexus" / "nexus-social.png").convert("RGBA")
-    crop = src.crop((0, 0, 650, 1060))
-    crop.thumbnail((540, 870), Image.LANCZOS)
-    # Soft fade on the right edge so Nexus blends with the poster.
-    original_alpha = crop.getchannel("A")
-    fade = Image.new("L", crop.size, 255)
-    fp = fade.load()
-    for y in range(crop.height):
-        for x in range(crop.width):
-            if x > crop.width * 0.72:
-                fp[x, y] = int(255 * max(0, 1 - (x - crop.width * 0.72) / (crop.width * 0.28)))
-    mask = Image.new("L", crop.size, 0)
-    mask_px = mask.load()
-    alpha_px = original_alpha.load()
-    fade_px = fade.load()
-    for y in range(crop.height):
-        for x in range(crop.width):
-            mask_px[x, y] = int(alpha_px[x, y] * fade_px[x, y] / 255)
-    crop.putalpha(mask)
-    base.alpha_composite(crop, (530, 178))
-
-
 def draw_value_icons(draw):
     labels = ["Claro", "Rapido", "Confiable", "Escalable"]
     x = 62
@@ -163,10 +145,9 @@ def draw_value_icons(draw):
 
 def render(post, index):
     slug, kicker, title, body, cta = post
-    img = background()
+    img = background(POSES[(index - 1) % len(POSES)])
     d = ImageDraw.Draw(img, "RGBA")
     paste_logo(img)
-    paste_nexus(img)
 
     d.text((62, 64), "YC SYSTEMS", fill=CYAN + (255,), font=F["tag"])
     d.text((62, 120), kicker, fill=GREEN + (255,) if index % 3 == 0 else CYAN + (255,), font=F["small_bold"])
@@ -221,12 +202,18 @@ def make_review(paths):
 
 def update_queue(paths):
     queue = ROOT / "content" / "yc-systems-facebook-30-day-3x-queue.tsv"
-    with queue.open(encoding="utf-8", newline="") as f:
+    topic_paths = {
+        post[2]: paths[index].relative_to(ROOT).as_posix()
+        for index, post in enumerate(POSTS)
+    }
+    with queue.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.reader(f, delimiter="\t"))
+    if rows:
+        rows[0] = ["day", "slot", "time", "pillar", "topic", "visual", "caption", "cta", "link", "status"]
     ready_index = 0
     for row in rows[1:]:
         if len(row) >= 10 and row[9] == "Ready":
-            row[5] = paths[ready_index % len(paths)].relative_to(ROOT).as_posix()
+            row[5] = topic_paths.get(row[4], paths[ready_index % len(paths)].relative_to(ROOT).as_posix())
             ready_index += 1
     with queue.open("w", encoding="utf-8", newline="") as f:
         csv.writer(f, delimiter="\t", quotechar='"', quoting=csv.QUOTE_ALL, lineterminator="\n").writerows(rows)

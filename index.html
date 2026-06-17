@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=brand-49" />
+    <link rel="stylesheet" href="./styles.css?v=brand-50" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -38,8 +38,8 @@
             <h1>Construimos productos de software que ayudan a las empresas a operar, crecer y escalar.</h1>
             <p class="hero-lede">Desarrollamos productos SaaS, plataformas operativas y soluciones digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="./products/">Explore Products</a>
-              <a class="button button-secondary" href="./projects/">View Client Projects</a>
+              <a class="button button-primary" href="./products/">Explorar productos</a>
+              <a class="button button-secondary" href="./projects/">Ver proyectos de clientes</a>
             </div>
             <div class="hero-proof" aria-label="YC Systems solution areas">
               <span>CleanLoop</span>
@@ -54,16 +54,14 @@
             </div>
           </div>
           <div class="hero-visual">
-            <div class="identity-card solution-card">
-              <img class="solution-logo" src="./assets/brand/yc-logo-horizontal-transparent.png" alt="YC Systems" />
-              <div class="solution-screens">
-                <img src="./assets/screenshots/cleanloop-landing.png" alt="CleanLoop landing" />
-                <img src="./assets/screenshots/soc-dashboard.png" alt="Sales Operations Center dashboard" />
-                <img src="./assets/screenshots/brokercontrol-dashboard.png" alt="BrokerControl dashboard" />
-              </div>
-              <div class="identity-meta">
-                <span>Smart Solutions. Real Results.</span>
-                <strong>Software products, SaaS platforms, operating systems and client projects built under YC Systems.</strong>
+            <div class="yc-ecosystem-visual" aria-label="YC Systems ecosystem">
+              <img class="ecosystem-logo" src="./assets/brand/yc-logo-horizontal-white.png" alt="YC Systems" />
+              <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-main.png" alt="Nexus, YC Systems assistant" />
+              <div class="ecosystem-products">
+                <a href="./products/cleanloop/"><span>01</span><strong>CleanLoop</strong><small>Piloto y alianzas</small></a>
+                <a href="./products/soc/"><span>02</span><strong>SOC</strong><small>Producto listo</small></a>
+                <a href="./products/brokercontrol/"><span>03</span><strong>BrokerControl</strong><small>Producto listo</small></a>
+                <a href="./products/"><span>04</span><strong>CreditPilot</strong><small>Proximamente</small></a>
               </div>
             </div>
           </div>
@@ -87,14 +85,41 @@
       </section>
 
       <section class="nexus-home section-pad">
-        <div class="container nexus-strip">
-          <img src="./assets/brand/nexus/nexus-avatar.png" alt="Nexus, asistente visual de YC Systems" loading="lazy" />
-          <div>
+        <div class="container nexus-brand-panel">
+          <div class="nexus-brand-copy">
             <p class="eyebrow">Conoce a Nexus</p>
-            <h2>El asistente visual de YC Systems.</h2>
-            <p>Nexus nos ayuda a explicar como convertimos problemas operativos en productos de software claros, utiles y listos para crecer.</p>
+            <h2>Nexus es parte del ADN visual de YC Systems.</h2>
+            <p>Nexus representa nuestra forma de construir: analizar, disenar, automatizar y entregar productos digitales que ayudan a empresas reales a operar mejor.</p>
+            <div class="nexus-steps" aria-label="Nexus process">
+              <span>Analyze</span>
+              <span>Design</span>
+              <span>Build</span>
+              <span>Deliver</span>
+            </div>
+            <a class="button button-secondary" href="./products/">Ver productos</a>
           </div>
-          <a class="button button-secondary" href="./products/">Ver productos</a>
+          <img class="nexus-brand-image" src="./assets/brand/nexus/nexus-guide.png" alt="Nexus explaining YC Systems process" loading="lazy" />
+        </div>
+      </section>
+
+      <section class="yc-identity-system section-pad">
+        <div class="container yc-identity-grid">
+          <div>
+            <p class="eyebrow">Identidad YC Systems</p>
+            <h2>Un sistema visual propio: logo, Nexus, productos y una historia real.</h2>
+            <p>La marca combina azul electrico, azul profundo, blanco, gris y acentos de accion para verse tecnologica, seria y reconocible. Nexus ayuda a explicar el proceso; los productos y sitios reales prueban la ejecucion.</p>
+            <div class="identity-pill-row">
+              <span>#2563EB</span>
+              <span>#0F172A</span>
+              <span>#00D8FF</span>
+              <span>#5CFF5C</span>
+            </div>
+          </div>
+          <div class="identity-story-card">
+            <img src="./assets/brand/yc-logo-horizontal-transparent.png" alt="YC Systems logo" loading="lazy" />
+            <p>YC Systems no es solo una pagina de servicios. Es una empresa tecnologica en construccion, con productos propios, client projects reales y una identidad nacida de trabajo, vision y familia.</p>
+            <strong>La N tiene un significado especial: Nancy, origen emocional de esta vision y parte de la historia de la marca.</strong>
+          </div>
         </div>
       </section>
 
@@ -216,7 +241,8 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=brand-49"></script>
+    <script src="./script.js?v=brand-50"></script>
   </body>
 </html>
+
 

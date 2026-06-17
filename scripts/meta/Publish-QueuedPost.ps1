@@ -1,5 +1,6 @@
 ﻿param(
   [switch]$DryRun,
+  [string]$Slot = "",
   [string]$QueuePath = "content/yc-systems-facebook-30-day-3x-queue.tsv",
   [string]$BasePublicUrl = "https://ycastillog.github.io/YcSystems",
   [string]$GraphVersion = "v25.0"
@@ -84,7 +85,23 @@ if (-not (Test-Path $QueuePath)) {
 }
 
 $rows = Import-Csv $QueuePath -Delimiter "`t" -Encoding UTF8
-$row = $rows | Where-Object { $_.status -eq "Ready" } | Select-Object -First 1
+$readyRows = @($rows | Where-Object { $_.status -eq "Ready" })
+
+if ([string]::IsNullOrWhiteSpace($Slot)) {
+  $hour = (Get-Date).Hour
+  if ($hour -ge 18) {
+    $Slot = "NIGHT"
+  } elseif ($hour -ge 12) {
+    $Slot = "PM"
+  } else {
+    $Slot = "AM"
+  }
+}
+
+$row = $readyRows | Where-Object { $_.slot -eq $Slot } | Select-Object -First 1
+if (-not $row) {
+  $row = $readyRows | Select-Object -First 1
+}
 if (-not $row) {
   throw "No Ready row found in queue."
 }

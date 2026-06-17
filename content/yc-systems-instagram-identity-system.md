@@ -1,4 +1,4 @@
-# YC Systems Instagram Identity System
+﻿# YC Systems Instagram Identity System
 
 ## Objective
 
@@ -26,10 +26,10 @@ Style:
 
 Primary assets:
 
-- `assets/social/studio-feed/00-nexus-master-style.png`
-- `assets/social/studio-feed/01-cleanloop-studio.png`
-- `assets/social/studio-feed/02-soc-studio.png`
-- `assets/social/studio-feed/03-brokercontrol-studio.png`
+- `assets/social/active-feed/01-web-confianza.jpg`
+- `assets/social/active-feed/02-sistema-excel-whatsapp.jpg`
+- `assets/social/active-feed/03-automatizar-orden.jpg`
+- `assets/social/active-feed/04-tienda-vende.jpg`
 
 These are the only assets the publishing queue should use for feed posts.
 
@@ -131,3 +131,4 @@ Nexus:
 - `assets/brand/nexus/nexus-social.png`
 
 Legacy feed assets are archived only. They are no longer the preferred feed direction.
+

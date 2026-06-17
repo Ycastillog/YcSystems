@@ -31,7 +31,13 @@ Primary assets:
 - `assets/social/studio-feed/02-soc-studio.png`
 - `assets/social/studio-feed/03-brokercontrol-studio.png`
 
-Use these before older template-style assets.
+These are the only assets the publishing queue should use for feed posts.
+
+Archived assets live under:
+
+- `assets/social/archive/`
+
+Do not use archived assets for automation unless they are intentionally restored.
 
 ## Feed Structure
 
@@ -124,19 +130,4 @@ Nexus:
 - `assets/brand/nexus/nexus-guide.png`
 - `assets/brand/nexus/nexus-social.png`
 
-Legacy Problem / Solution / Result feed:
-
-- `assets/social/psr-feed/01-problema-excel-whatsapp.jpg`
-- `assets/social/psr-feed/02-solucion-sistemas-internos.jpg`
-- `assets/social/psr-feed/03-resultado-operacion-control.jpg`
-- `assets/social/psr-feed/04-problema-lavanderia.jpg`
-- `assets/social/psr-feed/05-solucion-cleanloop.jpg`
-- `assets/social/psr-feed/06-resultado-cleanloop.jpg`
-- `assets/social/psr-feed/07-problema-inmobiliaria.jpg`
-- `assets/social/psr-feed/08-solucion-brokercontrol.jpg`
-- `assets/social/psr-feed/09-resultado-brokercontrol.jpg`
-- `assets/social/psr-feed/10-problema-dashboard.jpg`
-- `assets/social/psr-feed/11-solucion-soc.jpg`
-- `assets/social/psr-feed/12-resultado-soc.jpg`
-
-These remain available as draft/backup assets, but they are no longer the preferred feed direction.
+Legacy feed assets are archived only. They are no longer the preferred feed direction.

@@ -1,4 +1,4 @@
-# YC Systems - Commercial Instagram Kit
+﻿# YC Systems - Commercial Instagram Kit
 
 Objetivo: que el perfil de Instagram venda soluciones reales, no solo diseño. Cada pieza debe explicar qué construye YC Systems, qué problema resuelve y qué acción debe tomar el cliente.
 
@@ -29,7 +29,7 @@ Start your project below
 
 ### 01 - YC Systems Ecosystem
 
-Visual: assets/social/commercial-kit/01-yc-systems-ecosystem.jpg
+Visual: assets/social/archive/commercial-kit/01-yc-systems-ecosystem.jpg
 
 Caption:
 YC Systems construye software que vende y organiza negocios.
@@ -42,7 +42,7 @@ CTA: Escribe "PROYECTO" y revisamos tu idea.
 
 ### 02 - Products That Operate
 
-Visual: assets/social/commercial-kit/02-products-that-operate.jpg
+Visual: assets/social/archive/commercial-kit/02-products-that-operate.jpg
 
 Caption:
 YC Systems también construye productos propios.
@@ -55,7 +55,7 @@ CTA: Escribe "SISTEMA".
 
 ### 03 - GhostWear Client Case
 
-Visual: assets/social/commercial-kit/03-ghostwear-client-case.jpg
+Visual: assets/social/archive/commercial-kit/03-ghostwear-client-case.jpg
 
 Caption:
 GhostWear es un caso real de e-commerce construido para vender.
@@ -68,7 +68,7 @@ CTA: ¿Quieres una tienda como esta?
 
 ### 04 - CleanLoop SaaS Platform
 
-Visual: assets/social/commercial-kit/04-cleanloop-saas-platform.jpg
+Visual: assets/social/archive/commercial-kit/04-cleanloop-saas-platform.jpg
 
 Caption:
 CleanLoop es una plataforma pensada para lavanderías.
@@ -81,7 +81,7 @@ CTA: Hablemos de tu SaaS MVP.
 
 ### 05 - BrokerControl CRM
 
-Visual: assets/social/commercial-kit/05-brokercontrol-crm.jpg
+Visual: assets/social/archive/commercial-kit/05-brokercontrol-crm.jpg
 
 Caption:
 BrokerControl organiza operaciones inmobiliarias.
@@ -94,7 +94,7 @@ CTA: Construyamos tu sistema interno.
 
 ### 06 - SOC Operations Dashboard
 
-Visual: assets/social/commercial-kit/06-soc-operations-dashboard.jpg
+Visual: assets/social/archive/commercial-kit/06-soc-operations-dashboard.jpg
 
 Caption:
 SOC muestra cómo una operación puede verse clara desde un dashboard.
@@ -107,7 +107,7 @@ CTA: ¿Necesitas visibilidad en tu operación?
 
 ### 07 - Websites That Sell Trust
 
-Visual: assets/social/commercial-kit/07-websites-that-sell-trust.jpg
+Visual: assets/social/archive/commercial-kit/07-websites-that-sell-trust.jpg
 
 Caption:
 Una página web profesional debe vender confianza antes de que el cliente escriba.
@@ -118,7 +118,7 @@ CTA: Solicita una página lista para vender.
 
 ### 08 - Internal Systems Offer
 
-Visual: assets/social/commercial-kit/08-internal-systems-offer.jpg
+Visual: assets/social/archive/commercial-kit/08-internal-systems-offer.jpg
 
 Caption:
 Si tu negocio depende de Excel y WhatsApp para todo, ya necesitas sistema.
@@ -129,7 +129,7 @@ CTA: Escribe "SISTEMA" y revisamos tu caso.
 
 ### 09 - Start Your Project
 
-Visual: assets/social/commercial-kit/09-start-your-project.jpg
+Visual: assets/social/archive/commercial-kit/09-start-your-project.jpg
 
 Caption:
 ¿Qué quieres construir?
@@ -143,3 +143,4 @@ CTA: Empieza tu proyecto con YC Systems.
 ## Hashtags base
 
 #YcSystems #SoftwareDevelopment #WebDevelopment #SaaS #CRM #Dashboards #Ecommerce #BusinessSystems #DigitalSolutions #TechCompany #DominicanRepublic
+

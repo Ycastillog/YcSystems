@@ -1,4 +1,4 @@
-# YC Systems - Starter Pack de 5 Publicaciones
+﻿# YC Systems - Starter Pack de 5 Publicaciones
 
 Objetivo: empezar a publicar de forma organizada mientras Instagram y Facebook terminan de conectarse en Meta Business Suite.
 
@@ -21,7 +21,7 @@ Fecha sugerida: Jueves 11 junio 2026
 Hora sugerida: 7:00 p. m.
 Formato: Imagen.
 Visual:
-assets/social/campaign-30-days/01-launch.jpg
+assets/social/archive/campaign-30-days/01-launch.jpg
 
 Texto corto para imagen:
 YC Systems
@@ -46,7 +46,7 @@ Fecha sugerida: Martes 16 junio 2026
 Hora sugerida: 7:00 p. m.
 Formato: Imagen o reel simple.
 Visual:
-assets/social/campaign-30-days/02-ghostwear-store.jpg
+assets/social/archive/campaign-30-days/02-ghostwear-store.jpg
 
 Texto corto para imagen:
 Tu marca puede vender online.
@@ -70,7 +70,7 @@ Fecha sugerida: Jueves 18 junio 2026
 Hora sugerida: 7:00 p. m.
 Formato: Imagen o carrusel.
 Visual:
-assets/social/campaign-30-days/03-brokercontrol-crm.jpg
+assets/social/archive/campaign-30-days/03-brokercontrol-crm.jpg
 
 Texto corto para imagen:
 Tu negocio no necesita mas hojas sueltas.
@@ -94,7 +94,7 @@ Fecha sugerida: Martes 23 junio 2026
 Hora sugerida: 7:00 p. m.
 Formato: Imagen o reel simple.
 Visual:
-assets/social/campaign-30-days/04-cleanloop-saas.jpg
+assets/social/archive/campaign-30-days/04-cleanloop-saas.jpg
 
 Texto corto para imagen:
 Una industria puede convertirse en SaaS.
@@ -118,7 +118,7 @@ Fecha sugerida: Jueves 25 junio 2026
 Hora sugerida: 7:00 p. m.
 Formato: Imagen.
 Visual:
-assets/social/campaign-30-days/05-web-professional.jpg
+assets/social/archive/campaign-30-days/05-web-professional.jpg
 
 Texto corto para imagen:
 Tu negocio merece una pagina que venda confianza.
@@ -141,4 +141,5 @@ Hashtags:
 Hola, gracias por escribir a YC Systems. Cuentame que quieres construir: pagina web, tienda online, sistema interno, dashboard, SaaS o mantenimiento. Si prefieres, completa el brief aqui:
 
 https://ycastillog.github.io/YcSystems/contact/
+
 

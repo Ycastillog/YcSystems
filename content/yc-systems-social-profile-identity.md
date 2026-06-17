@@ -1,4 +1,4 @@
-# YC Systems Social Profile Identity
+﻿# YC Systems Social Profile Identity
 
 ## Instagram Name
 
@@ -41,12 +41,12 @@ https://ycastillog.github.io/YcSystems/
 
 Use these highlight covers:
 
-- Productos: `assets/social/profile-identity/highlight-products.jpg`
-- Cases: `assets/social/profile-identity/highlight-cases.jpg`
-- Clients: `assets/social/profile-identity/highlight-clients.jpg`
-- Technology: `assets/social/profile-identity/highlight-technology.jpg`
-- Contact: `assets/social/profile-identity/highlight-contact.jpg`
-- Start Here: `assets/social/profile-identity/highlight-start-here.jpg`
+- Productos: `assets/social/archive/profile-identity/highlight-products.jpg`
+- Cases: `assets/social/archive/profile-identity/highlight-cases.jpg`
+- Clients: `assets/social/archive/profile-identity/highlight-clients.jpg`
+- Technology: `assets/social/archive/profile-identity/highlight-technology.jpg`
+- Contact: `assets/social/archive/profile-identity/highlight-contact.jpg`
+- Start Here: `assets/social/archive/profile-identity/highlight-start-here.jpg`
 
 Recommended order:
 
@@ -119,3 +119,4 @@ Every post should connect to one of these:
 - Website / maintenance
 
 Avoid posting generic motivation or filler content.
+

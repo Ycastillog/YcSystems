@@ -1,4 +1,4 @@
-# YC Systems Meta Publishing
+﻿# YC Systems Meta Publishing
 
 This folder contains the official Meta API publishing flow for YC Systems.
 
@@ -82,7 +82,8 @@ Publish:
 Instagram publishing requires a public image URL. This repo uses GitHub Pages URLs such as:
 
 ```text
-https://ycastillog.github.io/YcSystems/assets/social/commercial-kit/08-internal-systems-offer.jpg
+https://ycastillog.github.io/YcSystems/assets/social/archive/commercial-kit/08-internal-systems-offer.jpg
 ```
 
 The script does not publish Facebook-only. If Instagram fails, the queued row stays `Ready`.
+

@@ -115,13 +115,11 @@ def bg(size):
             b = int(NAVY[2] + glow * 62)
             px[x, y] = (r, g, b, 255)
     d = ImageDraw.Draw(img, "RGBA")
-    step = 72
-    for gx in range(0, w, step):
-        d.line((gx, 0, gx, h), fill=(64, 126, 205, 35), width=1)
-    for gy in range(0, h, step):
-        d.line((0, gy, w, gy), fill=(64, 126, 205, 30), width=1)
+    # Premium Nexus-style background: soft HUD arcs and light glow, no visible grid.
     for rr in [330, 440, 550]:
-        d.arc((w - 650, 140, w - 650 + rr * 2, 140 + rr * 2), 196, 325, fill=(37, 99, 235, 95), width=3)
+        d.arc((w - 650, 140, w - 650 + rr * 2, 140 + rr * 2), 196, 325, fill=(37, 99, 235, 75), width=3)
+    d.ellipse((w - 360, 120, w + 220, 700), outline=(0, 221, 226, 22), width=2)
+    d.ellipse((-180, h - 520, 360, h + 60), outline=(79, 255, 72, 18), width=2)
     return img
 
 

@@ -136,11 +136,22 @@ def paste_logo(base):
 def draw_value_icons(draw):
     labels = ["Claro", "Rapido", "Confiable", "Escalable"]
     x = 62
+    y = 884
+    card_w = 224
+    card_h = 72
+    gap = 16
     for i, label in enumerate(labels):
-        bx = x + i * 185
-        draw.rounded_rectangle((bx, 900, bx + 155, 980), radius=18, fill=(6, 24, 52, 190), outline=BLUE + (120,), width=2)
-        draw.ellipse((bx + 18, 920, bx + 50, 952), outline=(CYAN if i % 2 == 0 else GREEN) + (220,), width=3)
-        draw.text((bx + 62, 924), label, fill=WHITE + (235,), font=F["tag"])
+        bx = x + i * (card_w + gap)
+        accent = CYAN if i % 2 == 0 else GREEN
+        draw.rounded_rectangle(
+            (bx, y, bx + card_w, y + card_h),
+            radius=20,
+            fill=(6, 24, 52, 225),
+            outline=accent + (190,),
+            width=3,
+        )
+        draw.ellipse((bx + 18, y + 21, bx + 48, y + 51), outline=accent + (245,), width=4)
+        draw.text((bx + 64, y + 21), label, fill=WHITE + (255,), font=F["small_bold"])
 
 
 def render(post, index):

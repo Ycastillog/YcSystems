@@ -4,15 +4,53 @@
 
 Make YC Systems look like a premium software product company, not a scattered portfolio.
 
+## New Direction: Nexus Studio
+
+The primary feed identity is now **Nexus Studio**.
+
+Goal:
+
+- Look like a premium SaaS/product company.
+- Make Nexus the visual guide without making the brand childish.
+- Show products as an ecosystem, not as random screenshots.
+- Use fewer posts with stronger sales intent.
+
+Style:
+
+- Dark editorial tech poster.
+- Large readable headline.
+- Nexus or product mockup as the main visual.
+- Product cards or value chips at the bottom.
+- Minimal copy inside the image.
+- Strong contrast: white, YC blue, cyan and small green accents.
+
+Primary assets:
+
+- `assets/social/studio-feed/00-nexus-master-style.png`
+- `assets/social/studio-feed/01-cleanloop-studio.png`
+- `assets/social/studio-feed/02-soc-studio.png`
+- `assets/social/studio-feed/03-brokercontrol-studio.png`
+
+Use these before older template-style assets.
+
 ## Feed Structure
 
-Use a repeating grid:
+Use a clean repeating rhythm:
+
+1. Brand / Nexus
+2. Product
+3. Product
+4. Product
+5. Case study
+6. Business problem
+
+Secondary educational posts may still follow:
 
 1. Problema
 2. Solucion
 3. Resultado
 
-Repeat by product or solution:
+But they must use the Nexus Studio look, not the older green-circle template.
 
 - Sistemas internos
 - CleanLoop
@@ -86,7 +124,7 @@ Nexus:
 - `assets/brand/nexus/nexus-guide.png`
 - `assets/brand/nexus/nexus-social.png`
 
-Problem / Solution / Result feed:
+Legacy Problem / Solution / Result feed:
 
 - `assets/social/psr-feed/01-problema-excel-whatsapp.jpg`
 - `assets/social/psr-feed/02-solucion-sistemas-internos.jpg`
@@ -100,3 +138,5 @@ Problem / Solution / Result feed:
 - `assets/social/psr-feed/10-problema-dashboard.jpg`
 - `assets/social/psr-feed/11-solucion-soc.jpg`
 - `assets/social/psr-feed/12-resultado-soc.jpg`
+
+These remain available as draft/backup assets, but they are no longer the preferred feed direction.

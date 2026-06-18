@@ -41,12 +41,12 @@ https://ycastillog.github.io/YcSystems/
 
 Use these highlight covers:
 
-- Productos: `assets/social/archive/profile-identity/highlight-products.jpg`
-- Cases: `assets/social/archive/profile-identity/highlight-cases.jpg`
-- Clients: `assets/social/archive/profile-identity/highlight-clients.jpg`
-- Technology: `assets/social/archive/profile-identity/highlight-technology.jpg`
-- Contact: `assets/social/archive/profile-identity/highlight-contact.jpg`
-- Start Here: `assets/social/archive/profile-identity/highlight-start-here.jpg`
+- Products: `assets/social/client-acquisition-highlights/01-start-here-cover.jpg`
+- Webs: `assets/social/client-acquisition-highlights/02-webs-cover.jpg`
+- Sistemas: `assets/social/client-acquisition-highlights/03-sistemas-cover.jpg`
+- Automatizar: `assets/social/client-acquisition-highlights/04-automatizar-cover.jpg`
+- Tiendas: `assets/social/client-acquisition-highlights/05-tiendas-cover.jpg`
+- Contacto: `assets/social/client-acquisition-highlights/08-contacto-cover.jpg`
 
 Recommended order:
 

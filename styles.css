@@ -221,6 +221,21 @@
 
 .nexus-guide-section {
   background: linear-gradient(180deg, #ffffff, #f4f8fc);
+  color: var(--navy);
+}
+
+.nexus-guide-section h2 {
+  max-width: 620px;
+  color: var(--navy);
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.04;
+}
+
+.nexus-guide-section p:not(.eyebrow) {
+  max-width: 720px;
+  color: #314158;
+  font-size: 17px;
+  line-height: 1.65;
 }
 
 .nexus-guide-grid {
@@ -239,6 +254,7 @@
   border-radius: 14px;
   background: #081224;
   color: #fff;
+  border: 1px solid rgba(24, 215, 255, 0.16);
   font-weight: 800;
   text-align: center;
 }
@@ -828,7 +844,7 @@ p {
 }
 
 .client-card-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .live-client-card {
@@ -897,6 +913,7 @@ p {
   color: var(--navy);
   font-size: 22px;
   line-height: 1.05;
+  overflow-wrap: anywhere;
 }
 
 .project-logo-mark {
@@ -913,6 +930,26 @@ p {
   letter-spacing: 0;
   text-align: center;
   text-transform: uppercase;
+}
+
+.project-logo-mark strong,
+.project-logo-mark span {
+  display: block;
+  width: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  font-size: inherit;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.project-logo-mark span {
+  font-size: 11px;
+  opacity: 0.78;
 }
 
 .project-logo-mark.ghost {
@@ -5266,6 +5303,422 @@ p {
 
   .chat-actions {
     grid-template-columns: 1fr;
+  }
+}
+
+/* YC Systems unified brand architecture */
+.technology-hero .product-page-shot {
+  display: none;
+}
+
+.yc-method-visual,
+.yc-product-stack,
+.about-brand-visual {
+  overflow: hidden;
+  border: 1px solid rgba(24, 215, 255, 0.24);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(24, 215, 255, 0.2), transparent 30%),
+    linear-gradient(135deg, rgba(8, 18, 36, 0.9), rgba(6, 16, 31, 0.98));
+  box-shadow: 0 34px 100px rgba(8, 11, 26, 0.38);
+}
+
+.yc-method-visual {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.yc-method-visual img,
+.about-brand-visual img {
+  display: block;
+  width: 100%;
+  max-height: 440px;
+  object-fit: contain;
+}
+
+.method-badges {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.method-badges span {
+  border: 1px solid rgba(24, 215, 255, 0.24);
+  border-radius: 14px;
+  padding: 12px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+  font-weight: 900;
+  text-align: center;
+}
+
+.method-section,
+.product-assets,
+.company-core {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.08), transparent 30%),
+    linear-gradient(180deg, #ffffff, #f5f9fc);
+}
+
+.method-grid,
+.outcome-grid,
+.company-core-grid,
+.asset-product-list {
+  display: grid;
+  gap: 18px;
+}
+
+.method-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.method-grid article,
+.outcome-grid article,
+.company-core-grid article {
+  min-width: 0;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: var(--radius);
+  padding: 24px;
+  background:
+    linear-gradient(160deg, rgba(37, 99, 235, 0.08), transparent 44%),
+    #ffffff;
+  box-shadow: 0 16px 46px rgba(8, 11, 26, 0.08);
+}
+
+.method-grid span,
+.company-core-grid span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--blue);
+  background: rgba(24, 215, 255, 0.12);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.method-grid strong,
+.outcome-grid strong,
+.company-core-grid strong {
+  display: block;
+  color: var(--navy);
+  font-size: 22px;
+  line-height: 1.16;
+}
+
+.method-grid p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.business-outcomes {
+  background: linear-gradient(180deg, #06101f, #0f172a);
+}
+
+.outcome-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(360px, 1fr);
+  gap: 38px;
+  align-items: center;
+  color: #ffffff;
+}
+
+.outcome-panel h2,
+.outcome-panel p {
+  color: #ffffff;
+}
+
+.outcome-panel p {
+  color: #d8e8f7;
+}
+
+.outcome-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.outcome-grid article {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(24, 215, 255, 0.2);
+}
+
+.outcome-grid strong {
+  color: #ffffff;
+}
+
+.outcome-grid span {
+  display: block;
+  margin-top: 10px;
+  color: #c8d8e6;
+  line-height: 1.55;
+}
+
+.nexus-method-strip {
+  background: linear-gradient(180deg, #f5f9fc, #ffffff);
+}
+
+.nexus-method-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  align-items: center;
+  border: 1px solid rgba(24, 215, 255, 0.22);
+  border-radius: 26px;
+  padding: 32px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 82% 20%, rgba(24, 215, 255, 0.2), transparent 30%),
+    linear-gradient(135deg, #081224, #102342 58%, #06101f);
+  box-shadow: 0 28px 90px rgba(15, 23, 42, 0.22);
+}
+
+.nexus-method-card img {
+  display: none;
+}
+
+.nexus-method-card h2,
+.nexus-method-card p {
+  color: #ffffff;
+}
+
+.nexus-method-card p:not(.eyebrow) {
+  color: #d8e8f7;
+}
+
+.yc-product-stack {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  padding: 26px;
+}
+
+.yc-product-stack img {
+  position: absolute;
+  display: block;
+  width: 70%;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  object-fit: cover;
+  object-position: top left;
+}
+
+.yc-product-stack img:nth-child(1) {
+  top: 28px;
+  left: 24px;
+  z-index: 3;
+}
+
+.yc-product-stack img:nth-child(2) {
+  top: 150px;
+  right: 22px;
+  z-index: 2;
+}
+
+.yc-product-stack img:nth-child(3) {
+  bottom: 28px;
+  left: 58px;
+  z-index: 1;
+}
+
+.asset-product-list {
+  gap: 26px;
+}
+
+.asset-product-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(340px, 1fr);
+  gap: 28px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: 24px;
+  padding: 28px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(24, 215, 255, 0.16), transparent 30%),
+    linear-gradient(135deg, #081224, #102342 58%, #06101f);
+  box-shadow: 0 24px 80px rgba(8, 11, 26, 0.18);
+}
+
+.asset-product-card:nth-child(even) {
+  grid-template-columns: minmax(340px, 1fr) minmax(0, 0.72fr);
+}
+
+.asset-product-card:nth-child(even) .asset-copy {
+  order: 2;
+}
+
+.asset-copy h3 {
+  color: #ffffff;
+  font-size: clamp(34px, 4vw, 56px);
+  line-height: 1;
+}
+
+.asset-copy p,
+.asset-copy li {
+  color: #d8e8f7;
+}
+
+.asset-copy ul {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 24px;
+  padding-left: 18px;
+}
+
+.asset-media {
+  overflow: hidden;
+  min-height: 310px;
+  border: 1px solid rgba(24, 215, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.asset-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 310px;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.creditpilot-preview {
+  display: grid;
+  gap: 14px;
+}
+
+.creditpilot-preview img {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(37, 99, 235, 0.16);
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.about-brand-visual {
+  display: grid;
+  align-content: end;
+  min-height: 500px;
+  padding: 28px;
+}
+
+.about-brand-visual div {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.about-brand-visual strong {
+  color: #ffffff;
+  font-size: 28px;
+}
+
+.about-brand-visual span {
+  color: #c8d8e6;
+  font-weight: 800;
+}
+
+.values-band {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(130, 252, 69, 0.08), transparent 28%),
+    linear-gradient(180deg, #ffffff, #f5f9fc);
+}
+
+.founder-section {
+  background: #ffffff;
+}
+
+.founder-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.7fr) minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.founder-photo-card {
+  overflow: hidden;
+  border: 1px solid rgba(24, 215, 255, 0.18);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(8, 11, 26, 0.14);
+}
+
+.founder-photo-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 58% center;
+}
+
+.founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.founder-links a {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 999px;
+  padding: 9px 12px;
+  color: var(--navy);
+  background: rgba(37, 99, 235, 0.07);
+  font-weight: 900;
+}
+
+@media (max-width: 1040px) {
+  .method-grid,
+  .outcome-panel,
+  .asset-product-card,
+  .asset-product-card:nth-child(even),
+  .founder-layout,
+  .nexus-method-card {
+    grid-template-columns: 1fr;
+  }
+
+  .asset-product-card:nth-child(even) .asset-copy {
+    order: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .method-grid,
+  .outcome-grid,
+  .company-core-grid,
+  .method-badges {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-product-stack {
+    min-height: 420px;
+  }
+
+  .yc-product-stack img {
+    width: 82%;
+  }
+
+  .asset-product-card,
+  .nexus-method-card {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .asset-media,
+  .asset-media img {
+    min-height: 240px;
+  }
+
+  .about-brand-visual {
+    min-height: 420px;
   }
 }
 

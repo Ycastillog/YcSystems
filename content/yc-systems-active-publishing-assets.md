@@ -32,10 +32,7 @@ Use these only for highlights:
 - `assets/social/client-acquisition-highlights/*-cover.jpg`
 - `assets/social/client-acquisition-highlights/*-story.jpg`
 
-## Archive
+## Cleanup Rule
 
-Older experiments and previous campaigns are stored in:
-
-- `assets/social/archive/`
-
-Archived assets should not be used by automation.
+Old experiments and previous campaign images are not kept in the active repo.
+Automation should only reference the active feed and highlight folders above.

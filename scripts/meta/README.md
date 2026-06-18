@@ -82,7 +82,7 @@ Publish:
 Instagram publishing requires a public image URL. This repo uses GitHub Pages URLs such as:
 
 ```text
-https://ycastillog.github.io/YcSystems/assets/social/archive/commercial-kit/08-internal-systems-offer.jpg
+https://ycastillog.github.io/YcSystems/assets/social/active-feed/02-sistema-excel-whatsapp.jpg
 ```
 
 The script does not publish Facebook-only. If Instagram fails, the queued row stays `Ready`.

@@ -33,11 +33,7 @@ Primary assets:
 
 These are the only assets the publishing queue should use for feed posts.
 
-Archived assets live under:
-
-- `assets/social/archive/`
-
-Do not use archived assets for automation unless they are intentionally restored.
+Old archived experiments are removed from the active repo. Do not use archived visual directions for automation unless a new approved asset is created in `assets/social/active-feed/`.
 
 ## Feed Structure
 
@@ -130,5 +126,5 @@ Nexus:
 - `assets/brand/nexus/nexus-guide.png`
 - `assets/brand/nexus/nexus-social.png`
 
-Legacy feed assets are archived only. They are no longer the preferred feed direction.
+Legacy feed styles are no longer the preferred feed direction.
 

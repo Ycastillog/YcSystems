@@ -2499,6 +2499,10 @@ p {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.package-grid-home {
+  align-items: stretch;
+}
+
 .package-grid article {
   display: grid;
   align-content: start;
@@ -2514,6 +2518,68 @@ p {
   font-size: 14px;
   line-height: 1.45;
 }
+
+.package-grid-home article {
+  position: relative;
+  overflow: hidden;
+  min-height: 310px;
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 52%),
+    #ffffff;
+}
+
+.package-grid-home article::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  bottom: -42px;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: rgba(0, 216, 255, 0.12);
+}
+
+.pricing-note {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 18px 20px;
+  border: 1px solid rgba(24, 215, 255, 0.22);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(14, 40, 74, 0.94));
+  color: #ffffff;
+  box-shadow: 0 18px 54px rgba(8, 11, 26, 0.16);
+}
+
+.pricing-note strong {
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.pricing-note span {
+  flex: 1;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+}
+
+.pricing-note a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--navy);
+  font-weight: 950;
+}
+
+.pricing-note a:hover {
+  transform: translateY(-2px);
+}
+
 
 .contact-sales-panel {
   grid-template-columns: minmax(0, 0.88fr) minmax(360px, 0.95fr);
@@ -4313,6 +4379,11 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .pricing-note {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .business-grid,
   .documents-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4360,6 +4431,22 @@ p {
   .client-card,
   .mission-card {
     padding: 14px;
+  }
+
+  .package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .package-grid-home article {
+    min-height: 0;
+  }
+
+  .pricing-note {
+    padding: 16px;
+  }
+
+  .pricing-note strong {
+    white-space: normal;
   }
 
   .product-card h3,

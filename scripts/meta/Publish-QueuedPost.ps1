@@ -106,13 +106,16 @@ if (-not $row) {
   throw "No Ready row found in queue."
 }
 
-$imageUrl = "$BasePublicUrl/$($row.visual -replace '\\','/')"
+$mediaUrl = "$BasePublicUrl/$($row.visual -replace '\\','/')"
+$mediaExtension = [System.IO.Path]::GetExtension([string]$row.visual).ToLowerInvariant()
+$isVideo = @(".mp4", ".mov", ".m4v") -contains $mediaExtension
 $caption = Convert-ToSpanishCaption $row
 
 Write-Host "Selected post:" -ForegroundColor Cyan
 Write-Host "Topic: $($row.topic)"
 Write-Host "Slot: $($row.slot) $($row.time)"
-Write-Host "Image: $imageUrl"
+Write-Host "Media: $mediaUrl"
+Write-Host "Type: $(if ($isVideo) { 'Video/Reel' } else { 'Image' })"
 Write-Host ""
 Write-Host $caption
 Write-Host ""
@@ -127,10 +130,20 @@ $igUserId = Require-Env "META_IG_USER_ID"
 $token = Require-Env "META_PAGE_ACCESS_TOKEN"
 
 Write-Host "Creating Instagram media container..." -ForegroundColor Cyan
-$igContainer = Invoke-GraphPost "$igUserId/media" @{
-  image_url    = $imageUrl
-  caption      = $caption
-  access_token = $token
+if ($isVideo) {
+  $igContainer = Invoke-GraphPost "$igUserId/media" @{
+    media_type    = "REELS"
+    video_url     = $mediaUrl
+    caption       = $caption
+    share_to_feed = "true"
+    access_token  = $token
+  }
+} else {
+  $igContainer = Invoke-GraphPost "$igUserId/media" @{
+    image_url    = $mediaUrl
+    caption      = $caption
+    access_token = $token
+  }
 }
 
 if (-not $igContainer.id) {
@@ -149,16 +162,30 @@ if (-not $igPublish.id) {
   throw "Instagram publish did not return a media id."
 }
 
-Write-Host "Publishing Facebook Page photo..." -ForegroundColor Cyan
-$fbPublish = Invoke-GraphPost "$pageId/photos" @{
-  url          = $imageUrl
-  caption      = $caption
-  published    = "true"
-  access_token = $token
-}
+if ($isVideo) {
+  Write-Host "Publishing Facebook Page video..." -ForegroundColor Cyan
+  $fbPublish = Invoke-GraphPost "$pageId/videos" @{
+    file_url     = $mediaUrl
+    description  = $caption
+    published    = "true"
+    access_token = $token
+  }
 
-if (-not $fbPublish.post_id -and -not $fbPublish.id) {
-  throw "Facebook publish did not return a post id."
+  if (-not $fbPublish.id) {
+    throw "Facebook video publish did not return a video id."
+  }
+} else {
+  Write-Host "Publishing Facebook Page photo..." -ForegroundColor Cyan
+  $fbPublish = Invoke-GraphPost "$pageId/photos" @{
+    url          = $mediaUrl
+    caption      = $caption
+    published    = "true"
+    access_token = $token
+  }
+
+  if (-not $fbPublish.post_id -and -not $fbPublish.id) {
+    throw "Facebook photo publish did not return a post id."
+  }
 }
 
 $row.status = "Posted"
@@ -166,5 +193,5 @@ $rows | Export-Csv $QueuePath -Delimiter "`t" -NoTypeInformation -Encoding UTF8
 
 Write-Host "Published successfully." -ForegroundColor Green
 Write-Host "Instagram media id: $($igPublish.id)"
-Write-Host "Facebook post id: $($fbPublish.post_id)"
+Write-Host "Facebook id: $(if ($fbPublish.post_id) { $fbPublish.post_id } else { $fbPublish.id })"
 

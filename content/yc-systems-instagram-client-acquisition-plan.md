@@ -34,6 +34,9 @@ Primary themes:
 - Clear solution
 - Expected result
 - Simple CTA
+- Educational value
+- Business lessons
+- Proof from real projects
 
 Examples:
 
@@ -66,7 +69,16 @@ But the CTA should speak to the client:
 
 Two posts daily:
 
-- Morning: business pain or education.
-- Night: solution, offer or CTA.
+- 9:15 AM: education, business pain, useful advice or operational clarity.
+- 3:15 PM: proof, product, client case, authority or soft offer.
 
 Keep captions Spanish-first, clear, professional and direct.
+
+Do not make every post a direct "Escribe / Quiero / Cuentame" CTA. Rotate the closing style:
+
+- Idea util: save this.
+- Senal clara: check this in your business.
+- Leccion YC Systems: why this matters.
+- Example from a real project.
+- Soft invitation to review the process.
+- Direct CTA only when the post is clearly commercial.

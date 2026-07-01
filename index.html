@@ -17,9 +17,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=brand-54" />
+    <link rel="stylesheet" href="./styles.css?v=brand-v2" />
   </head>
-  <body>
+  <body class="yc-brand-v2">
     <header class="site-header" data-header>
       <a class="brand" href="./" aria-label="YC Systems home">
         <span class="brand-logo"><img src="./assets/brand/yc-logo-horizontal-white.png" alt="YC Systems" /></span>
@@ -56,7 +56,14 @@
           <div class="hero-visual">
             <div class="yc-ecosystem-visual" aria-label="YC Systems ecosystem">
               <img class="ecosystem-logo" src="./assets/brand/yc-logo-horizontal-white.png" alt="YC Systems" />
-              <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-main.png" alt="Nexus, YC Systems assistant" />
+              <div class="ecosystem-orbit orbit-a" aria-hidden="true"></div>
+              <div class="ecosystem-orbit orbit-b" aria-hidden="true"></div>
+              <div class="ecosystem-node node-cleanloop" aria-hidden="true"><span>CL</span></div>
+              <div class="ecosystem-node node-soc" aria-hidden="true"><span>SOC</span></div>
+              <div class="ecosystem-node node-broker" aria-hidden="true"><span>BC</span></div>
+              <div class="ecosystem-signal signal-a" aria-hidden="true"></div>
+              <div class="ecosystem-signal signal-b" aria-hidden="true"></div>
+              <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-avatar.png" alt="Nexus, YC Systems assistant" />
               <div class="ecosystem-products">
                 <a href="./products/cleanloop/"><span>01</span><strong>CleanLoop</strong><small>Piloto y alianzas</small></a>
                 <a href="./products/soc/"><span>02</span><strong>SOC</strong><small>Producto listo</small></a>
@@ -87,14 +94,14 @@
       <section class="nexus-home section-pad">
         <div class="container nexus-brand-panel">
           <div class="nexus-brand-copy">
-            <p class="eyebrow">Conoce a Nexus</p>
-            <h2>Nexus es parte del ADN visual de YC Systems.</h2>
-            <p>Nexus representa nuestra forma de construir: analizar, disenar, automatizar y entregar productos digitales que ayudan a empresas reales a operar mejor.</p>
+            <p class="eyebrow">Nexus analiza</p>
+            <h2>Nexus ya no decora. Explica como piensa YC Systems.</h2>
+            <p>Nexus representa nuestro lenguaje de construccion: analiza la operacion, recomienda el flujo, guia el desarrollo y ayuda a convertir problemas reales en productos digitales.</p>
             <div class="nexus-steps" aria-label="Nexus process">
-              <span>Analyze</span>
-              <span>Design</span>
-              <span>Build</span>
-              <span>Deliver</span>
+              <span>Analiza</span>
+              <span>Recomienda</span>
+              <span>Construye</span>
+              <span>Entrega</span>
             </div>
             <a class="button button-secondary" href="./products/">Ver productos</a>
           </div>
@@ -128,24 +135,24 @@
           <div class="section-head">
             <p class="eyebrow">Products</p>
             <h2>Productos de software con mercados claros.</h2>
-            <p>Cada producto resuelve una operacion distinta y abre una oportunidad comercial diferente.</p>
+            <p>Cada producto tiene mercado, estado y resultado esperado. No son demos sueltas: son activos de software con direccion comercial.</p>
           </div>
           <div class="product-card-grid">
             <a class="product-card compact-product-card" href="./products/cleanloop/">
               <div class="product-card-media media-grid-2"><img src="./assets/screenshots/cleanloop-role-demo.png" alt="CleanLoop dashboard" /><img src="./assets/screenshots/cleanloop-landing.png" alt="CleanLoop commercial view" /></div>
-              <span class="status-pill pilot">Pilot & Partnerships</span><h3>CleanLoop</h3><p>Laundry Operations Platform para lavanderias, drivers, clientes, tracking, pagos y flujo SaaS.</p><div class="feature-tags"><span>Dashboard</span><span>Driver App</span><span>Customer App</span><span>Tracking</span></div>
+              <span class="status-pill pilot">Pilot & Partnerships</span><h3>CleanLoop</h3><p>Laundry Operations Platform para lavanderias, drivers, clientes, tracking, pagos y flujo SaaS.</p><div class="product-meta"><span>Mercado: lavanderias</span><span>Resultado: operar con control</span></div><div class="feature-tags"><span>Dashboard</span><span>Driver App</span><span>Customer App</span><span>Tracking</span></div>
             </a>
             <a class="product-card compact-product-card" href="./products/soc/">
               <div class="product-card-media"><img src="./assets/screenshots/soc-dashboard.png" alt="SOC executive dashboard" /></div>
-              <span class="status-pill ready">Product Ready</span><h3>Sales Operations Center</h3><p>Centro operativo para ventas inmobiliarias, reservas, separaciones, legal, reportes y visibilidad ejecutiva.</p><div class="feature-tags"><span>Dashboard</span><span>Reservas</span><span>Legal</span><span>Reportes</span></div>
+              <span class="status-pill ready">Product Ready</span><h3>Sales Operations Center</h3><p>Centro operativo para ventas inmobiliarias, reservas, separaciones, legal, reportes y visibilidad ejecutiva.</p><div class="product-meta"><span>Mercado: operaciones comerciales</span><span>Resultado: visibilidad ejecutiva</span></div><div class="feature-tags"><span>Dashboard</span><span>Reservas</span><span>Legal</span><span>Reportes</span></div>
             </a>
             <a class="product-card compact-product-card" href="./products/brokercontrol/">
               <div class="product-card-media media-grid-3"><img src="./assets/screenshots/brokercontrol-dashboard.png" alt="BrokerControl pipeline" /><img src="./assets/screenshots/brokercontrol-clients.png" alt="BrokerControl clients" /><img src="./assets/screenshots/brokercontrol-reports.png" alt="BrokerControl reports" /></div>
-              <span class="status-pill ready">Product Ready</span><h3>BrokerControl</h3><p>CRM inmobiliario para pipeline, cliente 360, documentos, comisiones, agenda y reportes comerciales.</p><div class="feature-tags"><span>Pipeline</span><span>Cliente 360</span><span>Comisiones</span><span>Agenda</span></div>
+              <span class="status-pill ready">Product Ready</span><h3>BrokerControl</h3><p>CRM inmobiliario para pipeline, cliente 360, documentos, comisiones, agenda y reportes comerciales.</p><div class="product-meta"><span>Mercado: brokers</span><span>Resultado: no perder oportunidades</span></div><div class="feature-tags"><span>Pipeline</span><span>Cliente 360</span><span>Comisiones</span><span>Agenda</span></div>
             </a>
             <a class="product-card compact-product-card coming-soon-card" href="./products/">
               <div class="product-card-media soon-media"><img src="./assets/screenshots/creditpilot-home.png" alt="CreditPilot coming soon" /></div>
-              <span class="status-pill soon">Coming Soon</span><h3>CreditPilot</h3><p>Plataforma en desarrollo para credit repair, clientes, casos, documentos, cartas y portal.</p><div class="feature-tags"><span>Credit Repair</span><span>Cases</span><span>Documents</span><span>Portal</span></div>
+              <span class="status-pill soon">Coming Soon</span><h3>CreditPilot</h3><p>Plataforma en desarrollo para credit repair, clientes, casos, documentos, cartas y portal.</p><div class="product-meta"><span>Mercado: credit repair</span><span>Resultado: proceso educativo y operativo</span></div><div class="feature-tags"><span>Credit Repair</span><span>Cases</span><span>Documents</span><span>Portal</span></div>
             </a>
           </div>
         </div>
@@ -288,6 +295,7 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=brand-54"></script>
+    <script src="./script.js?v=brand-v2"></script>
   </body>
 </html>
+

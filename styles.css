@@ -17,6 +17,399 @@
   --radius: 8px;
 }
 
+/* YC Systems OS - brand experience layer */
+.yc-brand-v2 {
+  --yc-os-bg: #07111f;
+  --yc-os-bg-deep: #020817;
+  --yc-os-surface: rgba(8, 20, 38, 0.74);
+  --yc-os-line: rgba(0, 216, 255, 0.2);
+  --yc-os-line-strong: rgba(0, 216, 255, 0.46);
+  --yc-os-primary: #2563eb;
+  --yc-os-cyan: #00d8ff;
+  --yc-os-action: #5cff5c;
+  --yc-os-text: #f8fbff;
+  --yc-os-muted: #a9bdd5;
+  --yc-os-radius: 26px;
+  --yc-os-shadow: 0 28px 90px rgba(0, 0, 0, 0.38);
+  color: var(--yc-os-text);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(37, 99, 235, 0.18), transparent 34rem),
+    radial-gradient(circle at 82% 18%, rgba(0, 216, 255, 0.12), transparent 30rem),
+    linear-gradient(135deg, var(--yc-os-bg-deep), var(--yc-os-bg));
+}
+
+.yc-brand-v2 main {
+  background:
+    linear-gradient(90deg, rgba(0, 216, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 216, 255, 0.028) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+.yc-brand-v2 .section-pad {
+  border-top: 1px solid rgba(0, 216, 255, 0.09);
+}
+
+.yc-brand-v2 .section-head {
+  max-width: 780px;
+}
+
+.yc-brand-v2 .section-head h2,
+.yc-brand-v2 .product-hero h1,
+.yc-brand-v2 .hero h1 {
+  letter-spacing: 0;
+  color: var(--yc-os-text);
+}
+
+.yc-brand-v2 .section-head p,
+.yc-brand-v2 .hero-lede,
+.yc-brand-v2 p {
+  color: var(--yc-os-muted);
+}
+
+.yc-brand-v2 .eyebrow,
+.yc-brand-v2 .breadcrumb {
+  color: var(--yc-os-cyan);
+  letter-spacing: 0.18em;
+}
+
+.yc-brand-v2 .button,
+.yc-brand-v2 .project-match-grid a,
+.yc-brand-v2 .pricing-note a {
+  border-radius: 999px;
+  box-shadow: 0 12px 34px rgba(37, 99, 235, 0.18);
+}
+
+.yc-brand-v2 .button-primary,
+.yc-brand-v2 .pricing-note a {
+  background: linear-gradient(135deg, var(--yc-os-cyan), var(--yc-os-action));
+  color: #03101d;
+}
+
+.yc-brand-v2 .button-secondary {
+  background: rgba(8, 20, 38, 0.7);
+  border-color: var(--yc-os-line-strong);
+  color: var(--yc-os-text);
+}
+
+.yc-os-product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.yc-os-product-card,
+.yc-os-product-lane,
+.yc-brand-v2 .live-client-card,
+.yc-brand-v2 .package-grid article,
+.yc-brand-v2 .company-core-grid article,
+.yc-brand-v2 .trust-grid article,
+.yc-brand-v2 .values-mini-grid article {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--yc-os-line);
+  border-radius: var(--yc-os-radius);
+  background:
+    linear-gradient(145deg, rgba(11, 27, 50, 0.86), rgba(4, 13, 27, 0.78)),
+    radial-gradient(circle at 90% 110%, rgba(0, 216, 255, 0.14), transparent 13rem);
+  box-shadow: none;
+}
+
+.yc-os-product-card::after,
+.yc-os-product-lane::after,
+.yc-brand-v2 .live-client-card::after {
+  content: "Verified by Nexus";
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+  border: 1px solid rgba(92, 255, 92, 0.32);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: rgba(4, 13, 27, 0.72);
+  color: var(--yc-os-action);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.yc-os-product-card:hover::after,
+.yc-os-product-lane:hover::after,
+.yc-brand-v2 .live-client-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.yc-os-product-card {
+  min-height: 520px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.yc-os-product-card > img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.yc-os-card-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--yc-os-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.yc-os-product-card h3 {
+  margin: 0;
+  color: var(--yc-os-text);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+}
+
+.yc-os-product-card dl,
+.yc-os-product-lane dl {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.yc-os-product-card dl div,
+.yc-os-product-lane dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid rgba(0, 216, 255, 0.12);
+  padding-bottom: 9px;
+}
+
+.yc-os-product-card dt,
+.yc-os-product-lane dt {
+  color: var(--yc-os-cyan);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.yc-os-product-card dd,
+.yc-os-product-lane dd {
+  margin: 0;
+  color: var(--yc-os-text);
+  font-weight: 800;
+  text-align: right;
+}
+
+.yc-os-product-card small,
+.yc-os-product-lane small {
+  color: var(--yc-os-muted);
+  line-height: 1.55;
+}
+
+.yc-os-product-card > strong {
+  margin-top: auto;
+  color: var(--yc-os-cyan);
+}
+
+.yc-os-product-card:hover,
+.yc-os-product-lane:hover,
+.yc-brand-v2 .live-client-card:hover {
+  border-color: var(--yc-os-line-strong);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 80px rgba(0, 216, 255, 0.08);
+}
+
+.yc-os-product-stack {
+  border: 1px solid var(--yc-os-line);
+  border-radius: 34px;
+  background: radial-gradient(circle at 50% 20%, rgba(0, 216, 255, 0.13), transparent 24rem), rgba(3, 10, 22, 0.64);
+}
+
+.yc-os-product-stack img {
+  border-radius: 18px;
+}
+
+.yc-os-product-lanes {
+  gap: 22px;
+}
+
+.yc-os-product-lane {
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  align-items: stretch;
+  padding: 22px;
+}
+
+.yc-os-product-lane .asset-copy {
+  gap: 16px;
+}
+
+.yc-os-product-lane .asset-copy h3 {
+  font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.yc-os-product-lane .asset-copy p {
+  font-size: 1.02rem;
+  max-width: 44ch;
+}
+
+.yc-os-product-lane .asset-media {
+  border: 0;
+  background: transparent;
+}
+
+.yc-os-product-lane .asset-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+}
+
+.yc-brand-v2 .live-client-card {
+  padding: 16px;
+}
+
+.yc-brand-v2 .live-client-card img {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.yc-brand-v2 .live-client-card p:nth-of-type(n + 2) {
+  display: none;
+}
+
+.yc-brand-v2 .project-logo-mark {
+  min-height: 54px;
+  border-radius: 14px;
+  background: rgba(248, 251, 255, 0.96);
+  color: #06111f;
+}
+
+.yc-brand-v2 .project-logo-mark.antony {
+  display: grid;
+  place-items: center;
+  line-height: 1.02;
+}
+
+.yc-brand-v2 .project-logo-mark.antony strong,
+.yc-brand-v2 .project-logo-mark.antony span {
+  display: block;
+}
+
+.yc-brand-v2 .project-logo-mark.antony span {
+  color: var(--yc-os-primary);
+  font-size: 0.74rem;
+}
+
+.yc-brand-v2 .live-client-card h3 {
+  overflow-wrap: anywhere;
+}
+
+.yc-brand-v2 .package-grid-home {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .package-grid-home article {
+  padding: 22px;
+  min-height: auto;
+}
+
+.yc-brand-v2 .package-grid-home ul {
+  display: none;
+}
+
+.yc-brand-v2 .about-brand-visual,
+.yc-brand-v2 .identity-story-card,
+.yc-brand-v2 .nexus-brand-panel {
+  border-radius: 32px;
+  border: 1px solid var(--yc-os-line);
+  background:
+    radial-gradient(circle at 80% 16%, rgba(0, 216, 255, 0.16), transparent 18rem),
+    linear-gradient(145deg, rgba(8, 20, 38, 0.84), rgba(3, 10, 22, 0.78));
+  box-shadow: var(--yc-os-shadow);
+}
+
+.yc-brand-v2 .nexus-brand-panel {
+  overflow: hidden;
+}
+
+.yc-brand-v2 .nexus-steps span::before,
+.yc-brand-v2 .hero-proof span::before {
+  background: var(--yc-os-action);
+  box-shadow: 0 0 20px rgba(92, 255, 92, 0.48);
+}
+
+@media (max-width: 980px) {
+  .yc-os-product-grid,
+  .yc-brand-v2 .package-grid-home {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .yc-os-product-lane {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .yc-brand-v2 .site-header {
+    min-height: 78px;
+    padding-inline: 16px;
+  }
+
+  .yc-brand-v2 .brand-logo img {
+    max-width: 132px;
+    width: 132px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .yc-brand-v2 .nav-toggle {
+    margin-left: auto;
+    flex: 0 0 auto;
+  }
+
+  .yc-os-product-grid,
+  .yc-brand-v2 .package-grid-home {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-os-product-stack,
+  .yc-brand-v2 .yc-product-stack {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 18px;
+  }
+
+  .yc-os-product-stack img,
+  .yc-brand-v2 .yc-product-stack img {
+    max-width: 100%;
+    transform: none !important;
+  }
+
+  .yc-os-product-card {
+    min-height: auto;
+  }
+
+  .yc-os-product-lane {
+    padding: 16px;
+  }
+
+  .yc-os-product-lane .asset-media img {
+    min-height: 220px;
+  }
+}
+
 /* Nexus brand system */
 .nexus-home {
   background: #f8fbff;
@@ -6764,5 +7157,99 @@ body {
   .client-card,
   .package-grid article {
     border-radius: 22px;
+  }
+}
+
+/* Final mobile/header overrides for YC Systems OS */
+@media (max-width: 760px) {
+  .yc-brand-v2 .site-header {
+    position: sticky;
+    min-height: 72px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .yc-brand-v2 .brand,
+  .yc-brand-v2 .brand-logo {
+    width: auto;
+    max-width: 132px;
+    flex: 0 0 auto;
+  }
+
+  .yc-brand-v2 .brand-logo img {
+    width: 124px !important;
+    max-width: 124px !important;
+    height: auto !important;
+    object-fit: contain;
+  }
+
+  .yc-brand-v2 .nav-toggle {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    right: 16px !important;
+    top: 14px !important;
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 216, 255, 0.36);
+    border-radius: 16px;
+    background: rgba(8, 20, 38, 0.72);
+  }
+
+  .yc-brand-v2 .nav-toggle::before {
+    content: "";
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background: #f8fbff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 0 #f8fbff;
+  }
+
+  .yc-brand-v2 .site-header::after {
+    content: "";
+    position: fixed;
+    right: 16px;
+    top: 14px;
+    z-index: 9998;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(0, 216, 255, 0.46);
+    border-radius: 16px;
+    background:
+      linear-gradient(#f8fbff, #f8fbff) center 18px / 22px 2px no-repeat,
+      linear-gradient(#f8fbff, #f8fbff) center 31px / 22px 2px no-repeat,
+      rgba(8, 20, 38, 0.86);
+    box-shadow: 0 14px 34px rgba(0, 216, 255, 0.14);
+    pointer-events: none;
+  }
+
+  .yc-brand-v2 .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #f8fbff;
+  }
+
+  .yc-brand-v2 .hero h1,
+  .yc-brand-v2 .product-hero h1 {
+    font-size: clamp(2.55rem, 10.5vw, 3.25rem);
+    line-height: 1.04;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .yc-brand-v2 .yc-product-stack,
+  .yc-brand-v2 .yc-os-product-stack {
+    max-width: 100%;
+    overflow: hidden;
   }
 }

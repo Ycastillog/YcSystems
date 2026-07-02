@@ -10,6 +10,7 @@
     <meta property="og:image" content="./assets/previews/yc-systems-og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0F172A" />
+    <link rel="canonical" href="https://ycastillog.github.io/YcSystems/" />
     <title>YC Systems | Smart Solutions. Real Results.</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
     <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
@@ -17,20 +18,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=yc-os" />
+    <link rel="stylesheet" href="./styles.css?v=yc-stable-polish-20260702" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "YC Systems",
+        "url": "https://ycastillog.github.io/YcSystems/",
+        "logo": "https://ycastillog.github.io/YcSystems/assets/brand/yc-logo-horizontal-white.png",
+        "email": "ycsystems@gmail.com",
+        "sameAs": [
+          "https://www.instagram.com/yc.systems",
+          "https://www.facebook.com/profile.php?id=61590842845172",
+          "https://github.com/Ycastillog"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "YC Systems",
+        "url": "https://ycastillog.github.io/YcSystems/",
+        "inLanguage": ["es", "en"]
+      }
+    </script>
   </head>
   <body class="yc-brand-v2">
     <header class="site-header" data-header>
       <a class="brand" href="./" aria-label="YC Systems home">
-        <span class="brand-logo"><img src="./assets/brand/yc-logo-horizontal-white.png" alt="YC Systems" /></span>
+        <span class="brand-logo"><img class="brand-logo-mark" src="./assets/brand/yc-logo-mark-white.png" alt="" aria-hidden="true" /><span class="brand-logo-text">YC Systems</span></span>
       </a>
       <button class="nav-toggle" type="button" aria-label="Open navigation" data-nav-toggle><span></span><span></span></button>
       <nav class="main-nav" data-nav>
-        <a href="./products/">Productos</a><a href="./projects/">Proyectos de clientes</a><a href="./technology/">Tecnologia</a><a href="./about/">Nosotros</a><a href="./contact/">Contacto</a>
-      <span class="language-chip">EN</span></nav>
+        <a href="./products/">Productos</a><a href="./projects/">Proyectos de clientes</a><a href="./technology/">Tecnología</a><a href="./about/">Nosotros</a><a href="./contact/">Contacto</a>
+      <button class="language-chip" type="button" data-lang-toggle aria-label="Switch to English" aria-pressed="false">EN</button></nav>
     </header>
 
-    <main>
+    <main class="home-main">
       <section class="hero yc-hero">
         <div class="container hero-grid">
           <div class="hero-copy">
@@ -55,7 +80,7 @@
           </div>
           <div class="hero-visual">
             <div class="yc-ecosystem-visual" aria-label="YC Systems ecosystem">
-              <img class="ecosystem-logo" src="./assets/brand/yc-logo-horizontal-white.png" alt="YC Systems" />
+              <img class="ecosystem-logo" src="./assets/brand/yc-systems-logo.svg" alt="YC Systems" />
               <div class="ecosystem-orbit orbit-a" aria-hidden="true"></div>
               <div class="ecosystem-orbit orbit-b" aria-hidden="true"></div>
               <div class="ecosystem-node node-cleanloop" aria-hidden="true"><span>CL</span></div>
@@ -63,24 +88,27 @@
               <div class="ecosystem-node node-broker" aria-hidden="true"><span>BC</span></div>
               <div class="ecosystem-signal signal-a" aria-hidden="true"></div>
               <div class="ecosystem-signal signal-b" aria-hidden="true"></div>
-              <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-avatar.png" alt="Nexus, YC Systems assistant" />
+              <picture>
+                <source srcset="./assets/brand/nexus/nexus-hero.webp?v=public-hero-20260701" type="image/webp" />
+                <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-hero.png?v=public-hero-20260701" alt="Nexus, asistente visual de YC Systems" />
+              </picture>
               <div class="ecosystem-products">
                 <a href="./products/cleanloop/"><span>01</span><strong>CleanLoop</strong><small>Piloto y alianzas</small></a>
                 <a href="./products/soc/"><span>02</span><strong>SOC</strong><small>Producto listo</small></a>
                 <a href="./products/brokercontrol/"><span>03</span><strong>BrokerControl</strong><small>Producto listo</small></a>
-                <a href="./products/"><span>04</span><strong>CreditPilot</strong><small>Proximamente</small></a>
+                <a href="./products/"><span>04</span><strong>CreditPilot</strong><small>Próximamente</small></a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="why-yc section-pad">
+      <section class="why-yc section-pad home-proof-section">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">YC Systems in Numbers</p>
             <h2>4 Products. 5 Live Websites. 1 Technology Company.</h2>
-            <p>YC Systems ya se presenta como una empresa tecnologica con productos propios, sitios activos, presencia publica y capacidad de ejecucion para clientes e inversionistas.</p>
+            <p>YC Systems ya se presenta como una empresa tecnológica con productos propios, sitios activos, presencia publica y capacidad de ejecución para clientes e inversionistas.</p>
           </div>
           <div class="proof-grid">
             <article><strong>4 Products</strong><span>CleanLoop, SOC, BrokerControl y CreditPilot como mapa de producto.</span></article>
@@ -91,59 +119,69 @@
         </div>
       </section>
 
-      <section class="nexus-home section-pad">
+      <section class="nexus-home section-pad home-nexus-section">
         <div class="container nexus-brand-panel">
           <div class="nexus-brand-copy">
-            <p class="eyebrow">Nexus analiza</p>
-            <h2>Nexus ya no decora. Explica como piensa YC Systems.</h2>
-            <p>Nexus representa nuestro lenguaje de construccion: analiza la operacion, recomienda el flujo, guia el desarrollo y ayuda a convertir problemas reales en productos digitales.</p>
+            <p class="eyebrow">Conoce a Nexus</p>
+            <h2>El asistente visual de YC Systems.</h2>
+            <p>Nexus representa nuestra forma de construir: analizar, diseñar, automatizar y entregar productos digitales que ayudan a las empresas a operar, crecer y escalar.</p>
             <div class="nexus-steps" aria-label="Nexus process">
-              <span>Analiza</span>
-              <span>Recomienda</span>
-              <span>Construye</span>
-              <span>Entrega</span>
+              <span>Tecnología</span>
+              <span>Automatización</span>
+              <span>Construcción</span>
+              <span>Crecimiento</span>
+              <span>Confianza</span>
             </div>
             <a class="button button-secondary" href="./products/">Ver productos</a>
           </div>
-          <img class="nexus-brand-image" src="./assets/brand/nexus/nexus-guide.png" alt="Nexus explaining YC Systems process" loading="lazy" />
+          <picture>
+            <source srcset="./assets/brand/nexus/nexus-process.webp" type="image/webp" />
+            <img class="nexus-brand-image" src="./assets/brand/nexus/nexus-process.png" alt="Nexus guiando el proceso de YC Systems" loading="lazy" />
+          </picture>
         </div>
       </section>
 
-      <section class="yc-identity-system section-pad">
+      <section class="yc-identity-system section-pad home-identity-section">
         <div class="container yc-identity-grid">
           <div>
             <p class="eyebrow">Identidad YC Systems</p>
             <h2>Un sistema visual propio: logo, Nexus, productos y una historia real.</h2>
-            <p>La marca combina azul electrico, azul profundo, blanco, gris y acentos de accion para verse tecnologica, seria y reconocible. Nexus ayuda a explicar el proceso; los productos y sitios reales prueban la ejecucion.</p>
+            <p>La identidad combina un logo nítido, Nexus como guía visual y productos reales que prueban ejecución. La web pública muestra la marca lista para clientes, socios e inversionistas.</p>
             <div class="identity-pill-row">
-              <span>#2563EB</span>
-              <span>#0F172A</span>
-              <span>#00D8FF</span>
-              <span>#5CFF5C</span>
+              <span>Producto</span>
+              <span>Operación</span>
+              <span>Automatización</span>
+              <span>Confianza</span>
             </div>
           </div>
           <div class="identity-story-card">
-            <img src="./assets/brand/yc-logo-horizontal-transparent.png" alt="YC Systems logo" loading="lazy" />
-            <p>YC Systems no es solo una pagina de servicios. Es una empresa tecnologica en construccion, con productos propios, proyectos de clientes reales y una identidad nacida de trabajo, vision y familia.</p>
-            <strong>La N tiene un significado especial: Nancy, origen emocional de esta vision y parte de la historia de la marca.</strong>
+            <div class="identity-logo-lockup" aria-label="YC Systems">
+              <img src="./assets/brand/yc-logo-mark-white.png" alt="" loading="lazy" />
+              <div>
+                <strong>YC Systems</strong>
+                <span>Smart Solutions. Real Results.</span>
+              </div>
+            </div>
+            <p>YC Systems no es solo una página de servicios. Es una empresa tecnológica en construcción, con productos propios, proyectos de clientes reales y una identidad nacida de trabajo, visión y familia.</p>
+            <strong>La N tiene un significado especial: Nancy, origen emocional de esta visión y parte de la historia de la marca.</strong>
           </div>
         </div>
       </section>
 
-      <section class="compact-showcase section-pad">
+      <section class="compact-showcase section-pad home-products-section">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Products</p>
             <h2>Productos de software con mercados claros.</h2>
-            <p>Cada producto tiene mercado, estado y resultado esperado. No son demos sueltas: son activos de software con direccion comercial.</p>
+            <p>Cada producto tiene mercado, estado y resultado esperado. No son demos sueltas: son activos de software con dirección comercial.</p>
           </div>
           <div class="product-card-grid yc-os-product-grid">
             <a class="product-card yc-os-product-card" href="./products/cleanloop/">
               <img src="./assets/products-showcase/cleanloop-showcase.png" alt="CleanLoop operating platform" loading="lazy" />
-              <div class="yc-os-card-line"><span class="status-pill pilot">Piloto</span><span>SaaS para lavanderias</span></div>
+              <div class="yc-os-card-line"><span class="status-pill pilot">Piloto</span><span>SaaS para lavanderías</span></div>
               <h3>CleanLoop</h3>
-              <dl><div><dt>Mercado</dt><dd>Lavanderias</dd></div><div><dt>Resultado</dt><dd>Control operativo</dd></div></dl>
-              <small>Nexus recomienda este producto para lavanderias que necesitan pickup, delivery, tracking y pagos.</small>
+              <dl><div><dt>Mercado</dt><dd>Lavanderías</dd></div><div><dt>Resultado</dt><dd>Control operativo</dd></div></dl>
+              <p class="product-summary">Operación para lavanderías con pickup, delivery, tracking y pagos.</p>
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card" href="./products/soc/">
@@ -151,7 +189,7 @@
               <div class="yc-os-card-line"><span class="status-pill ready">Listo</span><span>Operaciones comerciales</span></div>
               <h3>SOC</h3>
               <dl><div><dt>Mercado</dt><dd>Ventas inmobiliarias</dd></div><div><dt>Resultado</dt><dd>Visibilidad ejecutiva</dd></div></dl>
-              <small>Analizado por Nexus para equipos que necesitan reservas, pagos, inventario y reportes claros.</small>
+              <p class="product-summary">Panel operativo para reservas, pagos, inventario y reportes claros.</p>
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card" href="./products/brokercontrol/">
@@ -159,22 +197,22 @@
               <div class="yc-os-card-line"><span class="status-pill ready">Listo</span><span>CRM inmobiliario</span></div>
               <h3>BrokerControl</h3>
               <dl><div><dt>Mercado</dt><dd>Asesores</dd></div><div><dt>Resultado</dt><dd>No perder oportunidades</dd></div></dl>
-              <small>Nexus lo recomienda para asesores que necesitan pipeline, documentos, agenda y comisiones.</small>
+              <p class="product-summary">CRM para asesores con pipeline, agenda, documentos y comisiones.</p>
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card coming-soon-card" href="./products/">
               <img src="./assets/products-showcase/creditpilot-showcase.png" alt="CreditPilot platform concept" loading="lazy" />
-              <div class="yc-os-card-line"><span class="status-pill soon">Próximo</span><span>Reparacion de credito</span></div>
+              <div class="yc-os-card-line"><span class="status-pill soon">Próximo</span><span>Reparacion de crédito</span></div>
               <h3>CreditPilot</h3>
-              <dl><div><dt>Mercado</dt><dd>Reparacion de credito</dd></div><div><dt>Resultado</dt><dd>Casos y documentos</dd></div></dl>
-              <small>Nexus lo mantiene como vertical en desarrollo para clientes, casos, cartas y portal.</small>
+              <dl><div><dt>Mercado</dt><dd>Reparacion de crédito</dd></div><div><dt>Resultado</dt><dd>Casos y documentos</dd></div></dl>
+              <p class="product-summary">Vertical para gestionar casos, cartas, documentos y portal de clientes.</p>
               <strong>Ver producto</strong>
             </a>
           </div>
         </div>
       </section>
 
-      <section class="compact-showcase section-pad">
+      <section class="compact-showcase section-pad home-clients-section">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Client Projects</p>
@@ -182,34 +220,34 @@
             <p>Sitios reales que muestran e-commerce, servicios, marca corporativa, presencia profesional y dominios activos.</p>
           </div>
           <div class="client-card-grid">
-            <a class="client-card live-client-card" href="https://ghostwear1.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/ghostwear-live-2026.png" alt="GhostWear live store" /><div class="project-logo-mark ghost">GhostWear</div><span>Live e-commerce</span><h3>ghostwear1.com</h3><p>Tienda streetwear con catalogo, productos, carrito y pedido por WhatsApp.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://antonyrealestate.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/antonyrealestate-live.png" alt="Antony Real Estate advisor website" /><div class="project-logo-mark antony"><strong>Antony</strong><span>Real Estate</span></div><span>Asesor inmobiliario</span><h3>antonyrealestate.com</h3><p>Presencia profesional para asesorar compradores de propiedades en Republica Dominicana.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lps-company-live.png" alt="LPS Company corporate website" /><div class="project-logo-mark lps">LPS Company</div><span>Corporate web</span><h3>lps-company.com</h3><p>Base corporativa para una empresa con marcas, servicios y presencia digital.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://lucianowash.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lucianowash-live.png" alt="LucianoWash live service website" /><div class="project-logo-mark luciano">LucianoWash</div><span>Service website</span><h3>lucianowash.lps-company.com</h3><p>Web de servicios de limpieza con imagen profesional, WhatsApp y experiencia movil.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://snackeriado.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/snackeriado-live.png" alt="Snackeria live website" /><div class="project-logo-mark snack">Snackeria</div><span>Convenience brand</span><h3>snackeriado.lps-company.com</h3><p>Presencia digital para soluciones de conveniencia y servicios empresariales.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://ghostwear1.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/ghostwear-live-2026.png" alt="GhostWear live store" /><div class="project-logo-mark ghost">GhostWear</div><span>E-commerce activo</span><h3>GhostWear</h3><em>ghostwear1.com</em><p><strong>Problema:</strong> vender productos sin depender de mensajes sueltos.</p><p><strong>Solución:</strong> catálogo, carrito y pedidos por WhatsApp.</p><p><strong>Resultado:</strong> tienda activa lista para vender.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://antonyrealestate.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/antonyrealestate-live.png" alt="Antony Real Estate advisor website" /><div class="project-logo-mark antony"><strong>Antony</strong><span>Real Estate</span></div><span>Asesor inmobiliario</span><h3>Antony<br />Real Estate</h3><em>antonyrealestate.com</em><p><strong>Problema:</strong> presentar con confianza asesoría inmobiliaria en RD.</p><p><strong>Solución:</strong> web profesional, mensaje claro y contacto directo.</p><p><strong>Resultado:</strong> presencia comercial más seria.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lps-company-live.png" alt="LPS Company corporate website" /><div class="project-logo-mark lps">LPS Company</div><span>Corporate web</span><h3>LPS Company</h3><em>lps-company.com</em><p><strong>Problema:</strong> marca sin presencia corporativa clara.</p><p><strong>Solución:</strong> identidad, base digital y presentación comercial.</p><p><strong>Resultado:</strong> compañía preparada para crecer.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://lucianowash.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lucianowash-live.png" alt="LucianoWash live service website" /><div class="project-logo-mark luciano">LucianoWash</div><span>Servicios</span><h3>LucianoWash</h3><em>lucianowash.lps-company.com</em><p><strong>Problema:</strong> servicios, confianza y contacto dispersos.</p><p><strong>Solución:</strong> sitio bilingüe con marca, WhatsApp y servicios claros.</p><p><strong>Resultado:</strong> experiencia móvil lista para clientes.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://snackeriado.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/snackeriado-live.png" alt="Snackeria live website" /><div class="project-logo-mark snack">Snackeria</div><span>Convenience brand</span><h3>Snackeria</h3><em>snackeriado.lps-company.com</em><p><strong>Problema:</strong> explicar una oferta nueva de conveniencia.</p><p><strong>Solución:</strong> presencia digital clara con propuesta y contacto.</p><p><strong>Resultado:</strong> marca lista para presentar.</p><small>Ver sitio activo</small></a>
           </div>
         </div>
       </section>
 
-      <section class="packages section-pad">
+      <section class="packages section-pad home-packages-section">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">Soluciones por nivel</p>
-            <h2>Empieza pequeno, pero con una base lista para crecer.</h2>
-            <p>Una pagina web, una tienda o un portal no se cotizan igual. YC Systems organiza cada proyecto por fases para que el cliente compre claridad, no improvisacion.</p>
+            <p class="eyebrow">Formas de construir</p>
+            <h2>Soluciones según la etapa de tu negocio.</h2>
+            <p>YC Systems orienta cada proyecto por etapa: presencia, venta, operación, portal o mejora continua. La idea es construir una base clara que pueda crecer sin improvisación.</p>
           </div>
           <div class="package-grid package-grid-home">
             <article>
               <span>Web profesional</span>
               <strong>Presencia digital que genera confianza</strong>
               <p>Ideal para asesores, marcas personales, servicios, empresas locales y negocios que necesitan verse serios.</p>
-              <ul><li>Dominio y estructura clara</li><li>Contacto directo</li><li>Movil y SEO basico</li></ul>
+              <ul><li>Dominio y estructura clara</li><li>Contacto directo</li><li>Movil y SEO básico</li></ul>
             </article>
             <article>
-              <span>Tienda / catalogo</span>
+              <span>Tienda / catálogo</span>
               <strong>Productos listos para vender mejor</strong>
-              <p>Para marcas que necesitan catalogo visual, carrito, pedidos por WhatsApp o flujo e-commerce.</p>
-              <ul><li>Productos y categorias</li><li>Pedido simple</li><li>Experiencia movil</li></ul>
+              <p>Para marcas que necesitan catálogo visual, carrito, pedidos por WhatsApp o flujo e-commerce.</p>
+              <ul><li>Productos y categorías</li><li>Pedido simple</li><li>Experiencia móvil</li></ul>
             </article>
             <article>
               <span>Sistema interno</span>
@@ -220,7 +258,7 @@
             <article>
               <span>Portal digital</span>
               <strong>Clientes, residentes o equipo en un solo lugar</strong>
-              <p>Perfecto para empresas que quieren acceso privado, seguimiento, documentos y procesos por modulo.</p>
+              <p>Perfecto para empresas que quieren acceso privado, seguimiento, documentos y procesos por módulo.</p>
               <ul><li>Acceso clientes</li><li>Modulos por fase</li><li>Base lista para crecer</li></ul>
             </article>
             <article>
@@ -232,43 +270,42 @@
           </div>
           <div class="pricing-note">
             <strong>Referencia comercial:</strong>
-            <span>Los sitios profesionales se trabajan por alcance. Los sistemas, portales y SaaS se cotizan por modulos, fases y nivel de automatizacion.</span>
-            <a href="./contact/">Solicitar orientacion</a>
+            <span>Los sitios profesionales se trabajan por alcance. Los sistemas, portales y SaaS se cotizan por módulos, fases y nivel de automatización.</span>
+            <a href="./contact/">Solicitar orientación</a>
           </div>
         </div>
       </section>
 
-      <section class="about-snapshot section-pad">
+      <section class="about-snapshot section-pad home-about-section">
         <div class="container about-snapshot-grid">
           <div>
             <p class="eyebrow">About YC Systems</p>
-            <h2>Mission, vision and values built around software products.</h2>
-            <p>YC Systems convierte problemas operativos en productos digitales claros, utiles y escalables.</p>
+            <h2>Misión, visión y valores construidos alrededor de productos de software.</h2>
+            <p>YC Systems convierte problemas operativos en productos digitales claros, útiles y escalables.</p>
             <a class="button button-secondary" href="./about/">Ver sobre YC Systems</a>
           </div>
           <div class="values-mini-grid">
             <article><strong>Execution</strong><span>Construimos y entregamos.</span></article>
-            <article><strong>Simplicity</strong><span>Menos complejidad. Mas claridad.</span></article>
-            <article><strong>Innovation</strong><span>Tecnologia aplicada a problemas reales.</span></article>
-            <article><strong>Ownership</strong><span>Actuamos como duenos.</span></article>
+            <article><strong>Simplicity</strong><span>Menos complejidad. Más claridad.</span></article>
+            <article><strong>Innovation</strong><span>Tecnología aplicada a problemas reales.</span></article>
+            <article><strong>Ownership</strong><span>Actuamos como dueños.</span></article>
             <article><strong>Resultados</strong><span>El software debe generar impacto.</span></article>
           </div>
         </div>
       </section>
 
-      <section class="contact section-pad">
+      <section class="contact section-pad home-contact-section">
         <div class="container contact-panel">
           <div>
             <p class="eyebrow">Contacto</p>
-            <h2>Hablemos de tu proxima pagina, aplicacion, sistema o plataforma.</h2>
-            <p>Canales actuales para proyectos: email, Instagram, Facebook, GitHub publico y portafolio de soluciones construidas por YC Systems.</p>
+            <h2>Hablemos de tu próxima página, aplicación, sistema o plataforma.</h2>
+            <p>Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciones construidas por YC Systems.</p>
           </div>
           <div class="contact-links">
-            <a href="mailto:yeicastillog@gmail.com?subject=Nuevo%20proyecto%20YC%20Systems">Email principal: yeicastillog@gmail.com</a>
-            <a href="mailto:yeicastillog@hotmail.com?subject=Nuevo%20proyecto%20YC%20Systems">Email alterno: yeicastillog@hotmail.com</a>
+            <a href="mailto:ycsystems@gmail.com?subject=Nuevo%20proyecto%20YC%20Systems">Email principal: ycsystems@gmail.com</a>
             <a href="https://www.instagram.com/yc.systems" target="_blank" rel="noopener">Instagram oficial: @yc.systems</a>
             <a href="https://www.facebook.com/profile.php?id=61590842845172" target="_blank" rel="noopener">Facebook oficial: YC Systems</a>
-            <a href="https://github.com/Ycastillog" target="_blank" rel="noopener">GitHub publico: Ycastillog</a>
+            <a href="https://github.com/Ycastillog" target="_blank" rel="noopener">GitHub público: Ycastillog</a>
             <a href="./projects/">Ver portafolio</a>
           </div>
         </div>
@@ -283,14 +320,14 @@
           <span>Smart Solutions. Real Results.</span>
         </div>
         <div>
-          <strong>Software Products</strong>
+          <strong>Productos de software</strong>
           <a href="./products/cleanloop/">CleanLoop</a>
           <a href="./products/soc/">SOC</a>
           <a href="./products/brokercontrol/">BrokerControl</a>
           <a href="./products/">CreditPilot</a>
         </div>
         <div>
-          <strong>Client Projects</strong>
+          <strong>Proyectos de clientes</strong>
           <a href="./brands/ghostwear/">GhostWear</a>
           <a href="https://antonyrealestate.com/" target="_blank" rel="noopener">Antony Real Estate</a>
           <a href="https://lps-company.com/" target="_blank" rel="noopener">LPS Company</a>
@@ -299,7 +336,7 @@
         </div>
         <div>
           <strong>Mercados</strong>
-          <span>Dominican Republic</span>
+          <span>República Dominicana</span>
           <span>United States</span>
           <span>Canada</span>
           <a href="./contact/">Contacto</a>
@@ -307,11 +344,11 @@
       </div>
       <div class="container footer-inner footer-legal">
         <span>&copy; 2026 YC Systems.</span>
-        <span><a href="./partners/">Business</a> | <a href="./documents/">Documentos</a> | <a href="./privacy/">Privacidad</a> | <a href="./terms/">Terminos</a></span>
+        <span><a href="./partners/">Empresa</a> | <a href="./documents/">Documentos</a> | <a href="./privacy/">Privacidad</a> | <a href="./terms/">Términos</a></span>
       </div>
     </footer>
 
-    <script src="./script.js?v=yc-os"></script>
+    <script src="./script.js?v=yc-stable-polish-20260702"></script>
   </body>
 </html>
 

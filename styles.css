@@ -1,11 +1,11 @@
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --navy: #080b1a;
   --navy-2: #10172f;
   --blue: #2563eb;
   --cyan: #18d7ff;
   --green: #6dfc45;
-  --blue-2: #6dfc45;
+  --green-action: #6dfc45;
   --gold: #f6b73c;
   --violet: #7c3aed;
   --ink: #111827;
@@ -1094,6 +1094,7 @@ a {
   color: var(--white);
   background: rgba(255, 255, 255, 0.08);
   font-size: 12px;
+  font: inherit;
   font-weight: 900;
   letter-spacing: 0.04em;
   cursor: pointer;
@@ -1109,6 +1110,11 @@ a {
   border-color: rgba(24, 215, 255, 0.62);
   background: rgba(24, 215, 255, 0.16);
   outline: none;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
 }
 
 body:not(.lang-es) .lang-es,
@@ -1285,7 +1291,7 @@ p {
 
 .button-primary {
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   box-shadow: 0 18px 44px rgba(24, 215, 255, 0.28);
 }
 
@@ -1987,7 +1993,7 @@ p {
   width: var(--w);
   height: 14px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--blue), var(--blue-2));
+  background: linear-gradient(90deg, var(--blue), var(--green-action));
 }
 
 .section-head {
@@ -2059,7 +2065,7 @@ p {
 }
 
 .card-logo.clean {
-  background: linear-gradient(135deg, #064e3b, var(--blue-2));
+  background: linear-gradient(135deg, #064e3b, var(--green-action));
 }
 
 .card-logo.ghost {
@@ -2439,7 +2445,7 @@ p {
   border-radius: var(--radius);
   padding: 12px 14px;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   font-weight: 950;
 }
 
@@ -2670,7 +2676,7 @@ p {
   border-radius: var(--radius);
   padding: 8px 15px 8px 9px;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   box-shadow: 0 20px 48px rgba(8, 11, 26, 0.28);
   cursor: pointer;
 }
@@ -2846,7 +2852,7 @@ p {
 .chat-primary {
   border-color: transparent;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
 }
 
 .chat-summary {
@@ -3319,7 +3325,7 @@ p {
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 22px;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   box-shadow: 0 22px 60px rgba(24, 215, 255, 0.34);
   font-size: 42px;
   font-weight: 900;
@@ -3616,7 +3622,7 @@ p {
   border-radius: var(--radius);
   padding: 10px 13px;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   font-size: 14px;
   font-weight: 950;
   box-shadow: 0 12px 28px rgba(24, 215, 255, 0.18);
@@ -3745,7 +3751,7 @@ p {
 }
 
 .product-detail.product-clean {
-  --product-accent: var(--blue-2);
+  --product-accent: var(--green-action);
   --product-soft: rgba(130, 247, 47, 0.14);
 }
 
@@ -3784,7 +3790,7 @@ p {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--product-accent), var(--blue-2));
+  background: linear-gradient(135deg, var(--product-accent), var(--green-action));
   content: "";
 }
 
@@ -4050,7 +4056,7 @@ p {
   border-radius: var(--radius);
   padding: 12px 16px;
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   font-weight: 900;
   box-shadow: 0 18px 42px rgba(24, 215, 255, 0.28);
 }
@@ -4191,7 +4197,7 @@ p {
   margin-bottom: 18px;
   border-radius: var(--radius);
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   font-size: 13px;
   font-weight: 900;
 }
@@ -4237,7 +4243,7 @@ p {
 .breadcrumb {
   display: inline-flex;
   margin-bottom: 24px;
-  color: var(--blue-2);
+  color: var(--green-action);
   font-weight: 800;
 }
 
@@ -4300,7 +4306,7 @@ p {
   height: 44px;
   border-radius: var(--radius);
   color: #071018;
-  background: linear-gradient(135deg, var(--blue), var(--blue-2));
+  background: linear-gradient(135deg, var(--blue), var(--green-action));
   font-size: 13px;
   font-weight: 900;
 }
@@ -6386,7 +6392,562 @@ p {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation: none !important;
     transition: none !important;
+  }
+}
+
+/* Final video QA pass: align the home story and remove distracting overlaps */
+.yc-brand-v2 .home-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.yc-brand-v2 .home-main .section-pad {
+  padding-top: clamp(60px, 7vw, 96px);
+  padding-bottom: clamp(60px, 7vw, 96px);
+}
+
+.yc-brand-v2 .yc-hero {
+  order: 1;
+}
+
+.yc-brand-v2 .home-products-section {
+  order: 2;
+}
+
+.yc-brand-v2 .home-clients-section {
+  order: 3;
+}
+
+.yc-brand-v2 .home-proof-section {
+  order: 4;
+}
+
+.yc-brand-v2 .home-nexus-section {
+  order: 5;
+}
+
+.yc-brand-v2 .home-identity-section {
+  order: 6;
+}
+
+.yc-brand-v2 .home-packages-section {
+  order: 7;
+}
+
+.yc-brand-v2 .home-about-section {
+  order: 8;
+}
+
+.yc-brand-v2 .home-contact-section {
+  order: 9;
+}
+
+.yc-brand-v2 .live-client-card::after {
+  right: 14px;
+  bottom: 14px;
+  top: auto;
+  padding: 6px 8px;
+  background: rgba(4, 13, 27, 0.9);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
+
+.yc-brand-v2 .founder-links a {
+  border-color: rgba(0, 216, 255, 0.42);
+  background: rgba(0, 216, 255, 0.12);
+  color: #f8fbff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.yc-brand-v2 .founder-links a:hover,
+.yc-brand-v2 .founder-links a:focus-visible {
+  background: rgba(92, 255, 92, 0.14);
+  border-color: rgba(92, 255, 92, 0.5);
+  color: #ffffff;
+}
+
+.yc-brand-v2 .values-band .trust-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .values-band .trust-grid article {
+  min-height: 210px;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .home-main .section-pad {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+
+  .yc-brand-v2 .values-band .trust-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Premium cleanup: stronger contrast, calmer cards, clearer case studies */
+.yc-brand-v2 :is(
+  .compact-showcase,
+  .yc-identity-system,
+  .about-snapshot,
+  .technology-hero,
+  .method-section,
+  .business-outcomes,
+  .nexus-method-strip,
+  .company-core,
+  .values-band,
+  .founder-section,
+  .nexus-identity,
+  .contact
+) :is(h1, h2, h3) {
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2 :is(
+  .compact-showcase,
+  .yc-identity-system,
+  .about-snapshot,
+  .technology-hero,
+  .method-section,
+  .business-outcomes,
+  .nexus-method-strip,
+  .company-core,
+  .values-band,
+  .founder-section,
+  .nexus-identity,
+  .contact
+) :is(p, li, dd, small, em) {
+  color: #c7d7ea;
+}
+
+.yc-brand-v2 :is(
+  .yc-os-product-card,
+  .live-client-card,
+  .package-grid article,
+  .company-core-grid article,
+  .trust-grid article,
+  .values-mini-grid article,
+  .method-grid article,
+  .outcome-grid article
+) {
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(10, 27, 50, 0.84), rgba(4, 13, 27, 0.82)),
+    radial-gradient(circle at 90% 110%, rgba(0, 216, 255, 0.12), transparent 12rem);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.yc-brand-v2 :is(.yc-os-product-card, .live-client-card, .package-grid article, .method-grid article, .outcome-grid article):hover {
+  transform: translateY(-3px);
+  border-color: rgba(92, 255, 92, 0.34);
+}
+
+.yc-brand-v2 .yc-os-product-card {
+  min-height: 0;
+  padding: 16px;
+  gap: 12px;
+}
+
+.yc-brand-v2 .yc-os-product-card > img {
+  border-radius: 14px;
+}
+
+.yc-brand-v2 .yc-os-product-card h3 {
+  margin: 0;
+  font-size: 1.35rem;
+  color: #ffffff;
+}
+
+.yc-brand-v2 .yc-os-product-card dl {
+  margin: 0;
+}
+
+.yc-brand-v2 .yc-os-product-card .product-summary {
+  margin: 0;
+  color: #c7d7ea;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.yc-brand-v2 .yc-os-product-card > strong {
+  margin-top: auto;
+  color: var(--yc-os-action);
+}
+
+.yc-brand-v2 .client-card-grid {
+  align-items: stretch;
+}
+
+.yc-brand-v2 .live-client-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  min-width: 0;
+}
+
+.yc-brand-v2 .live-client-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.yc-brand-v2 .live-client-card h3 {
+  margin: 2px 0 0;
+  color: #ffffff;
+  font-size: 1.28rem;
+  line-height: 1.08;
+  overflow-wrap: normal;
+}
+
+.yc-brand-v2 .live-client-card em {
+  display: block;
+  max-width: 100%;
+  margin: -4px 0 2px;
+  font-style: normal;
+  color: #90a9c5;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.yc-brand-v2 .live-client-card > span {
+  border-color: rgba(0, 216, 255, 0.28);
+  background: rgba(0, 216, 255, 0.1);
+  color: #bfeeff;
+}
+
+.yc-brand-v2 .live-client-card p,
+.yc-brand-v2 .live-client-card p:nth-of-type(n + 2) {
+  display: block;
+  margin: 0;
+  color: #c7d7ea;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.yc-brand-v2 .live-client-card p strong {
+  color: #f8fbff;
+}
+
+.yc-brand-v2 .live-client-card small {
+  margin-top: auto;
+  color: #06111f;
+  background: linear-gradient(135deg, var(--yc-os-action), var(--yc-os-cyan));
+  border: 0;
+  font-size: 0.72rem;
+}
+
+.yc-brand-v2 .project-logo-mark {
+  min-height: 48px;
+  border-radius: 12px;
+}
+
+.yc-brand-v2 .method-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .method-grid article {
+  min-height: 230px;
+}
+
+@media (max-width: 1100px) {
+  .yc-brand-v2 .method-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .yc-os-product-grid,
+  .yc-brand-v2 .client-card-grid,
+  .yc-brand-v2 .method-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2 .concept-chat {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher {
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 6px !important;
+    border-radius: 999px !important;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher span {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 999px !important;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher strong {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .yc-brand-v2 .main-nav a:hover:not([aria-current="page"]) {
+    color: #d8e5f4;
+    text-shadow: none;
+  }
+
+  .yc-brand-v2 .main-nav a:hover:not([aria-current="page"])::after {
+    left: 50%;
+    right: 50%;
+    opacity: 0;
+  }
+
+  .yc-brand-v2 .language-chip:hover {
+    border-color: rgba(0, 216, 255, 0.28);
+    background: rgba(0, 216, 255, 0.06);
+    color: #f8fbff;
+  }
+}
+
+/* Identity card public lockup: avoid dark SVG text on dark cards */
+.yc-brand-v2 .identity-story-card {
+  align-content: center;
+  gap: 22px;
+}
+
+.yc-brand-v2 .identity-logo-lockup {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.yc-brand-v2 .identity-logo-lockup img {
+  width: 88px !important;
+  max-width: 88px !important;
+  height: auto;
+  margin: 0 !important;
+  filter: drop-shadow(0 0 22px rgba(0, 216, 255, 0.22));
+}
+
+.yc-brand-v2 .identity-logo-lockup strong {
+  display: block;
+  border: 0;
+  padding: 0;
+  color: #f8fbff !important;
+  font-size: clamp(1.35rem, 2.2vw, 1.95rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.yc-brand-v2 .identity-logo-lockup span {
+  display: block;
+  margin-top: 6px;
+  color: #91a9c4;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .identity-logo-lockup {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    max-width: 100%;
+  }
+
+  .yc-brand-v2 .identity-logo-lockup img {
+    width: 74px !important;
+    max-width: 74px !important;
+  }
+}
+
+/* Stable release polish: balance, spacing and anchor behavior */
+.yc-brand-v2 :is(main > section, .section-pad, .product-hero) {
+  scroll-margin-top: 96px;
+}
+
+.yc-brand-v2 .home-main .section-pad {
+  padding-top: clamp(56px, 6.2vw, 86px);
+  padding-bottom: clamp(56px, 6.2vw, 86px);
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel {
+  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 0.94fr) !important;
+  align-items: center;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel picture {
+  display: block !important;
+  align-self: center;
+  justify-self: end;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-copy {
+  align-self: center;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-steps {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-steps span {
+  flex: 0 1 auto;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-image {
+  align-self: center;
+  justify-self: end;
+  width: min(520px, 100%);
+  max-height: 520px;
+  object-position: center right;
+}
+
+.yc-brand-v2 .client-card-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.yc-brand-v2 .live-client-card {
+  min-height: 100%;
+}
+
+.yc-brand-v2 .home-packages-section .section-head h2 {
+  max-width: 920px;
+}
+
+.yc-brand-v2 .home-packages-section .section-head p {
+  max-width: 820px;
+}
+
+.yc-brand-v2 .contact-sales-panel {
+  align-items: start;
+}
+
+.yc-brand-v2 .contact-mini-links [data-domain-email] {
+  border-style: dashed;
+  color: #9fc7dd;
+}
+
+@media (max-width: 1180px) {
+  .yc-brand-v2 .client-card-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .yc-brand-v2 .client-card-grid .live-client-card {
+    grid-column: span 2;
+  }
+
+  .yc-brand-v2 .client-card-grid .live-client-card:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .yc-brand-v2 .client-card-grid .live-client-card:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 .home-nexus-section .nexus-brand-panel {
+    grid-template-columns: 1fr !important;
+    min-height: 0;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-image {
+    justify-self: center;
+    width: min(460px, 100%);
+    max-height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 :is(main > section, .section-pad, .product-hero) {
+    scroll-margin-top: 82px;
+  }
+
+  .yc-brand-v2 .home-main .section-pad {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .yc-brand-v2 .client-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2 .client-card-grid .live-client-card,
+  .yc-brand-v2 .client-card-grid .live-client-card:nth-child(4),
+  .yc-brand-v2 .client-card-grid .live-client-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .yc-brand-v2 .concept-chat {
+    right: 12px !important;
+    bottom: max(12px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .yc-brand-v2 .concept-chat-panel {
+    bottom: 58px;
+    max-height: min(620px, calc(100vh - 92px));
+    overflow-y: auto;
+  }
+}
+
+/* Last-mile Nexus visual correction */
+.yc-brand-v2 .ecosystem-nexus {
+  right: -8px !important;
+  bottom: 42px !important;
+  width: min(350px, 68%) !important;
+  max-height: 86% !important;
+  object-fit: contain !important;
+  object-position: right bottom !important;
+  z-index: 2 !important;
+}
+
+.yc-brand-v2 .ecosystem-products {
+  position: absolute !important;
+  left: 32px !important;
+  top: 188px !important;
+  width: min(260px, 50%) !important;
+  margin: 0 !important;
+}
+
+.yc-brand-v2 .ecosystem-logo {
+  width: min(170px, 38%) !important;
+  opacity: 0.16 !important;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .ecosystem-nexus {
+    right: -12px !important;
+    bottom: 12px !important;
+    width: min(300px, 74%) !important;
+    max-height: 66% !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products {
+    position: absolute !important;
+    left: 20px !important;
+    top: 136px !important;
+    width: min(220px, 62%) !important;
+    margin: 0 !important;
   }
 }
 
@@ -7071,6 +7632,105 @@ body {
   background: #040b16;
 }
 
+/* Final YC Systems visual QA fixes */
+.yc-brand-v2 .yc-identity-grid h2,
+.yc-brand-v2 .about-snapshot h2,
+.yc-brand-v2 .contact-panel h2,
+.yc-brand-v2 .footer-map strong,
+.yc-brand-v2 .footer-inner,
+.yc-brand-v2 .footer-legal,
+.yc-brand-v2 .footer-legal a {
+  color: var(--yc-os-text);
+}
+
+.yc-brand-v2 .yc-identity-grid > div > p:not(.eyebrow),
+.yc-brand-v2 .identity-story-card p,
+.yc-brand-v2 .about-snapshot p,
+.yc-brand-v2 .contact-panel p,
+.yc-brand-v2 .footer-map p,
+.yc-brand-v2 .footer-map span,
+.yc-brand-v2 .footer-map a {
+  color: #c7d7ea;
+}
+
+.yc-brand-v2 .identity-story-card strong {
+  border-left-color: var(--yc-os-cyan);
+  color: #f8fbff;
+}
+
+.yc-brand-v2 .identity-pill-row span {
+  color: #f8fbff;
+  background: rgba(8, 25, 47, 0.84);
+}
+
+.yc-brand-v2 .main-nav.is-open {
+  background:
+    linear-gradient(180deg, rgba(7, 18, 34, 0.98), rgba(3, 9, 18, 0.98));
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(20px);
+}
+
+.yc-brand-v2 .main-nav.is-open a,
+.yc-brand-v2 .main-nav.is-open .language-chip {
+  color: #f8fbff;
+}
+
+.yc-brand-v2 .concept-chat {
+  right: 18px;
+  bottom: 18px;
+}
+
+.yc-brand-v2 .concept-chat-launcher {
+  width: 54px;
+  min-height: 48px;
+  padding: 7px;
+  border-radius: 999px;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.36);
+}
+
+.yc-brand-v2 .concept-chat-launcher strong {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 980px) {
+  .yc-brand-v2 .concept-chat {
+    right: 28px;
+    bottom: 26px;
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .main-nav {
+    border-color: rgba(0, 216, 255, 0.34);
+  }
+
+  .yc-brand-v2 .concept-chat {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher {
+    width: 48px;
+    min-height: 44px;
+    padding: 6px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher span {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher strong {
+    font-size: 13px;
+  }
+}
+
 @keyframes ycFloat {
   0%, 100% { transform: translate3d(0, 0, 0); }
   50% { transform: translate3d(0, -10px, 0); }
@@ -7412,5 +8072,601 @@ body {
     font-size: 1.08rem !important;
     white-space: normal;
     overflow-wrap: normal;
+  }
+
+  .yc-brand-v2 .main-nav.is-open {
+    border-color: rgba(0, 216, 255, 0.42) !important;
+    background: #020812 !important;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55) !important;
+    backdrop-filter: blur(22px);
+  }
+}
+
+/* Public Nexus asset lock: no brand-book posters in customer-facing pages */
+.yc-brand-v2 .hero-visual picture,
+.yc-brand-v2 .nexus-brand-panel picture,
+.yc-brand-v2 .about-brand-visual picture,
+.yc-brand-v2 .yc-method-visual picture,
+.yc-brand-v2 .nexus-method-card picture,
+.yc-brand-v2 .nexus-identity-grid picture {
+  display: contents;
+}
+
+.yc-brand-v2 .ecosystem-logo {
+  width: min(190px, 42%);
+  opacity: 0.18;
+  filter: drop-shadow(0 0 22px rgba(0, 216, 255, 0.18));
+}
+
+.yc-brand-v2 .ecosystem-nexus {
+  right: -58px;
+  bottom: -54px;
+  width: min(520px, 70%);
+  max-height: 112%;
+  object-fit: contain;
+  object-position: right bottom;
+}
+
+.yc-brand-v2 .yc-ecosystem-visual {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.yc-brand-v2 .yc-ecosystem-visual::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% -18% 42%;
+  height: 48%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 216, 255, 0.18), transparent 68%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.yc-brand-v2 .ecosystem-products {
+  z-index: 5;
+}
+
+.yc-brand-v2 .nexus-brand-panel {
+  grid-template-columns: minmax(0, 0.88fr) minmax(360px, 0.9fr);
+}
+
+.yc-brand-v2 .nexus-steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.yc-brand-v2 .nexus-steps span,
+.yc-brand-v2 .identity-pill-row span {
+  border-color: rgba(0, 216, 255, 0.26);
+  background: rgba(0, 216, 255, 0.08);
+  color: #dff8ff;
+}
+
+.yc-brand-v2 .nexus-brand-image {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.yc-brand-v2 .identity-story-card img {
+  width: min(320px, 82%);
+  max-height: none;
+  margin-inline: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(0, 216, 255, 0.14));
+}
+
+.yc-brand-v2 .about-brand-visual {
+  overflow: hidden;
+}
+
+.yc-brand-v2 .about-brand-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  object-fit: cover;
+  object-position: 64% center;
+}
+
+.yc-brand-v2 .about-brand-visual > div {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+}
+
+.yc-brand-v2 .yc-method-visual img {
+  display: block;
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.yc-brand-v2 .nexus-method-card {
+  grid-template-columns: minmax(180px, 0.38fr) minmax(0, 1fr);
+}
+
+.yc-brand-v2 .nexus-method-card img {
+  display: block !important;
+  width: min(220px, 100%);
+  border-radius: 24px;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
+}
+
+.yc-brand-v2 .nexus-identity-grid img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 .nexus-brand-panel,
+  .yc-brand-v2 .nexus-method-card {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2 .nexus-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .ecosystem-logo {
+    width: 132px;
+  }
+
+  .yc-brand-v2 .ecosystem-nexus {
+    right: -32px;
+    bottom: -10px;
+    width: min(360px, 78%);
+    max-height: 76%;
+  }
+
+  .yc-brand-v2 .ecosystem-products {
+    width: min(220px, 66%);
+    margin-top: 132px;
+  }
+
+  .yc-brand-v2 .ecosystem-products a {
+    padding: 10px;
+  }
+
+  .yc-brand-v2 .nexus-steps,
+  .yc-brand-v2 .identity-pill-row {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2 .about-brand-visual img,
+  .yc-brand-v2 .yc-method-visual img {
+    min-height: 0;
+    max-height: 360px;
+    object-fit: contain;
+  }
+}
+
+/* Navbar polish lock: clean YC Systems mark, active state and compact language control */
+.yc-brand-v2 {
+  --yc-dark: #0f172a;
+  --yc-blue: #2563eb;
+  --yc-cyan: #00d8ff;
+}
+
+.yc-brand-v2 :is(.section-pad, section, [id]) {
+  scroll-margin-top: 96px;
+}
+
+.yc-brand-v2 .site-header {
+  min-height: 76px !important;
+  padding: 12px max(28px, calc((100vw - 1180px) / 2)) !important;
+  border-bottom: 1px solid rgba(0, 216, 255, 0.15) !important;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(3, 10, 23, 0.94)) !important;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(20px);
+}
+
+.yc-brand-v2 .brand {
+  min-width: 178px;
+  color: #f8fbff;
+  text-decoration: none;
+}
+
+.yc-brand-v2 .brand-logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 11px;
+  width: auto !important;
+  max-width: none !important;
+  height: 46px !important;
+  line-height: 1;
+}
+
+.yc-brand-v2 .brand-logo img.brand-logo-mark {
+  width: 46px !important;
+  height: 46px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 0 14px rgba(0, 216, 255, 0.18));
+}
+
+.yc-brand-v2 .brand-logo-text {
+  color: #f8fbff;
+  font-size: 1.12rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.yc-brand-v2 .main-nav {
+  gap: clamp(18px, 2.4vw, 30px);
+}
+
+.yc-brand-v2 .main-nav a {
+  position: relative;
+  padding: 10px 0;
+  color: #d8e5f4;
+  font-size: 0.92rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.yc-brand-v2 .main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--yc-blue), var(--yc-cyan));
+  box-shadow: 0 0 16px rgba(0, 216, 255, 0.42);
+  opacity: 0;
+  transition: left 180ms ease, right 180ms ease, opacity 180ms ease;
+}
+
+.yc-brand-v2 .main-nav a:hover,
+.yc-brand-v2 .main-nav a:focus-visible,
+.yc-brand-v2 .main-nav a[aria-current="page"] {
+  color: var(--yc-cyan);
+  text-shadow: 0 0 18px rgba(0, 216, 255, 0.22);
+}
+
+.yc-brand-v2 .main-nav a:hover::after,
+.yc-brand-v2 .main-nav a:focus-visible::after,
+.yc-brand-v2 .main-nav a[aria-current="page"]::after {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+.yc-brand-v2 .language-chip {
+  min-width: 42px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 216, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 216, 255, 0.06);
+  color: #f8fbff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.yc-brand-v2 .language-chip:hover,
+.yc-brand-v2 .language-chip:focus-visible {
+  border-color: rgba(0, 216, 255, 0.58);
+  background: rgba(37, 99, 235, 0.16);
+  color: var(--yc-cyan);
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 :is(.section-pad, section, [id]) {
+    scroll-margin-top: 84px;
+  }
+
+  .yc-brand-v2 .site-header {
+    display: flex !important;
+    min-height: 68px !important;
+    padding: 9px 14px !important;
+  }
+
+  .yc-brand-v2 .site-header::after {
+    content: none !important;
+  }
+
+  .yc-brand-v2 .brand {
+    min-width: 0;
+  }
+
+  .yc-brand-v2 .brand-logo {
+    width: 48px !important;
+    height: 48px !important;
+    gap: 0;
+  }
+
+  .yc-brand-v2 .brand-logo img.brand-logo-mark {
+    width: 48px !important;
+    max-width: 48px !important;
+    height: 48px !important;
+  }
+
+  .yc-brand-v2 .brand-logo-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .yc-brand-v2 .nav-toggle {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    z-index: 60;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 14px !important;
+    border-color: rgba(0, 216, 255, 0.34) !important;
+    background: rgba(8, 20, 38, 0.82) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .yc-brand-v2 .nav-toggle::before {
+    width: 21px !important;
+    background: #f8fbff !important;
+    box-shadow: 0 9px 0 #f8fbff !important;
+  }
+
+  .yc-brand-v2 .nav-toggle span {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .main-nav {
+    top: 76px !important;
+    left: 14px !important;
+    right: 14px !important;
+    gap: 6px !important;
+    border: 1px solid rgba(0, 216, 255, 0.22) !important;
+    border-radius: 18px !important;
+    background: rgba(3, 10, 23, 0.96) !important;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .yc-brand-v2 .main-nav a,
+  .yc-brand-v2 .main-nav .language-chip {
+    width: 100%;
+  }
+
+  .yc-brand-v2 .main-nav a {
+    padding: 13px 14px;
+  }
+
+  .yc-brand-v2 .main-nav a::after {
+    left: 14px;
+    right: auto;
+    bottom: 7px;
+    width: 28px;
+  }
+
+  .yc-brand-v2 .main-nav a[aria-current="page"] {
+    color: #f8fbff;
+    background: rgba(0, 216, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  .yc-brand-v2 .language-chip {
+    justify-content: center;
+    margin-top: 4px;
+  }
+}
+
+/* YC Systems final cascade lock
+   Keep this block last so old visual experiments above cannot override the official UI. */
+.yc-brand-v2 :is(
+  .compact-showcase,
+  .yc-identity-system,
+  .about-snapshot,
+  .technology-hero,
+  .method-section,
+  .business-outcomes,
+  .nexus-method-strip,
+  .company-core,
+  .values-band,
+  .founder-section,
+  .nexus-identity,
+  .contact
+) :is(h1, h2, h3) {
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2 :is(
+  .compact-showcase,
+  .yc-identity-system,
+  .about-snapshot,
+  .technology-hero,
+  .method-section,
+  .business-outcomes,
+  .nexus-method-strip,
+  .company-core,
+  .values-band,
+  .founder-section,
+  .nexus-identity,
+  .contact
+) :is(p, li, dd, small, em) {
+  color: #c7d7ea;
+}
+
+.yc-brand-v2 :is(
+  .yc-os-product-card,
+  .live-client-card,
+  .package-grid article,
+  .company-core-grid article,
+  .trust-grid article,
+  .values-mini-grid article,
+  .method-grid article,
+  .outcome-grid article
+) {
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(10, 27, 50, 0.84), rgba(4, 13, 27, 0.82)),
+    radial-gradient(circle at 90% 110%, rgba(0, 216, 255, 0.12), transparent 12rem);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.yc-brand-v2 :is(.yc-os-product-card, .live-client-card, .package-grid article, .method-grid article, .outcome-grid article):hover {
+  transform: translateY(-3px);
+  border-color: rgba(92, 255, 92, 0.34);
+}
+
+.yc-brand-v2 .yc-os-product-card {
+  min-height: 0;
+  padding: 16px;
+  gap: 12px;
+}
+
+.yc-brand-v2 .yc-os-product-card > img,
+.yc-brand-v2 .live-client-card img {
+  border-radius: 14px;
+}
+
+.yc-brand-v2 .yc-os-product-card h3,
+.yc-brand-v2 .live-client-card h3 {
+  color: #ffffff !important;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.yc-brand-v2 .yc-os-product-card .product-summary {
+  margin: 0;
+  color: #c7d7ea;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.yc-brand-v2 .yc-os-product-card > strong {
+  margin-top: auto;
+  color: var(--yc-os-action);
+}
+
+.yc-brand-v2 .live-client-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px !important;
+}
+
+.yc-brand-v2 .live-client-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  object-fit: cover;
+}
+
+.yc-brand-v2 .live-client-card h3 {
+  margin: 2px 0 0;
+  font-size: 1.28rem;
+  line-height: 1.08;
+}
+
+.yc-brand-v2 .live-client-card em {
+  display: block;
+  max-width: 100%;
+  margin: -4px 0 2px;
+  font-style: normal;
+  color: #90a9c5;
+  font-size: 0.78rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.yc-brand-v2 .live-client-card > span {
+  border-color: rgba(0, 216, 255, 0.28);
+  background: rgba(0, 216, 255, 0.1);
+  color: #bfeeff;
+}
+
+.yc-brand-v2 .live-client-card p,
+.yc-brand-v2 .live-client-card p:nth-of-type(n + 2) {
+  display: block;
+  margin: 0;
+  color: #c7d7ea;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.yc-brand-v2 .live-client-card p strong {
+  color: #f8fbff;
+}
+
+.yc-brand-v2 .live-client-card small {
+  width: fit-content;
+  margin-top: auto;
+  border: 0;
+  color: #06111f !important;
+  background: linear-gradient(135deg, var(--yc-os-action), var(--yc-os-cyan));
+  font-size: 0.72rem;
+}
+
+.yc-brand-v2 .method-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .method-grid article {
+  min-height: 230px;
+}
+
+@media (max-width: 1100px) {
+  .yc-brand-v2 .method-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .yc-os-product-grid,
+  .yc-brand-v2 .client-card-grid,
+  .yc-brand-v2 .method-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2 .concept-chat {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher {
+    width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 6px !important;
+    border-radius: 999px !important;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher span {
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 999px !important;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher strong {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
   }
 }

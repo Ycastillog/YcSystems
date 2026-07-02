@@ -66,7 +66,7 @@ ycsystems.do
 Recommended email:
 
 ```text
-yeicastillog@gmail.com
+ycsystems@gmail.com
 ```
 
 ## Contact Values To Finalize

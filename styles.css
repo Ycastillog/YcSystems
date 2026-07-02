@@ -6700,6 +6700,215 @@ p {
   }
 }
 
+/* Commercial home polish: clearer Instagram-to-client conversion path */
+.yc-brand-v2 .home-products-section {
+  order: 4;
+}
+
+.yc-brand-v2 .home-clients-section {
+  order: 3;
+}
+
+.yc-brand-v2 .home-proof-section {
+  order: 5;
+}
+
+.yc-brand-v2 .home-nexus-section {
+  order: 6;
+}
+
+.yc-brand-v2 .home-identity-section {
+  order: 7;
+}
+
+.yc-brand-v2 .home-packages-section {
+  order: 2;
+}
+
+.yc-brand-v2 .home-about-section {
+  order: 8;
+}
+
+.yc-brand-v2 .home-contact-section {
+  order: 9;
+}
+
+.yc-brand-v2 .hero-commercial-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 600px;
+  margin-top: 18px;
+}
+
+.yc-brand-v2 .hero-commercial-proof article {
+  min-width: 0;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background:
+    linear-gradient(145deg, rgba(8, 20, 38, 0.86), rgba(3, 10, 23, 0.72)),
+    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.12), transparent 7rem);
+}
+
+.yc-brand-v2 .hero-commercial-proof strong {
+  display: block;
+  color: #f8fbff;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1;
+}
+
+.yc-brand-v2 .hero-commercial-proof span {
+  display: block;
+  margin-top: 5px;
+  color: #a9bdd5;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.yc-brand-v2 .hero-actions .button-primary {
+  min-width: 154px;
+}
+
+.yc-brand-v2 .yc-hero {
+  padding-top: clamp(28px, 4vw, 36px) !important;
+  padding-bottom: clamp(26px, 3vw, 32px) !important;
+}
+
+.yc-brand-v2 .hero-grid {
+  align-items: center !important;
+}
+
+.yc-brand-v2 .hero-copy {
+  align-self: center;
+}
+
+.yc-brand-v2 .yc-hero .hero-proof {
+  display: none !important;
+}
+
+.yc-brand-v2 .yc-ecosystem-visual {
+  min-height: 480px !important;
+}
+
+.yc-brand-v2 .ecosystem-products {
+  width: min(290px, 100%) !important;
+  margin-top: 126px !important;
+}
+
+.yc-brand-v2 .ecosystem-nexus {
+  width: min(390px, 62%) !important;
+  max-height: 92% !important;
+}
+
+.yc-brand-v2 .home-packages-section {
+  background:
+    radial-gradient(circle at 12% 4%, rgba(0, 216, 255, 0.08), transparent 24rem),
+    linear-gradient(180deg, rgba(3, 10, 23, 0.42), rgba(8, 20, 38, 0.18));
+}
+
+.yc-brand-v2 .home-packages-section .section-head {
+  max-width: 820px;
+}
+
+.yc-brand-v2 .home-packages-section .package-grid-home article {
+  min-height: 260px;
+}
+
+.yc-brand-v2 .home-clients-section .section-head,
+.yc-brand-v2 .home-products-section .section-head {
+  max-width: 840px;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .hero-commercial-proof {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 14px;
+  }
+
+  .yc-brand-v2 .hero-commercial-proof article {
+    display: block;
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .yc-brand-v2 .hero-commercial-proof span {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.66rem;
+    line-height: 1.15;
+  }
+
+  .yc-brand-v2 .mobile-investor-strip {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .hero-proof {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .yc-hero {
+    padding-bottom: 34px !important;
+  }
+
+  .yc-brand-v2 .hero-grid {
+    gap: 24px !important;
+  }
+
+  .yc-brand-v2 .hero-visual {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .yc-ecosystem-visual {
+    min-height: 420px !important;
+    padding: 18px !important;
+    border-radius: 20px !important;
+  }
+
+  .yc-brand-v2 .ecosystem-logo {
+    width: 112px !important;
+    top: 18px !important;
+    left: 18px !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products {
+    width: min(210px, 66%) !important;
+    gap: 8px !important;
+    margin-top: 116px !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products a {
+    grid-template-columns: auto 1fr !important;
+    min-height: 54px !important;
+    padding: 8px 10px !important;
+    border-radius: 14px !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products span {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 10px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products strong {
+    font-size: 0.86rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .yc-brand-v2 .ecosystem-products small {
+    font-size: 0.68rem !important;
+  }
+
+  .yc-brand-v2 .ecosystem-nexus {
+    right: -36px !important;
+    bottom: -12px !important;
+    width: min(270px, 72%) !important;
+    max-height: 78% !important;
+  }
+}
+
 @media (hover: none) and (pointer: coarse) {
   .yc-brand-v2 .main-nav a:hover:not([aria-current="page"]) {
     color: #d8e5f4;

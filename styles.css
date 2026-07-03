@@ -6700,6 +6700,59 @@ p {
   }
 }
 
+/* Microphase final lock: keep the floating quote control helpful, not intrusive. */
+.yc-brand-v2 .concept-chat {
+  display: block !important;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+}
+
+.yc-brand-v2.is-contact-page .concept-chat:not(.is-open) {
+  bottom: calc(max(18px, env(safe-area-inset-bottom)) + 24px);
+}
+
+.yc-brand-v2 .concept-chat-panel {
+  max-height: min(560px, calc(100dvh - 132px));
+  overflow: auto;
+}
+
+.yc-brand-v2 .concept-chat-launcher {
+  border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .concept-chat {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: calc(max(12px, env(safe-area-inset-bottom)) + 2px);
+  }
+
+  .yc-brand-v2.is-contact-page .concept-chat:not(.is-open) {
+    bottom: calc(max(12px, env(safe-area-inset-bottom)) + 18px);
+  }
+
+  .yc-brand-v2 .concept-chat-panel {
+    right: 0;
+    bottom: 62px;
+    width: min(342px, calc(100vw - 24px));
+    max-height: min(520px, calc(100dvh - 148px));
+    border-radius: 18px;
+  }
+
+  .yc-brand-v2 .concept-chat-launcher {
+    width: 46px !important;
+    min-width: 46px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.34), 0 0 18px rgba(0, 216, 255, 0.24);
+  }
+
+  .yc-brand-v2 .concept-chat-launcher span {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 12px !important;
+  }
+}
+
 /* Commercial home polish: clearer Instagram-to-client conversion path */
 .yc-brand-v2 .home-products-section {
   order: 4;

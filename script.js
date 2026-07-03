@@ -5,6 +5,19 @@ const langToggle = document.querySelector("[data-lang-toggle]") || document.quer
 const langToggles = document.querySelectorAll("[data-lang-toggle], .language-chip");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 
+const YC_CONTACT = Object.freeze({
+  email: "ycsystems@gmail.com",
+  futureEmail: "contact@ycsystems.io",
+  adminEmail: "admin@ycsystems.io",
+  helloEmail: "hello@ycsystems.io",
+  whatsapp: "",
+  instagram: "https://www.instagram.com/yc.systems",
+  facebook: "https://www.facebook.com/profile.php?id=61590842845172",
+  github: "https://github.com/Ycastillog",
+});
+
+globalThis.YC_CONTACT = YC_CONTACT;
+
 nav?.querySelectorAll("a[href]").forEach((link) => {
   const linkUrl = new URL(link.getAttribute("href"), window.location.href);
   const linkPath = linkUrl.pathname.replace(/\/index\.html$/, "/");
@@ -1125,6 +1138,48 @@ const currentScript = document.currentScript || document.querySelector('script[s
 const siteRoot = currentScript ? new URL(".", currentScript.src) : new URL("/", window.location.href);
 const contactUrl = new URL("contact/", siteRoot).href;
 
+document.body.classList.toggle("is-contact-page", window.location.pathname.replace(/\/index\.html$/, "/").endsWith("/contact/"));
+
+function buildYCEmailLink(subject = "Nuevo proyecto YC Systems", body = "") {
+  const params = new URLSearchParams({ subject });
+  if (body) params.set("body", body);
+  return `mailto:${YC_CONTACT.email}?${params.toString()}`;
+}
+
+function applyContactConfig() {
+  document.querySelectorAll("[data-yc-contact-email]").forEach((element) => {
+    element.textContent = YC_CONTACT.email;
+  });
+
+  document.querySelectorAll("[data-yc-contact-future-email]").forEach((element) => {
+    element.textContent = `${element.dataset.ycContactPrefix || ""}${YC_CONTACT.futureEmail}`;
+  });
+
+  document.querySelectorAll("[data-yc-contact-instagram]").forEach((element) => {
+    element.setAttribute("href", YC_CONTACT.instagram);
+  });
+
+  document.querySelectorAll("[data-yc-contact-facebook]").forEach((element) => {
+    element.setAttribute("href", YC_CONTACT.facebook);
+  });
+
+  document.querySelectorAll("[data-yc-contact-github]").forEach((element) => {
+    element.setAttribute("href", YC_CONTACT.github);
+  });
+
+  document.querySelectorAll("[data-yc-mailto]").forEach((element) => {
+    element.setAttribute("href", buildYCEmailLink(element.dataset.ycMailtoSubject || "Nuevo proyecto YC Systems"));
+  });
+
+  document.querySelectorAll("form[data-project-brief]").forEach((form) => {
+    form.setAttribute("action", `https://formsubmit.co/${YC_CONTACT.email}`);
+    const nextInput = form.querySelector('input[name="_next"]');
+    if (nextInput) nextInput.value = new URL("contact/?sent=1", siteRoot).href;
+  });
+}
+
+applyContactConfig();
+
 function trackYCEvent(eventName, payload = {}) {
   const eventPayload = {
     page: window.location.pathname,
@@ -1198,7 +1253,7 @@ projectBriefForm?.addEventListener("submit", (event) => {
   const body = encodeURIComponent(message);
   const status = projectBriefForm.querySelector("[data-brief-status]");
   if (status) status.textContent = "Mensaje preparado. Se abrirá tu correo para enviarlo a YC Systems.";
-  window.location.href = `mailto:ycsystems@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = buildYCEmailLink(decodeURIComponent(subject), decodeURIComponent(body));
 });
 
 const intakeQuestions = [
@@ -1391,7 +1446,7 @@ function createConceptChat() {
       <div class="chat-message chat-message-yc">${copy.message}</div>
       <pre class="chat-summary">${summary}</pre>
       <div class="chat-actions">
-        <a class="chat-primary" href="mailto:ycsystems@gmail.com?subject=${mailSubject}&body=${mailBody}">${copy.send}</a>
+        <a class="chat-primary" href="${buildYCEmailLink(decodeURIComponent(mailSubject), decodeURIComponent(mailBody))}">${copy.send}</a>
         <a href="${contactUrl}">${copy.contact}</a>
       </div>
     `;

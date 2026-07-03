@@ -6753,6 +6753,31 @@ p {
   }
 }
 
+/* Conversion polish: project domains should prove credibility without breaking cards. */
+.yc-brand-v2 .project-domain,
+.yc-brand-v2 .live-client-card em.project-domain {
+  display: block;
+  max-width: 100%;
+  color: var(--yc-os-muted);
+  font-size: 0.85rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .yc-hero .hero-proof span:nth-child(n + 4) {
+    display: none;
+  }
+
+  .yc-brand-v2 .project-domain,
+  .yc-brand-v2 .live-client-card em.project-domain {
+    font-size: 0.8rem;
+  }
+}
+
 /* Commercial home polish: clearer Instagram-to-client conversion path */
 .yc-brand-v2 .home-products-section {
   order: 4;

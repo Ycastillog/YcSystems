@@ -1350,6 +1350,7 @@ function createConceptChat() {
   function setOpen(isOpen) {
     chat.classList.toggle("is-open", isOpen);
     launcher.setAttribute("aria-expanded", String(isOpen));
+    updateFloatingChatVisibility();
     if (isOpen) trackYCEvent("chat_open");
   }
 
@@ -1462,6 +1463,14 @@ function createConceptChat() {
 
   close.addEventListener("click", () => setOpen(false));
 
+  function updateFloatingChatVisibility() {
+    const canShow = window.scrollY > 160 || chat.classList.contains("is-open");
+    document.body.classList.toggle("show-concept-chat", canShow);
+  }
+
+  window.addEventListener("scroll", updateFloatingChatVisibility, { passive: true });
+  updateFloatingChatVisibility();
+
   body.addEventListener("click", (event) => {
     const answer = event.target.closest("[data-chat-answer]");
     if (answer) {
@@ -1487,6 +1496,7 @@ function createConceptChat() {
     body.dataset.ready = "true";
     renderQuestion();
     setOpen(true);
+    updateFloatingChatVisibility();
   }
 }
 

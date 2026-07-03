@@ -6768,6 +6768,20 @@ p {
 }
 
 @media (max-width: 760px) {
+  .yc-brand-v2 .concept-chat {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(14px);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+
+  .yc-brand-v2.show-concept-chat .concept-chat,
+  .yc-brand-v2 .concept-chat.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
   .yc-brand-v2 .yc-hero .hero-proof span:nth-child(n + 4) {
     display: none;
   }

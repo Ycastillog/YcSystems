@@ -8856,6 +8856,15 @@ body {
   border-radius: 14px;
 }
 
+.yc-brand-v2 .yc-os-product-card > img {
+  display: block;
+  width: 100%;
+  height: clamp(178px, 16vw, 236px);
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 .yc-brand-v2 .yc-os-product-card h3,
 .yc-brand-v2 .live-client-card h3 {
   color: #ffffff !important;
@@ -9000,5 +9009,16 @@ body {
   .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(4),
   .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(5) {
     grid-column: auto !important;
+  }
+}
+
+/* Final product-card lock: tablet and small laptop should feel curated, not cramped. */
+@media (min-width: 680px) and (max-width: 1120px) {
+  .yc-brand-v2 .home-products-section .yc-os-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .yc-brand-v2 .home-products-section .yc-os-product-card > img {
+    height: clamp(210px, 25vw, 270px);
   }
 }

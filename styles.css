@@ -6700,6 +6700,19 @@ p {
   }
 }
 
+/* Tablet and narrow desktop should not make client projects feel like one long feed. */
+@media (min-width: 680px) and (max-width: 900px) {
+  .yc-brand-v2 .client-card-grid,
+  .yc-brand-v2 .projects-page .client-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .yc-brand-v2 .client-card-grid .live-client-card,
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card {
+    grid-column: auto !important;
+  }
+}
+
 /* Microphase final lock: keep the floating quote control helpful, not intrusive. */
 .yc-brand-v2 .concept-chat {
   display: block !important;

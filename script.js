@@ -1162,6 +1162,159 @@ Object.assign(englishTextTranslations, {
   "Send brief": "Enviar brief"
 });
 
+Object.assign(textTranslations, {
+  "Empresa": "Company",
+  "Documentos": "Documents",
+  "Privacidad": "Privacy",
+  "Términos": "Terms",
+  "YC Systems / Privacidad": "YC Systems / Privacy",
+  "YC Systems / Términos": "YC Systems / Terms",
+  "YC Systems / Documentos": "YC Systems / Documents",
+  "YC Systems / Company": "YC Systems / Empresa",
+  "Documentos corporativos y comerciales.": "Corporate and commercial documents.",
+  "Información pública base de YC Systems LLC, documentos comerciales usados para iniciar proyectos y enlaces legales oficiales del sitio.": "Public baseline information for YC Systems LLC, commercial documents used to start projects and official legal links for the website.",
+  "Solicitar propuesta": "Request proposal",
+  "Ver empresa": "View company",
+  "Entidad legal": "Legal entity",
+  "YC Systems LLC — New York Domestic Limited Liability Company. Founded July 2026.": "YC Systems LLC — New York Domestic Limited Liability Company. Founded July 2026.",
+  "Construir y operar": "Build and operate",
+  "Empresa real, documentos claros y términos públicos para trabajar con orden.": "Real company, clear documents and public terms to work with order.",
+  "Desarrollado por YC Systems": "Built by YC Systems"
+});
+
+Object.assign(englishTextTranslations, {
+  "Empresa": "Empresa",
+  "Documents": "Documentos",
+  "Privacy": "Privacidad",
+  "Terms": "Términos",
+  "YC Systems / Privacy": "YC Systems / Privacidad",
+  "YC Systems / Terms": "YC Systems / Términos",
+  "YC Systems / Documents": "YC Systems / Documentos",
+  "YC Systems / Empresa": "YC Systems / Company",
+  "Effective July 2026": "Vigente desde julio de 2026",
+  "Privacy Policy": "Política de privacidad",
+  "This Privacy Policy explains how YC Systems LLC collects, uses and protects information submitted through this website, email, business forms and commercial project requests.": "Esta política de privacidad explica cómo YC Systems LLC recopila, usa y protege la información enviada a través de este sitio web, correo electrónico, formularios de negocio y solicitudes comerciales.",
+  "Company": "Empresa",
+  "YC Systems LLC is a New York Domestic Limited Liability Company founded in July 2026. Website: ycsystems.io. Primary contact: contact@ycsystems.io.": "YC Systems LLC es una New York Domestic Limited Liability Company fundada en julio de 2026. Sitio web: ycsystems.io. Contacto principal: contact@ycsystems.io.",
+  "Information we may collect": "Información que podemos recopilar",
+  "Name, business name, email address, project type, budget reference, goals, timeline, project details and any information voluntarily submitted through forms, email or business communication.": "Nombre, nombre del negocio, correo electrónico, tipo de proyecto, referencia de presupuesto, objetivos, calendario, detalles del proyecto y cualquier información enviada voluntariamente por formularios, correo o comunicación comercial.",
+  "How we use information": "Cómo usamos la información",
+  "We use submitted information to respond to requests, prepare proposals, evaluate scope, coordinate business communication, provide support, improve the website and plan project delivery.": "Usamos la información enviada para responder solicitudes, preparar propuestas, evaluar alcance, coordinar comunicación comercial, brindar soporte, mejorar el sitio web y planificar la entrega de proyectos.",
+  "Third-party services": "Servicios de terceros",
+  "This website may use services such as FormSubmit for form delivery, GitHub Pages for hosting, domain/DNS providers, email providers and analytics tools when connected.": "Este sitio web puede usar servicios como FormSubmit para envío de formularios, GitHub Pages para hosting, proveedores de dominio/DNS, proveedores de correo y herramientas de analítica cuando estén conectadas.",
+  "Data protection": "Protección de datos",
+  "YC Systems LLC aims to limit access to submitted information, use business data only for legitimate operational purposes and avoid publishing client-sensitive information without permission.": "YC Systems LLC procura limitar el acceso a la información enviada, usar datos de negocio solo para fines operativos legítimos y evitar publicar información sensible de clientes sin permiso.",
+  "Your choices": "Tus opciones",
+  "You may request correction, deletion or clarification of information submitted to YC Systems by contacting contact@ycsystems.io.": "Puedes solicitar corrección, eliminación o aclaración de información enviada a YC Systems escribiendo a contact@ycsystems.io.",
+  "Updates": "Actualizaciones",
+  "This policy may be updated as YC Systems LLC grows, launches new operating systems, adds client portals or integrates additional business tools.": "Esta política puede actualizarse a medida que YC Systems LLC crezca, lance nuevos sistemas operativos, agregue portales de clientes o integre herramientas comerciales adicionales.",
+  "Terms of Service": "Términos de servicio",
+  "These Terms of Service govern use of the YC Systems LLC website and provide the public baseline for commercial proposals, software projects, operating systems, maintenance and business communication.": "Estos términos de servicio rigen el uso del sitio web de YC Systems LLC y establecen la base pública para propuestas comerciales, proyectos de software, sistemas operativos, mantenimiento y comunicación de negocio.",
+  "Services and products": "Servicios y productos",
+  "YC Systems LLC may provide business operating systems, software products, internal systems, websites, client portals, dashboards, automations, maintenance, documentation and related technology services.": "YC Systems LLC puede ofrecer sistemas operativos de negocio, productos de software, sistemas internos, sitios web, portales de clientes, dashboards, automatizaciones, mantenimiento, documentación y servicios tecnológicos relacionados.",
+  "Scope and project agreements": "Alcance y acuerdos de proyecto",
+  "Each project should be governed by a written proposal, statement of work, service agreement, invoice or written confirmation defining scope, deliverables, timeline, approvals, responsibilities and fees.": "Cada proyecto debe regirse por una propuesta escrita, alcance de trabajo, acuerdo de servicio, factura o confirmación escrita que defina alcance, entregables, calendario, aprobaciones, responsabilidades y tarifas.",
+  "Client responsibilities": "Responsabilidades del cliente",
+  "Clients are responsible for providing accurate business information, content, assets, domain access, approvals, payment information and any credentials required to complete agreed work.": "Los clientes son responsables de proporcionar información comercial precisa, contenido, activos, acceso a dominios, aprobaciones, información de pago y cualquier credencial necesaria para completar el trabajo acordado.",
+  "Payments and delivery": "Pagos y entrega",
+  "Payment terms, deposits, milestones, due dates, delivery conditions and maintenance plans must be agreed before work begins or before each new project phase.": "Los términos de pago, depósitos, hitos, fechas de vencimiento, condiciones de entrega y planes de mantenimiento deben acordarse antes de iniciar el trabajo o cada nueva fase del proyecto.",
+  "Intellectual property": "Propiedad intelectual",
+  "Unless otherwise agreed in writing, YC Systems LLC retains ownership of its pre-existing tools, templates, components, internal processes, product concepts, Nexus brand system and reusable software architecture.": "Salvo acuerdo escrito distinto, YC Systems LLC conserva la propiedad de sus herramientas preexistentes, plantillas, componentes, procesos internos, conceptos de producto, sistema de marca Nexus y arquitectura de software reutilizable.",
+  "Client content and third parties": "Contenido del cliente y terceros",
+  "Clients must have the right to use any logos, images, text, product information or third-party services they provide. Third-party platforms may have their own terms and limitations.": "Los clientes deben tener derecho a usar cualquier logo, imagen, texto, información de producto o servicio de terceros que proporcionen. Las plataformas de terceros pueden tener sus propios términos y limitaciones.",
+  "Maintenance and support": "Mantenimiento y soporte",
+  "Maintenance may include content updates, visual improvements, bug fixes, monitoring, support and new features according to the plan or agreement in place.": "El mantenimiento puede incluir actualizaciones de contenido, mejoras visuales, corrección de errores, monitoreo, soporte y nuevas funciones según el plan o acuerdo vigente.",
+  "Limitation": "Limitación",
+  "The website is provided for public information and business communication. Specific legal, financial, compliance or tax obligations should be reviewed with qualified professionals.": "El sitio web se ofrece para información pública y comunicación comercial. Las obligaciones legales, financieras, de cumplimiento o fiscales específicas deben revisarse con profesionales calificados.",
+  "Corporate and commercial documents.": "Documentos corporativos y comerciales.",
+  "Public baseline information for YC Systems LLC, commercial documents used to start projects and official legal links for the website.": "Información pública base de YC Systems LLC, documentos comerciales usados para iniciar proyectos y enlaces legales oficiales del sitio.",
+  "Request proposal": "Solicitar propuesta",
+  "View company": "Ver empresa",
+  "Legal entity": "Entidad legal",
+  "Company record": "Registro de empresa",
+  "Legal name:": "Nombre legal:",
+  "Entity type: New York Domestic Limited Liability Company": "Tipo de entidad: New York Domestic Limited Liability Company",
+  "Founded: July 2026": "Fundada: julio de 2026",
+  "Website: ycsystems.io": "Sitio web: ycsystems.io",
+  "Primary email: contact@ycsystems.io": "Correo principal: contact@ycsystems.io",
+  "Commercial proposal": "Propuesta comercial",
+  "Purpose:": "Objetivo:",
+  "define business problem, recommended system, project scope, phases, delivery timeline and investment reference.": "definir el problema de negocio, sistema recomendado, alcance del proyecto, fases, calendario de entrega y referencia de inversión.",
+  "Business summary": "Resumen del negocio",
+  "Operating system or solution recommended": "Sistema operativo o solución recomendada",
+  "Delivery phases": "Fases de entrega",
+  "Maintenance path": "Ruta de mantenimiento",
+  "Service agreement": "Acuerdo de servicio",
+  "define scope, payment terms, revisions, responsibilities, confidentiality, deliverables and support conditions before work begins.": "definir alcance, términos de pago, revisiones, responsabilidades, confidencialidad, entregables y condiciones de soporte antes de iniciar el trabajo.",
+  "Parties and scope": "Partes y alcance",
+  "Deliverables and approvals": "Entregables y aprobaciones",
+  "Out-of-scope changes": "Cambios fuera de alcance",
+  "IP and usage terms": "Términos de propiedad intelectual y uso",
+  "Invoice and billing": "Factura y cobro",
+  "invoice consistently using YC Systems LLC as the business entity, with concept, phase, due date and payment notes.": "facturar de forma consistente usando YC Systems LLC como entidad comercial, con concepto, fase, fecha de vencimiento y notas de pago.",
+  "YC Systems LLC business details": "Datos comerciales de YC Systems LLC",
+  "Client details": "Datos del cliente",
+  "Items and subtotals": "Conceptos y subtotales",
+  "Payment terms": "Términos de pago",
+  "Legal pages": "Páginas legales",
+  "Public pages:": "Páginas públicas:",
+  "privacy, terms, company, trust center and documentation keep the public site aligned with a real software company.": "privacidad, términos, empresa, centro de confianza y documentación mantienen el sitio público alineado con una empresa real de software.",
+  "Building the business operating layer for modern companies.": "Construyendo la capa operativa de negocio para empresas modernas.",
+  "YC Systems LLC is a New York Domestic Limited Liability Company founded in July 2026. The company builds operating systems, enterprise software and digital infrastructure for modern businesses.": "YC Systems LLC es una New York Domestic Limited Liability Company fundada en julio de 2026. La empresa construye sistemas operativos, software empresarial e infraestructura digital para negocios modernos.",
+  "Contact YC Systems": "Contactar YC Systems",
+  "NY LLC": "NY LLC",
+  "Founded July 2026": "Fundada en julio de 2026",
+  "Nexus OS": "Nexus OS",
+  "Mission": "Misión",
+  "Create operating systems that make businesses easier to run.": "Crear sistemas operativos que hagan que los negocios sean más fáciles de operar.",
+  "Principles": "Principios",
+  "How YC Systems builds.": "Cómo construye YC Systems.",
+  "Clarity over noise": "Claridad sobre ruido",
+  "Una sola idea fuerte: operating systems para empresas modernas.": "Una sola idea fuerte: sistemas operativos para empresas modernas.",
+  "Product thinking": "Mentalidad de producto",
+  "Nexus first": "Nexus primero",
+  "Enterprise trust": "Confianza empresarial"
+});
+
+const pageMetadataTranslations = {
+  es: {
+    "/privacy/": {
+      title: "Política de privacidad | YC Systems LLC",
+      description: "Política de privacidad de YC Systems LLC: formularios de contacto, solicitudes comerciales, analítica, comunicación de negocio y datos de proyectos de clientes.",
+    },
+    "/terms/": {
+      title: "Términos de servicio | YC Systems LLC",
+      description: "Términos de servicio de YC Systems LLC: uso del sitio, propuestas, productos de software, sistemas operativos, entrega, facturación y mantenimiento.",
+    },
+    "/documents/": {
+      title: "Documentos | YC Systems LLC",
+      description: "Documentos corporativos y comerciales de YC Systems LLC: empresa, propuestas, acuerdos, facturación, privacidad y términos.",
+    },
+    "/company/": {
+      title: "Empresa | YC Systems LLC",
+      description: "YC Systems LLC es una empresa tecnológica que construye sistemas operativos para negocios modernos.",
+    },
+  },
+  en: {
+    "/privacy/": {
+      title: "Privacy Policy | YC Systems LLC",
+      description: "Privacy Policy for YC Systems LLC: contact forms, commercial requests, analytics, business communication and client project data.",
+    },
+    "/terms/": {
+      title: "Terms of Service | YC Systems LLC",
+      description: "Terms of Service for YC Systems LLC: website use, proposals, software products, operating systems, project delivery, billing and maintenance.",
+    },
+    "/documents/": {
+      title: "Documents | YC Systems LLC",
+      description: "Corporate and commercial documents for YC Systems LLC: company, proposals, agreements, billing, privacy and terms.",
+    },
+    "/company/": {
+      title: "Company | YC Systems LLC",
+      description: "YC Systems LLC is a technology company building operating systems for modern businesses.",
+    },
+  },
+};
+
 const translatedTextNodes = new WeakMap();
 const translatedAttributes = new WeakMap();
 
@@ -1203,6 +1356,17 @@ function translatePlainText(lang) {
   });
 }
 
+function applyPageMetadata(lang) {
+  const path = window.location.pathname.replace(/\/index\.html$/, "/");
+  const metadata = pageMetadataTranslations[lang]?.[path];
+  if (!metadata) return;
+
+  document.title = metadata.title;
+  document.querySelector('meta[name="description"]')?.setAttribute("content", metadata.description);
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", metadata.title);
+  document.querySelector('meta[property="og:description"]')?.setAttribute("content", metadata.description);
+}
+
 function applyLanguage(lang) {
   document.documentElement.lang = lang;
   document.body.classList.toggle("lang-es", lang === "es");
@@ -1214,6 +1378,7 @@ function applyLanguage(lang) {
   });
 
   translatePlainText(lang);
+  applyPageMetadata(lang);
 
   langToggles.forEach((toggle) => {
     toggle.textContent = lang === "es" ? "EN" : "ES";

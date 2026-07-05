@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=yc-integral-20260704" />
+    <link rel="stylesheet" href="./styles.css?v=yc-audit-20260705" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -53,10 +53,10 @@
   <body class="yc-brand-v2">
     <header class="site-header" data-header>
       <a class="brand" href="./" aria-label="YC Systems home">
-        <span class="brand-logo"><img class="brand-logo-mark" src="./assets/brand/yc-logo-mark-white.png" alt="" aria-hidden="true" width="467" height="262" /><span class="brand-logo-text">YC Systems</span></span>
+        <span class="brand-logo"><img decoding="async" class="brand-logo-mark" src="./assets/brand/yc-logo-mark-white.png" alt="" aria-hidden="true" width="467" height="262" /><span class="brand-logo-text">YC Systems</span></span>
       </a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation" data-nav-toggle><span></span><span></span></button>
-      <nav class="main-nav" data-nav>
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation" data-nav-toggle><span></span><span></span></button>
+      <nav id="main-navigation" class="main-nav" data-nav>
         <a href="./products/">Productos</a><a href="./projects/">Proyectos de clientes</a><a href="./technology/">Tecnología</a><a href="./about/">Nosotros</a><a href="./contact/">Contacto</a>
       <button class="language-chip" type="button" data-lang-toggle aria-label="Switch to English" aria-pressed="false">EN</button></nav>
     </header>
@@ -66,21 +66,21 @@
         <div class="container hero-grid">
           <div class="hero-copy">
             <p class="eyebrow">Software products & business systems</p>
-            <h1>Software para operaciones reales.</h1>
-            <p class="hero-lede">YC Systems LLC convierte procesos dispersos en productos SaaS, sistemas internos y páginas comerciales que ayudan a operar, vender y crecer por fases.</p>
+            <h1>Sitios y sistemas que ordenan ventas y operaciones.</h1>
+            <p class="hero-lede">Diseñamos webs, dashboards y plataformas internas para negocios que necesitan vender mejor, operar con más claridad y crecer por fases.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="./contact/">Enviar brief</a>
-              <a class="button button-secondary" href="./projects/">Ver pruebas reales</a>
+              <a class="button button-primary" href="./contact/">Solicitar diagnóstico</a>
+              <a class="button button-secondary" href="./projects/">Ver casos activos</a>
             </div>
-            <div class="hero-proof" aria-label="YC Systems solution areas">
-              <span>Páginas web</span>
-              <span>Sistemas internos</span>
-              <span>Tiendas online</span>
+            <div class="hero-proof hero-proof-compact" aria-label="YC Systems proof points">
+              <span>5 sitios activos</span>
+              <span>4 productos propios</span>
+              <span>Respuesta inicial en 24h hábiles</span>
             </div>
             <div class="hero-commercial-proof" aria-label="YC Systems proof points">
               <a href="./projects/" aria-label="Ver 5 sitios activos"><strong>5</strong><span>sitios activos</span></a>
               <a href="./products/" aria-label="Ver 4 productos propios"><strong>4</strong><span>productos propios</span></a>
-              <a href="./contact/" aria-label="Enviar brief para recibir una ruta inicial"><strong>24h</strong><span>ruta inicial</span></a>
+              <a href="./contact/" aria-label="Solicitar diagnóstico para recibir una ruta inicial"><strong>24h</strong><span>respuesta inicial</span></a>
             </div>
             <div class="mobile-investor-strip" aria-label="YC Systems investor highlights">
               <article><strong>5</strong><span>sitios activos</span></article>
@@ -90,7 +90,7 @@
           </div>
           <div class="hero-visual">
             <div class="yc-ecosystem-visual" aria-label="YC Systems ecosystem">
-              <img class="ecosystem-logo" src="./assets/brand/yc-systems-logo.svg" alt="YC Systems" width="980" height="220" />
+              <img decoding="async" class="ecosystem-logo" src="./assets/brand/yc-systems-logo.svg" alt="YC Systems" width="980" height="220" />
               <div class="ecosystem-orbit orbit-a" aria-hidden="true"></div>
               <div class="ecosystem-orbit orbit-b" aria-hidden="true"></div>
               <div class="ecosystem-node node-cleanloop" aria-hidden="true"><span>CL</span></div>
@@ -100,7 +100,7 @@
               <div class="ecosystem-signal signal-b" aria-hidden="true"></div>
               <picture>
                 <source srcset="./assets/brand/nexus/nexus-hero.webp?v=public-hero-20260701" type="image/webp" />
-                <img class="ecosystem-nexus" src="./assets/brand/nexus/nexus-hero.png?v=public-hero-20260701" alt="Nexus, asistente visual de YC Systems" width="720" height="720" />
+                <img decoding="async" class="ecosystem-nexus" fetchpriority="high" loading="eager" src="./assets/brand/nexus/nexus-hero.png?v=public-hero-20260701" alt="Nexus, asistente visual de YC Systems" width="720" height="720" />
               </picture>
               <div class="ecosystem-products">
                 <a href="./products/cleanloop/"><span>01</span><strong>CleanLoop</strong><small>Piloto y alianzas</small></a>
@@ -146,7 +146,7 @@
           </div>
           <picture>
             <source srcset="./assets/brand/nexus/nexus-process.webp" type="image/webp" />
-            <img class="nexus-brand-image" src="./assets/brand/nexus/nexus-process.png" alt="Nexus guiando el proceso de YC Systems" width="1254" height="1254" loading="lazy" />
+            <img decoding="async" class="nexus-brand-image" src="./assets/brand/nexus/nexus-process.png" alt="Nexus guiando el proceso de YC Systems" width="1254" height="1254" loading="lazy" />
           </picture>
         </div>
       </section>
@@ -166,7 +166,7 @@
           </div>
           <div class="identity-story-card">
             <div class="identity-logo-lockup" aria-label="YC Systems">
-              <img src="./assets/brand/yc-logo-mark-white.png" alt="" width="467" height="262" loading="lazy" />
+              <img decoding="async" src="./assets/brand/yc-logo-mark-white.png" alt="" width="467" height="262" loading="lazy" />
               <div>
                 <strong>YC Systems</strong>
                 <span>Smart Solutions. Real Results.</span>
@@ -187,7 +187,7 @@
           </div>
           <div class="product-card-grid yc-os-product-grid">
             <a class="product-card yc-os-product-card" href="./products/cleanloop/">
-              <img src="./assets/products-showcase/cleanloop-showcase.png" alt="CleanLoop operating platform" width="1672" height="941" loading="lazy" />
+              <picture><source srcset="./assets/products-showcase/cleanloop-showcase.webp" type="image/webp" /><img decoding="async" src="./assets/products-showcase/cleanloop-showcase.png" alt="CleanLoop operating platform" width="1672" height="941" loading="lazy" /></picture>
               <div class="yc-os-card-line"><span class="status-pill pilot">Piloto</span><span>SaaS para lavanderías</span></div>
               <h3>CleanLoop</h3>
               <dl><div><dt>Mercado</dt><dd>Lavanderías</dd></div><div><dt>Resultado</dt><dd>Control operativo</dd></div></dl>
@@ -195,7 +195,7 @@
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card" href="./products/soc/">
-              <img src="./assets/products-showcase/soc-showcase.png" alt="SOC executive platform" width="1600" height="900" loading="lazy" />
+              <picture><source srcset="./assets/products-showcase/soc-showcase.webp" type="image/webp" /><img decoding="async" src="./assets/products-showcase/soc-showcase.png" alt="SOC executive platform" width="1600" height="900" loading="lazy" /></picture>
               <div class="yc-os-card-line"><span class="status-pill ready">Listo</span><span>Operaciones comerciales</span></div>
               <h3>SOC</h3>
               <dl><div><dt>Mercado</dt><dd>Ventas inmobiliarias</dd></div><div><dt>Resultado</dt><dd>Visibilidad ejecutiva</dd></div></dl>
@@ -203,7 +203,7 @@
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card" href="./products/brokercontrol/">
-              <img src="./assets/products-showcase/brokercontrol-os-showcase.png" alt="BrokerControl OS" width="1672" height="941" loading="lazy" />
+              <picture><source srcset="./assets/products-showcase/brokercontrol-os-showcase.webp" type="image/webp" /><img decoding="async" src="./assets/products-showcase/brokercontrol-os-showcase.png" alt="BrokerControl OS" width="1672" height="941" loading="lazy" /></picture>
               <div class="yc-os-card-line"><span class="status-pill ready">Listo</span><span>CRM inmobiliario</span></div>
               <h3>BrokerControl</h3>
               <dl><div><dt>Mercado</dt><dd>Asesores</dd></div><div><dt>Resultado</dt><dd>No perder oportunidades</dd></div></dl>
@@ -211,7 +211,7 @@
               <strong>Ver producto</strong>
             </a>
             <a class="product-card yc-os-product-card coming-soon-card" href="./products/">
-              <img src="./assets/products-showcase/creditpilot-showcase.png" alt="CreditPilot platform concept" width="1672" height="941" loading="lazy" />
+              <picture><source srcset="./assets/products-showcase/creditpilot-showcase.webp" type="image/webp" /><img decoding="async" src="./assets/products-showcase/creditpilot-showcase.png" alt="CreditPilot platform concept" width="1672" height="941" loading="lazy" /></picture>
               <div class="yc-os-card-line"><span class="status-pill soon">Próximo</span><span>Reparacion de crédito</span></div>
               <h3>CreditPilot</h3>
               <dl><div><dt>Mercado</dt><dd>Reparacion de crédito</dd></div><div><dt>Resultado</dt><dd>Casos y documentos</dd></div></dl>
@@ -230,11 +230,11 @@
             <p>Trabajos visibles con dominios activos: e-commerce, servicios, presencia corporativa, marca profesional y contacto directo.</p>
           </div>
           <div class="client-card-grid">
-            <a class="client-card live-client-card" href="https://ghostwear1.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/ghostwear-live-2026.png" alt="GhostWear live store" width="1440" height="1000" loading="lazy" /><div class="project-logo-mark ghost">GhostWear</div><span>E-commerce activo</span><h3>GhostWear</h3><em class="project-domain">ghostwear1.com</em><p><strong>Problema:</strong> vender productos sin depender de mensajes sueltos.</p><p><strong>Solución:</strong> catálogo, carrito y pedidos por WhatsApp.</p><p><strong>Resultado:</strong> tienda activa lista para vender.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://antonyrealestate.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/antonyrealestate-live.png" alt="Antony Real Estate advisor website" width="1440" height="1000" loading="lazy" /><div class="project-logo-mark antony"><strong>Antony</strong><span>Real Estate</span></div><span>Asesor inmobiliario</span><h3>Antony<br />Real Estate</h3><em class="project-domain">antonyrealestate.com</em><p><strong>Problema:</strong> presentar con confianza asesoría inmobiliaria en RD.</p><p><strong>Solución:</strong> web profesional, mensaje claro y contacto directo.</p><p><strong>Resultado:</strong> presencia comercial más seria.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lps-company-live.png" alt="LPS Company corporate website" width="1440" height="1000" loading="lazy" /><div class="project-logo-mark lps">LPS Company</div><span>Corporate web</span><h3>LPS Company</h3><em class="project-domain">lps-company.com</em><p><strong>Problema:</strong> marca sin presencia corporativa clara.</p><p><strong>Solución:</strong> identidad, base digital y presentación comercial.</p><p><strong>Resultado:</strong> compañía preparada para crecer.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://lucianowash.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/lucianowash-live.png" alt="LucianoWash live service website" width="1440" height="1000" loading="lazy" /><div class="project-logo-mark luciano">LucianoWash</div><span>Servicios</span><h3>LucianoWash</h3><em class="project-domain">lucianowash.lps-company.com</em><p><strong>Problema:</strong> servicios, confianza y contacto dispersos.</p><p><strong>Solución:</strong> sitio bilingüe con marca, WhatsApp y servicios claros.</p><p><strong>Resultado:</strong> experiencia móvil lista para clientes.</p><small>Ver sitio activo</small></a>
-            <a class="client-card live-client-card" href="https://snackeriado.lps-company.com/" target="_blank" rel="noopener"><img src="./assets/screenshots/snackeriado-live.png" alt="Snackeria live website" width="1440" height="1000" loading="lazy" /><div class="project-logo-mark snack">Snackeria</div><span>Convenience brand</span><h3>Snackeria</h3><em class="project-domain">snackeriado.lps-company.com</em><p><strong>Problema:</strong> explicar una oferta nueva de conveniencia.</p><p><strong>Solución:</strong> presencia digital clara con propuesta y contacto.</p><p><strong>Resultado:</strong> marca lista para presentar.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://ghostwear1.com/" target="_blank" rel="noopener"><picture><source srcset="./assets/screenshots/ghostwear-live-2026.webp" type="image/webp" /><img decoding="async" src="./assets/screenshots/ghostwear-live-2026.png" alt="GhostWear live store" width="1440" height="1000" loading="lazy" /></picture><div class="project-logo-mark ghost">GhostWear</div><span>E-commerce activo</span><h3>GhostWear</h3><em class="project-domain">ghostwear1.com</em><p><strong>Problema:</strong> vender productos sin depender de mensajes sueltos.</p><p><strong>Solución:</strong> catálogo, carrito y pedidos por WhatsApp.</p><p><strong>Resultado:</strong> tienda activa lista para vender.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://antonyrealestate.com/" target="_blank" rel="noopener"><picture><source srcset="./assets/screenshots/antonyrealestate-live.webp" type="image/webp" /><img decoding="async" src="./assets/screenshots/antonyrealestate-live.png" alt="Antony Real Estate advisor website" width="1440" height="1000" loading="lazy" /></picture><div class="project-logo-mark antony"><strong>Antony</strong><span>Real Estate</span></div><span>Asesor inmobiliario</span><h3>Antony<br />Real Estate</h3><em class="project-domain">antonyrealestate.com</em><p><strong>Problema:</strong> presentar con confianza asesoría inmobiliaria en RD.</p><p><strong>Solución:</strong> web profesional, mensaje claro y contacto directo.</p><p><strong>Resultado:</strong> presencia comercial más seria.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://lps-company.com/" target="_blank" rel="noopener"><picture><source srcset="./assets/screenshots/lps-company-live.webp" type="image/webp" /><img decoding="async" src="./assets/screenshots/lps-company-live.png" alt="LPS Company corporate website" width="1440" height="1000" loading="lazy" /></picture><div class="project-logo-mark lps">LPS Company</div><span>Corporate web</span><h3>LPS Company</h3><em class="project-domain">lps-company.com</em><p><strong>Problema:</strong> marca sin presencia corporativa clara.</p><p><strong>Solución:</strong> identidad, base digital y presentación comercial.</p><p><strong>Resultado:</strong> compañía preparada para crecer.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://lucianowash.lps-company.com/" target="_blank" rel="noopener"><picture><source srcset="./assets/screenshots/lucianowash-live.webp" type="image/webp" /><img decoding="async" src="./assets/screenshots/lucianowash-live.png" alt="LucianoWash live service website" width="1440" height="1000" loading="lazy" /></picture><div class="project-logo-mark luciano">LucianoWash</div><span>Servicios</span><h3>LucianoWash</h3><em class="project-domain">lucianowash.lps-company.com</em><p><strong>Problema:</strong> servicios, confianza y contacto dispersos.</p><p><strong>Solución:</strong> sitio bilingüe con marca, WhatsApp y servicios claros.</p><p><strong>Resultado:</strong> experiencia móvil lista para clientes.</p><small>Ver sitio activo</small></a>
+            <a class="client-card live-client-card" href="https://snackeriado.lps-company.com/" target="_blank" rel="noopener"><picture><source srcset="./assets/screenshots/snackeriado-live.webp" type="image/webp" /><img decoding="async" src="./assets/screenshots/snackeriado-live.png" alt="Snackeria live website" width="1440" height="1000" loading="lazy" /></picture><div class="project-logo-mark snack">Snackeria</div><span>Convenience brand</span><h3>Snackeria</h3><em class="project-domain">snackeriado.lps-company.com</em><p><strong>Problema:</strong> explicar una oferta nueva de conveniencia.</p><p><strong>Solución:</strong> presencia digital clara con propuesta y contacto.</p><p><strong>Resultado:</strong> marca lista para presentar.</p><small>Ver sitio activo</small></a>
           </div>
         </div>
       </section>
@@ -281,7 +281,7 @@
           <div class="pricing-note">
             <strong>Referencia comercial:</strong>
             <span>Los sitios profesionales se trabajan por alcance. Los sistemas, portales y SaaS se cotizan por módulos, fases y nivel de automatización.</span>
-            <a href="./contact/">Enviar brief rápido</a>
+            <a href="./contact/">Solicitar diagnóstico</a>
           </div>
         </div>
       </section>
@@ -330,7 +330,7 @@
             <p>Cuéntanos qué necesitas construir. Te respondemos con una ruta inicial clara: qué hacer primero, qué entregables preparar y cómo avanzar por fases.</p>
           </div>
           <div class="contact-links">
-            <a href="./contact/">Enviar brief rápido</a>
+            <a href="./contact/">Solicitar diagnóstico</a>
             <a href="mailto:contact@ycsystems.io?subject=Nuevo%20proyecto%20YC%20Systems" data-yc-mailto data-yc-mailto-subject="Nuevo proyecto YC Systems">Email principal: <strong data-yc-contact-email>contact@ycsystems.io</strong></a>
             <a href="https://www.instagram.com/yc.systems" target="_blank" rel="noopener" data-yc-contact-instagram>Escribir por Instagram</a>
             <a href="https://www.facebook.com/profile.php?id=61590842845172" target="_blank" rel="noopener" data-yc-contact-facebook>Facebook oficial: YC Systems</a>
@@ -377,6 +377,6 @@
       </div>
     </footer>
 
-    <script src="./script.js?v=yc-integral-20260704"></script>
+    <script src="./script.js?v=yc-audit-20260705"></script>
   </body>
 </html>

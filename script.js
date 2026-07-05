@@ -803,7 +803,15 @@ Object.assign(textTranslations, {
   "YC Systems nace de construir, probar y mejorar soluciones con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce y automatización.": "YC Systems was born from building, testing and improving solutions around real problems: sales, reservations, clients, routes, dashboards, e-commerce and automation.",
   "Identidad visual": "Visual identity",
   "Nexus es el constructor digital de YC Systems.": "Nexus is the digital builder of YC Systems.",
-  "Nexus representa nuestra forma de explicar tecnología sin complicarla: analizar, diseñar, automatizar y entregar soluciones digitales que ayudan a las empresas a operar mejor.": "Nexus represents our way of explaining technology without complicating it: analyze, design, automate and deliver digital solutions that help companies operate better."
+  "Nexus representa nuestra forma de explicar tecnología sin complicarla: analizar, diseñar, automatizar y entregar soluciones digitales que ayudan a las empresas a operar mejor.": "Nexus represents our way of explaining technology without complicating it: analyze, design, automate and deliver digital solutions that help companies operate better.",
+  "Sitios y sistemas que ordenan ventas y operaciones.": "Websites and systems that organize sales and operations.",
+  "Diseñamos webs, dashboards y plataformas internas para negocios que necesitan vender mejor, operar con más claridad y crecer por fases.": "We design websites, dashboards and internal platforms for businesses that need to sell better, operate with more clarity and grow in phases.",
+  "Solicitar diagnóstico": "Request assessment",
+  "Ver casos activos": "View active cases",
+  "5 sitios activos": "5 active sites",
+  "4 productos propios": "4 owned products",
+  "Respuesta inicial en 24h hábiles": "Initial response in 24 business hours",
+  "respuesta inicial": "initial response"
 });
 
 const spanishTextTranslations = Object.entries(textTranslations).reduce((translations, [spanish, english]) => {
@@ -817,6 +825,14 @@ const englishTextTranslations = {
   "Technology": "Tecnología",
   "About": "Nosotros",
   "Contact": "Contacto",
+  "Websites and systems that organize sales and operations.": "Sitios y sistemas que ordenan ventas y operaciones.",
+  "We design websites, dashboards and internal platforms for businesses that need to sell better, operate with more clarity and grow in phases.": "Diseñamos webs, dashboards y plataformas internas para negocios que necesitan vender mejor, operar con más claridad y crecer por fases.",
+  "Request assessment": "Solicitar diagnóstico",
+  "View active cases": "Ver casos activos",
+  "5 active sites": "5 sitios activos",
+  "4 owned products": "4 productos propios",
+  "Initial response in 24 business hours": "Respuesta inicial en 24h hábiles",
+  "initial response": "respuesta inicial",
   "Software Products & Business Systems": "Productos de software y sistemas de negocio",
   "We build software products that help companies operate, grow and scale.": "Construimos productos de software que ayudan a las empresas a operar, crecer y escalar.",
   "YC Systems builds software that solves real business problems.": "YC Systems construye software que resuelve problemas reales de negocio.",
@@ -1166,6 +1182,7 @@ navToggle?.addEventListener("click", () => {
   const isOpen = nav?.classList.toggle("is-open");
   document.body.classList.toggle("nav-open", Boolean(isOpen));
   navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  navToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
 });
 
 nav?.querySelectorAll("a").forEach((link) => {
@@ -1173,6 +1190,7 @@ nav?.querySelectorAll("a").forEach((link) => {
     nav.classList.remove("is-open");
     document.body.classList.remove("nav-open");
     navToggle?.setAttribute("aria-label", "Open navigation");
+    navToggle?.setAttribute("aria-expanded", "false");
   });
 });
 

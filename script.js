@@ -1588,6 +1588,27 @@ Object.assign(textTranslations, {
   "The value of YC Systems lives in systems that can scale.": "The value of YC Systems lives in systems that can scale."
 });
 
+Object.assign(textTranslations, {
+  "El problema": "The problem",
+  "Las empresas no fallan por falta de software. Fallan por operar con sistemas desconectados.": "Companies do not fail because they lack software. They fail because they operate with disconnected systems.",
+  "Ventas en WhatsApp. Clientes en hojas de cálculo. Pagos en otro lugar. Documentos sin trazabilidad. YC Systems convierte esa operación fragmentada en infraestructura digital clara.": "Sales in WhatsApp. Customers in spreadsheets. Payments somewhere else. Documents without traceability. YC Systems turns fragmented operations into clear digital infrastructure.",
+  "Operación dispersa": "Scattered operations",
+  "Procesos críticos dependen de mensajes, archivos y memoria del equipo.": "Critical processes depend on messages, files and team memory.",
+  "Poca visibilidad": "Low visibility",
+  "Los dueños no ven pipeline, capacidad, ingresos, documentos y riesgos en un solo lugar.": "Owners cannot see pipeline, capacity, revenue, documents and risks in one place.",
+  "Crecimiento frágil": "Fragile growth",
+  "Cuando el negocio crece, la operación manual empieza a romperse.": "When the business grows, manual operations start to break.",
+  "Decisiones lentas": "Slow decisions",
+  "Sin datos claros, cada mejora depende de intuición en vez de evidencia.": "Without clear data, every improvement depends on intuition instead of evidence.",
+  "YC Systems construye Operating Systems para negocios reales.": "YC Systems builds Operating Systems for real businesses.",
+  "No son cuatro aplicaciones aisladas. Son verticales conectados por una misma forma de pensar: módulos, datos, roles, automatización, soporte y Nexus como capa de inteligencia.": "They are not four isolated applications. They are verticals connected by the same way of thinking: modules, data, roles, automation, support and Nexus as an intelligence layer.",
+  "Industrias": "Industries",
+  "Una misma arquitectura aplicada a operaciones distintas.": "One architecture applied to different operations.",
+  "Convierte tu operación en un sistema que pueda crecer.": "Turn your operation into a system that can grow.",
+  "Cuéntanos cómo opera tu negocio hoy. YC Systems responde con una ruta inicial: problema principal, sistema recomendado, primera fase y próximos entregables.": "Tell us how your business operates today. YC Systems responds with an initial route: main problem, recommended system, first phase and next deliverables.",
+  "Solicitar diagnóstico operativo": "Request operational assessment",
+});
+
 const translatedTextNodes = new WeakMap();
 const translatedAttributes = new WeakMap();
 

@@ -9607,3 +9607,39 @@ body {
     font-size: clamp(2.05rem, 10vw, 2.9rem);
   }
 }
+
+/* Final mobile navigation lock: menu stays visible regardless of page scroll. */
+@media (max-width: 760px) {
+  body.nav-open {
+    overflow: hidden !important;
+  }
+
+  body.nav-open.yc-brand-v2 .site-header,
+  .yc-brand-v2:has(.main-nav.is-open) .site-header {
+    position: fixed !important;
+    inset: 0 0 auto 0 !important;
+    z-index: 1000 !important;
+  }
+
+  body.nav-open.yc-brand-v2 .main-nav.is-open,
+  .yc-brand-v2 .main-nav.is-open {
+    position: fixed !important;
+    top: 76px !important;
+    left: 12px !important;
+    right: 12px !important;
+    z-index: 999 !important;
+    display: grid !important;
+    max-height: calc(100svh - 92px) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+  }
+
+  body.nav-open.yc-brand-v2::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(2, 8, 18, 0.54);
+    backdrop-filter: blur(4px);
+  }
+}

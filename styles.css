@@ -10191,6 +10191,7 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.product-sales-page .product-page-shot {
+  position: relative;
   border-radius: 24px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
 }
@@ -10199,6 +10200,28 @@ body.nav-open.yc-brand-v2::before {
   min-height: 0;
   max-height: 520px;
   object-fit: cover;
+}
+
+.yc-brand-v2 .product-shot-badges {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.yc-brand-v2 .product-shot-badges span {
+  border: 1px solid rgba(0, 216, 255, 0.28);
+  border-radius: 999px;
+  padding: 8px 10px;
+  background: rgba(2, 8, 18, 0.82);
+  color: #f8fbff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
 }
 
 .yc-brand-v2 .product-sales-strip {
@@ -10269,6 +10292,17 @@ body.nav-open.yc-brand-v2::before {
   padding: 20px;
 }
 
+.yc-brand-v2 .product-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.yc-brand-v2.product-sales-page .product-page-cta .button {
+  white-space: nowrap;
+}
+
 @media (max-width: 980px) {
   .yc-brand-v2.product-sales-page .product-hero-grid,
   .yc-brand-v2.product-sales-page .product-meta-grid,
@@ -10279,6 +10313,10 @@ body.nav-open.yc-brand-v2::before {
 
   .yc-brand-v2.product-sales-page .product-page-shot img {
     max-height: 420px;
+  }
+
+  .yc-brand-v2 .product-cta-actions {
+    justify-content: flex-start;
   }
 }
 
@@ -10311,6 +10349,18 @@ body.nav-open.yc-brand-v2::before {
     max-height: 220px;
   }
 
+  .yc-brand-v2 .product-shot-badges {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    gap: 6px;
+  }
+
+  .yc-brand-v2 .product-shot-badges span {
+    padding: 6px 8px;
+    font-size: 0.64rem;
+  }
+
   .yc-brand-v2.product-sales-page .product-meta-grid,
   .yc-brand-v2.product-sales-page .product-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -10334,5 +10384,9 @@ body.nav-open.yc-brand-v2::before {
   .yc-brand-v2.product-sales-page .product-detail-grid p {
     font-size: 0.78rem;
     line-height: 1.35;
+  }
+
+  .yc-brand-v2.product-sales-page .product-page-cta .button {
+    width: 100%;
   }
 }

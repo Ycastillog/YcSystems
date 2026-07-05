@@ -9034,3 +9034,85 @@ body {
     height: clamp(210px, 25vw, 270px);
   }
 }
+
+/* Final projects-page lock: five live client sites should read as a curated portfolio, not a cramped strip. */
+.yc-brand-v2 .projects-page .product-hero-grid {
+  grid-template-columns: minmax(0, 0.86fr) minmax(440px, 1fr);
+  align-items: center;
+}
+
+.yc-brand-v2 .projects-page .live-sites-mosaic {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.yc-brand-v2 .projects-page .live-sites-mosaic img {
+  height: clamp(118px, 12vw, 178px);
+  object-position: top center;
+}
+
+.yc-brand-v2 .projects-page .live-sites-mosaic img:nth-child(1),
+.yc-brand-v2 .projects-page .live-sites-mosaic img:nth-child(2) {
+  grid-column: span 3;
+}
+
+.yc-brand-v2 .projects-page .live-sites-mosaic img:nth-child(n + 3) {
+  grid-column: span 2;
+}
+
+.yc-brand-v2 .projects-page .client-card-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: clamp(16px, 2vw, 22px);
+}
+
+.yc-brand-v2 .projects-page .client-card-grid .live-client-card {
+  grid-column: span 2;
+  min-height: 560px;
+}
+
+.yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(4),
+.yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(5) {
+  grid-column: span 3;
+}
+
+.yc-brand-v2 .projects-page .client-card img {
+  height: clamp(150px, 15vw, 220px);
+}
+
+.yc-brand-v2 .projects-page .client-card h3 {
+  font-size: clamp(1.45rem, 1.7vw, 1.9rem);
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .yc-brand-v2 .projects-page .product-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .projects-page .live-sites-mosaic img {
+    height: clamp(130px, 18vw, 210px);
+  }
+
+  .yc-brand-v2 .projects-page .client-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card,
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(4),
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(5) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 679px) {
+  .yc-brand-v2 .projects-page .client-card-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card,
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(4),
+  .yc-brand-v2 .projects-page .client-card-grid .live-client-card:nth-child(5) {
+    grid-column: auto;
+    min-height: auto;
+  }
+}

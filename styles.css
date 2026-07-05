@@ -9084,9 +9084,25 @@ body {
   font-size: clamp(1.45rem, 1.7vw, 1.9rem);
 }
 
-@media (min-width: 901px) and (max-width: 1180px) {
+@media (min-width: 680px) and (max-width: 1180px) {
   .yc-brand-v2 .projects-page .product-hero-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .projects-page .product-hero-grid > div:first-child,
+  .yc-brand-v2 .projects-page .hero-lede,
+  .yc-brand-v2 .projects-page .hero-actions,
+  .yc-brand-v2 .projects-page .mobile-project-proof {
+    max-width: 680px;
+  }
+
+  .yc-brand-v2 .projects-page .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .yc-brand-v2 .projects-page .hero-actions .button {
+    width: auto;
   }
 
   .yc-brand-v2 .projects-page .live-sites-mosaic img {

@@ -1,15 +1,15 @@
 {
   "name": "YC Systems",
   "short_name": "YC Systems",
-  "description": "Smart Solutions. Real Results.",
-  "start_url": "/YcSystems/",
-  "scope": "/YcSystems/",
+  "description": "Business operating systems for modern companies.",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#071526",
   "theme_color": "#071526",
   "icons": [
     {
-      "src": "/YcSystems/assets/apple-touch-icon.png",
+      "src": "/assets/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png"
     }

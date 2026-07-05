@@ -22,7 +22,7 @@ nav?.querySelectorAll("a[href]").forEach((link) => {
   const linkUrl = new URL(link.getAttribute("href"), window.location.href);
   const linkPath = linkUrl.pathname.replace(/\/index\.html$/, "/");
   const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
-  const isHome = linkPath.endsWith("/YcSystems/") || linkPath === "/";
+  const isHome = linkPath === "/";
   const isActive = isHome ? currentPath === linkPath : currentPath.startsWith(linkPath);
 
   if (isActive) {

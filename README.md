@@ -1,6 +1,6 @@
-# YC Systems Corporate Website
+# YC Systems LLC Corporate Website
 
-Corporate website for YC Systems, the parent company behind BrokerControl, Sales Operations Center, CleanLoop, and GhostWear.
+Corporate website for YC Systems LLC, a software company building business operating systems, SaaS products, client portals, automation and digital infrastructure for modern companies.
 
 ## Local Preview
 
@@ -14,31 +14,38 @@ Open:
 http://127.0.0.1:3001/index.html
 ```
 
-## Site Structure
+## Public IA
 
 ```text
 /
-/products/brokercontrol/
-/products/soc/
+/operating-systems/
+/solutions/
+/industries/
+/case-studies/
+/company/
+/contact/
+/trust-center/
+/documentation/
+/developers/
+/documents/
+/privacy/
+/terms/
+```
+
+Product detail and case detail routes remain available under:
+
+```text
 /products/cleanloop/
+/products/soc/
+/products/brokercontrol/
 /brands/ghostwear/
 ```
 
-Legacy paths such as `/brokercontrol/` and `/ghostwear/` redirect to the current product and brand structure.
+Compatibility routes such as `/products/`, `/projects/`, `/about/`, `/brands/`, `/process/` and `/services/` are kept for old links, but the public sitemap and primary navigation use the final IA above.
 
 ## Deployment
 
-This is a static website and can be deployed to:
-
-- Vercel
-- Netlify
-- GitHub Pages
-
-Deployment configs are included:
-
-- `vercel.json`
-- `netlify.toml`
-- `.github/workflows/deploy-pages.yml`
+This is a static website deployed to GitHub Pages through `.github/workflows/deploy-pages.yml`.
 
 ## Public URL
 
@@ -48,22 +55,7 @@ Current public URL:
 https://ycsystems.io/
 ```
 
-## Domain Setup
-
-Future domain options:
-
-```text
-ycsystems.dev
-```
-
-Other options:
-
-```text
-ycsystems.io
-ycsystems.do
-```
-
-Recommended email:
+## Corporate Contact
 
 ```text
 contact@ycsystems.io
@@ -73,4 +65,3 @@ contact@ycsystems.io
 
 - Public WhatsApp number, when ready
 - Public LinkedIn company/founder profile, when ready
-- Purchased domain

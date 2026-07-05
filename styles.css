@@ -10066,3 +10066,48 @@ body.nav-open.yc-brand-v2::before {
     width: 100%;
   }
 }
+
+/* Legal and public documents must never overflow the viewport. */
+.yc-brand-v2 .legal-page,
+.yc-brand-v2 .documents-section {
+  overflow-x: clip;
+}
+
+.yc-brand-v2 .legal-page .container,
+.yc-brand-v2 .documents-section .container,
+.yc-brand-v2 .legal-layout,
+.yc-brand-v2 .legal-layout > *,
+.yc-brand-v2 .legal-card,
+.yc-brand-v2 .documents-grid,
+.yc-brand-v2 .documents-grid article {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.yc-brand-v2 .legal-card,
+.yc-brand-v2 .documents-grid article {
+  overflow: hidden;
+}
+
+.yc-brand-v2 .legal-card h2,
+.yc-brand-v2 .legal-card p,
+.yc-brand-v2 .documents-grid h2,
+.yc-brand-v2 .documents-grid p,
+.yc-brand-v2 .documents-grid li,
+.yc-brand-v2 .documents-grid a {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 900px) {
+  .yc-brand-v2 .legal-page .container,
+  .yc-brand-v2 .documents-section .container {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .yc-brand-v2 .legal-layout,
+  .yc-brand-v2 .documents-grid {
+    grid-template-columns: 1fr;
+  }
+}

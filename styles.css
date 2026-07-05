@@ -9514,7 +9514,7 @@ body {
 .yc-brand-v2 .intent-panel h2 {
   max-width: 12ch;
   margin-bottom: 14px;
-  color: #f8fbff;
+  color: #f8fbff !important;
   font-size: clamp(2.3rem, 4vw, 4.2rem);
   line-height: 0.98;
 }
@@ -9606,9 +9606,4 @@ body {
     max-width: 100%;
     font-size: clamp(2.05rem, 10vw, 2.9rem);
   }
-}
-
-.yc-brand-v2 .intent-panel h2,
-.yc-brand-v2 .home-intent-section .intent-panel h2 {
-  color: #f8fbff !important;
 }

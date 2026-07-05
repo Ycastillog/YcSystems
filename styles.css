@@ -9060,6 +9060,231 @@ body {
   object-position: center;
 }
 
+/* YC Systems Enterprise V2: product-company layer */
+.yc-enterprise-v2,
+.yc-brand-v2 {
+  --yc-v2-bg: #020817;
+  --yc-v2-surface: rgba(6, 18, 34, 0.78);
+  --yc-v2-surface-strong: rgba(10, 27, 50, 0.92);
+  --yc-v2-border: rgba(0, 216, 255, 0.18);
+  --yc-v2-border-strong: rgba(0, 216, 255, 0.42);
+  --yc-v2-text: #f8fbff;
+  --yc-v2-muted: #adc0d8;
+  --yc-v2-cyan: #00d8ff;
+  --yc-v2-blue: #2563eb;
+  --yc-v2-green: #5cff5c;
+  --yc-v2-radius: 24px;
+  --yc-v2-radius-sm: 14px;
+  --yc-v2-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
+}
+
+.yc-enterprise-v2 .enterprise-hero {
+  min-height: min(760px, calc(86svh - 76px));
+  display: flex;
+  align-items: center;
+}
+
+.yc-enterprise-v2 .enterprise-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+  gap: clamp(32px, 6vw, 86px);
+  align-items: center;
+}
+
+.yc-enterprise-v2 .enterprise-hero h1,
+.yc-brand-v2 .enterprise-hero h1 {
+  max-width: 980px;
+  margin: 0;
+  color: var(--yc-v2-text);
+  font-size: clamp(2.8rem, 6.4vw, 5.9rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.yc-enterprise-v2 .enterprise-hero .hero-lede {
+  max-width: 760px;
+  margin-top: 24px;
+  color: var(--yc-v2-muted);
+  font-size: clamp(1rem, 2vw, 1.22rem);
+}
+
+.enterprise-command-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+  border: 1px solid var(--yc-v2-border-strong);
+  border-radius: 34px;
+  padding: clamp(24px, 4vw, 40px);
+  background:
+    linear-gradient(145deg, rgba(10, 27, 50, 0.9), rgba(2, 8, 23, 0.78)),
+    radial-gradient(circle at 70% 20%, rgba(0, 216, 255, 0.2), transparent 18rem);
+  box-shadow: var(--yc-v2-shadow);
+}
+
+.enterprise-command-card::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(0, 216, 255, 0.1);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, rgba(0, 216, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(0, 216, 255, 0.04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  pointer-events: none;
+}
+
+.enterprise-command-card > span {
+  position: relative;
+  display: inline-flex;
+  border: 1px solid rgba(0, 216, 255, 0.24);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--yc-v2-cyan);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.enterprise-command-card > strong {
+  position: relative;
+  display: block;
+  max-width: 440px;
+  margin-top: 24px;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.98;
+}
+
+.enterprise-signal-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.enterprise-signal-grid em,
+.enterprise-os-grid :is(a, article) {
+  border: 1px solid var(--yc-v2-border);
+  border-radius: var(--yc-v2-radius-sm);
+  background: rgba(2, 8, 23, 0.62);
+}
+
+.enterprise-signal-grid em {
+  padding: 14px 12px;
+  color: var(--yc-v2-text);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.enterprise-os-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.enterprise-os-grid :is(a, article) {
+  min-height: 250px;
+  padding: 22px;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.enterprise-os-grid :is(a, article):hover {
+  border-color: var(--yc-v2-border-strong);
+  background: rgba(8, 24, 46, 0.82);
+  transform: translateY(-3px);
+}
+
+.enterprise-os-grid span {
+  color: var(--yc-v2-cyan);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.enterprise-os-grid strong {
+  display: block;
+  margin-top: 18px;
+  color: #fff;
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  line-height: 1.06;
+}
+
+.enterprise-os-grid p {
+  margin: 16px 0 0;
+  color: var(--yc-v2-muted);
+}
+
+.enterprise-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.enterprise-split h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(2.3rem, 5vw, 4.7rem);
+  line-height: 0.96;
+}
+
+.enterprise-split > p {
+  margin: 0;
+  color: var(--yc-v2-muted);
+  font-size: clamp(1.05rem, 2vw, 1.32rem);
+}
+
+.enterprise-nexus-band {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(92, 255, 92, 0.12), transparent 24rem),
+    rgba(2, 8, 23, 0.36);
+}
+
+.yc-brand-v2 .main-nav a[href*="operating-systems"],
+.yc-brand-v2 .main-nav a[href*="solutions"],
+.yc-brand-v2 .main-nav a[href*="industries"],
+.yc-brand-v2 .main-nav a[href*="case-studies"],
+.yc-brand-v2 .main-nav a[href*="company"] {
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .yc-enterprise-v2 .enterprise-hero-grid,
+  .enterprise-split {
+    grid-template-columns: 1fr;
+  }
+
+  .enterprise-os-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .yc-enterprise-v2 .enterprise-hero {
+    min-height: auto;
+  }
+
+  .yc-enterprise-v2 .enterprise-hero h1,
+  .yc-brand-v2 .enterprise-hero h1 {
+    font-size: clamp(2.55rem, 13vw, 3.9rem);
+  }
+
+  .enterprise-command-card {
+    min-height: 280px;
+    border-radius: 24px;
+  }
+
+  .enterprise-signal-grid,
+  .enterprise-os-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .yc-brand-v2 .yc-os-product-lane.creditpilot .asset-media img {
   object-position: center top;
 }

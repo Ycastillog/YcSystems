@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ycsystems.io/</loc></url>
+  <url><loc>https://ycsystems.io/operating-systems/</loc></url>
+  <url><loc>https://ycsystems.io/solutions/</loc></url>
+  <url><loc>https://ycsystems.io/industries/</loc></url>
+  <url><loc>https://ycsystems.io/case-studies/</loc></url>
+  <url><loc>https://ycsystems.io/company/</loc></url>
   <url><loc>https://ycsystems.io/products/</loc></url>
   <url><loc>https://ycsystems.io/projects/</loc></url>
   <url><loc>https://ycsystems.io/brands/</loc></url>
@@ -9,6 +14,11 @@
   <url><loc>https://ycsystems.io/technology/</loc></url>
   <url><loc>https://ycsystems.io/contact/</loc></url>
   <url><loc>https://ycsystems.io/partners/</loc></url>
+  <url><loc>https://ycsystems.io/trust-center/</loc></url>
+  <url><loc>https://ycsystems.io/documentation/</loc></url>
+  <url><loc>https://ycsystems.io/developers/</loc></url>
+  <url><loc>https://ycsystems.io/careers/</loc></url>
+  <url><loc>https://ycsystems.io/press/</loc></url>
   <url><loc>https://ycsystems.io/documents/</loc></url>
   <url><loc>https://ycsystems.io/privacy/</loc></url>
   <url><loc>https://ycsystems.io/terms/</loc></url>

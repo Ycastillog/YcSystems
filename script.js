@@ -814,6 +814,32 @@ Object.assign(textTranslations, {
   "respuesta inicial": "initial response"
 });
 
+Object.assign(textTranslations, {
+  "Operating Systems": "Operating Systems",
+  "Solutions": "Solutions",
+  "Industries": "Industries",
+  "Case Studies": "Case Studies",
+  "Company": "Company",
+  "Contact": "Contact",
+  "Request assessment": "Solicitar diagnóstico",
+  "Explore operating systems": "Explorar operating systems",
+  "Explore OS stack": "Explorar arquitectura OS",
+  "View OS architecture": "Ver arquitectura OS",
+  "Developer platform": "Portal Developers",
+  "Trust Center": "Trust Center",
+  "Documentation": "Documentation",
+  "Developers": "Developers",
+  "Careers": "Careers",
+  "Press": "Press",
+  "Operating systems for modern businesses.": "Operating systems para empresas modernas.",
+  "Enterprise Operating Systems": "Enterprise Operating Systems",
+  "Nexus intelligence layer": "Capa de inteligencia Nexus",
+  "4 business operating systems": "4 business operating systems",
+  "5 active case studies": "5 case studies activos",
+  "From websites to enterprise infrastructure.": "De páginas web a infraestructura empresarial.",
+  "The intelligence layer behind YC Systems.": "La capa de inteligencia detrás de YC Systems."
+});
+
 const spanishTextTranslations = Object.entries(textTranslations).reduce((translations, [spanish, english]) => {
   if (!translations[english]) translations[english] = spanish;
   return translations;
@@ -1085,6 +1111,24 @@ Object.assign(textTranslations, {
 });
 
 Object.assign(englishTextTranslations, {
+  "Operating Systems": "Sistemas operativos",
+  "Solutions": "Soluciones",
+  "Industries": "Industrias",
+  "Case Studies": "Casos de estudio",
+  "Company": "Empresa",
+  "Contact": "Contacto",
+  "Request assessment": "Solicitar diagnóstico",
+  "Explore operating systems": "Explorar sistemas operativos",
+  "Explore OS stack": "Explorar arquitectura OS",
+  "View OS architecture": "Ver arquitectura OS",
+  "Developer platform": "Portal de desarrolladores",
+  "Operating systems for modern businesses.": "Sistemas operativos para empresas modernas.",
+  "Enterprise Operating Systems": "Sistemas operativos empresariales",
+  "Nexus intelligence layer": "Capa de inteligencia Nexus",
+  "4 business operating systems": "4 sistemas operativos de negocio",
+  "5 active case studies": "5 casos activos",
+  "From websites to enterprise infrastructure.": "De páginas web a infraestructura empresarial.",
+  "The intelligence layer behind YC Systems.": "La capa de inteligencia detrás de YC Systems.",
   "A software company building real products.": "Una empresa de software construyendo productos reales.",
   "YC Systems LLC develops SaaS products, internal systems, industry platforms and digital experiences for businesses that need to operate better, sell with more trust and grow with technology.": "YC Systems LLC desarrolla productos SaaS, sistemas internos, plataformas por industria y experiencias digitales para negocios que necesitan operar mejor, vender con más confianza y crecer con tecnología.",
   "View real execution": "Ver ejecución real",

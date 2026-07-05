@@ -9263,6 +9263,10 @@ body {
   object-position: center;
 }
 
+.yc-brand-v2 .yc-os-product-lane.creditpilot .asset-media img {
+  object-position: center top;
+}
+
 .yc-brand-v2 .product-buy-panel {
   display: grid;
   grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1fr);

@@ -2,7 +2,7 @@
   [switch]$DryRun,
   [string]$Slot = "",
   [string]$QueuePath = "content/yc-systems-facebook-30-day-3x-queue.tsv",
-  [string]$BasePublicUrl = "https://ycastillog.github.io/YcSystems",
+  [string]$BasePublicUrl = "https://ycsystems.io",
   [string]$GraphVersion = "v25.0"
 )
 

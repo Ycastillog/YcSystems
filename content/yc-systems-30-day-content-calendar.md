@@ -1,4 +1,4 @@
-# YC Systems - 30-Day Social Content Calendar
+﻿# YC Systems - 30-Day Social Content Calendar
 
 Periodo sugerido: 11 de junio de 2026 al 9 de julio de 2026.
 Frecuencia: 2 publicaciones por semana.
@@ -6,7 +6,7 @@ Canales: Instagram y Facebook.
 Objetivo: crecer, generar confianza y convertir interesados en leads para la pagina de contacto.
 
 Link principal:
-https://ycastillog.github.io/YcSystems/contact/
+https://ycsystems.io/contact/
 
 Bio recomendada:
 YC Systems builds software products, websites, e-commerce stores, CRM, dashboards and SaaS solutions for real businesses.
@@ -41,7 +41,7 @@ CTA:
 Solicita una propuesta inicial.
 
 Link:
-https://ycastillog.github.io/YcSystems/contact/
+https://ycsystems.io/contact/
 
 ## Semana 2
 
@@ -63,7 +63,7 @@ CTA:
 Quieres una tienda como esta?
 
 Link:
-https://ycastillog.github.io/YcSystems/contact/
+https://ycsystems.io/contact/
 
 ### Jueves 18 junio - Sistema interno / CRM
 Formato: Carrusel educativo.
@@ -229,7 +229,7 @@ CTA:
 Solicita una propuesta inicial hoy.
 
 Link:
-https://ycastillog.github.io/YcSystems/contact/
+https://ycsystems.io/contact/
 
 ## Notas de publicacion
 
@@ -241,4 +241,4 @@ Regla:
 Cada publicacion debe cerrar con una accion clara: solicitar propuesta, escribir por DM o entrar al formulario.
 
 Respuesta rapida para DMs:
-Hola, gracias por escribir a YC Systems. Cuentame que quieres construir: pagina web, tienda online, sistema interno, dashboard, SaaS o mantenimiento. Si prefieres, completa el brief aqui: https://ycastillog.github.io/YcSystems/contact/
+Hola, gracias por escribir a YC Systems. Cuentame que quieres construir: pagina web, tienda online, sistema interno, dashboard, SaaS o mantenimiento. Si prefieres, completa el brief aqui: https://ycsystems.io/contact/

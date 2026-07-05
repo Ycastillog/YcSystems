@@ -1,5 +1,5 @@
-param(
-  [string]$BasePublicUrl = "https://ycastillog.github.io/YcSystems",
+﻿param(
+  [string]$BasePublicUrl = "https://ycsystems.io",
   [string]$GraphVersion = "v25.0"
 )
 

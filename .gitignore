@@ -1,5 +1,6 @@
 .repo-analysis/
 artifacts/
+output/
 .env
 .env.*
 *.token

@@ -35,7 +35,7 @@ Construimos para operar y crecer.
 
 ## Link
 
-https://ycastillog.github.io/YcSystems/
+https://ycsystems.io/
 
 ## Highlights
 

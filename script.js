@@ -6,8 +6,8 @@ const langToggles = document.querySelectorAll("[data-lang-toggle], .language-chi
 const translatableElements = document.querySelectorAll("[data-i18n]");
 
 const YC_CONTACT = Object.freeze({
-  email: "ycsystems@gmail.com",
-  futureEmail: "contact@ycsystems.io",
+  email: "contact@ycsystems.io",
+  futureEmail: "support@ycsystems.io",
   adminEmail: "admin@ycsystems.io",
   helloEmail: "hello@ycsystems.io",
   whatsapp: "",
@@ -502,7 +502,7 @@ Object.assign(textTranslations, {
   "El software debe generar impacto.": "Software must create impact.",
   "Hablemos de tu próxima página, aplicación, sistema o plataforma.": "Let's talk about your next website, application, system or platform.",
   "Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciones construidas por YC Systems.": "Current channels for projects: email, Instagram, Facebook, public GitHub and a portfolio of solutions built by YC Systems.",
-  "Email principal: ycsystems@gmail.com": "Primary email: ycsystems@gmail.com",
+  "Email principal: contact@ycsystems.io": "Primary email: contact@ycsystems.io",
   "Instagram oficial: @yc.systems": "Official Instagram: @yc.systems",
   "Facebook oficial: YC Systems": "Official Facebook: YC Systems",
   "GitHub público: Ycastillog": "Public GitHub: Ycastillog",

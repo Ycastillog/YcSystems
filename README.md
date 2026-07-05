@@ -45,7 +45,7 @@ Deployment configs are included:
 Current public URL:
 
 ```text
-https://ycastillog.github.io/YcSystems/
+https://ycsystems.io/
 ```
 
 ## Domain Setup
@@ -66,7 +66,7 @@ ycsystems.do
 Recommended email:
 
 ```text
-ycsystems@gmail.com
+contact@ycsystems.io
 ```
 
 ## Contact Values To Finalize

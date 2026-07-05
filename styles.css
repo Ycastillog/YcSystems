@@ -9428,3 +9428,181 @@ body {
     min-height: 270px;
   }
 }
+
+/* Integral conversion pass: promise -> proof -> intent -> products/projects -> contact. */
+.yc-brand-v2 .home-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.yc-brand-v2 .home-proof-section {
+  order: 2;
+}
+
+.yc-brand-v2 .home-packages-section {
+  order: 4;
+}
+
+.yc-brand-v2 .home-intent-section {
+  order: 3;
+}
+
+.yc-brand-v2 .home-products-section {
+  order: 5;
+}
+
+.yc-brand-v2 .home-clients-section {
+  order: 6;
+}
+
+.yc-brand-v2 .home-nexus-section {
+  order: 7;
+}
+
+.yc-brand-v2 .home-identity-section {
+  order: 8;
+}
+
+.yc-brand-v2 .home-about-section {
+  order: 9;
+}
+
+.yc-brand-v2 .home-contact-section {
+  order: 10;
+}
+
+.yc-brand-v2 :where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid #f8fbff;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 7px rgba(0, 216, 255, 0.24);
+}
+
+.yc-brand-v2 .home-proof-section {
+  padding-top: clamp(42px, 6vw, 72px);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(92, 255, 92, 0.08), transparent 24rem),
+    linear-gradient(180deg, rgba(3, 10, 23, 0.96), rgba(8, 20, 38, 0.64));
+}
+
+.yc-brand-v2 .home-proof-section .section-head,
+.yc-brand-v2 .home-packages-section .section-head,
+.yc-brand-v2 .home-intent-section .intent-panel > div:first-child {
+  max-width: 760px;
+}
+
+.yc-brand-v2 .home-proof-section .proof-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .home-proof-section .proof-grid article {
+  min-height: 180px;
+}
+
+.yc-brand-v2 .intent-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 54px);
+  align-items: center;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: 28px;
+  padding: clamp(22px, 4vw, 42px);
+  background:
+    radial-gradient(circle at 84% 12%, rgba(0, 216, 255, 0.16), transparent 22rem),
+    linear-gradient(145deg, rgba(9, 25, 46, 0.94), rgba(4, 12, 25, 0.96));
+}
+
+.yc-brand-v2 .intent-panel h2 {
+  max-width: 12ch;
+  margin-bottom: 14px;
+  font-size: clamp(2.3rem, 4vw, 4.2rem);
+  line-height: 0.98;
+}
+
+.yc-brand-v2 .intent-panel p {
+  color: #b9cada;
+  line-height: 1.65;
+}
+
+.yc-brand-v2 .intent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.yc-brand-v2 .intent-grid a {
+  display: flex;
+  align-items: center;
+  min-height: 62px;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(4, 13, 27, 0.68);
+  color: #f8fbff;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.yc-brand-v2 .intent-grid a:hover,
+.yc-brand-v2 .intent-grid a:focus-visible {
+  border-color: rgba(92, 255, 92, 0.5);
+  background: rgba(0, 216, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.yc-brand-v2 .home-products-section .yc-os-product-card,
+.yc-brand-v2 .home-clients-section .live-client-card {
+  min-height: 0;
+}
+
+.yc-brand-v2 .home-contact-section .contact-panel {
+  grid-template-columns: minmax(280px, 0.74fr) minmax(0, 1fr);
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 .home-proof-section .proof-grid,
+  .yc-brand-v2 .intent-panel,
+  .yc-brand-v2 .home-contact-section .contact-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .intent-panel h2 {
+    max-width: 16ch;
+  }
+}
+
+@media (max-width: 679px) {
+  .yc-brand-v2 .home-proof-section .proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .yc-brand-v2 .home-proof-section .proof-grid article {
+    min-height: 0;
+    padding: 14px;
+  }
+
+  .yc-brand-v2 .home-proof-section .proof-grid strong {
+    font-size: 1rem;
+    line-height: 1.18;
+  }
+
+  .yc-brand-v2 .home-proof-section .proof-grid span {
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .yc-brand-v2 .intent-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .intent-panel {
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .yc-brand-v2 .intent-panel h2 {
+    max-width: 100%;
+    font-size: clamp(2.05rem, 10vw, 2.9rem);
+  }
+}

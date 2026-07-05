@@ -100,7 +100,6 @@
 .yc-os-product-lane,
 .yc-brand-v2 .live-client-card,
 .yc-brand-v2 .package-grid article,
-.yc-brand-v2 .company-core-grid article,
 .yc-brand-v2 .trust-grid article,
 .yc-brand-v2 .values-mini-grid article {
   position: relative;
@@ -328,7 +327,6 @@
   display: none;
 }
 
-.yc-brand-v2 .about-brand-visual,
 .yc-brand-v2 .identity-story-card,
 .yc-brand-v2 .nexus-brand-panel {
   border-radius: 32px;
@@ -553,7 +551,6 @@
 }
 
 .nexus-strip h2,
-.nexus-identity h2,
 .nexus-guide-section h2,
 .nexus-contact h2 {
   margin: 0 0 12px;
@@ -561,25 +558,17 @@
 }
 
 .nexus-strip p,
-.nexus-identity p,
 .nexus-guide-section p,
 .nexus-contact p {
   color: inherit;
 }
 
 .nexus-strip .eyebrow,
-.nexus-identity .eyebrow,
 .nexus-guide-section .eyebrow,
 .nexus-contact .eyebrow {
   color: #00c9ff;
 }
 
-.nexus-identity {
-  background: #071225;
-  color: #fff;
-}
-
-.nexus-identity-grid,
 .nexus-guide-grid,
 .nexus-contact-card {
   display: grid;
@@ -588,28 +577,11 @@
   align-items: center;
 }
 
-.nexus-identity-grid > img,
 .nexus-guide-grid > img {
   width: 100%;
   border-radius: 22px;
   border: 1px solid rgba(0, 201, 255, 0.22);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
-}
-
-.nexus-identity blockquote {
-  margin: 28px 0 0;
-  padding: 22px;
-  border-left: 3px solid #00c9ff;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #eaf4ff;
-  font-weight: 700;
-}
-
-.nexus-identity blockquote span {
-  display: block;
-  margin-top: 10px;
-  color: #00c9ff;
 }
 
 .nexus-guide-section {
@@ -745,7 +717,6 @@
     width: 100%;
   }
 
-  .nexus-identity-grid,
   .nexus-guide-grid {
     grid-template-columns: 1fr;
   }
@@ -792,10 +763,6 @@
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .launch,
   .nexus-contact,
   .compact-showcase,
@@ -820,10 +787,6 @@
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .launch,
   .nexus-contact
 ) :is(h1, h2, h3, strong) {
@@ -838,10 +801,6 @@
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .launch,
   .nexus-contact
 ) :is(p, li, span:not(.status-pill):not(.language-chip), small) {
@@ -4235,7 +4194,6 @@ p {
   align-items: center;
 }
 
-.about-hero h1,
 .projects-page .product-hero h1 {
   font-size: clamp(42px, 5.2vw, 64px);
   line-height: 1.02;
@@ -5978,8 +5936,7 @@ p {
 }
 
 .yc-method-visual,
-.yc-product-stack,
-.about-brand-visual {
+.yc-product-stack {
   overflow: hidden;
   border: 1px solid rgba(24, 215, 255, 0.24);
   border-radius: 26px;
@@ -5995,8 +5952,7 @@ p {
   padding: 24px;
 }
 
-.yc-method-visual img,
-.about-brand-visual img {
+.yc-method-visual img {
   display: block;
   width: 100%;
   max-height: 440px;
@@ -6020,8 +5976,7 @@ p {
 }
 
 .method-section,
-.product-assets,
-.company-core {
+.product-assets {
   background:
     radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.08), transparent 30%),
     linear-gradient(180deg, #ffffff, #f5f9fc);
@@ -6029,7 +5984,6 @@ p {
 
 .method-grid,
 .outcome-grid,
-.company-core-grid,
 .asset-product-list {
   display: grid;
   gap: 18px;
@@ -6040,8 +5994,7 @@ p {
 }
 
 .method-grid article,
-.outcome-grid article,
-.company-core-grid article {
+.outcome-grid article {
   min-width: 0;
   border: 1px solid rgba(37, 99, 235, 0.16);
   border-radius: var(--radius);
@@ -6052,8 +6005,7 @@ p {
   box-shadow: 0 16px 46px rgba(8, 11, 26, 0.08);
 }
 
-.method-grid span,
-.company-core-grid span {
+.method-grid span {
   display: inline-flex;
   width: fit-content;
   margin-bottom: 16px;
@@ -6067,8 +6019,7 @@ p {
 }
 
 .method-grid strong,
-.outcome-grid strong,
-.company-core-grid strong {
+.outcome-grid strong {
   display: block;
   color: var(--navy);
   font-size: 22px;
@@ -6267,86 +6218,11 @@ p {
   background: #ffffff;
 }
 
-.about-brand-visual {
-  display: grid;
-  align-content: end;
-  min-height: 500px;
-  padding: 28px;
-}
-
-.about-brand-visual div {
-  display: grid;
-  gap: 6px;
-  border: 1px solid rgba(24, 215, 255, 0.18);
-  border-radius: 18px;
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.about-brand-visual strong {
-  color: #ffffff;
-  font-size: 28px;
-}
-
-.about-brand-visual span {
-  color: #c8d8e6;
-  font-weight: 800;
-}
-
-.values-band {
-  background:
-    radial-gradient(circle at 12% 0%, rgba(130, 252, 69, 0.08), transparent 28%),
-    linear-gradient(180deg, #ffffff, #f5f9fc);
-}
-
-.founder-section {
-  background: #ffffff;
-}
-
-.founder-layout {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.7fr) minmax(0, 1fr);
-  gap: 44px;
-  align-items: center;
-}
-
-.founder-photo-card {
-  overflow: hidden;
-  border: 1px solid rgba(24, 215, 255, 0.18);
-  border-radius: 24px;
-  box-shadow: 0 24px 80px rgba(8, 11, 26, 0.14);
-}
-
-.founder-photo-card img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 58% center;
-}
-
-.founder-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 22px;
-}
-
-.founder-links a {
-  border: 1px solid rgba(37, 99, 235, 0.18);
-  border-radius: 999px;
-  padding: 9px 12px;
-  color: var(--navy);
-  background: rgba(37, 99, 235, 0.07);
-  font-weight: 900;
-}
-
 @media (max-width: 1040px) {
   .method-grid,
   .outcome-panel,
   .asset-product-card,
   .asset-product-card:nth-child(even),
-  .founder-layout,
   .nexus-method-card {
     grid-template-columns: 1fr;
   }
@@ -6359,7 +6235,6 @@ p {
 @media (max-width: 760px) {
   .method-grid,
   .outcome-grid,
-  .company-core-grid,
   .method-badges {
     grid-template-columns: 1fr;
   }
@@ -6381,10 +6256,6 @@ p {
   .asset-media,
   .asset-media img {
     min-height: 240px;
-  }
-
-  .about-brand-visual {
-    min-height: 420px;
   }
 }
 
@@ -6456,37 +6327,12 @@ p {
   pointer-events: none;
 }
 
-.yc-brand-v2 .founder-links a {
-  border-color: rgba(0, 216, 255, 0.42);
-  background: rgba(0, 216, 255, 0.12);
-  color: #f8fbff;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-.yc-brand-v2 .founder-links a:hover,
-.yc-brand-v2 .founder-links a:focus-visible {
-  background: rgba(92, 255, 92, 0.14);
-  border-color: rgba(92, 255, 92, 0.5);
-  color: #ffffff;
-}
-
-.yc-brand-v2 .values-band .trust-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.yc-brand-v2 .values-band .trust-grid article {
-  min-height: 210px;
-}
-
 @media (max-width: 760px) {
   .yc-brand-v2 .home-main .section-pad {
     padding-top: 54px;
     padding-bottom: 54px;
   }
 
-  .yc-brand-v2 .values-band .trust-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Premium cleanup: stronger contrast, calmer cards, clearer case studies */
@@ -6498,10 +6344,6 @@ p {
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .contact
 ) :is(h1, h2, h3) {
   color: #f8fbff !important;
@@ -6515,10 +6357,6 @@ p {
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .contact
 ) :is(p, li, dd, small, em) {
   color: #c7d7ea;
@@ -6528,7 +6366,6 @@ p {
   .yc-os-product-card,
   .live-client-card,
   .package-grid article,
-  .company-core-grid article,
   .trust-grid article,
   .values-mini-grid article,
   .method-grid article,
@@ -7376,18 +7213,9 @@ p {
   font-size: clamp(40px, 4.7vw, 66px);
 }
 
-.about-hero .product-hero-grid {
-  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 0.96fr);
-}
-
-.about-hero h1 {
-  font-size: clamp(42px, 5vw, 68px);
-}
-
 .client-card,
 .asset-product-card,
 .method-grid article,
-.company-core-grid article,
 .trust-grid article,
 .proof-grid article {
   border-color: rgba(0, 216, 255, 0.18);
@@ -7407,8 +7235,7 @@ p {
 
   .product-hero h1,
   .projects-page .product-hero h1,
-  .technology-hero h1,
-  .about-hero h1 {
+  .technology-hero h1 {
     font-size: clamp(34px, 10vw, 44px);
     line-height: 1.03;
   }
@@ -7421,8 +7248,7 @@ p {
   .product-hero-grid,
   .products-hero .product-hero-grid,
   .projects-page .product-hero-grid,
-  .technology-hero .product-hero-grid,
-  .about-hero .product-hero-grid {
+  .technology-hero .product-hero-grid {
     grid-template-columns: 1fr;
     gap: 28px;
   }
@@ -7473,8 +7299,7 @@ p {
     min-height: 360px;
   }
 
-  .yc-method-visual,
-  .about-brand-visual {
+  .yc-method-visual {
     border-radius: 18px;
     padding: 16px;
   }
@@ -7649,13 +7474,11 @@ body {
 .identity-story-card,
 .nexus-brand-panel,
 .asset-product-card,
-.company-core-grid article,
 .trust-grid article,
 .method-grid article,
 .outcome-grid article,
 .nexus-method-card,
 .product-buy-panel,
-.about-brand-visual,
 .yc-method-visual {
   border: 1px solid var(--yc-border);
   border-radius: var(--yc-radius-lg);
@@ -7697,8 +7520,7 @@ body {
 .values-mini-grid strong,
 .asset-product-card h3,
 .method-grid strong,
-.trust-grid strong,
-.company-core-grid strong {
+.trust-grid strong {
   color: var(--yc-white);
 }
 
@@ -7711,8 +7533,7 @@ body {
 .asset-product-card p,
 .asset-product-card li,
 .method-grid p,
-.trust-grid p,
-.company-core-grid strong {
+.trust-grid p {
   color: var(--yc-muted);
 }
 
@@ -7938,19 +7759,14 @@ body {
   opacity: 1;
 }
 
-.technology-hero .yc-method-visual,
-.about-hero .about-brand-visual {
+.technology-hero .yc-method-visual {
   background:
     radial-gradient(circle at 70% 18%, rgba(0, 216, 255, 0.22), transparent 32%),
     linear-gradient(135deg, rgba(8, 25, 47, 0.88), rgba(6, 16, 31, 0.96));
 }
 
 .business-outcomes,
-.method-section,
-.values-band,
-.company-core,
-.founder-section,
-.nexus-identity {
+.method-section {
   background: transparent;
 }
 
@@ -8412,10 +8228,8 @@ body {
 /* Public Nexus asset lock: no brand-book posters in customer-facing pages */
 .yc-brand-v2 .hero-visual picture,
 .yc-brand-v2 .nexus-brand-panel picture,
-.yc-brand-v2 .about-brand-visual picture,
 .yc-brand-v2 .yc-method-visual picture,
-.yc-brand-v2 .nexus-method-card picture,
-.yc-brand-v2 .nexus-identity-grid picture {
+.yc-brand-v2 .nexus-method-card picture {
   display: contents;
 }
 
@@ -8487,26 +8301,6 @@ body {
   filter: drop-shadow(0 0 28px rgba(0, 216, 255, 0.14));
 }
 
-.yc-brand-v2 .about-brand-visual {
-  overflow: hidden;
-}
-
-.yc-brand-v2 .about-brand-visual img {
-  width: 100%;
-  height: 100%;
-  min-height: 430px;
-  object-fit: cover;
-  object-position: 64% center;
-}
-
-.yc-brand-v2 .about-brand-visual > div {
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-  z-index: 2;
-}
-
 .yc-brand-v2 .yc-method-visual img {
   display: block;
   width: 100%;
@@ -8524,12 +8318,6 @@ body {
   width: min(220px, 100%);
   border-radius: 24px;
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.26);
-}
-
-.yc-brand-v2 .nexus-identity-grid img {
-  width: 100%;
-  max-height: 500px;
-  object-fit: contain;
 }
 
 @media (max-width: 980px) {
@@ -8569,7 +8357,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .yc-brand-v2 .about-brand-visual img,
   .yc-brand-v2 .yc-method-visual img {
     min-height: 0;
     max-height: 360px;
@@ -8807,10 +8594,6 @@ body {
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .contact
 ) :is(h1, h2, h3) {
   color: #f8fbff !important;
@@ -8824,10 +8607,6 @@ body {
   .method-section,
   .business-outcomes,
   .nexus-method-strip,
-  .company-core,
-  .values-band,
-  .founder-section,
-  .nexus-identity,
   .contact
 ) :is(p, li, dd, small, em) {
   color: #c7d7ea;
@@ -8837,7 +8616,6 @@ body {
   .yc-os-product-card,
   .live-client-card,
   .package-grid article,
-  .company-core-grid article,
   .trust-grid article,
   .values-mini-grid article,
   .method-grid article,
@@ -9688,14 +9466,19 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.about-page .about-brand-visual {
+  display: block;
   position: relative;
+  overflow: hidden;
   min-height: clamp(340px, 38vw, 480px);
+  border: 1px solid rgba(0, 216, 255, 0.24);
+  border-radius: 26px;
   padding: 0;
   isolation: isolate;
   background:
     radial-gradient(circle at 62% 28%, rgba(0, 216, 255, 0.2), transparent 34%),
     radial-gradient(circle at 24% 82%, rgba(92, 255, 92, 0.1), transparent 30%),
     linear-gradient(145deg, rgba(7, 18, 34, 0.94), rgba(3, 10, 23, 0.98));
+  box-shadow: 0 34px 100px rgba(8, 11, 26, 0.38);
 }
 
 .yc-brand-v2.about-page .about-brand-visual::before {
@@ -9725,12 +9508,18 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.about-page .about-brand-visual > div {
+  position: absolute;
+  display: grid;
+  gap: 6px;
   left: 22px;
   right: 22px;
   bottom: 22px;
   z-index: 2;
   border-radius: 18px;
   border-color: rgba(0, 216, 255, 0.22);
+  border-style: solid;
+  border-width: 1px;
+  padding: 18px;
   background: rgba(4, 13, 27, 0.78);
   backdrop-filter: blur(12px);
 }
@@ -9801,6 +9590,8 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.about-page .company-core-grid {
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -9841,6 +9632,7 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.about-page .founder-photo-card {
+  overflow: hidden;
   border-radius: 26px;
   border-color: rgba(0, 216, 255, 0.22);
   background: rgba(4, 13, 27, 0.72);
@@ -9848,7 +9640,10 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2.about-page .founder-photo-card img {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 4.8;
+  object-fit: cover;
   object-position: 55% center;
 }
 
@@ -9866,6 +9661,31 @@ body.nav-open.yc-brand-v2::before {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
+}
+
+.yc-brand-v2.about-page .founder-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.yc-brand-v2.about-page .founder-links a {
+  border: 1px solid rgba(0, 216, 255, 0.42);
+  border-radius: 999px;
+  padding: 9px 12px;
+  background: rgba(0, 216, 255, 0.12);
+  color: #f8fbff;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.yc-brand-v2.about-page .founder-links a:hover,
+.yc-brand-v2.about-page .founder-links a:focus-visible {
+  border-color: rgba(92, 255, 92, 0.5);
+  background: rgba(92, 255, 92, 0.14);
+  color: #ffffff;
 }
 
 .yc-brand-v2.about-page .nexus-identity-grid {

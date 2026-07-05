@@ -27,10 +27,17 @@ jobs:
         uses: actions/configure-pages@v6
         with:
           enablement: true
+      - name: Prepare public artifact
+        run: |
+          mkdir -p dist
+          cp -R about brands brokercontrol cleanloop contact documents ghostwear partners privacy process products projects services soc technology terms dist/
+          cp -R assets dist/
+          rm -rf dist/assets/social dist/assets/merchandising
+          cp CNAME index.html robots.txt script.js site.webmanifest sitemap.xml styles.css dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: "."
+          path: "dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

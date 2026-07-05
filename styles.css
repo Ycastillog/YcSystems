@@ -9634,12 +9634,371 @@ body {
     overscroll-behavior: contain;
   }
 
-  body.nav-open.yc-brand-v2::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 998;
-    background: rgba(2, 8, 18, 0.54);
-    backdrop-filter: blur(4px);
+body.nav-open.yc-brand-v2::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: rgba(2, 8, 18, 0.54);
+  backdrop-filter: blur(4px);
+}
+}
+
+/* About page final system: official YC Systems LLC narrative. */
+.yc-brand-v2.about-page .product-hero.about-hero {
+  padding: clamp(40px, 5vw, 66px) 0 clamp(40px, 5vw, 58px);
+}
+
+.yc-brand-v2.about-page .about-hero .product-hero-grid {
+  grid-template-columns: minmax(0, 0.92fr) minmax(390px, 0.88fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.yc-brand-v2.about-page .about-hero h1 {
+  max-width: 13ch;
+  color: #f8fbff !important;
+  font-size: clamp(2.8rem, 4.9vw, 4.95rem);
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.yc-brand-v2.about-page .about-hero .hero-lede {
+  max-width: 64ch;
+  color: #c7d7ea;
+  font-size: clamp(1.04rem, 1.35vw, 1.22rem);
+}
+
+.yc-brand-v2.about-page .about-hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.yc-brand-v2.about-page .about-hero-proof span,
+.yc-brand-v2.about-page .founder-focus-grid span {
+  border: 1px solid rgba(0, 216, 255, 0.28);
+  border-radius: 999px;
+  padding: 8px 11px;
+  color: #dff8ff;
+  background: rgba(0, 216, 255, 0.08);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.yc-brand-v2.about-page .about-brand-visual {
+  position: relative;
+  min-height: clamp(340px, 38vw, 480px);
+  padding: 0;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 62% 28%, rgba(0, 216, 255, 0.2), transparent 34%),
+    radial-gradient(circle at 24% 82%, rgba(92, 255, 92, 0.1), transparent 30%),
+    linear-gradient(145deg, rgba(7, 18, 34, 0.94), rgba(3, 10, 23, 0.98));
+}
+
+.yc-brand-v2.about-page .about-brand-visual::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  z-index: 0;
+  border: 1px solid rgba(0, 216, 255, 0.1);
+  border-radius: 22px;
+  background-image:
+    linear-gradient(rgba(0, 216, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 216, 255, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at 68% 48%, #000 0%, transparent 72%);
+}
+
+.yc-brand-v2.about-page .about-brand-visual img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: clamp(340px, 38vw, 480px);
+  min-height: 0;
+  object-fit: contain;
+  object-position: center bottom;
+  padding: 24px 24px 92px;
+  filter: drop-shadow(0 32px 70px rgba(0, 0, 0, 0.44));
+}
+
+.yc-brand-v2.about-page .about-brand-visual > div {
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2;
+  border-radius: 18px;
+  border-color: rgba(0, 216, 255, 0.22);
+  background: rgba(4, 13, 27, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.yc-brand-v2.about-page .about-brand-visual strong {
+  color: #f8fbff;
+  font-size: clamp(1.05rem, 1.6vw, 1.36rem);
+  line-height: 1.12;
+}
+
+.yc-brand-v2.about-page .about-brand-visual span {
+  color: #c7d7ea;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.yc-brand-v2.about-page .about-proof-band,
+.yc-brand-v2.about-page .about-company-section,
+.yc-brand-v2.about-page .values-band,
+.yc-brand-v2.about-page .founder-section,
+.yc-brand-v2.about-page .nexus-identity,
+.yc-brand-v2.about-page .about-cta-section {
+  background: transparent !important;
+}
+
+.yc-brand-v2.about-page .about-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 20px);
+}
+
+.yc-brand-v2.about-page .about-proof-grid article,
+.yc-brand-v2.about-page .about-cta-panel {
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(10, 27, 50, 0.84), rgba(4, 13, 27, 0.82)),
+    radial-gradient(circle at 90% 110%, rgba(0, 216, 255, 0.12), transparent 12rem);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
+}
+
+.yc-brand-v2.about-page .about-proof-grid article {
+  display: grid;
+  gap: 10px;
+  min-height: 190px;
+  padding: clamp(18px, 2vw, 24px);
+}
+
+.yc-brand-v2.about-page .about-proof-grid span,
+.yc-brand-v2.about-page .trust-grid span,
+.yc-brand-v2.about-page .company-core-grid span {
+  color: #00d8ff;
+}
+
+.yc-brand-v2.about-page .about-proof-grid strong {
+  color: #f8fbff;
+  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+  line-height: 1.1;
+}
+
+.yc-brand-v2.about-page .about-proof-grid p,
+.yc-brand-v2.about-page .company-core-grid p,
+.yc-brand-v2.about-page .trust-grid p,
+.yc-brand-v2.about-page .founder-layout p,
+.yc-brand-v2.about-page .nexus-identity p,
+.yc-brand-v2.about-page .about-cta-panel p {
+  color: #c7d7ea;
+}
+
+.yc-brand-v2.about-page .company-core-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yc-brand-v2.about-page .company-core-grid article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 290px;
+}
+
+.yc-brand-v2.about-page .company-core-grid strong {
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2.about-page .company-core-grid p {
+  margin: auto 0 0;
+  line-height: 1.55;
+}
+
+.yc-brand-v2.about-page .values-band .trust-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.yc-brand-v2.about-page .values-band .trust-grid article {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+}
+
+.yc-brand-v2.about-page .values-band .trust-grid strong {
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2.about-page .founder-layout {
+  grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 60px);
+  align-items: center;
+}
+
+.yc-brand-v2.about-page .founder-photo-card {
+  border-radius: 26px;
+  border-color: rgba(0, 216, 255, 0.22);
+  background: rgba(4, 13, 27, 0.72);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.26);
+}
+
+.yc-brand-v2.about-page .founder-photo-card img {
+  aspect-ratio: 4 / 4.8;
+  object-position: 55% center;
+}
+
+.yc-brand-v2.about-page .founder-layout h2,
+.yc-brand-v2.about-page .nexus-identity h2,
+.yc-brand-v2.about-page .about-cta-panel h2 {
+  color: #f8fbff !important;
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.yc-brand-v2.about-page .founder-focus-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.yc-brand-v2.about-page .nexus-identity-grid {
+  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.8fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 58px);
+  overflow: hidden;
+}
+
+.yc-brand-v2.about-page .nexus-identity blockquote {
+  margin-top: 26px;
+  border-left: 3px solid #00d8ff;
+  padding: 14px 0 14px 18px;
+  color: #f8fbff;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 900;
+}
+
+.yc-brand-v2.about-page .nexus-identity blockquote span {
+  color: #5cff5c;
+}
+
+.yc-brand-v2.about-page .nexus-identity-grid img {
+  width: 100%;
+  max-height: 440px;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.42));
+}
+
+.yc-brand-v2.about-page .about-cta-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px;
+  align-items: center;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.yc-brand-v2.about-page .about-cta-panel h2 {
+  max-width: 13ch;
+}
+
+.yc-brand-v2.about-page .about-cta-panel p {
+  max-width: 66ch;
+}
+
+@media (max-width: 1080px) {
+  .yc-brand-v2.about-page .about-hero .product-hero-grid,
+  .yc-brand-v2.about-page .founder-layout,
+  .yc-brand-v2.about-page .nexus-identity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .about-hero h1 {
+    max-width: 13ch;
+  }
+
+  .yc-brand-v2.about-page .about-proof-grid,
+  .yc-brand-v2.about-page .values-band .trust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .yc-brand-v2.about-page .company-core-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .company-core-grid article {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 679px) {
+  .yc-brand-v2.about-page .product-hero.about-hero {
+    padding-top: 38px;
+  }
+
+  .yc-brand-v2.about-page .about-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.55rem, 11vw, 3.35rem);
+  }
+
+  .yc-brand-v2.about-page .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .about-hero-proof,
+  .yc-brand-v2.about-page .founder-focus-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .about-brand-visual {
+    min-height: 330px;
+    border-radius: 22px;
+  }
+
+  .yc-brand-v2.about-page .about-brand-visual img {
+    height: 330px;
+    padding: 16px 12px 100px;
+  }
+
+  .yc-brand-v2.about-page .about-brand-visual > div {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    padding: 14px;
+  }
+
+  .yc-brand-v2.about-page .about-proof-grid,
+  .yc-brand-v2.about-page .values-band .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .about-proof-grid article,
+  .yc-brand-v2.about-page .values-band .trust-grid article {
+    min-height: 0;
+  }
+
+  .yc-brand-v2.about-page .founder-layout h2,
+  .yc-brand-v2.about-page .nexus-identity h2,
+  .yc-brand-v2.about-page .about-cta-panel h2 {
+    font-size: clamp(2.15rem, 10vw, 2.85rem);
+  }
+
+  .yc-brand-v2.about-page .nexus-identity-grid img {
+    max-height: 320px;
+  }
+
+  .yc-brand-v2.about-page .about-cta-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2.about-page .about-cta-panel .button {
+    width: 100%;
   }
 }

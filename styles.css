@@ -9132,3 +9132,295 @@ body {
     min-height: auto;
   }
 }
+
+/* Final products-page lock: product pages should read like a real SaaS portfolio, not oversized mockup art. */
+.yc-brand-v2 .products-hero {
+  overflow: hidden;
+  padding-top: clamp(44px, 5vw, 62px);
+  padding-bottom: clamp(44px, 5vw, 58px);
+}
+
+.yc-brand-v2 .products-hero .product-hero-grid {
+  grid-template-columns: minmax(0, 0.82fr) minmax(440px, 0.94fr);
+  align-items: center;
+  min-height: min(660px, calc(100vh - 76px));
+}
+
+.yc-brand-v2 .products-hero h1 {
+  max-width: 16ch;
+  font-size: clamp(3.05rem, 4.9vw, 5.05rem);
+}
+
+.yc-brand-v2 .products-hero .hero-lede {
+  max-width: 58ch;
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(390px, 42vw, 540px);
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack img {
+  position: absolute;
+  width: min(74%, 430px);
+  height: auto;
+  max-height: 78%;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(1) {
+  left: 7%;
+  top: 16%;
+  z-index: 3;
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(2) {
+  right: 5%;
+  top: 28%;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(3) {
+  left: 20%;
+  top: 3%;
+  z-index: 1;
+  opacity: 0.62;
+}
+
+.yc-brand-v2 .product-assets .section-head {
+  max-width: 850px;
+}
+
+.yc-brand-v2 .yc-os-product-lanes {
+  display: grid;
+  gap: 20px;
+}
+
+.yc-brand-v2 .yc-os-product-lane {
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  grid-template-areas:
+    "copy media"
+    "cta media";
+  align-items: center;
+  gap: 22px 28px;
+  min-height: 0;
+  padding: clamp(20px, 3vw, 30px);
+}
+
+.yc-brand-v2 .yc-os-product-lane:nth-child(even) {
+  grid-template-columns: minmax(0, 1.22fr) minmax(280px, 0.78fr);
+  grid-template-areas:
+    "media copy"
+    "media cta";
+}
+
+.yc-brand-v2 .yc-os-product-lane:nth-child(even) .asset-copy {
+  order: initial;
+}
+
+.yc-brand-v2 .yc-os-product-lane .asset-copy {
+  grid-area: copy;
+  align-self: end;
+}
+
+.yc-brand-v2 .yc-os-product-lane .asset-media {
+  grid-area: media;
+  min-height: 0;
+}
+
+.yc-brand-v2 .yc-os-product-lane > .button {
+  grid-area: cta;
+  width: max-content;
+  min-width: 170px;
+  align-self: start;
+}
+
+.yc-brand-v2 .yc-os-product-lane .asset-copy h3 {
+  font-size: clamp(2.25rem, 3.5vw, 4rem);
+  letter-spacing: 0;
+}
+
+.yc-brand-v2 .yc-os-product-lane .asset-copy p {
+  max-width: 48ch;
+}
+
+.yc-brand-v2 .yc-os-product-lane .asset-media img {
+  min-height: 0;
+  height: clamp(260px, 29vw, 380px);
+  object-fit: cover;
+  object-position: top center;
+}
+
+.yc-brand-v2 .yc-os-product-lane.debtzero .asset-media img {
+  object-position: center;
+}
+
+.yc-brand-v2 .product-buy-panel {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 54px);
+  align-items: center;
+  overflow: hidden;
+}
+
+.yc-brand-v2 .creditpilot-preview {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(300px, 36vw, 430px);
+  border: 1px solid rgba(0, 216, 255, 0.16);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 72% 22%, rgba(0, 216, 255, 0.14), transparent 34%),
+    rgba(3, 10, 22, 0.72);
+}
+
+.yc-brand-v2 .creditpilot-preview .status-pill {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+}
+
+.yc-brand-v2 .creditpilot-preview img {
+  height: 100%;
+  min-height: clamp(300px, 36vw, 430px);
+  object-fit: cover;
+  object-position: center top;
+  border: 0;
+  border-radius: 0;
+  opacity: 0.92;
+}
+
+@media (min-width: 680px) and (max-width: 1120px) {
+  .yc-brand-v2 .products-hero .product-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .yc-brand-v2 .products-hero .product-hero-grid > div:first-child,
+  .yc-brand-v2 .products-hero .hero-lede,
+  .yc-brand-v2 .products-hero .hero-actions {
+    max-width: 700px;
+  }
+
+  .yc-brand-v2 .products-hero h1 {
+    max-width: 13ch;
+  }
+
+  .yc-brand-v2 .products-hero .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .yc-brand-v2 .products-hero .hero-actions .button {
+    width: auto;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack {
+    min-height: 430px;
+  }
+
+  .yc-brand-v2 .yc-os-product-lane,
+  .yc-brand-v2 .yc-os-product-lane:nth-child(even),
+  .yc-brand-v2 .product-buy-panel {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "media"
+      "cta";
+  }
+
+  .yc-brand-v2 .yc-os-product-lane:nth-child(even) .asset-copy {
+    order: initial;
+  }
+}
+
+@media (max-width: 679px) {
+  .yc-brand-v2 .products-hero .product-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    min-height: 0;
+  }
+
+  .yc-brand-v2 .products-hero .product-hero-grid > div:first-child,
+  .yc-brand-v2 .products-hero .hero-lede,
+  .yc-brand-v2 .products-hero .hero-actions {
+    max-width: min(100%, 340px);
+  }
+
+  .yc-brand-v2 .products-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.65rem, 12vw, 3.35rem);
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack {
+    width: 100%;
+    min-height: 280px;
+    border-radius: 24px;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack img {
+    width: min(78%, 300px);
+    max-height: 78%;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(1) {
+    left: 5%;
+    top: 20%;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(2) {
+    right: 3%;
+    top: 34%;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(3) {
+    left: 18%;
+    top: 5%;
+  }
+
+  .yc-brand-v2 .yc-os-product-lane,
+  .yc-brand-v2 .yc-os-product-lane:nth-child(even),
+  .yc-brand-v2 .product-buy-panel {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "copy"
+      "media"
+      "cta";
+  }
+
+  .yc-brand-v2 .yc-os-product-lane {
+    gap: 18px;
+  }
+
+  .yc-brand-v2 .yc-os-product-lane .asset-copy h3 {
+    font-size: clamp(2.2rem, 12vw, 3rem);
+  }
+
+  .yc-brand-v2 .yc-os-product-lane .asset-media img {
+    height: 220px;
+  }
+
+  .yc-brand-v2 .yc-os-product-lane.debtzero .asset-media img {
+    height: 260px;
+  }
+
+  .yc-brand-v2 .yc-os-product-lane > .button {
+    width: 100%;
+  }
+
+  .yc-brand-v2 .creditpilot-preview {
+    min-height: 270px;
+  }
+
+  .yc-brand-v2 .creditpilot-preview img {
+    min-height: 270px;
+  }
+}

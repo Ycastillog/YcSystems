@@ -8876,10 +8876,9 @@ body {
 }
 
 .yc-brand-v2 .products-hero .yc-os-product-stack img {
-  position: absolute;
-  width: min(74%, 430px);
-  height: auto;
-  max-height: 78%;
+  width: 100%;
+  height: 100%;
+  max-height: none;
   object-fit: cover;
   object-position: top center;
   border: 1px solid rgba(0, 216, 255, 0.2);
@@ -8887,20 +8886,27 @@ body {
   box-shadow: 0 26px 70px rgba(0, 0, 0, 0.28);
 }
 
-.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(1) {
+.yc-brand-v2 .products-hero .yc-os-product-stack picture {
+  position: absolute;
+  display: block;
+  width: min(74%, 430px);
+  height: clamp(190px, 22vw, 310px);
+}
+
+.yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(1) {
   left: 7%;
   top: 16%;
   z-index: 3;
 }
 
-.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(2) {
+.yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(2) {
   right: 5%;
   top: 28%;
   z-index: 2;
   opacity: 0.9;
 }
 
-.yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(3) {
+.yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(3) {
   left: 20%;
   top: 3%;
   z-index: 1;
@@ -9312,17 +9318,22 @@ body {
     max-height: 78%;
   }
 
-  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(1) {
+  .yc-brand-v2 .products-hero .yc-os-product-stack picture {
+    width: min(78%, 300px);
+    height: 170px;
+  }
+
+  .yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(1) {
     left: 5%;
     top: 20%;
   }
 
-  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(2) {
+  .yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(2) {
     right: 3%;
     top: 34%;
   }
 
-  .yc-brand-v2 .products-hero .yc-os-product-stack img:nth-child(3) {
+  .yc-brand-v2 .products-hero .yc-os-product-stack picture:nth-child(3) {
     left: 18%;
     top: 5%;
   }
@@ -9490,6 +9501,171 @@ body.nav-open.yc-brand-v2::before {
   background: rgba(2, 8, 18, 0.54);
   backdrop-filter: blur(4px);
 }
+}
+
+/* Platform/CRO pass: tighter hero, clearer product suite, real architecture. */
+.yc-brand-v2 .hero-trust-line {
+  max-width: 58ch;
+  margin: 18px 0 0;
+  color: #dff8ff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.yc-brand-v2 .yc-os-product-card::after,
+.yc-brand-v2 .yc-os-product-lane::after,
+.yc-brand-v2 .live-client-card::after {
+  display: none;
+}
+
+.yc-brand-v2 .platform-flow,
+.yc-brand-v2 .architecture-flow {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.yc-brand-v2 .platform-flow span,
+.yc-brand-v2 .architecture-flow article {
+  position: relative;
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(8, 20, 38, 0.88), rgba(2, 8, 18, 0.78)),
+    radial-gradient(circle at 90% 0%, rgba(92, 255, 92, 0.12), transparent 12rem);
+  color: #f8fbff;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+}
+
+.yc-brand-v2 .platform-flow span {
+  min-height: 74px;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.yc-brand-v2 .platform-flow span:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -11px;
+  z-index: 2;
+  width: 12px;
+  height: 2px;
+  background: rgba(0, 216, 255, 0.58);
+}
+
+.yc-brand-v2 .product-comparison-section {
+  background:
+    radial-gradient(circle at 82% 0%, rgba(0, 216, 255, 0.11), transparent 26rem),
+    linear-gradient(180deg, rgba(2, 8, 18, 0.92), rgba(8, 20, 38, 0.62));
+}
+
+.yc-brand-v2 .product-comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.yc-brand-v2 .product-comparison-grid article {
+  min-height: 230px;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: 24px;
+  padding: 22px;
+  background:
+    linear-gradient(145deg, rgba(11, 27, 50, 0.82), rgba(4, 13, 27, 0.82)),
+    radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.14), transparent 12rem);
+}
+
+.yc-brand-v2 .product-comparison-grid span,
+.yc-brand-v2 .architecture-flow span {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 16px;
+  color: var(--yc-os-cyan);
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.yc-brand-v2 .product-comparison-grid strong,
+.yc-brand-v2 .architecture-flow strong {
+  display: block;
+  color: #f8fbff;
+  font-size: 1.18rem;
+  line-height: 1.2;
+}
+
+.yc-brand-v2 .product-comparison-grid p,
+.yc-brand-v2 .architecture-flow p {
+  margin: 12px 0 0;
+  color: #a9bdd5;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.yc-brand-v2 .product-comparison-grid em {
+  display: inline-flex;
+  margin-top: 18px;
+  border: 1px solid rgba(92, 255, 92, 0.26);
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--yc-os-action);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.yc-brand-v2 .architecture-flow {
+  margin-bottom: 32px;
+}
+
+.yc-brand-v2 .architecture-flow article {
+  min-height: 210px;
+  padding: 20px;
+}
+
+.yc-brand-v2 .diagnostic-form {
+  background:
+    linear-gradient(145deg, rgba(246, 251, 255, 0.98), rgba(229, 241, 248, 0.96));
+}
+
+.yc-brand-v2 .diagnostic-form .button-primary {
+  color: #03101d;
+}
+
+.yc-brand-v2 .contact-request-grid article span {
+  color: var(--yc-os-cyan);
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 .platform-flow,
+  .yc-brand-v2 .architecture-flow,
+  .yc-brand-v2 .product-comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .yc-brand-v2 .platform-flow span:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .yc-brand-v2 .platform-flow,
+  .yc-brand-v2 .architecture-flow,
+  .yc-brand-v2 .product-comparison-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .hero-trust-line {
+    font-size: 0.82rem;
+  }
 }
 
 /* About page final system: official YC Systems LLC narrative. */

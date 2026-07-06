@@ -1752,6 +1752,88 @@ Object.assign(textTranslations, {
   "Solicitar diagnóstico operativo": "Request operational assessment",
 });
 
+Object.assign(textTranslations, {
+  "YC Systems LLC convierte ventas, operaciones, clientes y datos en plataformas conectadas para empresas que necesitan crecer con control.": "YC Systems LLC turns sales, operations, customers and data into connected platforms for companies that need to grow with control.",
+  "YC Systems LLC · New York · CleanLoop / SOC / BrokerControl / CreditPilot": "YC Systems LLC · New York · CleanLoop / SOC / BrokerControl / CreditPilot",
+  "La plataforma YC Systems": "The YC Systems Platform",
+  "Una misma arquitectura para conectar diagnóstico, módulos, datos y usuarios.": "One architecture to connect diagnosis, modules, data and users.",
+  "Nexus define la dirección; cada sistema operativo resuelve un vertical real. La plataforma permite empezar por una fase y crecer sin rehacer la base.": "Nexus defines the direction; each operating system solves a real vertical. The platform lets you start with one phase and grow without rebuilding the base.",
+  "Negocio": "Business",
+  "Diagnóstico Nexus": "Nexus Diagnosis",
+  "Sistema operativo": "Operating System",
+  "Módulos": "Modules",
+  "Usuarios": "Users",
+  "Cada producto existe para resolver un problema operativo concreto y probar una pieza del ecosistema YC Systems.": "Each product exists to solve a concrete operational problem and prove one part of the YC Systems ecosystem.",
+  "Problema": "Problem",
+  "Resuelve": "Solves",
+  "Industria": "Industry",
+  "Pedidos dispersos": "Scattered orders",
+  "Rutas, pagos y tracking": "Routes, payments and tracking",
+  "Operación para lavanderías con cliente, conductor, admin y pagos en una sola plataforma.": "Laundry operations with customer, driver, admin and payments in one platform.",
+  "Ventas sin visibilidad": "Sales without visibility",
+  "Inventario y reportes": "Inventory and reports",
+  "Equipos comerciales": "Commercial teams",
+  "Centro de mando para reservas, pagos, estados, inventario y lectura ejecutiva.": "Command center for reservations, payments, status, inventory and executive visibility.",
+  "Prospectos perdidos": "Lost prospects",
+  "Pipeline y documentos": "Pipeline and documents",
+  "Bienes raíces": "Real estate",
+  "CRM para asesores con seguimiento comercial, agenda, documentos y comisiones.": "CRM for advisors with commercial follow-up, agenda, documents and commissions.",
+  "Casos complejos": "Complex cases",
+  "Cartas y portal": "Letters and portal",
+  "Comparación de producto": "Product comparison",
+  "Cuatro verticales, una misma lógica de sistema operativo.": "Four verticals, one operating system logic.",
+  "La plataforma YC Systems comparte arquitectura, pero cada producto responde a una industria, usuario y problema distinto.": "The YC Systems platform shares architecture, but each product responds to a different industry, user and problem.",
+  "Operaciones comerciales": "Commercial operations",
+  "Recogida, entrega, rutas, pagos y tracking.": "Pickup, delivery, routes, payments and tracking.",
+  "Inventario, reservas, estados, pagos y reportes.": "Inventory, reservations, statuses, payments and reports.",
+  "Prospectos, pipeline, agenda, documentos y comisiones.": "Prospects, pipeline, agenda, documents and commissions.",
+  "Casos, cartas, documentos, portal y educación financiera.": "Cases, letters, documents, portal and financial education.",
+  "Antes": "Before",
+  "Después": "After",
+  "Impacto": "Impact",
+  "Arquitectura": "Architecture",
+  "Antes:": "Before:",
+  "Después:": "After:",
+  "Impacto:": "Impact:",
+  "Arquitectura:": "Architecture:",
+  "Antes, después, impacto y arquitectura. Ese formato ayuda a clientes e inversionistas a entender qué cambió en el negocio, no solo qué pantalla se publicó.": "Before, after, impact and architecture. This format helps clients and investors understand what changed in the business, not just what screen was published.",
+  "Servicio local": "Local service",
+  "Marca digital": "Digital brand",
+  "Productos propios": "Owned products",
+  "Diagnóstico operativo": "Operational diagnosis",
+  "Veamos qué sistema necesita tu negocio para vender, operar y crecer mejor.": "Let's identify what system your business needs to sell, operate and grow better.",
+  "Comparte cómo trabaja tu empresa hoy. YC Systems responde con una ruta inicial: problema prioritario, sistema recomendado, primera fase y próximos entregables.": "Share how your company works today. YC Systems responds with an initial route: priority problem, recommended system, first phase and next deliverables.",
+  "1. Describe tu operación actual": "1. Describe your current operation",
+  "2. Identifica el problema principal": "2. Identify the main problem",
+  "3. Recibe una ruta de sistema por fases": "3. Receive a phased system roadmap",
+  "Ver casos de estudio": "View case studies",
+  "Industria": "Industry",
+  "Problema principal": "Main problem",
+  "Sistema deseado": "Desired system",
+  "Herramientas actuales": "Current tools",
+  "Reunión": "Meeting",
+  "Contexto importante": "Important context",
+  "Qué se define en el diagnóstico": "What the diagnosis defines",
+  "El sistema correcto para vender, operar, automatizar o medir mejor.": "The right system to sell, operate, automate or measure better.",
+  "No necesitas llegar con una solución perfecta. YC Systems ordena el problema, define la primera fase y recomienda una arquitectura de producto para avanzar con claridad.": "You do not need to arrive with a perfect solution. YC Systems organizes the problem, defines the first phase and recommends a product architecture to move forward clearly.",
+  "Ventas": "Sales",
+  "Pipeline y conversión": "Pipeline and conversion",
+  "Operación": "Operation",
+  "Procesos diarios": "Daily processes",
+  "Datos": "Data",
+  "Dashboards ejecutivos": "Executive dashboards",
+  "Producto": "Product",
+  "SaaS o MVP por fases": "Phased SaaS or MVP",
+  "Automatización": "Automation",
+  "Menos trabajo manual": "Less manual work",
+  "Presencia": "Presence",
+  "Confianza digital": "Digital trust",
+  "Arquitectura de software empresarial para operar con control.": "Enterprise software architecture to operate with control.",
+  "YC Systems diseña la base que conecta negocio, datos, módulos, usuarios y automatización para que cada producto pueda crecer por fases.": "YC Systems designs the foundation that connects business, data, modules, users and automation so each product can grow by phases.",
+  "CleanLoop, SOC, BrokerControl y CreditPilot forman el ecosistema propio de sistemas operativos por industria.": "CleanLoop, SOC, BrokerControl and CreditPilot form the owned ecosystem of industry operating systems.",
+  "Negocios de servicios": "Service businesses",
+});
+
 const translatedTextNodes = new WeakMap();
 const translatedAttributes = new WeakMap();
 
@@ -1979,9 +2061,9 @@ const projectBriefForm = document.querySelector("[data-project-brief]");
 projectBriefForm?.addEventListener("submit", (event) => {
   const data = new FormData(projectBriefForm);
   trackYCEvent("contact_submit", {
-    solution: data.get("solution") || "Pendiente",
-    timeline: data.get("timeline") || "Pendiente",
-    budget: data.get("budget") || "Pendiente",
+    industry: data.get("industry") || "Pendiente",
+    desired_system: data.get("desired_system") || "Pendiente",
+    meeting: data.get("meeting_preference") || "Pendiente",
   });
 
   if (projectBriefForm.dataset.directSubmit === "true") {
@@ -1992,18 +2074,19 @@ projectBriefForm?.addEventListener("submit", (event) => {
 
   event.preventDefault();
   const message = [
-    "Hola YC Systems, quiero iniciar una propuesta.",
+    "Hola YC Systems, quiero iniciar un diagnóstico operativo.",
     "",
     `Nombre o negocio: ${data.get("name") || "Pendiente"}`,
-    `Tipo de solucion: ${data.get("solution")}`,
-    `Objetivo principal: ${data.get("goal") || "Pendiente"}`,
-    `Tiempo ideal: ${data.get("timeline")}`,
-    `Rango o referencia de inversión: ${data.get("budget")}`,
+    `Industria: ${data.get("industry") || "Pendiente"}`,
+    `Problema principal: ${data.get("problem") || "Pendiente"}`,
+    `Sistema deseado: ${data.get("desired_system") || "Pendiente"}`,
+    `Herramientas actuales: ${data.get("current_tools") || "Pendiente"}`,
+    `Reunión: ${data.get("meeting_preference") || "Pendiente"}`,
     "",
-    "Detalles:",
+    "Contexto:",
     data.get("details") || "Pendiente",
   ].join("\n");
-  const subject = encodeURIComponent("Brief de proyecto para YC Systems");
+  const subject = encodeURIComponent("Diagnóstico operativo para YC Systems");
   const body = encodeURIComponent(message);
   const status = projectBriefForm.querySelector("[data-brief-status]");
   if (status) status.textContent = "Mensaje preparado. Se abrirá tu correo para enviarlo a YC Systems.";

@@ -814,32 +814,6 @@ Object.assign(textTranslations, {
   "respuesta inicial": "initial response"
 });
 
-Object.assign(textTranslations, {
-  "Operating Systems": "Operating Systems",
-  "Solutions": "Solutions",
-  "Industries": "Industries",
-  "Case Studies": "Case Studies",
-  "Company": "Company",
-  "Contact": "Contact",
-  "Request assessment": "Solicitar diagnóstico",
-  "Explore operating systems": "Explorar operating systems",
-  "Explore OS stack": "Explorar arquitectura OS",
-  "View OS architecture": "Ver arquitectura OS",
-  "Developer platform": "Portal Developers",
-  "Trust Center": "Trust Center",
-  "Documentation": "Documentation",
-  "Developers": "Developers",
-  "Careers": "Careers",
-  "Press": "Press",
-  "Operating systems for modern businesses.": "Operating systems para empresas modernas.",
-  "Enterprise Operating Systems": "Enterprise Operating Systems",
-  "Nexus intelligence layer": "Capa de inteligencia Nexus",
-  "4 business operating systems": "4 business operating systems",
-  "5 active case studies": "5 case studies activos",
-  "From websites to enterprise infrastructure.": "De páginas web a infraestructura empresarial.",
-  "The intelligence layer behind YC Systems.": "La capa de inteligencia detrás de YC Systems."
-});
-
 const spanishTextTranslations = Object.entries(textTranslations).reduce((translations, [spanish, english]) => {
   if (!translations[english]) translations[english] = spanish;
   return translations;
@@ -1119,8 +1093,8 @@ Object.assign(englishTextTranslations, {
   "Contact": "Contacto",
   "Request assessment": "Solicitar diagnóstico",
   "Explore operating systems": "Explorar sistemas operativos",
-  "Explore OS stack": "Explorar arquitectura OS",
-  "View OS architecture": "Ver arquitectura OS",
+  "Explore OS stack": "Explorar arquitectura",
+  "View OS architecture": "Ver arquitectura",
   "Developer platform": "Portal de desarrolladores",
   "Operating systems for modern businesses.": "Sistemas operativos para empresas modernas.",
   "Enterprise Operating Systems": "Sistemas operativos empresariales",
@@ -1294,6 +1268,10 @@ const pageMetadataTranslations = {
       title: "Empresa | YC Systems LLC",
       description: "YC Systems LLC es una empresa tecnológica que construye sistemas operativos para negocios modernos.",
     },
+    "/operating-systems/": {
+      title: "Sistemas operativos | YC Systems",
+      description: "YC Systems construye sistemas operativos empresariales para ventas, operaciones, logística y flujos financieros conectados por Nexus.",
+    },
   },
   en: {
     "/privacy/": {
@@ -1311,6 +1289,10 @@ const pageMetadataTranslations = {
     "/company/": {
       title: "Company | YC Systems LLC",
       description: "YC Systems LLC is a technology company building operating systems for modern businesses.",
+    },
+    "/operating-systems/": {
+      title: "Operating Systems | YC Systems",
+      description: "YC Systems builds business operating systems for sales, operations, logistics and financial workflows connected by Nexus.",
     },
   },
 };
@@ -1492,7 +1474,6 @@ Object.assign(englishTextTranslations, {
 });
 
 Object.assign(textTranslations, {
-  "Operating systems para empresas modernas.": "Operating systems for modern businesses.",
   "YC Systems LLC construye infraestructura digital para empresas que necesitan vender mejor, operar con claridad y automatizar procesos con inteligencia.": "YC Systems LLC builds digital infrastructure for companies that need to sell better, operate with clarity and automate processes with intelligence.",
   "SOC OS, BrokerControl OS, CleanLoop OS y CreditPilot OS como mapa de producto.": "SOC OS, BrokerControl OS, CleanLoop OS and CreditPilot OS as the product map.",
   "La inteligencia que conecta diagnóstico, flujos, módulos y decisiones.": "The intelligence layer that connects diagnosis, flows, modules and decisions.",
@@ -1589,6 +1570,24 @@ Object.assign(textTranslations, {
 });
 
 Object.assign(textTranslations, {
+  "Sistemas operativos para negocios modernos.": "Operating systems for modern businesses.",
+  "Sistemas operativos YC": "YC Systems OS",
+  "YC Systems / Sistemas operativos": "YC Systems / Operating Systems",
+  "Explorar arquitectura": "Explore architecture",
+  "Capa de inteligencia Nexus": "Nexus Intelligence Layer",
+  "YC Systems diseña infraestructura digital para que empresas vendan mejor, operen con más claridad y automaticen procesos críticos bajo una sola arquitectura.": "YC Systems designs digital infrastructure so companies can sell better, operate with more clarity and automate critical processes under one architecture.",
+  "Ecosistema de productos": "Product ecosystem",
+  "Una empresa. Un lenguaje. Múltiples sistemas de negocio.": "One company. One language. Multiple business systems.",
+  "Cada OS resuelve un vertical distinto, pero todos comparten principios: datos claros, roles, trazabilidad, automatización y decisiones guiadas por Nexus.": "Each OS solves a different vertical, but all share the same principles: clear data, roles, traceability, automation and decisions guided by Nexus.",
+  "Sales Operations Center para inventario, reservas, pagos, reportes y visibilidad ejecutiva.": "Sales Operations Center for inventory, reservations, payments, reporting and executive visibility.",
+  "CRM inmobiliario para pipeline, clientes, documentos, agenda, comisiones y seguimiento comercial.": "Real estate CRM for pipeline, clients, documents, calendar, commissions and commercial follow-up.",
+  "Operación para lavanderías con pickup, delivery, drivers, pagos, clientes y admin.": "Laundry operations for pickup, delivery, drivers, payments, customers and admin.",
+  "Vertical futuro para reparación de crédito: casos, cartas, documentos, portal y cumplimiento operativo.": "Future vertical for credit repair: cases, letters, documents, portal and operational compliance.",
+  "La inteligencia que conecta el ecosistema.": "The intelligence that connects the ecosystem.",
+  "Nexus no es una mascota. Es el lenguaje operativo de YC Systems: analiza el negocio, recomienda flujos, organiza módulos y convierte procesos dispersos en sistemas medibles.": "Nexus is not a mascot. It is the operating language of YC Systems: it analyzes the business, recommends flows, organizes modules and turns scattered processes into measurable systems.",
+  "Sistemas operativos | YC Systems": "Operating Systems | YC Systems",
+  "YC Systems construye sistemas operativos empresariales para ventas, operaciones, logística y flujos financieros conectados por Nexus.": "YC Systems builds business operating systems for sales, operations, logistics and financial workflows connected by Nexus.",
+  "Sistemas operativos empresariales creados por YC Systems LLC para ventas, operaciones, logística y flujos financieros.": "Business operating systems built by YC Systems LLC for sales, operations, logistics and financial workflows.",
   "El problema": "The problem",
   "Software empresarial": "Business software",
   "Las empresas no fallan por falta de software. Fallan por operar con sistemas desconectados.": "Companies do not fail because they lack software. They fail because they operate with disconnected systems.",

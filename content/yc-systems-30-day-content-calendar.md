@@ -221,7 +221,7 @@ SaaS MVP
 App o plataforma a medida
 Mantenimiento mensual
 
-Ya tenemos proyectos reales, productos propios y casos que muestran lo que podemos construir.
+Ya tenemos proyectos reales, líneas internas de software y casos que muestran lo que podemos construir.
 
 El siguiente proyecto puede ser el tuyo.
 

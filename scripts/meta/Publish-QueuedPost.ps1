@@ -106,16 +106,33 @@ if (-not $row) {
   throw "No Ready row found in queue."
 }
 
-$mediaUrl = "$BasePublicUrl/$($row.visual -replace '\\','/')"
-$mediaExtension = [System.IO.Path]::GetExtension([string]$row.visual).ToLowerInvariant()
-$isVideo = @(".mp4", ".mov", ".m4v") -contains $mediaExtension
+$visuals = @(
+  ([string]$row.visual -split ";") |
+    ForEach-Object { $_.Trim() } |
+    Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+)
+if ($visuals.Count -eq 0) {
+  throw "Selected row does not include a visual asset."
+}
+
+$mediaUrls = @($visuals | ForEach-Object { "$BasePublicUrl/$($_ -replace '\\','/')" })
+$mediaExtensions = @($visuals | ForEach-Object { [System.IO.Path]::GetExtension($_).ToLowerInvariant() })
+$videoExtensions = @(".mp4", ".mov", ".m4v")
+$isVideo = $visuals.Count -eq 1 -and ($videoExtensions -contains $mediaExtensions[0])
+$isCarousel = $visuals.Count -gt 1
+
+if ($isCarousel -and @($mediaExtensions | Where-Object { $videoExtensions -contains $_ }).Count -gt 0) {
+  throw "Carousel rows currently support image assets only."
+}
+
+$mediaUrl = $mediaUrls[0]
 $caption = Convert-ToSpanishCaption $row
 
 Write-Host "Selected post:" -ForegroundColor Cyan
 Write-Host "Topic: $($row.topic)"
 Write-Host "Slot: $($row.slot) $($row.time)"
-Write-Host "Media: $mediaUrl"
-Write-Host "Type: $(if ($isVideo) { 'Video/Reel' } else { 'Image' })"
+Write-Host "Media: $($mediaUrls -join ', ')"
+Write-Host "Type: $(if ($isCarousel) { 'Carousel' } elseif ($isVideo) { 'Video/Reel' } else { 'Image' })"
 Write-Host ""
 Write-Host $caption
 Write-Host ""
@@ -130,7 +147,27 @@ $igUserId = Require-Env "META_IG_USER_ID"
 $token = Require-Env "META_PAGE_ACCESS_TOKEN"
 
 Write-Host "Creating Instagram media container..." -ForegroundColor Cyan
-if ($isVideo) {
+if ($isCarousel) {
+  $igChildren = @()
+  foreach ($url in $mediaUrls) {
+    $child = Invoke-GraphPost "$igUserId/media" @{
+      image_url        = $url
+      is_carousel_item = "true"
+      access_token     = $token
+    }
+    if (-not $child.id) {
+      throw "Instagram carousel child container was not created for $url."
+    }
+    $igChildren += $child.id
+  }
+
+  $igContainer = Invoke-GraphPost "$igUserId/media" @{
+    media_type   = "CAROUSEL"
+    children     = ($igChildren -join ",")
+    caption      = $caption
+    access_token = $token
+  }
+} elseif ($isVideo) {
   $igContainer = Invoke-GraphPost "$igUserId/media" @{
     media_type    = "REELS"
     video_url     = $mediaUrl
@@ -162,7 +199,34 @@ if (-not $igPublish.id) {
   throw "Instagram publish did not return a media id."
 }
 
-if ($isVideo) {
+if ($isCarousel) {
+  Write-Host "Publishing Facebook Page carousel-style feed post..." -ForegroundColor Cyan
+  $attachedMedia = @()
+  foreach ($url in $mediaUrls) {
+    $fbPhoto = Invoke-GraphPost "$pageId/photos" @{
+      url          = $url
+      published    = "false"
+      access_token = $token
+    }
+
+    if (-not $fbPhoto.id) {
+      throw "Facebook unpublished photo was not created for $url."
+    }
+
+    $attachedMedia += @{ media_fbid = $fbPhoto.id }
+  }
+
+  $fbPublish = Invoke-GraphPost "$pageId/feed" @{
+    message        = $caption
+    attached_media = ($attachedMedia | ConvertTo-Json -Compress)
+    published      = "true"
+    access_token   = $token
+  }
+
+  if (-not $fbPublish.id) {
+    throw "Facebook carousel feed publish did not return a post id."
+  }
+} elseif ($isVideo) {
   Write-Host "Publishing Facebook Page video..." -ForegroundColor Cyan
   $fbPublish = Invoke-GraphPost "$pageId/videos" @{
     file_url     = $mediaUrl

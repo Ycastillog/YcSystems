@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ycsystems.io/</loc></url>
-  <url><loc>https://ycsystems.io/operating-systems/</loc></url>
+  <url><loc>https://ycsystems.io/products/</loc></url>
   <url><loc>https://ycsystems.io/solutions/</loc></url>
-  <url><loc>https://ycsystems.io/industries/</loc></url>
   <url><loc>https://ycsystems.io/case-studies/</loc></url>
+  <url><loc>https://ycsystems.io/process/</loc></url>
   <url><loc>https://ycsystems.io/company/</loc></url>
   <url><loc>https://ycsystems.io/contact/</loc></url>
   <url><loc>https://ycsystems.io/trust-center/</loc></url>
@@ -13,8 +13,5 @@
   <url><loc>https://ycsystems.io/documents/</loc></url>
   <url><loc>https://ycsystems.io/privacy/</loc></url>
   <url><loc>https://ycsystems.io/terms/</loc></url>
-  <url><loc>https://ycsystems.io/products/cleanloop/</loc></url>
-  <url><loc>https://ycsystems.io/products/soc/</loc></url>
-  <url><loc>https://ycsystems.io/products/brokercontrol/</loc></url>
   <url><loc>https://ycsystems.io/brands/ghostwear/</loc></url>
 </urlset>

@@ -10566,3 +10566,179 @@ body.nav-open.yc-brand-v2::before {
     width: 100%;
   }
 }
+
+.yc-brand-v2 .system-type-grid article {
+  min-height: 220px;
+}
+
+.yc-brand-v2 .internal-verticals-section .enterprise-split {
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 24px;
+  padding: clamp(24px, 4vw, 42px);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(0, 216, 255, 0.1), transparent 34%),
+    rgba(3, 14, 29, 0.72);
+}
+
+.yc-brand-v2 .system-architecture-card {
+  min-height: 420px;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(0, 216, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(0, 216, 255, 0.08), rgba(92, 255, 92, 0.05)),
+    rgba(3, 14, 29, 0.88);
+}
+
+.yc-brand-v2 .system-architecture-card strong {
+  max-width: 680px;
+}
+
+.yc-brand-v2 .cta-panel {
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 28px;
+  padding: clamp(28px, 5vw, 56px);
+  background:
+    linear-gradient(135deg, rgba(0, 216, 255, 0.1), rgba(92, 255, 92, 0.06)),
+    rgba(4, 13, 27, 0.86);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+}
+
+.yc-brand-v2 .cta-panel h2 {
+  max-width: 860px;
+  margin: 0 0 14px;
+  color: #f8fbff;
+  font-size: clamp(2.1rem, 5vw, 4.6rem);
+  line-height: 0.98;
+}
+
+.yc-brand-v2 .cta-panel p:not(.eyebrow) {
+  max-width: 760px;
+  color: #b9cada;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.yc-brand-v2 .contact-links a,
+.yc-brand-v2 .contact-links span,
+.yc-brand-v2 .contact-mini-links a,
+.yc-brand-v2 .contact-mini-links span,
+.yc-brand-v2 [data-yc-contact-email],
+.yc-brand-v2 [data-yc-contact-future-email] {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.yc-brand-v2 .diagnostic-form {
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(0, 216, 255, 0.1), transparent 34%),
+    rgba(3, 14, 29, 0.9) !important;
+}
+
+.yc-brand-v2 .diagnostic-form label span {
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2 .diagnostic-form :is(input, select, textarea) {
+  border-color: rgba(0, 216, 255, 0.26) !important;
+  background: rgba(10, 28, 52, 0.94) !important;
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2 .diagnostic-form :is(input, textarea)::placeholder {
+  color: rgba(211, 226, 241, 0.66);
+}
+
+.yc-brand-v2 .diagnostic-form .brief-note {
+  color: #a9bdd5;
+}
+
+@media (max-width: 680px) {
+  .yc-brand-v2 .hero,
+  .yc-brand-v2 .section-pad {
+    padding-block: 56px;
+  }
+
+  .yc-brand-v2 .hero-copy h1,
+  .yc-brand-v2 .product-hero h1,
+  .yc-brand-v2 .enterprise-hero h1,
+  .yc-brand-v2 .contact-panel h1 {
+    font-size: clamp(2.65rem, 12vw, 4rem);
+    line-height: 0.96;
+  }
+
+  .yc-brand-v2 .hero-lede,
+  .yc-brand-v2 .hero-copy p:not(.eyebrow),
+  .yc-brand-v2 .contact-panel p {
+    max-width: 34ch;
+  }
+
+  .yc-brand-v2 .system-type-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .yc-brand-v2 .system-type-grid article {
+    min-height: 0;
+  }
+
+  .yc-brand-v2 .cta-panel .hero-actions,
+  .yc-brand-v2 .hero-actions {
+    align-items: stretch;
+  }
+
+  .yc-brand-v2 .cta-panel .button,
+  .yc-brand-v2 .hero-actions .button {
+    width: 100%;
+  }
+
+  .yc-brand-v2 .contact-mini-links a,
+  .yc-brand-v2 .contact-mini-links span {
+    display: grid;
+    gap: 4px;
+  }
+
+  .yc-brand-v2 .contact-mini-links strong,
+  .yc-brand-v2 [data-yc-contact-email] {
+    display: block;
+    max-width: 100%;
+    line-height: 1.2;
+  }
+}
+
+.yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1, .section-head h2, .cta-panel h2) {
+  letter-spacing: 0 !important;
+  font-weight: 860;
+  line-height: 0.98;
+  text-wrap: balance;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 44px rgba(0, 0, 0, 0.34);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+
+.yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1) {
+  max-width: 12.5ch;
+}
+
+.yc-brand-v2 .section-head h2,
+.yc-brand-v2 .cta-panel h2 {
+  max-width: 14ch;
+}
+
+@media (max-width: 680px) {
+  .yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1) {
+    max-width: 13.5ch;
+    line-height: 1;
+  }
+
+  .yc-brand-v2 .contact-panel h1 {
+    max-width: 12.8ch;
+    font-size: clamp(2.65rem, 10.8vw, 3.45rem);
+    font-weight: 820;
+  }
+
+  .yc-brand-v2 .section-head h2,
+  .yc-brand-v2 .cta-panel h2 {
+    max-width: 12.5ch;
+  }
+}

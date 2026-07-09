@@ -1322,8 +1322,8 @@ Object.assign(englishTextTranslations, {
 const pageMetadataTranslations = {
   es: {
     "/": {
-      title: "YC Systems LLC — Sistemas operativos para negocios modernos",
-      description: "YC Systems LLC construye sistemas operativos para negocios modernos: software empresarial, automatización, infraestructura de negocio e inteligencia de decisión impulsada por Nexus.",
+      title: "YC Systems LLC — Software para vender, operar y escalar",
+      description: "YC Systems LLC construye software empresarial, páginas web, CRM, dashboards, automatizaciones y plataformas SaaS para negocios que necesitan vender, operar y escalar.",
     },
     "/privacy/": {
       title: "Política de privacidad | YC Systems LLC",
@@ -1348,8 +1348,8 @@ const pageMetadataTranslations = {
   },
   en: {
     "/": {
-      title: "YC Systems LLC — Operating systems for modern businesses",
-      description: "YC Systems LLC builds operating systems for modern businesses: enterprise software, automation, business infrastructure and decision intelligence powered by Nexus.",
+      title: "YC Systems LLC — Software to sell, operate and scale",
+      description: "YC Systems LLC builds enterprise software, websites, CRM, dashboards, automations and SaaS platforms for businesses that need to sell, operate and scale.",
     },
     "/privacy/": {
       title: "Privacy Policy | YC Systems LLC",

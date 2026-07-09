@@ -11278,7 +11278,7 @@ body.nav-open.yc-brand-v2::before {
 
 .yc-brand-v2 .yc-hero {
   min-height: auto;
-  padding-block: clamp(58px, 7vw, 96px);
+  padding-block: clamp(54px, 6vw, 86px);
 }
 
 .yc-brand-v2 .hero-grid {
@@ -11286,8 +11286,8 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .hero h1 {
-  max-width: 13.2ch !important;
-  font-size: clamp(3.8rem, 5.6vw, 6.25rem);
+  max-width: 14.5ch !important;
+  font-size: clamp(3.45rem, 5.1vw, 5.85rem);
   line-height: 0.93 !important;
 }
 
@@ -11299,17 +11299,31 @@ body.nav-open.yc-brand-v2::before {
   content: none;
 }
 
+.yc-brand-v2 .trust-bar-section {
+  order: 2;
+  padding: 14px 0 24px;
+  border-block: 1px solid rgba(0, 216, 255, 0.12);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 216, 255, 0.08), transparent 32rem),
+    rgba(2, 8, 23, 0.56);
+}
+
+.yc-brand-v2 .trust-bar-section .hero-authority-strip {
+  justify-content: center;
+  margin-top: 0;
+}
+
 .yc-brand-v2 .home-main .yc-hero { order: 1; }
-.yc-brand-v2 .home-main .home-products-section { order: 2; }
-.yc-brand-v2 .home-main .sales-offer-section { order: 3; }
-.yc-brand-v2 .home-main .home-clients-section { order: 4; }
-.yc-brand-v2 .home-main .delivery-process-section { order: 5; }
-.yc-brand-v2 .home-main .home-platform-section { order: 6; }
-.yc-brand-v2 .home-main .home-nexus-section { order: 7; }
-.yc-brand-v2 .home-main .technology-proof-section { order: 8; }
-.yc-brand-v2 .home-main .enterprise-trust-section { order: 9; }
-.yc-brand-v2 .home-main .home-industries-section { order: 10; }
-.yc-brand-v2 .home-main .home-contact-section { order: 11; }
+.yc-brand-v2 .home-main .home-products-section { order: 3; }
+.yc-brand-v2 .home-main .sales-offer-section { order: 4; }
+.yc-brand-v2 .home-main .home-clients-section { order: 5; }
+.yc-brand-v2 .home-main .delivery-process-section { order: 6; }
+.yc-brand-v2 .home-main .home-platform-section { order: 7; }
+.yc-brand-v2 .home-main .home-nexus-section { order: 8; }
+.yc-brand-v2 .home-main .technology-proof-section { order: 9; }
+.yc-brand-v2 .home-main .enterprise-trust-section { order: 10; }
+.yc-brand-v2 .home-main .home-industries-section { order: 11; }
+.yc-brand-v2 .home-main .home-contact-section { order: 12; }
 
 .yc-brand-v2 .featured-product-panel {
   display: grid;
@@ -11408,6 +11422,46 @@ body.nav-open.yc-brand-v2::before {
   margin-top: auto;
 }
 
+.yc-brand-v2 .services-capability-grid {
+  grid-template-columns: repeat(7, minmax(220px, 1fr));
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-snap-type: x proximity;
+}
+
+.yc-brand-v2 .services-capability-grid article {
+  min-height: 380px;
+  scroll-snap-align: start;
+}
+
+.floating-proposal-cta {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  z-index: 80;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px solid rgba(0, 216, 255, 0.42);
+  border-radius: 999px;
+  padding: 0 18px;
+  background: linear-gradient(135deg, #18d7ff, #5cff5c);
+  color: #020817;
+  font-weight: 950;
+  text-decoration: none;
+  box-shadow: 0 18px 54px rgba(0, 216, 255, 0.24), 0 10px 34px rgba(0, 0, 0, 0.28);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-proposal-cta:hover,
+.floating-proposal-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 64px rgba(92, 255, 92, 0.28), 0 10px 34px rgba(0, 0, 0, 0.32);
+}
+
 .yc-brand-v2 .section-head .private-product-note {
   max-width: 780px;
 }
@@ -11423,10 +11477,109 @@ body.nav-open.yc-brand-v2::before {
 }
 
 @media (max-width: 760px) {
+  .yc-brand-v2 .site-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .yc-brand-v2 .site-header::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 10px !important;
+    right: 14px !important;
+    z-index: 119 !important;
+    display: block !important;
+    width: 46px !important;
+    height: 46px !important;
+    border: 1px solid rgba(0, 216, 255, 0.34) !important;
+    border-radius: 14px !important;
+    background:
+      linear-gradient(#f8fbff, #f8fbff) center 16px / 22px 2px no-repeat,
+      linear-gradient(#f8fbff, #f8fbff) center 28px / 22px 2px no-repeat,
+      rgba(8, 20, 38, 0.92) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22) !important;
+    pointer-events: none !important;
+  }
+
+  .yc-brand-v2 .nav-toggle {
+    position: fixed !important;
+    top: 10px !important;
+    right: 14px !important;
+    z-index: 120 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 46px !important;
+    height: 46px !important;
+    flex: 0 0 46px !important;
+    margin-left: auto !important;
+    border: 1px solid rgba(0, 216, 255, 0.34) !important;
+    border-radius: 14px !important;
+    background: rgba(8, 20, 38, 0.92) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: transparent !important;
+    font-size: 0 !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::before,
+  .yc-brand-v2 .nav-toggle::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    display: block !important;
+    width: auto !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #f8fbff !important;
+    box-shadow: none !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::before {
+    top: 16px !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::after {
+    top: 28px !important;
+  }
+
+  .yc-brand-v2 .nav-toggle span {
+    position: absolute !important;
+    left: 12px !important;
+    display: block !important;
+    width: 22px !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #f8fbff !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .yc-brand-v2 .nav-toggle span:first-child {
+    top: 16px !important;
+  }
+
+  .yc-brand-v2 .nav-toggle span:last-child {
+    top: 28px !important;
+  }
+
   .yc-brand-v2 .main-nav .nav-cta {
     justify-content: flex-start;
     border-radius: 12px;
     padding: 13px 14px;
+  }
+
+  .floating-proposal-cta {
+    right: 14px;
+    bottom: 14px;
+    min-height: 44px;
+    padding: 0 14px;
+    font-size: 0.86rem;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -11442,5 +11595,10 @@ body.nav-open.yc-brand-v2::before {
 
   .yc-brand-v2 .featured-product-copy .hero-actions {
     width: 100%;
+  }
+
+  .yc-brand-v2 .hero h1 {
+    max-width: 13.8ch !important;
+    font-size: clamp(2.7rem, 11vw, 3.75rem);
   }
 }

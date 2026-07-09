@@ -1,4 +1,4 @@
-﻿const navToggle = document.querySelector("[data-nav-toggle]");
+const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const header = document.querySelector("[data-header]");
 const langToggle = document.querySelector("[data-lang-toggle]") || document.querySelector(".language-chip");
@@ -17,6 +17,66 @@ const YC_CONTACT = Object.freeze({
 });
 
 globalThis.YC_CONTACT = YC_CONTACT;
+
+function lockMobileNavigationButton() {
+  if (!navToggle) return;
+
+  navToggle.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span>';
+
+  const setImportant = (property, value) => {
+    navToggle.style.setProperty(property, value, "important");
+  };
+
+  setImportant("display", "inline-flex");
+  setImportant("position", "fixed");
+  setImportant("top", "10px");
+  setImportant("right", "14px");
+  setImportant("z-index", "140");
+  setImportant("width", "46px");
+  setImportant("height", "46px");
+  setImportant("align-items", "center");
+  setImportant("justify-content", "center");
+  setImportant("border", "1px solid rgba(0, 216, 255, 0.34)");
+  setImportant("border-radius", "14px");
+  setImportant("background", "rgba(8, 20, 38, 0.92)");
+  setImportant("opacity", "1");
+  setImportant("visibility", "visible");
+  setImportant("font-size", "0");
+  setImportant("color", "transparent");
+
+  navToggle.querySelectorAll("span").forEach((line, index) => {
+    line.style.setProperty("position", "absolute", "important");
+    line.style.setProperty("left", "12px", "important");
+    line.style.setProperty("top", index === 0 ? "16px" : "28px", "important");
+    line.style.setProperty("display", "block", "important");
+    line.style.setProperty("width", "22px", "important");
+    line.style.setProperty("height", "2px", "important");
+    line.style.setProperty("border-radius", "999px", "important");
+    line.style.setProperty("background", "#f8fbff", "important");
+    line.style.setProperty("opacity", "1", "important");
+  });
+}
+
+lockMobileNavigationButton();
+
+function resolveSitePath(path) {
+  const base = document.querySelector('base')?.href || window.location.href;
+  return new URL(path, base).href;
+}
+
+function installFloatingProposalCta() {
+  if (document.querySelector(".floating-proposal-cta")) return;
+  const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+  if (currentPath === "/contact/") return;
+  const link = document.createElement("a");
+  link.className = "floating-proposal-cta";
+  link.href = resolveSitePath("/contact/");
+  link.textContent = "Solicitar propuesta";
+  link.setAttribute("data-floating-proposal", "");
+  document.body.appendChild(link);
+}
+
+installFloatingProposalCta();
 
 nav?.querySelectorAll("a[href]").forEach((link) => {
   const href = link.getAttribute("href") || "";
@@ -2098,9 +2158,25 @@ Object.assign(textTranslations, {
   "Servicios que ayudan a construir sistemas reales.": "Services that help build real systems.",
   "Para empresas que necesitan software a medida, sistemas internos, dashboards, automatización o SaaS MVPs sin convertir la improvisación en deuda técnica.": "For companies that need custom software, internal systems, dashboards, automation or SaaS MVPs without turning improvisation into technical debt.",
   "Sitios web empresariales": "Business Websites",
-  "Sistemas internos + CRM": "Internal Systems + CRM",
-  "Dashboards + automatización": "Dashboards + Automation",
+  "Sistemas internos": "Internal Systems",
+  "Plataformas privadas para controlar roles, estados, tareas, documentos y operación diaria.": "Private platforms to control roles, statuses, tasks, documents and daily operations.",
+  "CRM": "CRM",
+  "Seguimiento comercial para prospectos, clientes, próximas acciones, cotizaciones y cierres.": "Commercial tracking for prospects, customers, next actions, quotes and closings.",
+  "Construir CRM": "Build CRM",
+  "Dashboards": "Dashboards",
+  "Indicadores, reportes y vistas ejecutivas para operar con datos visibles.": "Indicators, reports and executive views to operate with visible data.",
+  "Diseñar dashboard": "Design dashboard",
+  "Automatización": "Automation",
+  "Flujos, alertas, integraciones y reglas para reducir trabajo repetitivo.": "Workflows, alerts, integrations and rules to reduce repetitive work.",
+  "Automatizar proceso": "Automate a process",
   "SaaS MVP + soporte": "SaaS MVPs + Support",
+  "Mantenimiento y soporte": "Maintenance & Support",
+  "Mejoras continuas, ajustes, documentación y evolución de sistemas ya publicados.": "Continuous improvements, adjustments, documentation and evolution of already published systems.",
+  "Correcciones": "Fixes",
+  "Mejoras": "Improvements",
+  "Documentación": "Documentation",
+  "Nuevas fases": "New phases",
+  "Solicitar soporte": "Request support",
   "Solicitar propuesta": "Request a proposal",
   "Integraciones IA": "AI Integrations",
   "Proyectos de clientes que prueban ejecución.": "Client work that proves execution.",
@@ -2148,9 +2224,12 @@ Object.assign(englishTextTranslations, {
   "Privacy and trust": "Privacidad y confianza",
   "Build with YC Systems": "Construye con YC Systems",
   "Business Websites": "Sitios web empresariales",
-  "Internal Systems + CRM": "Sistemas internos + CRM",
-  "Dashboards + Automation": "Dashboards + automatización",
+  "Internal Systems": "Sistemas internos",
+  "CRM": "CRM",
+  "Dashboards": "Dashboards",
+  "Automation": "Automatización",
   "SaaS MVPs + Support": "SaaS MVP + soporte",
+  "Maintenance & Support": "Mantenimiento y soporte",
   "AI Integrations": "Integraciones IA",
   "Client work that proves execution.": "Proyectos de clientes que prueban ejecución.",
   "Nexus Method": "Método Nexus",

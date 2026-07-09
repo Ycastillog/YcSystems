@@ -10955,7 +10955,9 @@ body.nav-open.yc-brand-v2::before {
 
 /* Sales authority pass: make YC Systems feel ready to win clients now. */
 .yc-brand-v2 .enterprise-trust-panel,
-.yc-brand-v2 .technology-proof-panel {
+.yc-brand-v2 .technology-proof-panel,
+.yc-brand-v2 .outcome-strip,
+.yc-brand-v2 .delivery-process-panel {
   border: 1px solid rgba(0, 216, 255, 0.22);
   border-radius: 30px;
   padding: clamp(24px, 4.5vw, 54px);
@@ -10979,7 +10981,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-copy p:not(.eyebrow),
-.yc-brand-v2 .technology-proof-panel p {
+.yc-brand-v2 .technology-proof-panel p,
+.yc-brand-v2 .outcome-strip p,
+.yc-brand-v2 .delivery-process-panel p {
   max-width: 760px;
   color: #b9cada;
   font-size: clamp(1rem, 1.4vw, 1.15rem);
@@ -10993,7 +10997,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-grid article,
-.yc-brand-v2 .sales-offer-grid article {
+.yc-brand-v2 .sales-offer-grid article,
+.yc-brand-v2 .outcome-grid article,
+.yc-brand-v2 .delivery-roadmap article {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(0, 216, 255, 0.18);
@@ -11005,7 +11011,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-grid article::before,
-.yc-brand-v2 .sales-offer-grid article::before {
+.yc-brand-v2 .sales-offer-grid article::before,
+.yc-brand-v2 .outcome-grid article::before,
+.yc-brand-v2 .delivery-roadmap article::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -11014,7 +11022,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-grid span,
-.yc-brand-v2 .sales-offer-grid > article > span {
+.yc-brand-v2 .sales-offer-grid > article > span,
+.yc-brand-v2 .outcome-grid article > span,
+.yc-brand-v2 .delivery-roadmap article > span {
   display: inline-flex;
   width: fit-content;
   margin-bottom: 14px;
@@ -11029,7 +11039,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-grid strong,
-.yc-brand-v2 .sales-offer-grid h3 {
+.yc-brand-v2 .sales-offer-grid h3,
+.yc-brand-v2 .outcome-grid strong,
+.yc-brand-v2 .delivery-roadmap strong {
   display: block;
   margin: 0 0 10px;
   color: #f8fbff;
@@ -11038,10 +11050,69 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .enterprise-trust-grid p,
-.yc-brand-v2 .sales-offer-grid p {
+.yc-brand-v2 .sales-offer-grid p,
+.yc-brand-v2 .outcome-grid p,
+.yc-brand-v2 .delivery-roadmap p {
   margin: 0;
   color: #a9bdd5;
   line-height: 1.55;
+}
+
+.yc-brand-v2 .hero-authority-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 700px;
+  margin-top: 18px;
+}
+
+.yc-brand-v2 .hero-authority-strip span,
+.yc-brand-v2 .private-product-note {
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 999px;
+  padding: 8px 11px;
+  background: rgba(2, 8, 23, 0.42);
+  color: #d9ecff;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.yc-brand-v2 .outcome-strip {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 42px);
+  align-items: start;
+}
+
+.yc-brand-v2 .outcome-strip h2,
+.yc-brand-v2 .delivery-process-panel .section-head h2 {
+  max-width: 14ch;
+  color: #f8fbff;
+}
+
+.yc-brand-v2 .outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.yc-brand-v2 .delivery-roadmap {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: clamp(20px, 4vw, 34px);
+}
+
+.yc-brand-v2 .delivery-roadmap article {
+  min-height: 250px;
+}
+
+.yc-brand-v2 .private-product-note {
+  display: inline-flex;
+  max-width: 860px;
+  margin-top: 10px;
+  border-radius: 18px;
+  line-height: 1.45;
 }
 
 .yc-brand-v2 .sales-offer-grid {
@@ -11136,42 +11207,51 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .home-main .yc-hero { order: 1; }
-.yc-brand-v2 .home-main .enterprise-trust-section { order: 2; }
-.yc-brand-v2 .home-main .home-problem-section { order: 3; }
-.yc-brand-v2 .home-main .sales-offer-section { order: 4; }
-.yc-brand-v2 .home-main .home-platform-section { order: 5; }
-.yc-brand-v2 .home-main .technology-proof-section { order: 6; }
-.yc-brand-v2 .home-main .home-products-section { order: 7; }
-.yc-brand-v2 .home-main .home-industries-section { order: 8; }
-.yc-brand-v2 .home-main .home-clients-section { order: 9; }
-.yc-brand-v2 .home-main .home-nexus-section { order: 10; }
-.yc-brand-v2 .home-main .home-contact-section { order: 11; }
+.yc-brand-v2 .home-main .outcome-strip-section { order: 2; }
+.yc-brand-v2 .home-main .enterprise-trust-section { order: 3; }
+.yc-brand-v2 .home-main .delivery-process-section { order: 4; }
+.yc-brand-v2 .home-main .home-problem-section { order: 5; }
+.yc-brand-v2 .home-main .sales-offer-section { order: 6; }
+.yc-brand-v2 .home-main .home-platform-section { order: 7; }
+.yc-brand-v2 .home-main .technology-proof-section { order: 8; }
+.yc-brand-v2 .home-main .home-products-section { order: 9; }
+.yc-brand-v2 .home-main .home-industries-section { order: 10; }
+.yc-brand-v2 .home-main .home-clients-section { order: 11; }
+.yc-brand-v2 .home-main .home-nexus-section { order: 12; }
+.yc-brand-v2 .home-main .home-contact-section { order: 13; }
 
 @media (max-width: 1060px) {
   .yc-brand-v2 .enterprise-trust-grid,
-  .yc-brand-v2 .sales-offer-grid {
+  .yc-brand-v2 .sales-offer-grid,
+  .yc-brand-v2 .delivery-roadmap {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .yc-brand-v2 .technology-proof-panel,
-  .yc-brand-v2 .site-footer .footer-map {
+  .yc-brand-v2 .site-footer .footer-map,
+  .yc-brand-v2 .outcome-strip {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 620px) {
   .yc-brand-v2 .enterprise-trust-panel,
-  .yc-brand-v2 .technology-proof-panel {
+  .yc-brand-v2 .technology-proof-panel,
+  .yc-brand-v2 .outcome-strip,
+  .yc-brand-v2 .delivery-process-panel {
     border-radius: 22px;
     padding: 20px;
   }
 
   .yc-brand-v2 .enterprise-trust-grid,
-  .yc-brand-v2 .sales-offer-grid {
+  .yc-brand-v2 .sales-offer-grid,
+  .yc-brand-v2 .outcome-grid,
+  .yc-brand-v2 .delivery-roadmap {
     grid-template-columns: 1fr;
   }
 
-  .yc-brand-v2 .sales-offer-grid article {
+  .yc-brand-v2 .sales-offer-grid article,
+  .yc-brand-v2 .delivery-roadmap article {
     min-height: 0;
   }
 

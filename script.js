@@ -18,60 +18,12 @@ const YC_CONTACT = Object.freeze({
 
 globalThis.YC_CONTACT = YC_CONTACT;
 
-function lockMobileNavigationButton() {
+function prepareMobileNavigationButton() {
   if (!navToggle) return;
-
   navToggle.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span>';
-
-  const mobileQuery = window.matchMedia("(max-width: 760px)");
-  const lines = () => navToggle.querySelectorAll("span");
-
-  const setImportant = (property, value) => {
-    navToggle.style.setProperty(property, value, "important");
-  };
-
-  const applyLock = () => {
-    if (!mobileQuery.matches) {
-      navToggle.removeAttribute("style");
-      lines().forEach((line) => line.removeAttribute("style"));
-      return;
-    }
-
-    setImportant("display", "inline-flex");
-    setImportant("position", "fixed");
-    setImportant("top", "10px");
-    setImportant("right", "14px");
-    setImportant("z-index", "140");
-    setImportant("width", "46px");
-    setImportant("height", "46px");
-    setImportant("align-items", "center");
-    setImportant("justify-content", "center");
-    setImportant("border", "1px solid rgba(0, 216, 255, 0.34)");
-    setImportant("border-radius", "14px");
-    setImportant("background", "rgba(8, 20, 38, 0.92)");
-    setImportant("opacity", "1");
-    setImportant("visibility", "visible");
-    setImportant("font-size", "0");
-    setImportant("color", "transparent");
-
-    lines().forEach((line, index) => {
-      line.style.setProperty("position", "absolute", "important");
-      line.style.setProperty("left", "12px", "important");
-      line.style.setProperty("top", index === 0 ? "16px" : "28px", "important");
-      line.style.setProperty("display", "block", "important");
-      line.style.setProperty("width", "22px", "important");
-      line.style.setProperty("height", "2px", "important");
-      line.style.setProperty("border-radius", "999px", "important");
-      line.style.setProperty("background", "#f8fbff", "important");
-      line.style.setProperty("opacity", "1", "important");
-    });
-  };
-
-  applyLock();
-  mobileQuery.addEventListener?.("change", applyLock);
 }
 
-lockMobileNavigationButton();
+prepareMobileNavigationButton();
 
 function resolveSitePath(path) {
   const base = document.querySelector('base')?.href || window.location.href;
@@ -2357,7 +2309,7 @@ function applyLanguage(lang) {
 
   langToggles.forEach((toggle) => {
     toggle.textContent = lang === "es" ? "EN" : "ES";
-    toggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
+    toggle.setAttribute("aria-label", lang === "es" ? "Cambiar a inglés" : "Switch to Spanish");
     toggle.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
   });
 }
@@ -2365,7 +2317,7 @@ function applyLanguage(lang) {
 navToggle?.addEventListener("click", () => {
   const isOpen = nav?.classList.toggle("is-open");
   document.body.classList.toggle("nav-open", Boolean(isOpen));
-  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  navToggle.setAttribute("aria-label", isOpen ? "Cerrar navegación" : "Abrir navegación");
   navToggle.setAttribute("aria-expanded", String(Boolean(isOpen)));
 });
 
@@ -2373,7 +2325,7 @@ nav?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     nav.classList.remove("is-open");
     document.body.classList.remove("nav-open");
-    navToggle?.setAttribute("aria-label", "Open navigation");
+    navToggle?.setAttribute("aria-label", "Abrir navegación");
     navToggle?.setAttribute("aria-expanded", "false");
   });
 });

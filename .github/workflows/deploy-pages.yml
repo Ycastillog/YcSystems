@@ -27,6 +27,8 @@ jobs:
         uses: actions/configure-pages@v6
         with:
           enablement: true
+      - name: Check site quality gates
+        run: node scripts/quality/check-site.mjs
       - name: Prepare public artifact
         run: |
           mkdir -p dist

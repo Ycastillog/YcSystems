@@ -19,9 +19,12 @@ const YC_CONTACT = Object.freeze({
 globalThis.YC_CONTACT = YC_CONTACT;
 
 nav?.querySelectorAll("a[href]").forEach((link) => {
-  const linkUrl = new URL(link.getAttribute("href"), window.location.href);
+  const href = link.getAttribute("href") || "";
+  const linkUrl = new URL(href, window.location.href);
   const linkPath = linkUrl.pathname.replace(/\/index\.html$/, "/");
   const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+  const isSamePageAnchor = linkUrl.pathname.replace(/\/index\.html$/, "/") === currentPath && Boolean(linkUrl.hash);
+  if (href.startsWith("#") || isSamePageAnchor) return;
   const isHome = linkPath === "/";
   const isActive = isHome ? currentPath === linkPath : currentPath.startsWith(linkPath);
 
@@ -1351,8 +1354,8 @@ Object.assign(englishTextTranslations, {
 const pageMetadataTranslations = {
   es: {
     "/": {
-      title: "YC Systems LLC — Software para vender, operar y escalar",
-      description: "YC Systems LLC construye software empresarial, páginas web, CRM, dashboards, automatizaciones y plataformas SaaS para negocios que necesitan vender, operar y escalar.",
+      title: "YC Systems LLC — Productos de software para operaciones reales",
+      description: "YC Systems LLC construye productos de software, sistemas operativos de negocio, SaaS, CRM, dashboards y automatización para operaciones reales.",
     },
     "/privacy/": {
       title: "Política de privacidad | YC Systems LLC",
@@ -1377,8 +1380,8 @@ const pageMetadataTranslations = {
   },
   en: {
     "/": {
-      title: "YC Systems LLC — Software to sell, operate and scale",
-      description: "YC Systems LLC builds enterprise software, websites, CRM, dashboards, automations and SaaS platforms for businesses that need to sell, operate and scale.",
+      title: "YC Systems LLC — Software products for real operations",
+      description: "YC Systems LLC builds software products, business operating systems, SaaS, CRM, dashboards and automation for real operations.",
     },
     "/privacy/": {
       title: "Privacy Policy | YC Systems LLC",
@@ -2032,6 +2035,129 @@ Object.assign(textTranslations, {
   "Confianza legal": "Legal trust",
   "Empresa real, comunicación responsable.": "Real company, responsible communication.",
   "YC Systems LLC es una compañía de responsabilidad limitada constituida en New York. La web mantiene públicos los datos necesarios para confianza comercial y protege información sensible como EIN, acuerdos internos, dirección personal, porcentajes societarios y detalles de productos no protegidos.": "YC Systems LLC is a limited liability company formed in New York. The website keeps only the information needed for commercial trust public and protects sensitive information such as EIN, internal agreements, personal address, ownership percentages and details of unprotected products.",
+});
+
+Object.assign(textTranslations, {
+  "Trabajo de clientes": "Client Work",
+  "Cómo construimos": "How We Build",
+  "Propuesta": "Proposal",
+  "Empresa de producto + software operativo": "Product company + operating software",
+  "Software operativo para negocios reales.": "Operating software for real businesses.",
+  "Productos de software y sistemas operativos para operaciones reales.": "Software products and operating systems for real business operations.",
+  "YC Systems construye productos SaaS, plataformas internas, CRM, dashboards y automatización para empresas que necesitan claridad, control y crecimiento.": "YC Systems builds SaaS products, internal platforms, CRM, dashboards and automation for companies that need clarity, control and growth.",
+  "Ver trabajo de clientes": "See Client Work",
+  "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canada": "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada",
+  "Empresa de producto + trabajo de clientes": "Product company + client work",
+  "Construcción por fases": "Built in phases",
+  "Despliegues privados de producto": "Private product deployments",
+  "USA · República Dominicana · Canada": "USA · Dominican Republic · Canada",
+  "Despliegue privado": "Private deployment",
+  "Línea privada": "Private line",
+  "En desarrollo": "In development",
+  "Productos creados por YC Systems": "Products built by YC Systems",
+  "Construimos productos propios alrededor de problemas operativos reales.": "We build our own software products around real operational problems.",
+  "YC Systems no es solo una lista de servicios. La compañía construye productos, sistemas y plataformas que nacen de operaciones reales, despliegues privados y aprendizaje con clientes.": "YC Systems is not just a list of services. The company builds products, systems and platforms born from real operations, private deployments and client learning.",
+  "Algunos productos de YC Systems están disponibles solo mediante despliegue privado, acceso temprano o implementación seleccionada con clientes.": "Some YC Systems products are available only through private deployment, early access or selected client implementation.",
+  "Primer producto público": "First public product",
+  "CleanLoop: plataforma operativa para lavanderías modernas.": "CleanLoop: operating platform for modern laundry businesses.",
+  "CleanLoop ayuda a operadores de lavandería a gestionar órdenes, clientes, recogidas, entregas y flujos de trabajo desde un solo sistema.": "CleanLoop helps laundry operators manage orders, customers, pickups, deliveries and workflows from one system.",
+  "Despliegue privado / acceso temprano": "Private deployment / early access",
+  "Operadores seleccionados": "Selected operators",
+  "Creado por YC Systems": "Built by YC Systems",
+  "Solicitar acceso a CleanLoop": "Request CleanLoop Access",
+  "Disponible para operadores seleccionados y early implementation partners.": "Available for selected operators and early implementation partners.",
+  "Acceso temprano": "Early access",
+  "Plataforma operativa para lavanderías modernas.": "Operating platform for modern laundry businesses.",
+  "Gestiona órdenes, clientes, recogidas, entregas y operación desde un solo sistema.": "Manage orders, customers, pickups, deliveries and operations from one system.",
+  "Ver CleanLoop": "View CleanLoop",
+  "Sistema operativo privado para ventas y operaciones de negocio.": "Private operating system for sales and business operations.",
+  "Línea de producto YC Systems para flujos comerciales, inventario, reservas, reportes y visibilidad operativa.": "A YC Systems product line for commercial workflows, inventory, reservations, reporting and operational visibility.",
+  "Línea privada de producto": "Private product line",
+  "Plataforma de operaciones inmobiliarias para brokers y equipos.": "Real estate operations platform for brokers and teams.",
+  "Creada para seguimiento de clientes, ventas, documentos, pipeline, agenda y próximos pasos.": "Built for customer tracking, sales workflows, documents, pipeline, agenda and follow-up.",
+  "Producto de operaciones financieras en desarrollo interno.": "Financial operations product under internal development.",
+  "Línea futura de YC Systems para operaciones financieras guiadas, casos, documentos y portales de clientes.": "A future YC Systems line for guided financial operations, cases, documents and customer portals.",
+  "Mentalidad de empresa de producto": "Product-company mindset",
+  "Construido con mentalidad de producto, no con improvisación.": "Built with a product-company mindset, not improvisation.",
+  "Entregas versionadas, implementación por fases, alcance claro, acuerdos documentados y soporte a largo plazo.": "Versioned delivery, phased implementation, clear scope, documented agreements and long-term support.",
+  "Alcance claro": "Clear scope",
+  "Entrega por fases": "Phased delivery",
+  "Implementación versionada": "Versioned implementation",
+  "Acuerdos documentados": "Documented agreements",
+  "Estructura lista para soporte": "Support-ready structure",
+  "Privacidad y confianza": "Privacy and trust",
+  "Definimos alcance, prioridades, entregables y límites antes de construir.": "We define scope, priorities, deliverables and limits before building.",
+  "Construimos por fases para lanzar más rápido y reducir riesgo operativo.": "We build in phases to launch faster and reduce operational risk.",
+  "El sistema puede evolucionar con nuevas versiones, mejoras y módulos.": "The system can evolve through new versions, improvements and modules.",
+  "Propuestas, acuerdos, términos y privacidad mantienen la operación clara.": "Proposals, agreements, terms and privacy keep the operation clear.",
+  "El proyecto queda preparado para mantenimiento, soporte y crecimiento.": "The project is prepared for maintenance, support and growth.",
+  "YC Systems mantiene páginas legales y de confianza públicas para clientes.": "YC Systems maintains public legal and trust pages for clients.",
+  "No empezamos con pantallas. Empezamos con la operación.": "We do not start with screens. We start with the operation.",
+  "Entendemos el flujo de trabajo y el problema de negocio antes de convertirlo en alcance, arquitectura, diseño, desarrollo, lanzamiento y soporte.": "We understand the workflow and business problem before turning it into scope, architecture, design, development, launch and support.",
+  "Construye con YC Systems": "Build with YC Systems",
+  "Servicios que ayudan a construir sistemas reales.": "Services that help build real systems.",
+  "Para empresas que necesitan software a medida, sistemas internos, dashboards, automatización o SaaS MVPs sin convertir la improvisación en deuda técnica.": "For companies that need custom software, internal systems, dashboards, automation or SaaS MVPs without turning improvisation into technical debt.",
+  "Sitios web empresariales": "Business Websites",
+  "Sistemas internos + CRM": "Internal Systems + CRM",
+  "Dashboards + automatización": "Dashboards + Automation",
+  "SaaS MVP + soporte": "SaaS MVPs + Support",
+  "Solicitar propuesta": "Request a proposal",
+  "Integraciones IA": "AI Integrations",
+  "Proyectos de clientes que prueban ejecución.": "Client work that proves execution.",
+  "Negocios reales, sitios reales, sistemas reales y entregas reales. Estos proyectos prueban ejecución, pero no se mezclan con productos propios de YC Systems.": "Real businesses, real websites, real systems and real delivery. These projects prove execution, but they are not mixed with YC Systems-owned products.",
+  "Método Nexus": "Nexus Method",
+  "Nexus es la forma en que YC Systems piensa.": "Nexus is how YC Systems thinks.",
+  "Analizar la operación. Diseñar el sistema. Automatizar el flujo. Mejorar continuamente. Nexus convierte operaciones desordenadas en sistemas claros.": "Analyze the operation. Design the system. Automate the workflow. Improve continuously. Nexus turns messy operations into clear systems.",
+  "Empresa de software de New York que construye productos, sistemas y plataformas para operaciones reales.": "New York software company building products, systems and platforms for real business operations.",
+  "Centro de confianza": "Trust Center",
+});
+
+Object.assign(englishTextTranslations, {
+  "Client Work": "Trabajo de clientes",
+  "How We Build": "Cómo construimos",
+  "Proposal": "Propuesta",
+  "Product company + operating software": "Empresa de producto + software operativo",
+  "Operating software for real businesses.": "Software operativo para negocios reales.",
+  "Software products and operating systems for real business operations.": "Productos de software y sistemas operativos para operaciones reales.",
+  "YC Systems builds SaaS products, internal platforms, CRM, dashboards and automation for companies that need clarity, control and growth.": "YC Systems construye productos SaaS, plataformas internas, CRM, dashboards y automatización para empresas que necesitan claridad, control y crecimiento.",
+  "See Client Work": "Ver trabajo de clientes",
+  "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada": "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canada",
+  "Product company + client work": "Empresa de producto + trabajo de clientes",
+  "Built in phases": "Construcción por fases",
+  "Private product deployments": "Despliegues privados de producto",
+  "USA · Dominican Republic · Canada": "USA · República Dominicana · Canada",
+  "Products built by YC Systems": "Productos creados por YC Systems",
+  "We build our own software products around real operational problems.": "Construimos productos propios alrededor de problemas operativos reales.",
+  "Some YC Systems products are available only through private deployment, early access or selected client implementation.": "Algunos productos de YC Systems están disponibles solo mediante despliegue privado, acceso temprano o implementación seleccionada con clientes.",
+  "First public product": "Primer producto público",
+  "CleanLoop: operating platform for modern laundry businesses.": "CleanLoop: plataforma operativa para lavanderías modernas.",
+  "Request CleanLoop Access": "Solicitar acceso a CleanLoop",
+  "Early access": "Acceso temprano",
+  "Private deployment": "Despliegue privado",
+  "Private line": "Línea privada",
+  "In development": "En desarrollo",
+  "View CleanLoop": "Ver CleanLoop",
+  "Private product line": "Línea privada de producto",
+  "Product-company mindset": "Mentalidad de empresa de producto",
+  "Built with a product-company mindset, not improvisation.": "Construido con mentalidad de producto, no con improvisación.",
+  "Clear scope": "Alcance claro",
+  "Phased delivery": "Entrega por fases",
+  "Versioned implementation": "Implementación versionada",
+  "Documented agreements": "Acuerdos documentados",
+  "Support-ready structure": "Estructura lista para soporte",
+  "Privacy and trust": "Privacidad y confianza",
+  "Build with YC Systems": "Construye con YC Systems",
+  "Business Websites": "Sitios web empresariales",
+  "Internal Systems + CRM": "Sistemas internos + CRM",
+  "Dashboards + Automation": "Dashboards + automatización",
+  "SaaS MVPs + Support": "SaaS MVP + soporte",
+  "AI Integrations": "Integraciones IA",
+  "Client work that proves execution.": "Proyectos de clientes que prueban ejecución.",
+  "Nexus Method": "Método Nexus",
+  "Nexus is how YC Systems thinks.": "Nexus es la forma en que YC Systems piensa.",
+  "New York software company building products, systems and platforms for real business operations.": "Empresa de software de New York que construye productos, sistemas y plataformas para operaciones reales.",
+  "Products": "Productos",
+  "Trust Center": "Centro de confianza",
 });
 
 const translatedTextNodes = new WeakMap();

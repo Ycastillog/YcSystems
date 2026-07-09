@@ -30,7 +30,7 @@ jobs:
       - name: Prepare public artifact
         run: |
           mkdir -p dist
-          cp -R about brands brokercontrol careers case-studies cleanloop company contact developers documentation documents ghostwear industries operating-systems partners press privacy process products projects services soc solutions start technology terms trust-center dist/
+          cp -R about ai-automation brands brokercontrol careers case-studies cleanloop company contact crm-development custom-software dashboard-development developers documentation documents ghostwear industries internal-systems mvp-development operating-systems partners press privacy process products projects saas-development services soc solutions start technology terms trust-center dist/
           cp -R assets dist/
           rm -rf dist/assets/merchandising
           cp CNAME index.html robots.txt script.js site.webmanifest sitemap.xml styles.css dist/

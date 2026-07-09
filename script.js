@@ -23,38 +23,52 @@ function lockMobileNavigationButton() {
 
   navToggle.innerHTML = '<span aria-hidden="true"></span><span aria-hidden="true"></span>';
 
+  const mobileQuery = window.matchMedia("(max-width: 760px)");
+  const lines = () => navToggle.querySelectorAll("span");
+
   const setImportant = (property, value) => {
     navToggle.style.setProperty(property, value, "important");
   };
 
-  setImportant("display", "inline-flex");
-  setImportant("position", "fixed");
-  setImportant("top", "10px");
-  setImportant("right", "14px");
-  setImportant("z-index", "140");
-  setImportant("width", "46px");
-  setImportant("height", "46px");
-  setImportant("align-items", "center");
-  setImportant("justify-content", "center");
-  setImportant("border", "1px solid rgba(0, 216, 255, 0.34)");
-  setImportant("border-radius", "14px");
-  setImportant("background", "rgba(8, 20, 38, 0.92)");
-  setImportant("opacity", "1");
-  setImportant("visibility", "visible");
-  setImportant("font-size", "0");
-  setImportant("color", "transparent");
+  const applyLock = () => {
+    if (!mobileQuery.matches) {
+      navToggle.removeAttribute("style");
+      lines().forEach((line) => line.removeAttribute("style"));
+      return;
+    }
 
-  navToggle.querySelectorAll("span").forEach((line, index) => {
-    line.style.setProperty("position", "absolute", "important");
-    line.style.setProperty("left", "12px", "important");
-    line.style.setProperty("top", index === 0 ? "16px" : "28px", "important");
-    line.style.setProperty("display", "block", "important");
-    line.style.setProperty("width", "22px", "important");
-    line.style.setProperty("height", "2px", "important");
-    line.style.setProperty("border-radius", "999px", "important");
-    line.style.setProperty("background", "#f8fbff", "important");
-    line.style.setProperty("opacity", "1", "important");
-  });
+    setImportant("display", "inline-flex");
+    setImportant("position", "fixed");
+    setImportant("top", "10px");
+    setImportant("right", "14px");
+    setImportant("z-index", "140");
+    setImportant("width", "46px");
+    setImportant("height", "46px");
+    setImportant("align-items", "center");
+    setImportant("justify-content", "center");
+    setImportant("border", "1px solid rgba(0, 216, 255, 0.34)");
+    setImportant("border-radius", "14px");
+    setImportant("background", "rgba(8, 20, 38, 0.92)");
+    setImportant("opacity", "1");
+    setImportant("visibility", "visible");
+    setImportant("font-size", "0");
+    setImportant("color", "transparent");
+
+    lines().forEach((line, index) => {
+      line.style.setProperty("position", "absolute", "important");
+      line.style.setProperty("left", "12px", "important");
+      line.style.setProperty("top", index === 0 ? "16px" : "28px", "important");
+      line.style.setProperty("display", "block", "important");
+      line.style.setProperty("width", "22px", "important");
+      line.style.setProperty("height", "2px", "important");
+      line.style.setProperty("border-radius", "999px", "important");
+      line.style.setProperty("background", "#f8fbff", "important");
+      line.style.setProperty("opacity", "1", "important");
+    });
+  };
+
+  applyLock();
+  mobileQuery.addEventListener?.("change", applyLock);
 }
 
 lockMobileNavigationButton();
@@ -74,6 +88,13 @@ function installFloatingProposalCta() {
   link.textContent = "Solicitar propuesta";
   link.setAttribute("data-floating-proposal", "");
   document.body.appendChild(link);
+
+  const updateFloatingProposalVisibility = () => {
+    document.body.classList.toggle("show-floating-proposal", window.scrollY > 460);
+  };
+
+  window.addEventListener("scroll", updateFloatingProposalVisibility, { passive: true });
+  updateFloatingProposalVisibility();
 }
 
 installFloatingProposalCta();
@@ -146,7 +167,7 @@ const translations = {
     "delivery.three": "Desarrollado por YC Systems",
     "services.eyebrow": "Servicios para clientes",
     "services.title": "Lo que los clientes pueden contratar con YC Systems",
-    "services.copy": "Desde una landing page profesional hasta un producto SaaS, YC Systems convierte una idea en una experiencia digital limpia con estructura, diseno y lógica funcional.",
+    "services.copy": "Desde una landing page profesional hasta un producto SaaS, YC Systems convierte una idea en una experiencia digital limpia con estructura, diseño y lógica funcional.",
     "services.web.title": "Páginas web y landing pages",
     "services.web.copy": "Páginas modernas para negocios, marcas personales, servicios, portafolios, campañas y lanzamientos de productos.",
     "services.systems.title": "Sistemas de negocio y dashboards",
@@ -198,14 +219,14 @@ const translations = {
     "launch.domains.value": "Objetivos, usuarios y necesidades del negocio",
     "launch.domains.copy": "Definimos que debe comunicar, vender, gestionar o automatizar el proyecto.",
     "launch.email.label": "02. Construir",
-    "launch.email.value": "Diseno, páginas, flujos y código",
+    "launch.email.value": "Diseño, páginas, flujos y código",
     "launch.email.copy": "La interfaz y la funcionalidad se crean con estructura limpia y flujo de usuario practico.",
     "launch.deploy.label": "03. Entregar",
     "launch.deploy.value": "Listo para presentar, publicar o mejorar",
     "launch.deploy.copy": "El resultado final queda preparado para revisión, lanzamiento, cambios futuros y uso del cliente.",
     "about.eyebrow": "Sobre YC Systems",
-    "about.title": "Una empresa tecnológica enfocada en productos de software, SaaS y soluciones digitales.",
-    "about.copy": "YC Systems desarrolla líneas internas, sistemas operativos por industria, dashboards, marcas digitales y soluciones para negocios reales.",
+    "about.title": "Una empresa tecnológica enfocada en productos de software, SaaS y soluciónes digitales.",
+    "about.copy": "YC Systems desarrolla líneas internas, sistemas operativos por industria, dashboards, marcas digitales y soluciónes para negocios reales.",
     "about.mission": "Misión",
     "about.mission.copy": "Crear software util, páginas limpias y herramientas digitales que resuelvan problemas prácticos.",
     "about.visión": "Visión",
@@ -230,7 +251,7 @@ const textTranslations = {
   "Proceso": "Process",
   "Tecnología": "Technology",
   "Contacto": "Contact",
-  "Desarrollamos productos SaaS, plataformas operativas y soluciones digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help companies grow, sell better and operate with more control.",
+  "Desarrollamos productos SaaS, plataformas operativas y soluciónes digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help companies grow, sell better and operate with more control.",
   "YC Systems en numeros": "YC Systems in Numbers",
   "4 productos. 4 proyectos de clientes. 3 dominios activos. 1 empresa tecnológica.": "4 Products. 4 Client Projects. 3 Active Domains. 1 Technology Company.",
   "Productos de software con mercados claros.": "Software products with clear markets.",
@@ -244,27 +265,27 @@ const textTranslations = {
   "Ver proyectos de clientes": "View client projects",
   "Explorar productos": "Explore products",
   "Productos de software construidos alrededor de problemas operativos reales.": "Software products built around real operational problems.",
-  "YC Systems desarrolla productos SaaS, plataformas operativas y soluciones digitales que pueden convertirse en activos escalables para industrias reales.": "YC Systems develops SaaS products, operational platforms and digital solutions that can become scalable assets for real industries.",
+  "YC Systems desarrolla productos SaaS, plataformas operativas y soluciónes digitales que pueden convertirse en activos escalables para industrias reales.": "YC Systems develops SaaS products, operational platforms and digital solutions that can become scalable assets for real industries.",
   "Ecosistema de productos": "Product Ecosystem",
   "Tres productos fuertes y una plataforma en camino definen la dirección de YC Systems.": "Three strong products and one platform on the way define YC Systems direction.",
   "Empresa de productos": "Product company",
-  "Casos reales entregados para marcas, empresas y operaciones en crecimiento.": "Real cases delivered for brands, companies and growing operations.",
+  "Trabajo de clientes entregados para marcas, empresas y operaciones en crecimiento.": "Client work delivered for brands, companies and growing operations.",
   "GhostWear, Antony Real Estate, LucianoWash y LPS Company muestran la capacidad de YC Systems para construir presencia digital, e-commerce, branding y flujos comerciales reales.": "GhostWear, Antony Real Estate, LucianoWash and LPS Company show YC Systems' ability to build digital presence, e-commerce, branding and real commercial flows.",
   "Trabajo de clientes": "Client Work",
-  "Client projects con problema, solucion, entrega y resultado.": "Client projects with problem, solution, delivery and result.",
+  "Client projects con problema, solución, entrega y resultado.": "Client projects with problem, solution, delivery and result.",
   "Casos de estudio": "Case Studies",
   "Prueba de producto": "Product Proof",
   "Cual de estos proyectos se parece a lo que necesitas?": "Which of these projects looks like what you need?",
-  "YC Systems es una empresa tecnológica enfocada en productos de software, plataformas SaaS y soluciones digitales.": "YC Systems is a technology company focused on software products, SaaS platforms and digital solutions.",
+  "YC Systems es una empresa tecnológica enfocada en productos de software, plataformas SaaS y soluciónes digitales.": "YC Systems is a technology company focused on software products, SaaS platforms and digital solutions.",
   "YC Systems convierte operaciones reales en productos digitales.": "YC Systems turns real operations into digital products.",
-  "YC Systems desarrolla productos SaaS, plataformas operativas y soluciones digitales para empresas que necesitan vender mejor, operar con mas control y escalar con tecnología.": "YC Systems develops SaaS products, operational platforms and digital solutions for companies that need to sell better, operate with more control and scale with technology.",
-  "Construimos líneas internas y soluciones digitales para operaciones reales: CleanLoop, SOC, BrokerControl, sistemas internos, dashboards, marcas digitales y plataformas por industria.": "We build internal lines and digital solutions for real operations: CleanLoop, SOC, BrokerControl, internal systems, dashboards, digital brands and industry platforms.",
+  "YC Systems desarrolla productos SaaS, plataformas operativas y soluciónes digitales para empresas que necesitan vender mejor, operar con mas control y escalar con tecnología.": "YC Systems develops SaaS products, operational platforms and digital solutions for companies that need to sell better, operate with more control and scale with technology.",
+  "Construimos líneas internas y soluciónes digitales para operaciones reales: CleanLoop, SOC, BrokerControl, sistemas internos, dashboards, marcas digitales y plataformas por industria.": "We build internal lines and digital solutions for real operations: CleanLoop, SOC, BrokerControl, internal systems, dashboards, digital brands and industry platforms.",
   "Quienes somos": "Who we are",
   "Una empresa tecnológica con productos, casos reales y capacidad de ejecución.": "A technology company with products, real cases and execution capacity.",
   "YC Systems nace de construir, probar y mejorar software con problemas reales delante.": "YC Systems was born from building, testing and improving software around real problems.",
-  "La empresa combina líneas internas, casos de cliente y experiencia tecnica para crear soluciones que no se quedan en una pantalla bonita: deben ordenar operaciones, generar confianza comercial y abrir oportunidades de crecimiento.": "The company combines internal lines, client cases and technical experience to create solutions that do not stop at a pretty screen: they must organize operations, build commercial trust and open growth opportunities.",
+  "La empresa combina líneas internas, casos de cliente y experiencia tecnica para crear soluciónes que no se quedan en una pantalla bonita: deben ordenar operaciones, generar confianza comercial y abrir oportunidades de crecimiento.": "The company combines internal lines, client cases and technical experience to create solutions that do not stop at a pretty screen: they must organize operations, build commercial trust and open growth opportunities.",
   "Convertir procesos complejos en productos digitales claros, útiles y escalables.": "Turn complex processes into clear, useful and scalable digital products.",
-  "Construir una empresa global de software con productos SaaS y soluciones digitales para multiples industrias.": "Build a global software company with SaaS products and digital solutions for multiple industries.",
+  "Construir una empresa global de software con productos SaaS y soluciónes digitales para multiples industrias.": "Build a global software company with SaaS products and digital solutions for multiple industries.",
   "Valores principales": "Core Values",
   "Los valores que guian YC Systems.": "The values that guide YC Systems.",
   "Software Products & Digital Brands": "Software Products & Digital Brands",
@@ -278,16 +299,16 @@ const textTranslations = {
   "portafolio actualizado": "updated portfolio",
   "repos y capturas reales": "real repos and screenshots",
   "Digital Brands": "Digital Brands",
-  "Solicitar una solucion": "Request a solution",
+  "Solicitar una solución": "Request a solution",
   "Que puedes contratar": "What you can hire",
   "YC Systems Ecosystem": "YC Systems Ecosystem",
   "Productos primero. Servicios como capacidad de construcción.": "Products first. Services as a build capability.",
-  "YC Systems se organiza alrededor de productos tecnologicos propios y casos reales que prueban la capacidad de crear, operar y escalar soluciones digitales.": "YC Systems is organized around owned technology products and real cases that prove the ability to create, operate and scale digital solutions.",
+  "YC Systems se organiza alrededor de productos tecnologicos propios y casos reales que prueban la capacidad de crear, operar y escalar soluciónes digitales.": "YC Systems is organized around owned technology products and real cases that prove the ability to create, operate and scale digital solutions.",
   "Capacidades para clientes": "Client capabilities",
   "Lo que YC Systems puede construir para negocios reales": "What YC Systems can build for real businesses",
-  "Cuando un cliente necesita una solucion similar, YC Systems puede adaptar su experiencia en productos, SaaS, sistemas internos, e-commerce y mantenimiento.": "When a client needs a similar solution, YC Systems can adapt its experience in products, SaaS, internal systems, e-commerce and maintenance.",
+  "Cuando un cliente necesita una solución similar, YC Systems puede adaptar su experiencia en productos, SaaS, sistemas internos, e-commerce y mantenimiento.": "When a client needs a similar solution, YC Systems can adapt its experience in products, SaaS, internal systems, e-commerce and maintenance.",
   "Seis caminos claros para trabajar con YC Systems.": "Six clear ways to work with YC Systems.",
-  "Elige el tipo de solucion que necesitas ahora. Luego se define alcance, contenido, tecnología y plan de entrega.": "Choose the type of solution you need now. Then we define scope, content, technology and delivery plan.",
+  "Elige el tipo de solución que necesitas ahora. Luego se define alcance, contenido, tecnología y plan de entrega.": "Choose the type of solution you need now. Then we define scope, content, technology and delivery plan.",
   "Página web profesional": "Professional website",
   "Tienda online": "Online store",
   "Sistema interno": "Internal system",
@@ -319,7 +340,7 @@ const textTranslations = {
   "Contenido en español e inglés para presentarte mejor ante clientes locales e internacionales.": "Content in Spanish and English to present yourself better to local and international clients.",
   "Agregar idioma": "Add language",
   "Soluciones digitales": "Digital solutions",
-  "Solicitar solucion": "Request solution",
+  "Solicitar solución": "Request solution",
   "Ver pruebas reales": "View real proof",
   "Antes de venderte una idea, mostramos ejecución.": "Before selling you an idea, we show execution.",
   "Líneas internas, sitios activos y dominios reales convierten a YC Systems LLC en una empresa tecnológica con evidencia pública, no solo intención.": "Internal lines, active sites and real domains make YC Systems LLC a technology company with public evidence, not just intention.",
@@ -338,7 +359,7 @@ const textTranslations = {
   "SaaS o app MVP": "SaaS or app MVP",
   "Mantenimiento mensual": "Monthly maintenance",
   "Soluciones reales": "Real solutions",
-  "6 soluciones reales construidas por YC Systems.": "6 real solutions built by YC Systems.",
+  "6 soluciónes reales construidas por YC Systems.": "6 real solutions built by YC Systems.",
   "Products, client projects and future platforms.": "Products, client projects and future platforms.",
   "YC Systems Ecosystem: productos, casos de cliente y plataformas en crecimiento.": "YC Systems Ecosystem: products, client projects and growing platforms.",
   "SOC, BrokerControl y CleanLoop lideran el ecosistema de productos. GhostWear y LucianoWash muestran client projects reales. CreditPilot representa una futura plataforma financiera documentada.": "SOC, BrokerControl and CleanLoop lead the product ecosystem. GhostWear and LucianoWash show real client projects. CreditPilot represents a documented future financial platform.",
@@ -365,9 +386,9 @@ const textTranslations = {
   "Listo para vender": "Ready to sell",
   "Mantenimiento disponible": "Maintenance available",
   "Quiero algo como esto": "I want something like this",
-  "Vitrina de soluciones": "Solution showcase",
-  "Casos reales": "Real cases",
-  "Casos reales listos para vender y operar.": "Real cases ready to sell and operate.",
+  "Vitrina de soluciónes": "Solution showcase",
+  "Trabajo de clientes": "Client work",
+  "Trabajo de clientes listos para vender y operar.": "Client work ready to sell and operate.",
   "Cliente real": "Real client",
   "Dominio activo": "Active domain",
   "Pedido por WhatsApp": "WhatsApp ordering",
@@ -381,21 +402,21 @@ const textTranslations = {
   "Quiero un SaaS": "I want a SaaS",
   "Quiero mantenimiento": "I want maintenance",
   "Smart Solutions. Real Results.": "Smart Solutions. Real Results.",
-  "Una empresa digital creada para construir soluciones reales, no solo páginas bonitas.": "A digital company built to create real solutions, not just pretty pages.",
+  "Una empresa digital creada para construir soluciónes reales, no solo páginas bonitas.": "A digital company built to create real solutions, not just pretty pages.",
   "Iniciar proyecto": "Start project",
   "Quienes somos": "Who we are",
-  "Como trabajamos": "How we work",
+  "Como trabajamos": "How we build",
   "Orden, claridad y resultados visibles.": "Order, clarity and visible results.",
   "Señales de confianza": "Trust signals",
   "Technology company": "Technology company",
-  "YC Systems desarrolla productos de software, plataformas SaaS y soluciones digitales.": "YC Systems develops software products, SaaS platforms and digital solutions.",
-  "La empresa se enfoca en crear productos tecnologicos propios y soluciones para operaciones reales: SOC, BrokerControl, CleanLoop, sistemas internos, dashboards, marcas digitales y plataformas por industria.": "The company focuses on creating owned technology products and solutions for real operations: SOC, BrokerControl, CleanLoop, internal systems, dashboards, digital brands and industry platforms.",
+  "YC Systems desarrolla productos de software, plataformas SaaS y soluciónes digitales.": "YC Systems develops software products, SaaS platforms and digital solutions.",
+  "La empresa se enfoca en crear productos tecnologicos propios y soluciónes para operaciones reales: SOC, BrokerControl, CleanLoop, sistemas internos, dashboards, marcas digitales y plataformas por industria.": "The company focuses on creating owned technology products and solutions for real operations: SOC, BrokerControl, CleanLoop, internal systems, dashboards, digital brands and industry platforms.",
   "YC Systems combina producto, tecnología y ejecución comercial.": "YC Systems combines product, technology and commercial execution.",
   "Una base real para clientes, socios e inversionistas.": "A real foundation for clients, partners and investors.",
   "Contacto": "Contact",
   "Cuéntame que quieres construir, mejorar o mantener.": "Tell me what you want to build, improve or maintain.",
   "Nombre o negocio": "Name or business",
-  "Tipo de solucion": "Solution type",
+  "Tipo de solución": "Solution type",
   "Objetivo principal": "Main goal",
   "Tiempo ideal": "Ideal timeline",
   "Rango o referencia de inversión": "Investment range or reference",
@@ -410,7 +431,7 @@ const textTranslations = {
   "Facebook oficial": "Official Facebook",
   "Facebook oficial: YC Systems": "Official Facebook: YC Systems",
   "Instagram y Facebook oficiales": "Official Instagram and Facebook",
-  "Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciones construidas por YC Systems.": "Current project channels: email, Instagram, Facebook, public GitHub and a portfolio of solutions built by YC Systems.",
+  "Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciónes construidas por YC Systems.": "Current project channels: email, Instagram, Facebook, public GitHub and a portfolio of solutions built by YC Systems.",
   "Que puedes solicitar": "What you can request",
   "Sitio web, app, sistema, SaaS, mantenimiento o idioma.": "Website, app, system, SaaS, maintenance or language.",
   "Cotizar": "Quote",
@@ -421,7 +442,7 @@ const textTranslations = {
   "SaaS o app": "SaaS or app",
   "Mantenimiento": "Maintenance",
   "Casos profundos": "Deep case studies",
-  "Casos reales que muestran crecimiento.": "Real cases that show growth.",
+  "Trabajo de clientes que muestran crecimiento.": "Client work that show growth.",
   "Asi un cliente entiende rápido que se construyo y que podria contratar para su propio negocio.": "So a client quickly understands what was built and what they could hire for their own business.",
   "Problema": "Problem",
   "Solucion": "Solution",
@@ -434,7 +455,7 @@ const textTranslations = {
   "Solicitar propuesta": "Request proposal",
   "Que puede contratar una empresa": "What a company can hire",
   "Cuatro lineas comerciales para crecer con orden.": "Four commercial lines to grow with order.",
-  "Sistemas internos": "Internal systems",
+  "Sistemas internos": "Sistemas internos",
   "Transformacion digital": "Digital transformation",
   "Material comercial": "Commercial material",
   "Documentos base para convertir clientes con orden.": "Base documents to convert clients with order.",
@@ -450,12 +471,12 @@ const textTranslations = {
 Object.assign(textTranslations, {
   "Software, sistemas y páginas web": "Software, systems and websites",
   "Software, sistemas y páginas web para negocios que quieren operar mejor.": "Software, systems and websites for businesses that want to operate better.",
-  "Páginas web y sistemas para operar mejor.": "Websites and systems to operate better.",
+  "Productos de software y sistemas operativos para operaciones reales": "Software products and operating systems for real business operations",
   "YC Systems construye sitios web, dashboards, sistemas internos, tiendas online y productos SaaS con diseño claro, automatización y enfoque en resultados reales.": "YC Systems builds websites, dashboards, internal systems, online stores and SaaS products with clear design, automation and a focus on real results.",
-  "Agendar llamada": "Schedule a call",
+  "Solicitar propuesta": "Request a proposal",
   "Ver proyectos reales": "View real projects",
   "Páginas web": "Websites",
-  "Sistemas internos": "Internal systems",
+  "Sistemas internos": "Sistemas internos",
   "Dashboards": "Dashboards",
   "SaaS por fases": "Phased SaaS",
   "sitios activos": "live websites",
@@ -473,7 +494,7 @@ Object.assign(textTranslations, {
   "GhostWear, Antony Real Estate, LPS Company, LucianoWash y Snackeria como prueba comercial real.": "GhostWear, Antony Real Estate, LPS Company, LucianoWash and Snackeria as real commercial proof.",
   "Dominios reales": "Real domains",
   "Clientes locales e internacionales": "Local and international clients",
-  "Base preparada para República Dominicana, United States y Canada.": "A base prepared for the Dominican Republic, the United States and Canada.",
+  "Base preparada para República Dominicana, United States y Canadá.": "A base prepared for the Dominican Republic, the United States and Canada.",
   "Líneas internas": "Internal lines",
   "Software que demuestra capacidad técnica, no solo promesas.": "Software that proves technical capability, not just promises.",
   "Estos productos prueban que YC Systems puede construir plataformas, roles, dashboards, flujos y bases listas para crecer por industria.": "These products prove YC Systems can build platforms, roles, dashboards, workflows and foundations ready to grow by industry.",
@@ -495,7 +516,7 @@ Object.assign(textTranslations, {
   "Próximamente": "Coming Soon",
   "Productos de software y sistemas de negocio": "Software Products & Business Systems",
   "Construimos productos de software que ayudan a las empresas a operar, crecer y escalar.": "We build software products that help companies operate, grow and scale.",
-  "Desarrollamos productos SaaS, plataformas operativas y soluciones digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help companies grow, sell better and operate with more control.",
+  "Desarrollamos productos SaaS, plataformas operativas y soluciónes digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help companies grow, sell better and operate with more control.",
   "líneas internas": "internal lines",
   "proyectos entregados": "delivered projects",
   "dominios activos": "active domains",
@@ -530,7 +551,7 @@ Object.assign(textTranslations, {
   "Ver productos": "View products",
   "Identidad YC Systems": "YC Systems Identity",
   "Un sistema visual propio: logo, Nexus, productos y una historia real.": "A unique visual system: logo, Nexus, products and a real story.",
-  "La marca combina azul electrico, azul profundo, blanco, gris y acentos de accion para verse tecnológica, seria y reconocible. Nexus ayuda a explicar el proceso; los productos y sitios reales prueban la ejecución.": "The brand combines electric blue, deep blue, white, gray and action accents to feel technológical, serious and recognizable. Nexus explains the process; the products and live websites prove execution.",
+  "La marca combina azul electrico, azul profundo, blanco, gris y acentos de acción para verse tecnológica, seria y reconocible. Nexus ayuda a explicar el proceso; los productos y sitios reales prueban la ejecución.": "The brand combines electric blue, deep blue, white, gray and action accents to feel technológical, serious and recognizable. Nexus explains the process; the products and live websites prove execution.",
   "YC Systems no es solo una página de servicios. Es una empresa tecnológica en construcción, con líneas internas, client projects reales y una identidad nacida de trabajo, visión y familia.": "YC Systems is not just a services page. It is a technology company being built, with internal lines, real client projects and an identity born from work, visión and family.",
   "La N tiene un significado especial: Nancy, origen emocional de esta visión y parte de la historia de la marca.": "The N has a special meaning: Nancy, the emotional origin of this visión and part of the brand story.",
   "Productos de software con mercados claros.": "Software products with clear markets.",
@@ -557,7 +578,7 @@ Object.assign(textTranslations, {
   "Presencia corporativa inmobiliaria con oferta, confianza y contacto.": "Real estate corporate presence with offer, trust and contact.",
   "Base corporativa para una empresa con marcas, servicios y presencia digital.": "Corporate base for a company with brands, services and digital presence.",
   "Web de servicios de limpieza con imagen profesional, WhatsApp y experiencia móvil.": "Cleaning services website with professional image, WhatsApp and mobile experience.",
-  "Presencia digital para soluciones de conveniencia y servicios empresariales.": "Digital presence for convenience solutions and business services.",
+  "Presencia digital para soluciónes de conveniencia y servicios empresariales.": "Digital presence for convenience solutions and business services.",
   "Ver sitio activo": "View live site",
   "Sobre YC Systems": "About YC Systems",
   "Misión, visión y valores construidos alrededor de productos de software.": "Mission, vision and values built around software products.",
@@ -574,7 +595,7 @@ Object.assign(textTranslations, {
   "Actuamos como dueños.": "We act like owners.",
   "El software debe generar impacto.": "Software must create impact.",
   "Hablemos de tu próxima página, aplicación, sistema o plataforma.": "Let's talk about your next website, application, system or platform.",
-  "Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciones construidas por YC Systems.": "Current channels for projects: email, Instagram, Facebook, public GitHub and a portfolio of solutions built by YC Systems.",
+  "Canales actuales para proyectos: email, Instagram, Facebook, GitHub público y portafolio de soluciónes construidas por YC Systems.": "Current channels for projects: email, Instagram, Facebook, public GitHub and a portfolio of solutions built by YC Systems.",
   "Email principal: contact@ycsystems.io": "Primary email: contact@ycsystems.io",
   "Instagram oficial: @yc.systems": "Official Instagram: @yc.systems",
   "Facebook oficial: YC Systems": "Official Facebook: YC Systems",
@@ -593,10 +614,10 @@ Object.assign(textTranslations, {
   "Dominios reales": "Real domains",
   "Marcas publicas": "Public brands",
   "Mantenimiento disponible": "Maintenance available",
-  "Client projects con dominio, solucion, entrega y resultado.": "Client projects with domain, solution, delivery and result.",
+  "Client projects con dominio, solución, entrega y resultado.": "Client projects with domain, solution, delivery and result.",
   "Esta página no muestra solo pantallas. Cada caso enseña un sitio real, que necesitaba el cliente, que construyo YC Systems y que puede comprar una empresa similar.": "This page does not only show screens. Each case shows a live website, what the client needed, what YC Systems built and what a similar company can buy.",
   "Casos de cliente con sitios activos.": "Client cases with live websites.",
-  "Cada caso muestra una captura real, dominio activo, problema, solucion y que puede contratar una empresa similar.": "Each case shows a real screenshot, active domain, problem, solution and what a similar company can hire.",
+  "Cada caso muestra una captura real, dominio activo, problema, solución y que puede contratar una empresa similar.": "Each case shows a real screenshot, active domain, problem, solution and what a similar company can hire.",
   "Problema:": "Problem:",
   "Solucion:": "Solution:",
   "vender productos sin depender de mensajes sueltos.": "sell products without depending on scattered messages.",
@@ -625,7 +646,7 @@ Object.assign(textTranslations, {
   "4 productos": "4 Products",
   "5 sitios activos": "5 Live Websites",
   "Dominios de clientes": "Client Domains",
-  "República Dominicana - Estados Unidos - Canada": "Dominican Republic - United States - Canada",
+  "República Dominicana - Estados Unidos - Canadá": "Dominican Republic - United States - Canada",
   "E-commerce activo": "Live e-commerce",
   "Web de servicios": "Service website",
   "Web inmobiliaria": "Real estate web",
@@ -650,15 +671,15 @@ Object.assign(textTranslations, {
   "Diseñamos": "We design",
   "Mejoramos": "We improve",
   "Entendemos el negocio, los usuarios, los puntos de fricción y donde se pierde tiempo, dinero o claridad.": "We understand the business, users, friction points and where time, money or clarity is lost.",
-  "Ordenamos pantallas, roles, acciones y datos para que la solución tenga sentido antes de desarrollar.": "We organize screens, roles, actions and data so the solution makes sense before development.",
+  "Ordenamos pantallas, roles, acciónes y datos para que la solución tenga sentido antes de desarrollar.": "We organize screens, roles, actions and data so the solution makes sense before development.",
   "Creamos la web, sistema, dashboard, app o plataforma con una base funcional, clara y mantenible.": "We create the website, system, dashboard, app or platform with a functional, clear and maintainable base.",
   "Preparamos el proyecto para publicar, presentar, vender u operar con una ruta clara de uso.": "We prepare the project to publish, present, sell or operate with a clear usage path.",
   "Ajustamos contenido, idioma, reportes, pantallas y módulos cuando el negocio crece.": "We adjust content, language, reports, screens and modules when the business grows.",
   "La tecnología queda detrás del resultado: vender mejor, medir mejor, responder más rápido y trabajar con menos caos.": "Technology stays behind the result: sell better, measure better, respond faster and work with less chaos.",
-  "Analiza, diseña, construye, entrega y mejora: esa es la forma visual en que YC Systems presenta soluciones digitales a clientes que quieren operar mejor.": "Analyze, design, build, deliver and improve: that is how YC Systems visually presents digital solutions to clients who want to operate better.",
-  "Metodo claro para construir soluciones reales.": "A clear method for building real solutions.",
+  "Analiza, diseña, construye, entrega y mejora: esa es la forma visual en que YC Systems presenta soluciónes digitales a clientes que quieren operar mejor.": "Analyze, design, build, deliver and improve: that is how YC Systems visually presents digital solutions to clients who want to operate better.",
+  "Metodo claro para construir soluciónes reales.": "A clear method for building real solutions.",
   "Stack para negocio": "Business stack",
-  "Tecnología para soluciones reales.": "Technology for real solutions.",
+  "Tecnología para soluciónes reales.": "Technology for real solutions.",
   "Con esta base construimos tiendas, sistemas internos, dashboards, SaaS, apps móviles, pagos, integraciones y automatizaciones.": "With this foundation we build stores, internal systems, dashboards, SaaS, mobile apps, payments, integrations and automations.",
   "Quiero construir algo": "I want to build something",
   "Ver proyectos": "View projects",
@@ -668,7 +689,7 @@ Object.assign(textTranslations, {
   "Web y e-commerce": "Web and e-commerce",
   "Páginas, tiendas y catálogos listos para publicar.": "Websites, stores and catalogs ready to publish.",
   "Landing pages, sitios corporativos, catálogos visuales, carrito, productos y pedidos por WhatsApp.": "Landing pages, corporate sites, visual catalogs, cart, products and WhatsApp ordering.",
-  "Sistemas internos": "Internal systems",
+  "Sistemas internos": "Sistemas internos",
   "Control operativo para equipos y negocios.": "Operational control for teams and businesses.",
   "Clientes, reservas, documentos, pagos, comisiones, tareas, roles y paneles administrativos.": "Customers, reservations, documents, payments, commissions, tasks, roles and admin panels.",
   "Plataformas pensadas para crecer como producto.": "Platforms designed to grow as products.",
@@ -684,7 +705,7 @@ Object.assign(textTranslations, {
   "Dashboards, reportes, formularios, seguimiento, estados, alertas y procesos mas faciles de controlar.": "Dashboards, reports, forms, tracking, statuses, alerts and easier-to-control processes.",
   "Nexus como guia": "Nexus as a guide",
   "Analizamos, disenamos, construimos y entregamos.": "We analyze, design, build and deliver.",
-  "Nexus ayuda a presentar la tecnología como un proceso claro: entender la operación, diseñar el flujo, construir el producto y entregar una solucion lista para mejorar.": "Nexus helps present technology as a clear process: understand the operation, design the flow, build the product and deliver a solution ready to improve.",
+  "Nexus ayuda a presentar la tecnología como un proceso claro: entender la operación, diseñar el flujo, construir el producto y entregar una solución lista para mejorar.": "Nexus helps present technology as a clear process: understand the operation, design the flow, build the product and deliver a solution ready to improve.",
   "Analizamos": "We analyze",
   "Disenamos": "We design",
   "Construimos": "We build",
@@ -696,7 +717,7 @@ Object.assign(textTranslations, {
   "YC Systems / Productos": "YC Systems / Products",
   "Ver ecosistema completo": "View full ecosystem",
   "Plataforma financiera en desarrollo para credit repair, casos, documentos, cartas y portal de clientes.": "Financial platform in development for credit repair, cases, documents, letters and customer portal.",
-  "YC Systems puede vender una solucion basada en estos productos, adaptar módulos a una industria, crear un MVP nuevo o mantener una plataforma existente con mejoras mensuales.": "YC Systems can sell a solution based on these products, adapt modules to an industry, create a new MVP or maintain an existing platform with monthly improvements.",
+  "YC Systems puede vender una solución basada en estos productos, adaptar módulos a una industria, crear un MVP nuevo o mantener una plataforma existente con mejoras mensuales.": "YC Systems can sell a solution based on these products, adapt modules to an industry, create a new MVP or maintain an existing platform with monthly improvements.",
   "Dashboard, CRM, roles, reportes, documentos, pagos, mapas, clientes y flujo interno.": "Dashboard, CRM, roles, reports, documents, payments, maps, customers and internal flow.",
   "Completa un brief rápido y YC Systems responde con una propuesta inicial para página web, tienda online, app, sistema interno, dashboard, SaaS, mantenimiento o version multiidioma.": "Complete a quick brief and YC Systems responds with an initial proposal for a website, online store, app, internal system, dashboard, SaaS, maintenance or multilingual version.",
   "Quiero orientación": "I want guidance",
@@ -720,11 +741,11 @@ Object.assign(textTranslations, {
   "CRM inmobiliario para clientes, reservas, documentos, pagos y reportes.": "Real estate CRM for clients, reservations, documents, payments and reports.",
   "Credit Repair Platform con clientes, casos, documentos, portal y compliance.": "Credit Repair Platform with customers, cases, documents, portal and compliance.",
   "Construimos software que convierte operaciones reales en resultados extraordinarios.": "We build software that turns real operations into extraordinary results.",
-  "Una visión clara: construir productos de software y soluciones digitales con ejecución real.": "A clear visión: build software products and digital solutions with real execution.",
+  "Una visión clara: construir productos de software y soluciónes digitales con ejecución real.": "A clear visión: build software products and digital solutions with real execution.",
   "Nuestra misión": "Our mission",
   "Nuestra visión": "Our visión",
-  "La meta es crear líneas internas, verticales por industria y client projects que puedan crecer en Dominican Republic, United States y Canada.": "The goal is to create internal lines, industry verticals and client projects that can grow in the Dominican Republic, the United States and Canada.",
-  "La meta es crear líneas internas, verticales por industria y proyectos de clientes que puedan crecer en República Dominicana, Estados Unidos y Canada.": "The goal is to create internal lines, industry verticals and client projects that can grow in the Dominican Republic, the United States and Canada.",
+  "La meta es crear líneas internas, verticales por industria y client projects que puedan crecer en Dominican Republic, United States y Canadá.": "The goal is to create internal lines, industry verticals and client projects that can grow in the Dominican Republic, the United States and Canada.",
+  "La meta es crear líneas internas, verticales por industria y proyectos de clientes que puedan crecer en República Dominicana, Estados Unidos y Canadá.": "The goal is to create internal lines, industry verticals and client projects that can grow in the Dominican Republic, the United States and Canada.",
   "YC Systems ya muestra líneas internas, client projects, repositorios públicos y privados, documentacion tecnica y un proceso claro para convertir nuevas ideas en activos digitales.": "YC Systems already shows internal lines, client projects, public and private repositories, technical documentation and a clear process to turn new ideas into digital assets.",
   "YC Systems ya muestra líneas internas, proyectos de clientes, repositorios públicos y privados, documentacion tecnica y un proceso claro para convertir nuevas ideas en activos digitales.": "YC Systems already shows internal lines, client projects, public and private repositories, technical documentation and a clear process to turn new ideas into digital assets.",
   "Productos funcionales": "Functional products"
@@ -780,8 +801,8 @@ Object.assign(textTranslations, {
 });
 
 Object.assign(textTranslations, {
-  "YC Systems / Como trabajamos": "YC Systems / How we work",
-  "Metodo YC Systems": "YC Systems Method",
+  "YC Systems / Como trabajamos": "YC Systems / How we build",
+  "Método YC Systems": "YC Systems Method",
   "Convertimos procesos reales en sistemas claros, útiles y listos para crecer.": "We turn real processes into clear, useful systems ready to grow.",
   "La tecnología importa, pero el cliente compra control, automatización, claridad, operación y resultados. Ese es el enfoque de YC Systems.": "Technology matters, but the client buys control, automation, clarity, operation and results. That is the YC Systems approach.",
   "Iniciar proyecto": "Start project",
@@ -790,12 +811,12 @@ Object.assign(textTranslations, {
   "Escalabilidad": "Scalability",
   "Resultados": "Results",
   "Proceso profesional": "Professional process",
-  "Un camino claro desde el problema hasta la solucion.": "A clear path from problem to solution.",
-  "No empezamos vendiendo herramientas. Primero entendemos la operación, luego disenamos el flujo correcto y construimos una solucion que el negocio pueda usar.": "We do not start by selling tools. First we understand the operation, then we design the right flow and build a solution the business can use.",
+  "Un camino claro desde el problema hasta la solución.": "A clear path from problem to solution.",
+  "No empezamos vendiendo herramientas. Primero entendemos la operación, luego disenamos el flujo correcto y construimos una solución que el negocio pueda usar.": "We do not start by selling tools. First we understand the operation, then we design the right flow and build a solution the business can use.",
   "Diagnostico": "Diagnosis",
   "Entendemos el negocio, el problema, los usuarios, los procesos repetidos y donde se pierde tiempo o dinero.": "We understand the business, the problem, the users, repeated processes and where time or money is being lost.",
-  "Diseno del flujo": "Flow design",
-  "Ordenamos pantallas, roles, acciones, datos y pasos para que la solucion sea clara antes de desarrollar.": "We organize screens, roles, actions, data and steps so the solution is clear before development.",
+  "Diseño del flujo": "Flow design",
+  "Ordenamos pantallas, roles, acciónes, datos y pasos para que la solución sea clara antes de desarrollar.": "We organize screens, roles, actions, data and steps so the solution is clear before development.",
   "Construccion": "Build",
   "Creamos la web, sistema, dashboard, app o plataforma con una base funcional y mantenible.": "We create the website, system, dashboard, app or platform with a functional and maintainable base.",
   "Integraciones": "Integrations",
@@ -814,11 +835,11 @@ Object.assign(textTranslations, {
   "Crecimiento": "Growth",
   "Base preparada para nuevas funciones, idioma, pagos y mantenimiento.": "A base prepared for new features, language, payments and maintenance.",
   "Nexus ayuda a explicar el proceso sin hacerlo complicado.": "Nexus helps explain the process without making it complicated.",
-  "Analiza, ordena, construye y entrega: esa es la forma visual en que YC Systems presenta soluciones digitales a clientes que quieren operar mejor.": "Analyze, organize, build and deliver: that is the visual way YC Systems presents digital solutions to clients who want to operate better.",
+  "Analiza, ordena, construye y entrega: esa es la forma visual en que YC Systems presenta soluciónes digitales a clientes que quieren operar mejor.": "Analyze, organize, build and deliver: that is the visual way YC Systems presents digital solutions to clients who want to operate better.",
   "Ecosistema YC Systems": "YC Systems Ecosystem",
   "Productos de software creados para operaciones reales.": "Software products created for real operations.",
   "CleanLoop, SOC y BrokerControl son activos propios de YC Systems. Cada producto nace de un problema operativo claro y puede abrir oportunidades comerciales por industria.": "CleanLoop, SOC and BrokerControl are YC Systems owned assets. Each product comes from a clear operational problem and can open commercial opportunities by industry.",
-  "Hablar de una solucion": "Talk about a solution",
+  "Hablar de una solución": "Talk about a solution",
   "Activos propios": "Owned assets",
   "El valor de YC Systems vive en productos que pueden crecer.": "YC Systems' value lives in products that can grow.",
   "Estos productos muestran capacidad de construir plataformas, dashboards, roles, flujos de negocio, interfaces móviles y sistemas listos para evolucionar.": "These products show the ability to build platforms, dashboards, roles, business flows, mobile interfaces and systems ready to evolve.",
@@ -849,7 +870,7 @@ Object.assign(textTranslations, {
   "Próximamente": "Coming Soon",
   "YC Systems / Nosotros": "YC Systems / About",
   "Empresa tecnológica": "Technology company",
-  "Una empresa enfocada en productos de software, SaaS y soluciones digitales para negocios que necesitan operar mejor, vender con mas confianza y crecer con tecnología.": "A company focused on software products, SaaS and digital solutions for businesses that need to operate better, sell with more trust and grow with technology.",
+  "Una empresa enfocada en productos de software, SaaS y soluciónes digitales para negocios que necesitan operar mejor, vender con mas confianza y crecer con tecnología.": "A company focused on software products, SaaS and digital solutions for businesses that need to operate better, sell with more trust and grow with technology.",
   "Software Products. Business Systems. Real Results.": "Software Products. Business Systems. Real Results.",
   "Productos de software. Sistemas de negocio. Resultados reales.": "Software Products. Business Systems. Real Results.",
   "Misión": "Mission",
@@ -857,16 +878,16 @@ Object.assign(textTranslations, {
   "Una base clara para clientes, socios e inversionistas.": "A clear foundation for clients, partners and investors.",
   "La marca se construye alrededor de líneas internas, casos reales y una forma de trabajar orientada a resultados. El objetivo no es solo entregar pantallas: es construir activos digitales que puedan mantenerse, venderse y evolucionar.": "The brand is built around internal lines, real cases and a results-oriented way of working. The goal is not just to deliver screens: it is to build digital assets that can be maintained, sold and evolved.",
   "Enfoque": "Focus",
-  "Líneas internas, client projects, mantenimiento y soluciones para operaciones reales.": "Internal lines, client projects, maintenance and solutions for real operations.",
-  "Líneas internas, proyectos de clientes, mantenimiento y soluciones para operaciones reales.": "Internal lines, client projects, maintenance and solutions for real operations.",
+  "Líneas internas, client projects, mantenimiento y soluciónes para operaciones reales.": "Internal lines, client projects, maintenance and solutions for real operations.",
+  "Líneas internas, proyectos de clientes, mantenimiento y soluciónes para operaciones reales.": "Internal lines, client projects, maintenance and solutions for real operations.",
   "Valores": "Values",
   "La forma de construir importa.": "The way we build matters.",
   "Founder": "Founder",
   "Founder & CEO de YC Systems. Su enfoque combina estrategia de producto, desarrollo de software, sistemas digitales y mejora continua para operaciones reales.": "Founder & CEO of YC Systems. His approach combines product strategy, software development, digital systems and continuous improvement for real operations.",
-  "YC Systems nace de construir, probar y mejorar soluciones con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce y automatización.": "YC Systems was born from building, testing and improving solutions around real problems: sales, reservations, clients, routes, dashboards, e-commerce and automation.",
+  "YC Systems nace de construir, probar y mejorar soluciónes con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce y automatización.": "YC Systems was born from building, testing and improving solutions around real problems: sales, reservations, clients, routes, dashboards, e-commerce and automation.",
   "Identidad visual": "Visual identity",
   "Nexus es el constructor digital de YC Systems.": "Nexus is the digital builder of YC Systems.",
-  "Nexus representa nuestra forma de explicar tecnología sin complicarla: analizar, diseñar, automatizar y entregar soluciones digitales que ayudan a las empresas a operar mejor.": "Nexus represents our way of explaining technology without complicating it: analyze, design, automate and deliver digital solutions that help companies operate better.",
+  "Nexus representa nuestra forma de explicar tecnología sin complicarla: analizar, diseñar, automatizar y entregar soluciónes digitales que ayudan a las empresas a operar mejor.": "Nexus represents our way of explaining technology without complicating it: analyze, design, automate and deliver digital solutions that help companies operate better.",
   "Sitios y sistemas que ordenan ventas y operaciones.": "Websites and systems that organize sales and operations.",
   "Diseñamos webs, dashboards y plataformas internas para negocios que necesitan vender mejor, operar con más claridad y crecer por fases.": "We design websites, dashboards and internal platforms for businesses that need to sell better, operate with more clarity and grow in phases.",
   "Solicitar diagnóstico": "Request assessment",
@@ -879,7 +900,7 @@ Object.assign(textTranslations, {
   "Software que ayuda a vender, operar y escalar.": "Software that helps you sell, operate and scale.",
   "YC Systems LLC construye infraestructura digital para empresas que necesitan páginas web serias, CRM, dashboards, portales, automatizaciones y plataformas SaaS con una ruta clara de negocio.": "YC Systems LLC builds digital infrastructure for companies that need serious websites, CRM, dashboards, portals, automations and SaaS platforms with a clear business path.",
   "Solicitar propuesta": "Request proposal",
-  "YC Systems LLC · New York · Software Development Company · USA / RD / Canada": "YC Systems LLC · New York · Software Development Company · USA / DR / Canada",
+  "YC Systems LLC · New York · Software Development Company · USA / RD / Canadá": "YC Systems LLC · New York · Software Development Company · USA / DR / Canada",
   "Por qué empresas eligen YC Systems": "Why companies choose YC Systems",
   "Una empresa de software preparada para vender, construir y sostener.": "A software company ready to sell, build and support.",
   "No vendemos solo pantallas bonitas. Construimos activos digitales con criterio comercial, arquitectura moderna, soporte continuo y una ruta clara desde la primera conversación hasta el lanzamiento.": "We do not sell pretty screens only. We build digital assets with commercial thinking, modern architecture, ongoing support and a clear path from the first conversation to launch.",
@@ -948,7 +969,7 @@ Object.assign(textTranslations, {
   "New York LLC": "New York LLC",
   "Software por fases": "Phased software",
   "Proyectos en producción": "Projects in production",
-  "USA + RD + Canada": "USA + DR + Canada",
+  "USA + RD + Canadá": "USA + DR + Canada",
   "Resultados que compran los clientes": "Outcomes clients buy",
   "Ayudamos a negocios a vender más, ahorrar tiempo y operar con menos caos.": "We help businesses sell more, save time and operate with less chaos.",
   "Vender más": "Sell more",
@@ -959,7 +980,7 @@ Object.assign(textTranslations, {
   "CRM, portales, dashboards y sistemas internos conectados al proceso real.": "CRM, portals, dashboards and internal systems connected to the real process.",
   "Decidir mejor": "Decide better",
   "Datos visibles para dirección, ventas, soporte, operaciones y crecimiento.": "Visible data for leadership, sales, support, operations and growth.",
-  "Cómo trabajamos": "How we work",
+  "Cómo construimos": "How we build",
   "Un proceso claro reduce riesgo y acelera decisiones.": "A clear process reduces risk and speeds up decisions.",
   "YC Systems convierte una idea o problema operativo en alcance, arquitectura, interfaz, desarrollo, lanzamiento y soporte.": "YC Systems turns an idea or operational problem into scope, architecture, interface, development, launch and support.",
   "Entendemos el negocio, el problema, los usuarios, prioridades y resultado esperado.": "We understand the business, problem, users, priorities and expected result.",
@@ -1015,7 +1036,7 @@ const englishTextTranslations = {
   "4 Products": "4 productos",
   "5 Live Websites": "5 sitios activos",
   "Client Domains": "Dominios de clientes",
-  "Dominican Republic - United States - Canada": "República Dominicana - Estados Unidos - Canada",
+  "Dominican Republic - United States - Canada": "República Dominicana - Estados Unidos - Canadá",
   "Live e-commerce": "E-commerce activo",
   "Service website": "Web de servicios",
   "Real estate web": "Web inmobiliaria",
@@ -1048,15 +1069,15 @@ const englishTextTranslations = {
   "Nexus guides the visual conversation: first it understands the business, then it organizes the flow and finally helps turn it into a usable solution.": "Nexus guía la conversación visual: primero entiende el negocio, luego ordena el flujo y finalmente ayuda a convertirlo en una solución usable.",
   "We improve": "Mejoramos",
   "We understand the business, users, friction points and where time, money or clarity is lost.": "Entendemos el negocio, los usuarios, los puntos de fricción y donde se pierde tiempo, dinero o claridad.",
-  "We organize screens, roles, actions and data so the solution makes sense before development.": "Ordenamos pantallas, roles, acciones y datos para que la solución tenga sentido antes de desarrollar.",
+  "We organize screens, roles, actions and data so the solution makes sense before development.": "Ordenamos pantallas, roles, acciónes y datos para que la solución tenga sentido antes de desarrollar.",
   "We create the website, system, dashboard, app or platform with a functional, clear and maintainable base.": "Creamos la web, sistema, dashboard, app o plataforma con una base funcional, clara y mantenible.",
   "We prepare the project to publish, present, sell or operate with a clear usage path.": "Preparamos el proyecto para publicar, presentar, vender u operar con una ruta clara de uso.",
   "We adjust content, language, reports, screens and modules when the business grows.": "Ajustamos contenido, idioma, reportes, pantallas y módulos cuando el negocio crece.",
   "Technology stays behind the result: sell better, measure better, respond faster and work with less chaos.": "La tecnología queda detrás del resultado: vender mejor, medir mejor, responder más rápido y trabajar con menos caos.",
-  "Analyze, design, build, deliver and improve: that is how YC Systems visually presents digital solutions to clients who want to operate better.": "Analiza, diseña, construye, entrega y mejora: esa es la forma visual en que YC Systems presenta soluciones digitales a clientes que quieren operar mejor.",
-  "A clear method for building real solutions.": "Metodo claro para construir soluciones reales.",
+  "Analyze, design, build, deliver and improve: that is how YC Systems visually presents digital solutions to clients who want to operate better.": "Analiza, diseña, construye, entrega y mejora: esa es la forma visual en que YC Systems presenta soluciónes digitales a clientes que quieren operar mejor.",
+  "A clear method for building real solutions.": "Metodo claro para construir soluciónes reales.",
   "Business stack": "Stack para negocio",
-  "Technology for real solutions.": "Tecnología para soluciones reales.",
+  "Technology for real solutions.": "Tecnología para soluciónes reales.",
   "With this foundation we build stores, internal systems, dashboards, SaaS, mobile apps, payments, integrations and automations.": "Con esta base construimos tiendas, sistemas internos, dashboards, SaaS, apps móviles, pagos, integraciones y automatizaciones.",
   "I want to build something": "Quiero construir algo",
   "View projects": "Ver proyectos",
@@ -1066,7 +1087,7 @@ const englishTextTranslations = {
   "Web and e-commerce": "Web y e-commerce",
   "Websites, stores and catalogs ready to publish.": "Páginas, tiendas y catálogos listos para publicar.",
   "Landing pages, corporate sites, visual catalogs, cart, products and WhatsApp ordering.": "Landing pages, sitios corporativos, catálogos visuales, carrito, productos y pedidos por WhatsApp.",
-  "Internal systems": "Sistemas internos",
+  "Sistemas internos": "Sistemas internos",
   "Operational control for teams and businesses.": "Control operativo para equipos y negocios.",
   "Customers, reservations, documents, payments, commissions, tasks, roles and admin panels.": "Clientes, reservas, documentos, pagos, comisiones, tareas, roles y paneles administrativos.",
   "Platforms designed to grow as products.": "Plataformas pensadas para crecer como producto.",
@@ -1082,7 +1103,7 @@ const englishTextTranslations = {
   "Dashboards, reports, forms, tracking, statuses, alerts and easier-to-control processes.": "Dashboards, reportes, formularios, seguimiento, estados, alertas y procesos mas faciles de controlar.",
   "Nexus as a guide": "Nexus como guia",
   "We analyze, design, build and deliver.": "Analizamos, disenamos, construimos y entregamos.",
-  "Nexus helps present technology as a clear process: understand the operation, design the flow, build the product and deliver a solution ready to improve.": "Nexus ayuda a presentar la tecnología como un proceso claro: entender la operación, diseñar el flujo, construir el producto y entregar una solucion lista para mejorar.",
+  "Nexus helps present technology as a clear process: understand the operation, design the flow, build the product and deliver a solution ready to improve.": "Nexus ayuda a presentar la tecnología como un proceso claro: entender la operación, diseñar el flujo, construir el producto y entregar una solución lista para mejorar.",
   "We analyze": "Analizamos",
   "We design": "Disenamos",
   "We build": "Construimos",
@@ -1111,7 +1132,7 @@ const englishTextTranslations = {
 Object.assign(textTranslations, {
   "Productos de software y sistemas de negocio": "Software products and business systems",
   "Construimos productos de software que ayudan a las empresas a operar, crecer y escalar.": "We build software products that help companies operate, grow and scale.",
-  "Desarrollamos productos SaaS, plataformas operativas y soluciones digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help businesses grow, sell better and operate with more control.",
+  "Desarrollamos productos SaaS, plataformas operativas y soluciónes digitales que ayudan a empresas a crecer, vender mejor y operar con mas control.": "We develop SaaS products, operational platforms and digital solutions that help businesses grow, sell better and operate with more control.",
   "Piloto y alianzas": "Pilot and partnerships",
   "Producto listo": "Product ready",
   "Próximamente": "Coming soon",
@@ -1119,7 +1140,7 @@ Object.assign(textTranslations, {
   "GhostWear, Antony Real Estate, LPS Company, LucianoWash y Snackeria muestran e-commerce, presencia corporativa, servicios y marcas digitales publicadas.": "GhostWear, Antony Real Estate, LPS Company, LucianoWash and Snackeria show published e-commerce, corporate presence, services and digital brands.",
   "Quiero algo como esto": "I want something like this",
   "Casos de cliente con sitios activos.": "Client cases with active websites.",
-  "Cada caso muestra una captura real, dominio activo, problema, solucion y que puede contratar una empresa similar.": "Each case shows a real screenshot, active domain, problem, solution and what a similar company can hire.",
+  "Cada caso muestra una captura real, dominio activo, problema, solución y que puede contratar una empresa similar.": "Each case shows a real screenshot, active domain, problem, solution and what a similar company can hire.",
   "Productos de software creados para operaciones reales.": "Software products created for real operations.",
   "CleanLoop, SOC y BrokerControl son activos propios de YC Systems. Cada producto nace de un problema operativo claro y puede abrir oportunidades comerciales por industria.": "CleanLoop, SOC and BrokerControl are YC Systems owned assets. Each product comes from a clear operational problem and can open commercial opportunities by industry.",
   "Activos propios": "Owned assets",
@@ -1127,19 +1148,19 @@ Object.assign(textTranslations, {
   "Estos productos muestran capacidad de construir plataformas, dashboards, roles, flujos de negocio, interfaces móviles y sistemas listos para evolucionar.": "These products show the ability to build platforms, dashboards, roles, business flows, mobile interfaces and systems ready to evolve.",
   "Convertimos procesos reales en sistemas claros, útiles y listos para crecer.": "We turn real processes into clear, useful systems ready to grow.",
   "La tecnología importa, pero el cliente compra control, automatización, claridad, operación y resultados. Ese es el enfoque de YC Systems.": "Technology matters, but the client buys control, automation, clarity, operation and results. That is the YC Systems approach.",
-  "Un camino claro desde el problema hasta la solucion.": "A clear path from the problem to the solution.",
-  "No empezamos vendiendo herramientas. Primero entendemos la operación, luego disenamos el flujo correcto y construimos una solucion que el negocio pueda usar.": "We do not start by selling tools. First we understand the operation, then we design the right flow and build a solution the business can use.",
+  "Un camino claro desde el problema hasta la solución.": "A clear path from the problem to the solution.",
+  "No empezamos vendiendo herramientas. Primero entendemos la operación, luego disenamos el flujo correcto y construimos una solución que el negocio pueda usar.": "We do not start by selling tools. First we understand the operation, then we design the right flow and build a solution the business can use.",
   "Cuéntame que quieres construir, mejorar o mantener.": "Tell me what you want to build, improve or maintain.",
   "Completa un brief rápido y YC Systems responde con una propuesta inicial para página web, tienda online, app, sistema interno, dashboard, SaaS, mantenimiento o version multiidioma.": "Complete a quick brief and YC Systems responds with an initial proposal for a website, online store, app, internal system, dashboard, SaaS, maintenance or multilingual version.",
   "Enviar brief directo": "Send direct brief",
   "Nombre o negocio": "Name or business",
-  "Tipo de solucion": "Solution type",
+  "Tipo de solución": "Solution type",
   "Objetivo principal": "Main objective",
   "Tiempo ideal": "Ideal timeline",
   "Rango o referencia de inversión": "Investment range or reference",
   "Detalles importantes": "Important details",
   "YC Systems convierte operaciones reales en productos digitales.": "YC Systems turns real operations into digital products.",
-  "Una empresa enfocada en productos de software, SaaS y soluciones digitales para negocios que necesitan operar mejor, vender con mas confianza y crecer con tecnología.": "A company focused on software products, SaaS and digital solutions for businesses that need to operate better, sell with more trust and grow with technology.",
+  "Una empresa enfocada en productos de software, SaaS y soluciónes digitales para negocios que necesitan operar mejor, vender con mas confianza y crecer con tecnología.": "A company focused on software products, SaaS and digital solutions for businesses that need to operate better, sell with more trust and grow with technology.",
   "Nexus ya no decora. Explica como piensa YC Systems.": "Nexus no longer decorates. It explains how YC Systems thinks.",
   "Nexus representa nuestro lenguaje de construcción: analiza la operación, recomienda el flujo, guia el desarrollo y ayuda a convertir problemas reales en productos digitales.": "Nexus represents our building language: it analyzes the operation, recommends the flow, guides development and helps turn real problems into digital products.",
   "SaaS para lavanderías": "Laundry SaaS",
@@ -1156,7 +1177,7 @@ Object.assign(textTranslations, {
   "Visibilidad ejecutiva": "Executive visibility",
   "No perder oportunidades": "No lost opportunities",
   "Casos y documentos": "Cases and documents",
-  "Proxima accion clara": "Clear next action",
+  "Proxima acción clara": "Clear next action",
   "Ver producto": "View Product",
   "Nexus recomienda este producto para lavanderías que necesitan pickup, delivery, tracking y pagos.": "Nexus recommends this product for laundries that need pickup, delivery, tracking and payments.",
   "Analizado por Nexus para equipos que necesitan reservas, pagos, inventario y reportes claros.": "Analyzed by Nexus for teams that need clear reservations, payments, inventory and reports.",
@@ -1185,7 +1206,7 @@ Object.assign(englishTextTranslations, {
   "Executive visibility": "Visibilidad ejecutiva",
   "No lost opportunities": "No perder oportunidades",
   "Cases and documents": "Casos y documentos",
-  "Clear next action": "Proxima accion clara",
+  "Clear next action": "Proxima acción clara",
   "View Product": "Ver producto",
   "Nexus recommends this product for laundries that need pickup, delivery, tracking and payments.": "Nexus recomienda este producto para lavanderías que necesitan pickup, delivery, tracking y pagos.",
   "Analyzed by Nexus for teams that need clear reservations, payments, inventory and reports.": "Analizado por Nexus para equipos que necesitan reservas, pagos, inventario y reportes claros.",
@@ -1221,7 +1242,7 @@ Object.assign(textTranslations, {
   "Productos primero. Servicios como capacidad de construcción.": "Products first. Services as build capability.",
   "YC Systems no se presenta solo como una agencia de páginas web. La empresa construye activos digitales: líneas internas, sistemas por industria, e-commerce, dashboards, automatizaciones y proyectos de cliente que pueden mantenerse y evolucionar.": "YC Systems is not presented only as a website agency. The company builds digital assets: internal lines, industry systems, e-commerce, dashboards, automations and client projects that can be maintained and evolved.",
   "Menos improvisación, más flujo, control y resultado visible para el negocio.": "Less improvisation, more flow, control and visible business results.",
-  "Construir una empresa global de software con productos SaaS y soluciones digitales para múltiples industrias.": "Build a global software company with SaaS products and digital solutions for multiple industries.",
+  "Construir una empresa global de software con productos SaaS y soluciónes digitales para múltiples industrias.": "Build a global software company with SaaS products and digital solutions for multiple industries.",
   "Una casa de productos capaz de lanzar, operar y mejorar plataformas reales.": "A product house capable of launching, operating and improving real platforms.",
   "Crear software que combine estrategia, diseño, código y operación.": "Create software that combines strategy, design, code and operations.",
   "Primero entender el problema. Luego construir una solución que se pueda usar, vender y mantener.": "First understand the problem. Then build a solution that can be used, sold and maintained.",
@@ -1236,7 +1257,7 @@ Object.assign(textTranslations, {
   "Una buena interfaz debe ayudar a vender, operar, medir o automatizar mejor.": "A good interface should help sell, operate, measure or automate better.",
   "Founder & CEO": "Founder & CEO",
   "Founder & CEO de YC Systems LLC. Su enfoque combina estrategia de producto, desarrollo de software, sistemas digitales, automatización y mejora continua para operaciones reales.": "Founder & CEO of YC Systems LLC. His focus combines product strategy, software development, digital systems, automation and continuous improvement for real operations.",
-  "YC Systems nace de construir, probar y mejorar soluciones con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce, procesos internos y plataformas SaaS.": "YC Systems was born from building, testing and improving solutions around real problems: sales, bookings, customers, routes, dashboards, e-commerce, internal processes and SaaS platforms.",
+  "YC Systems nace de construir, probar y mejorar soluciónes con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce, procesos internos y plataformas SaaS.": "YC Systems was born from building, testing and improving solutions around real problems: sales, bookings, customers, routes, dashboards, e-commerce, internal processes and SaaS platforms.",
   "Nexus no decora: explica cómo piensa YC Systems.": "Nexus does not decorate: it explains how YC Systems thinks.",
   "Nexus representa nuestra forma de construir sin complicar la conversación: analizar la operación, ordenar el flujo, diseñar la experiencia, desarrollar el producto y dejar una base lista para mejorar.": "Nexus represents how we build without complicating the conversation: analyze the operation, organize the flow, design the experience, develop the product and leave a foundation ready to improve.",
   "Siguiente paso": "Next step",
@@ -1289,7 +1310,7 @@ Object.assign(englishTextTranslations, {
   "We work with an owner mindset: order, care, documentation and responsibility.": "Trabajamos con mentalidad de dueño: orden, cuidado, documentación y responsabilidad.",
   "A good interface should help sell, operate, measure or automate better.": "Una buena interfaz debe ayudar a vender, operar, medir o automatizar mejor.",
   "Founder & CEO of YC Systems LLC. His focus combines product strategy, software development, digital systems, automation and continuous improvement for real operations.": "Founder & CEO de YC Systems LLC. Su enfoque combina estrategia de producto, desarrollo de software, sistemas digitales, automatización y mejora continua para operaciones reales.",
-  "YC Systems was born from building, testing and improving solutions around real problems: sales, bookings, customers, routes, dashboards, e-commerce, internal processes and SaaS platforms.": "YC Systems nace de construir, probar y mejorar soluciones con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce, procesos internos y plataformas SaaS.",
+  "YC Systems was born from building, testing and improving solutions around real problems: sales, bookings, customers, routes, dashboards, e-commerce, internal processes and SaaS platforms.": "YC Systems nace de construir, probar y mejorar soluciónes con problemas reales delante: ventas, reservas, clientes, rutas, dashboards, e-commerce, procesos internos y plataformas SaaS.",
   "Nexus does not decorate: it explains how YC Systems thinks.": "Nexus no decora: explica cómo piensa YC Systems.",
   "Nexus represents how we build without complicating the conversation: analyze the operation, organize the flow, design the experience, develop the product and leave a foundation ready to improve.": "Nexus representa nuestra forma de construir sin complicar la conversación: analizar la operación, ordenar el flujo, diseñar la experiencia, desarrollar el producto y dejar una base lista para mejorar.",
   "If your business needs to look better or operate better, let's start with a clear path.": "Si tu negocio necesita verse mejor u operar mejor, empecemos con una ruta clara.",
@@ -1521,7 +1542,7 @@ Object.assign(textTranslations, {
   "YC Systems / Soluciones": "YC Systems / Solutions",
   "Soluciones empresariales": "Enterprise Solutions",
   "Infraestructura para negocios que necesitan control.": "Infrastructure for businesses that need control.",
-  "Matriz de soluciones": "Solution Matrix",
+  "Matriz de soluciónes": "Solution Matrix",
   "Del proceso a la plataforma": "From process to platform",
   "Ventas": "Sales",
   "Operaciones": "Operations",
@@ -1609,7 +1630,7 @@ Object.assign(englishTextTranslations, {
   "YC Systems / Solutions": "YC Systems / Soluciones",
   "Enterprise Solutions": "Soluciones empresariales",
   "Infrastructure for businesses that need control.": "Infraestructura para negocios que necesitan control.",
-  "Solution Matrix": "Matriz de soluciones",
+  "Solution Matrix": "Matriz de soluciónes",
   "From process to platform": "Del proceso a la plataforma",
   "Sales": "Ventas",
   "Operations": "Operaciones",
@@ -1788,7 +1809,7 @@ Object.assign(textTranslations, {
   "Inteligencia Nexus": "Nexus intelligence",
   "Soluciones empresariales": "Enterprise Solutions",
   "Infraestructura para negocios que necesitan control.": "Infrastructure for businesses that need control.",
-  "Matriz de soluciones": "Solution Matrix",
+  "Matriz de soluciónes": "Solution Matrix",
   "Del proceso a la plataforma": "From process to platform",
   "Qué construimos": "What we build",
   "Plataformas operativas": "Operating platforms",
@@ -1996,13 +2017,13 @@ Object.assign(textTranslations, {
 });
 
 Object.assign(textTranslations, {
-  "Sistemas digitales": "Digital systems",
-  "Casos reales": "Real cases",
-  "Cómo trabajamos": "How we work",
+  "Sistemas operativos": "Operating systems",
+  "Trabajo de clientes": "Client work",
+  "Cómo construimos": "How we build",
   "Software empresarial por fases": "Phased enterprise software",
-  "Sistemas digitales para operar mejor.": "Digital systems to operate better.",
+  "Sistemas operativos para operar mejor.": "Operating systems to operate better.",
   "Diseñamos y construimos páginas web, portales, CRM, dashboards, automatizaciones y plataformas SaaS para empresas que necesitan vender, organizarse y crecer por fases.": "We design and build websites, portals, CRMs, dashboards, automations and SaaS platforms for companies that need to sell, organize and grow in phases.",
-  "YC Systems LLC · New York · Sitios activos · Sistemas internos · Diagnóstico operativo": "YC Systems LLC · New York · Active sites · Internal systems · Operational diagnosis",
+  "YC Systems LLC · New York · Sitios activos · Sistemas internos · Diagnóstico operativo": "YC Systems LLC · New York · Active sites · Sistemas internos · Operational diagnosis",
   "Ver casos reales": "View real cases",
   "Ejecución visible": "Visible execution",
   "No necesitas saber qué sistema construir. Cuéntanos el problema y te damos una ruta clara por fases.": "You do not need to know what system to build. Tell us the problem and we will give you a clear phased route.",
@@ -2041,7 +2062,7 @@ Object.assign(textTranslations, {
   "Prospectos sin control": "Uncontrolled prospects",
   "Pipeline y tareas": "Pipeline and tasks",
   "Ventas y servicios": "Sales and services",
-  "CRM y flujos comerciales para controlar prospectos, próximas acciones, documentos y cierres.": "CRM and commercial flows to control prospects, next actions, documents and closings.",
+  "CRM y flujos comerciales para controlar prospectos, próximas acciónes, documentos y cierres.": "CRM and commercial flows to control prospects, next actions, documents and closings.",
   "Producto digital propio": "Owned digital product",
   "Operación repetible": "Repeatable operation",
   "Módulos y usuarios": "Modules and users",
@@ -2064,12 +2085,12 @@ Object.assign(textTranslations, {
   "Evolución": "Evolution",
   "Verticales internas en construcción": "Internal verticals under construction",
   "YC Systems también desarrolla laboratorios de producto y arquitectura.": "YC Systems also develops product and architecture labs.",
-  "La empresa mantiene líneas internas en lavandería, operaciones comerciales, CRM, finanzas y automatización. Algunas se usan como laboratorio de producto y arquitectura, sin exponerse públicamente como soluciones finales hasta estar listas estratégica y legalmente.": "The company maintains internal lines in laundry, commercial operations, CRM, finance and automation. Some are used as product and architecture labs without being publicly exposed as final solutions until they are strategically and legally ready.",
+  "La empresa mantiene líneas internas en lavandería, operaciones comerciales, CRM, finanzas y automatización. Algunas se usan como laboratorio de producto y arquitectura, sin exponerse públicamente como soluciónes finales hasta estar listas estratégica y legalmente.": "The company maintains internal lines in laundry, commercial operations, CRM, finance and automation. Some are used as product and architecture labs without being publicly exposed as final solutions until they are strategically and legally ready.",
   "Siguiente paso": "Next step",
   "No necesitas saber qué sistema construir. Cuéntanos el problema.": "You do not need to know what system to build. Tell us the problem.",
   "YC Systems convierte esa información en una ruta clara: prioridad, primera fase, sistema recomendado y próximos entregables.": "YC Systems turns that information into a clear route: priority, first phase, recommended system and next deliverables.",
-  "Casos reales con sitios activos y resultados visibles.": "Real cases with active sites and visible results.",
-  "No mostramos demos vacías. Mostramos proyectos publicados, dominios activos y soluciones que ya pueden ser visitadas por clientes reales.": "We do not show empty demos. We show published projects, active domains and solutions that can already be visited by real customers.",
+  "Trabajo de clientes con sitios activos y resultados visibles.": "Client work with active sites and visible results.",
+  "No mostramos demos vacías. Mostramos proyectos publicados, dominios activos y soluciónes que ya pueden ser visitadas por clientes reales.": "We do not show empty demos. We show published projects, active domains and solutions that can already be visited by real customers.",
   "Ver sitios activos": "View active sites",
   "Cada proyecto demuestra una necesidad, una solución y una base lista para crecer.": "Each project demonstrates a need, a solution and a foundation ready to grow.",
   "Leemos cada entrega como evidencia comercial: sitio activo, dominio propio, contacto directo, flujo claro, experiencia móvil y proyecto verificable.": "We read each delivery as commercial evidence: active site, own domain, direct contact, clear flow, mobile experience and verifiable project.",
@@ -2077,7 +2098,7 @@ Object.assign(textTranslations, {
   "Estos proyectos muestran presencia comercial, venta, contacto, marca y operación lista para clientes reales.": "These projects show commercial presence, sales, contact, brand and operation ready for real customers.",
   "Ver sitio activo": "View active site",
   "Verticales internas en construcción": "Internal verticals under construction",
-  "Sistemas digitales": "Digital systems",
+  "Sistemas operativos": "Operating systems",
   "Ver sistemas digitales": "View digital systems",
   "Cuéntanos tu problema. Nosotros te decimos qué construir primero.": "Tell us your problem. We tell you what to build first.",
   "No necesitas saber si necesitas una web, un CRM, un portal o un SaaS. Explica cómo opera tu negocio hoy y YC Systems convierte esa necesidad en una ruta clara por fases.": "You do not need to know whether you need a website, CRM, portal or SaaS. Explain how your business operates today and YC Systems turns that need into a clear phased route.",
@@ -2090,7 +2111,7 @@ Object.assign(textTranslations, {
   "No tengo sistema": "I do not have a system",
   "Otro": "Other",
   "YC Systems LLC convierte operaciones reales en sistemas digitales.": "YC Systems LLC turns real operations into digital systems.",
-  "Somos una empresa tecnológica constituida en New York, enfocada en construir soluciones digitales, sistemas internos, plataformas operativas y software por fases para negocios reales.": "We are a technology company formed in New York, focused on building digital solutions, internal systems, operational platforms and phased software for real businesses.",
+  "Somos una empresa tecnológica constituida en New York, enfocada en construir soluciónes digitales, sistemas internos, plataformas operativas y software por fases para negocios reales.": "We are a technology company formed in New York, focused on building digital solutions, internal systems, operational platforms and phased software for real businesses.",
   "Crear sistemas digitales que hacen más fácil operar un negocio.": "Create digital systems that make it easier to operate a business.",
   "Confianza legal": "Legal trust",
   "Empresa real, comunicación responsable.": "Real company, responsible communication.",
@@ -2106,11 +2127,11 @@ Object.assign(textTranslations, {
   "Productos de software y sistemas operativos para operaciones reales.": "Software products and operating systems for real business operations.",
   "YC Systems construye productos SaaS, plataformas internas, CRM, dashboards y automatización para empresas que necesitan claridad, control y crecimiento.": "YC Systems builds SaaS products, internal platforms, CRM, dashboards and automation for companies that need clarity, control and growth.",
   "Ver trabajo de clientes": "See Client Work",
-  "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canada": "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada",
+  "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canadá": "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada",
   "Empresa de producto + trabajo de clientes": "Product company + client work",
   "Construcción por fases": "Built in phases",
   "Despliegues privados de producto": "Private product deployments",
-  "USA · República Dominicana · Canada": "USA · Dominican Republic · Canada",
+  "USA · República Dominicana · Canadá": "USA · Dominican Republic · Canada",
   "Despliegue privado": "Private deployment",
   "Línea privada": "Private line",
   "En desarrollo": "In development",
@@ -2161,7 +2182,7 @@ Object.assign(textTranslations, {
   "Sistemas internos": "Internal Systems",
   "Plataformas privadas para controlar roles, estados, tareas, documentos y operación diaria.": "Private platforms to control roles, statuses, tasks, documents and daily operations.",
   "CRM": "CRM",
-  "Seguimiento comercial para prospectos, clientes, próximas acciones, cotizaciones y cierres.": "Commercial tracking for prospects, customers, next actions, quotes and closings.",
+  "Seguimiento comercial para prospectos, clientes, próximas acciónes, cotizaciones y cierres.": "Commercial tracking for prospects, customers, next actions, quotes and closings.",
   "Construir CRM": "Build CRM",
   "Dashboards": "Dashboards",
   "Indicadores, reportes y vistas ejecutivas para operar con datos visibles.": "Indicators, reports and executive views to operate with visible data.",
@@ -2197,11 +2218,11 @@ Object.assign(englishTextTranslations, {
   "Software products and operating systems for real business operations.": "Productos de software y sistemas operativos para operaciones reales.",
   "YC Systems builds SaaS products, internal platforms, CRM, dashboards and automation for companies that need clarity, control and growth.": "YC Systems construye productos SaaS, plataformas internas, CRM, dashboards y automatización para empresas que necesitan claridad, control y crecimiento.",
   "See Client Work": "Ver trabajo de clientes",
-  "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada": "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canada",
+  "YC Systems LLC · New York · Products + Services · USA / Dominican Republic / Canada": "YC Systems LLC · New York · Productos + servicios · USA / República Dominicana / Canadá",
   "Product company + client work": "Empresa de producto + trabajo de clientes",
   "Built in phases": "Construcción por fases",
   "Private product deployments": "Despliegues privados de producto",
-  "USA · Dominican Republic · Canada": "USA · República Dominicana · Canada",
+  "USA · Dominican Republic · Canada": "USA · República Dominicana · Canadá",
   "Products built by YC Systems": "Productos creados por YC Systems",
   "We build our own software products around real operational problems.": "Construimos productos propios alrededor de problemas operativos reales.",
   "Some YC Systems products are available only through private deployment, early access or selected client implementation.": "Algunos productos de YC Systems están disponibles solo mediante despliegue privado, acceso temprano o implementación seleccionada con clientes.",
@@ -2237,6 +2258,36 @@ Object.assign(englishTextTranslations, {
   "New York software company building products, systems and platforms for real business operations.": "Empresa de software de New York que construye productos, sistemas y plataformas para operaciones reales.",
   "Products": "Productos",
   "Trust Center": "Centro de confianza",
+});
+
+Object.assign(textTranslations, {
+  "Por qué empresas eligen YC Systems": "Why companies choose YC Systems",
+  "Una empresa de software para construir sistemas completos de negocio": "A software company built to create complete business systems",
+  "YC Systems combina estrategia de producto, ingeniería, diseño, automatización y soporte para convertir una operación real en una plataforma clara, mantenible y lista para crecer por fases.": "YC Systems combines product strategy, engineering, design, automation and support to turn a real operation into a clear, maintainable platform ready to grow in phases.",
+  "Señales de confianza para comprar YC Systems": "Trust signals for choosing YC Systems",
+  "Arquitectura moderna": "Modern architecture",
+  "Bases preparadas para usuarios, roles, datos, módulos, integraciones y nuevas fases.": "Foundations prepared for users, roles, data, modules, integrations and new phases.",
+  "Desarrollo seguro": "Secure development",
+  "Alcance definido, privacidad, repositorio, control de cambios y publicación responsable.": "Defined scope, privacy, repository, change control and responsible publishing.",
+  "Soporte a largo plazo": "Long-term support",
+  "El proyecto queda listo para mantenimiento, mejoras, documentación y evolución.": "The project is ready for maintenance, improvements, documentation and evolution.",
+  "Producto + ejecución": "Product + execution",
+  "Productos propios, trabajo de clientes, procesos reales y activos publicados verificables.": "Owned products, client work, real processes and verifiable published assets.",
+});
+
+Object.assign(englishTextTranslations, {
+  "Why companies choose YC Systems": "Por qué empresas eligen YC Systems",
+  "A software company built to create complete business systems": "Una empresa de software para construir sistemas completos de negocio",
+  "YC Systems combines product strategy, engineering, design, automation and support to turn a real operation into a clear, maintainable platform ready to grow in phases.": "YC Systems combina estrategia de producto, ingeniería, diseño, automatización y soporte para convertir una operación real en una plataforma clara, mantenible y lista para crecer por fases.",
+  "Trust signals for choosing YC Systems": "Señales de confianza para comprar YC Systems",
+  "Modern architecture": "Arquitectura moderna",
+  "Foundations prepared for users, roles, data, modules, integrations and new phases.": "Bases preparadas para usuarios, roles, datos, módulos, integraciones y nuevas fases.",
+  "Secure development": "Desarrollo seguro",
+  "Defined scope, privacy, repository, change control and responsible publishing.": "Alcance definido, privacidad, repositorio, control de cambios y publicación responsable.",
+  "Long-term support": "Soporte a largo plazo",
+  "The project is ready for maintenance, improvements, documentation and evolution.": "El proyecto queda listo para mantenimiento, mejoras, documentación y evolución.",
+  "Product + execution": "Producto + ejecución",
+  "Owned products, client work, real processes and verifiable published assets.": "Productos propios, trabajo de clientes, procesos reales y activos publicados verificables.",
 });
 
 const translatedTextNodes = new WeakMap();

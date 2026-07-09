@@ -6510,7 +6510,7 @@ p {
 }
 
 
-/* Tablet and narrow desktop should not make client projects feel like one long feed. */
+/* Tablet and narrow desktop should not make proyectos de clientes feel like one long feed. */
 @media (min-width: 680px) and (max-width: 900px) {
   .yc-brand-v2 .client-card-grid,
   .yc-brand-v2 .projects-page .client-card-grid {
@@ -8712,7 +8712,7 @@ body {
   }
 }
 
-/* Final responsive lock: keep client projects from becoming a long single column on tablet/narrow desktop. */
+/* Final responsive lock: keep proyectos de clientes from becoming a long single column on tablet/narrow desktop. */
 @media (min-width: 680px) and (max-width: 900px) {
   .yc-brand-v2 .home-clients-section .client-card-grid,
   .yc-brand-v2 .projects-page .client-card-grid {
@@ -11314,16 +11314,98 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .home-main .yc-hero { order: 1; }
-.yc-brand-v2 .home-main .home-products-section { order: 3; }
-.yc-brand-v2 .home-main .sales-offer-section { order: 4; }
-.yc-brand-v2 .home-main .home-clients-section { order: 5; }
-.yc-brand-v2 .home-main .delivery-process-section { order: 6; }
-.yc-brand-v2 .home-main .home-platform-section { order: 7; }
-.yc-brand-v2 .home-main .home-nexus-section { order: 8; }
-.yc-brand-v2 .home-main .technology-proof-section { order: 9; }
-.yc-brand-v2 .home-main .enterprise-trust-section { order: 10; }
-.yc-brand-v2 .home-main .home-industries-section { order: 11; }
-.yc-brand-v2 .home-main .home-contact-section { order: 12; }
+.yc-brand-v2 .home-main .buyer-confidence-section { order: 3; }
+.yc-brand-v2 .home-main .home-products-section { order: 4; }
+.yc-brand-v2 .home-main .sales-offer-section { order: 5; }
+.yc-brand-v2 .home-main .home-clients-section { order: 6; }
+.yc-brand-v2 .home-main .delivery-process-section { order: 7; }
+.yc-brand-v2 .home-main .home-platform-section { order: 8; }
+.yc-brand-v2 .home-main .home-nexus-section { order: 9; }
+.yc-brand-v2 .home-main .technology-proof-section { order: 10; }
+.yc-brand-v2 .home-main .enterprise-trust-section { order: 11; }
+.yc-brand-v2 .home-main .home-industries-section { order: 12; }
+.yc-brand-v2 .home-main .home-contact-section { order: 13; }
+
+.yc-brand-v2 .buyer-confidence-section {
+  padding-top: clamp(26px, 4vw, 48px);
+}
+
+.yc-brand-v2 .buyer-confidence-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(20px, 4vw, 42px);
+  align-items: stretch;
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 30px;
+  padding: clamp(22px, 4vw, 46px);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(0, 216, 255, 0.13), transparent 30rem),
+    radial-gradient(circle at 100% 100%, rgba(92, 255, 92, 0.08), transparent 22rem),
+    linear-gradient(145deg, rgba(8, 20, 38, 0.92), rgba(3, 10, 23, 0.86));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+}
+
+.yc-brand-v2 .buyer-confidence-copy h2 {
+  max-width: 14ch;
+  margin-bottom: 16px;
+  color: #f8fbff;
+  font-size: clamp(2.2rem, 4.6vw, 4.4rem);
+  line-height: 0.95;
+}
+
+.yc-brand-v2 .buyer-confidence-copy p:not(.eyebrow) {
+  max-width: 54ch;
+  color: #c3d4e8;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.7;
+}
+
+.yc-brand-v2 .buyer-confidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.yc-brand-v2 .buyer-confidence-grid article {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 20px;
+  padding: 18px;
+  background: rgba(2, 8, 23, 0.42);
+}
+
+.yc-brand-v2 .buyer-confidence-grid article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.yc-brand-v2 .buyer-confidence-grid span {
+  display: inline-flex;
+  margin-bottom: 14px;
+  border: 1px solid rgba(92, 255, 92, 0.28);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: #5cff5c;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.yc-brand-v2 .buyer-confidence-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #f8fbff;
+  font-size: 1.04rem;
+}
+
+.yc-brand-v2 .buyer-confidence-grid p {
+  margin: 0;
+  color: #a9bdd5;
+  line-height: 1.52;
+}
 
 .yc-brand-v2 .featured-product-panel {
   display: grid;
@@ -11467,6 +11549,10 @@ body.nav-open.yc-brand-v2::before {
 }
 
 @media (max-width: 980px) {
+  .yc-brand-v2 .buyer-confidence-panel {
+    grid-template-columns: 1fr;
+  }
+
   .yc-brand-v2 .featured-product-panel {
     grid-template-columns: 1fr;
   }
@@ -11577,13 +11663,35 @@ body.nav-open.yc-brand-v2::before {
     min-height: 44px;
     padding: 0 14px;
     font-size: 0.86rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+  }
+
+  .show-floating-proposal .floating-proposal-cta {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+    transform: translateY(0);
   }
 }
 
 @media (max-width: 620px) {
+  .yc-brand-v2 .buyer-confidence-panel {
+    border-radius: 22px;
+    padding: 20px;
+  }
+
+  .yc-brand-v2 .buyer-confidence-copy h2 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .yc-brand-v2 .buyer-confidence-grid {
+    grid-template-columns: 1fr;
+  }
+
   .yc-brand-v2 .featured-product-panel {
     border-radius: 22px;
     padding: 18px;

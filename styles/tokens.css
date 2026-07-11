@@ -16,9 +16,9 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --space-section: clamp(72px, 9vw, 128px);
-  --space-section-compact: clamp(54px, 6.2vw, 92px);
-  --space-hero: clamp(54px, 6.6vw, 96px);
-  --font-h1: clamp(2.45rem, 4.4vw, 4.12rem);
+  --space-section-compact: clamp(50px, 5.8vw, 82px);
+  --space-hero: clamp(42px, 5vw, 70px);
+  --font-h1: clamp(2.3rem, 3.2vw, 3.35rem);
   --font-h2: clamp(1.9rem, 3vw, 2.85rem);
   --font-h3: clamp(1rem, 1.35vw, 1.24rem);
   --font-body: clamp(0.98rem, 1.08vw, 1.08rem);

@@ -50,8 +50,14 @@
 
 .yc-brand-v2 .yc-ecosystem-visual {
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr) !important;
+  min-height: clamp(390px, 31vw, 430px) !important;
   max-width: 100% !important;
   min-width: 0 !important;
+}
+
+.yc-brand-v2 .yc-hero .yc-ecosystem-visual {
+  height: clamp(390px, 31vw, 430px) !important;
+  min-height: clamp(390px, 31vw, 430px) !important;
 }
 
 .yc-brand-v2 .yc-ecosystem-visual::after {
@@ -62,23 +68,37 @@
 
 .yc-brand-v2 .yc-ecosystem-visual .orbit-a {
   right: 44px !important;
-  top: 118px !important;
-  width: min(340px, 62%) !important;
+  top: 96px !important;
+  width: min(315px, 60%) !important;
   height: auto !important;
   aspect-ratio: 1;
 }
 
 .yc-brand-v2 .yc-ecosystem-visual .orbit-b {
   right: 52px !important;
-  top: 102px !important;
-  width: min(348px, 66%) !important;
+  top: 82px !important;
+  width: min(330px, 64%) !important;
   height: auto !important;
   aspect-ratio: 1;
 }
 
 .yc-brand-v2 .yc-ecosystem-visual .ecosystem-nexus {
   right: 8px !important;
-  width: min(350px, 64%) !important;
+  width: min(325px, 62%) !important;
+}
+
+.yc-brand-v2 .yc-hero .ecosystem-products {
+  position: absolute !important;
+  left: clamp(20px, 2.4vw, 32px) !important;
+  bottom: clamp(18px, 2vw, 24px) !important;
+  width: min(250px, 48%) !important;
+  gap: 6px !important;
+  margin-top: 0 !important;
+}
+
+.yc-brand-v2 .yc-hero .ecosystem-products a {
+  min-height: 48px !important;
+  padding: 8px 10px !important;
 }
 
 .yc-brand-v2 .nexus-brand-panel::after {

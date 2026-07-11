@@ -11506,3 +11506,238 @@ body.nav-open.yc-brand-v2::before {
     margin-top: 4px !important;
   }
 }
+
+/* 2026 unified scale audit: one visual system across every public page. */
+.yc-brand-v2 {
+  --yc-page-max: 1160px;
+  --yc-section-y: clamp(44px, 5vw, 66px);
+  --yc-hero-y: clamp(42px, 5vw, 64px);
+  --yc-gap: clamp(18px, 3vw, 34px);
+  --yc-h1: clamp(2.4rem, 3.6vw, 3.35rem);
+  --yc-h2: clamp(1.82rem, 2.8vw, 2.55rem);
+  --yc-h3: clamp(1.05rem, 1.35vw, 1.28rem);
+  --yc-body: clamp(0.96rem, 1vw, 1.04rem);
+  --yc-small: 0.82rem;
+  --yc-radius-panel: 22px;
+  --yc-radius-card: 16px;
+}
+
+.yc-brand-v2 .container {
+  width: min(calc(100% - 40px), var(--yc-page-max)) !important;
+}
+
+.yc-brand-v2 :where(.section-pad, .products, .compact-showcase, .launch, .brands, .services) {
+  padding-block: var(--yc-section-y) !important;
+}
+
+.yc-brand-v2 :where(.hero, .product-hero, .enterprise-hero, .contact) {
+  min-height: auto !important;
+  padding-block: var(--yc-hero-y) !important;
+}
+
+.yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1) {
+  max-width: 15.5ch !important;
+  margin-bottom: 16px !important;
+  font-size: var(--yc-h1) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+}
+
+.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .product-page-cta strong, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2) {
+  max-width: 17ch !important;
+  margin-bottom: 12px !important;
+  font-size: var(--yc-h2) !important;
+  line-height: 1.07 !important;
+  letter-spacing: 0 !important;
+}
+
+.yc-brand-v2 :where(.hero-lede, .product-hero .hero-lede, .enterprise-hero .hero-lede, .section-head p, .contact-panel p, .cta-panel p:not(.eyebrow), .featured-product-copy p, .buyer-confidence-copy p, .enterprise-trust-copy p) {
+  max-width: 64ch !important;
+  font-size: var(--yc-body) !important;
+  line-height: 1.58 !important;
+}
+
+.yc-brand-v2 .section-head {
+  max-width: 760px !important;
+  margin-bottom: clamp(22px, 3vw, 34px) !important;
+}
+
+.yc-brand-v2 :where(.hero-actions, .cta-panel .hero-actions, .product-cta-actions) {
+  gap: 10px !important;
+}
+
+.yc-brand-v2 :where(.button, .nav-cta, .hero-actions .button, .cta-panel .button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
+  min-height: 44px !important;
+  border-radius: 999px !important;
+  padding: 0 20px !important;
+  font-size: 0.9rem !important;
+  font-weight: 850 !important;
+  line-height: 1 !important;
+}
+
+.yc-brand-v2 :where(.product-hero-grid, .enterprise-hero-grid, .featured-product-panel, .contact-panel, .enterprise-split, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel) {
+  gap: var(--yc-gap) !important;
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .product-page-shot) {
+  border-radius: var(--yc-radius-panel) !important;
+}
+
+.yc-brand-v2 .enterprise-command-card {
+  min-height: 0 !important;
+  padding: clamp(22px, 3vw, 32px) !important;
+}
+
+.yc-brand-v2 .enterprise-command-card > strong {
+  font-size: clamp(1.45rem, 2.4vw, 2.05rem) !important;
+  line-height: 1.08 !important;
+}
+
+.yc-brand-v2 .enterprise-command-card .enterprise-signal-grid {
+  gap: 8px !important;
+  margin-top: 16px !important;
+}
+
+.yc-brand-v2 .enterprise-command-card .enterprise-signal-grid em {
+  min-height: 0 !important;
+  padding: 10px 12px !important;
+  font-size: 0.76rem !important;
+  line-height: 1.15 !important;
+}
+
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .cta-panel) {
+  padding: clamp(22px, 3.5vw, 40px) !important;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid, .product-meta-grid, .product-detail-grid, .sales-offer-grid, .buyer-confidence-grid, .enterprise-trust-grid, .delivery-roadmap, .client-card-grid, .product-company-grid, .contact-request-grid) {
+  gap: 14px !important;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card) {
+  min-height: 0 !important;
+  border-radius: var(--yc-radius-card) !important;
+  padding: 18px !important;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid strong, .product-meta-grid strong, .product-detail-grid h3, .sales-offer-grid h3, .buyer-confidence-grid strong, .enterprise-trust-grid strong, .delivery-roadmap strong, .yc-os-product-card h3, .live-client-card h3) {
+  font-size: var(--yc-h3) !important;
+  line-height: 1.16 !important;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid p, .product-meta-grid p, .product-detail-grid p, .sales-offer-grid p, .buyer-confidence-grid p, .enterprise-trust-grid p, .delivery-roadmap p, .product-summary, .live-client-card p) {
+  font-size: var(--yc-small) !important;
+  line-height: 1.48 !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-card-line {
+  min-height: 0 !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+
+.yc-brand-v2 .product-company-grid .status-pill {
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  font-size: 0.64rem !important;
+  line-height: 1 !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card picture {
+  margin: 0 0 4px !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 128px !important;
+  aspect-ratio: 16 / 10 !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card h3 {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .product-company-grid .product-summary {
+  min-height: 0 !important;
+  margin-bottom: 6px !important;
+  font-size: 0.78rem !important;
+  line-height: 1.42 !important;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card > strong {
+  margin-top: 0 !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture,
+.yc-brand-v2.product-sales-page .product-page-shot picture {
+  align-self: center !important;
+}
+
+.yc-brand-v2.product-sales-page .product-hero-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1fr) !important;
+}
+
+.yc-brand-v2.product-sales-page .product-page-shot img {
+  height: auto !important;
+  max-height: none !important;
+}
+
+.yc-brand-v2 .cta-panel {
+  min-height: 0 !important;
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 {
+    --yc-section-y: 48px;
+    --yc-hero-y: 46px;
+    --yc-h1: clamp(2.25rem, 8.5vw, 3.15rem);
+    --yc-h2: clamp(1.75rem, 7vw, 2.45rem);
+  }
+
+  .yc-brand-v2 .container {
+    width: min(calc(100% - 28px), var(--yc-page-max)) !important;
+  }
+
+  .yc-brand-v2 :where(.product-hero-grid, .enterprise-hero-grid, .featured-product-panel, .contact-panel, .enterprise-split, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel) {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .yc-brand-v2 {
+    --yc-section-y: 40px;
+    --yc-hero-y: 36px;
+    --yc-h1: clamp(2.1rem, 10vw, 2.85rem);
+    --yc-h2: clamp(1.65rem, 8.4vw, 2.2rem);
+    --yc-body: 0.96rem;
+  }
+
+  .yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1, .section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2) {
+    max-width: 100% !important;
+  }
+
+  .yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .cta-panel) {
+    padding: 18px !important;
+  }
+
+  .yc-brand-v2 :where(.button, .nav-cta, .hero-actions .button, .cta-panel .button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
+    width: 100% !important;
+  }
+
+  .yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img {
+    max-height: 190px !important;
+  }
+}

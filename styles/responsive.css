@@ -18,6 +18,22 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
+  .yc-brand-v2.product-sales-page .product-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .yc-brand-v2.product-sales-page .product-hero-grid > div:first-child,
+  .yc-brand-v2.product-sales-page .product-page-shot {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+  }
+
+  .yc-brand-v2.product-sales-page .product-hero .hero-lede {
+    max-width: 62ch !important;
+    overflow-wrap: normal !important;
+  }
+
   .yc-brand-v2 .legal-card {
     grid-template-columns: 1fr !important;
   }
@@ -63,6 +79,10 @@
 
   .yc-brand-v2 .featured-product-panel picture {
     height: min(250px, 62vw) !important;
+  }
+
+  .yc-brand-v2.product-sales-page .product-sales-strip {
+    grid-template-columns: 1fr !important;
   }
 
   .yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img,

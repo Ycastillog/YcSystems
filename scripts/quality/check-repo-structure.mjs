@@ -3,6 +3,7 @@ import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(new URL("../..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
+const siteRoot = path.join(root, "site");
 const failures = [];
 const ignoredDirs = new Set([".git", ".cache", "dist", "node_modules", "output", "tmp"]);
 const textExtensions = new Set([".css", ".html", ".js", ".json", ".md", ".mjs", ".txt", ".xml", ".yml", ".yaml"]);
@@ -50,17 +51,72 @@ function gitLsFiles(args = []) {
 }
 
 const rootLegacy = path.join(root, "styles.legacy.css");
-const quarantinedLegacy = path.join(root, "styles", "legacy-quarantine.css");
-const stylesManifest = path.join(root, "styles.css");
+const siteLegacy = path.join(siteRoot, "styles.legacy.css");
+const quarantinedLegacy = path.join(siteRoot, "styles", "legacy-quarantine.css");
+const stylesManifest = path.join(siteRoot, "styles.css");
 const envExample = path.join(root, ".env.example");
 const workflow = path.join(root, ".github", "workflows", "deploy-pages.yml");
+const publicRootEntries = [
+  "about",
+  "ai-automation",
+  "assets",
+  "brands",
+  "brokercontrol",
+  "careers",
+  "case-studies",
+  "cleanloop",
+  "company",
+  "contact",
+  "crm-development",
+  "custom-software",
+  "dashboard-development",
+  "developers",
+  "documentation",
+  "documents",
+  "ghostwear",
+  "index.html",
+  "industries",
+  "internal-systems",
+  "mvp-development",
+  "operating-systems",
+  "partners",
+  "press",
+  "privacy",
+  "process",
+  "products",
+  "projects",
+  "robots.txt",
+  "saas-development",
+  "script.js",
+  "services",
+  "site.webmanifest",
+  "sitemap.xml",
+  "soc",
+  "solutions",
+  "start",
+  "styles.css",
+  "styles",
+  "technology",
+  "terms",
+  "trust-center",
+];
+
+for (const entry of publicRootEntries) {
+  if (await exists(path.join(root, entry))) {
+    fail(`${entry} must live under site/, not the repository root.`);
+  }
+}
 
 if (await exists(rootLegacy)) {
   fail("styles.legacy.css must not live in the repository root. Use styles/legacy-quarantine.css.");
 }
 
+if (await exists(siteLegacy)) {
+  fail("site/styles.legacy.css must not exist. Use site/styles/legacy-quarantine.css.");
+}
+
 if (!(await exists(quarantinedLegacy))) {
-  fail("styles/legacy-quarantine.css is missing.");
+  fail("site/styles/legacy-quarantine.css is missing.");
 }
 
 if (!(await exists(envExample))) {
@@ -97,8 +153,8 @@ if (trackedEnvFiles.length) {
 }
 
 const workflowText = await readFile(workflow, "utf8");
-if (!workflowText.includes("cp -R styles dist/")) {
-  fail("GitHub Pages workflow must copy the styles/ directory into dist.");
+if (!workflowText.includes("cp -R site/. dist/")) {
+  fail("GitHub Pages workflow must publish from site/ into dist.");
 }
 
 if (!workflowText.includes("check-repo-structure.mjs") || !workflowText.includes("check-site.mjs")) {

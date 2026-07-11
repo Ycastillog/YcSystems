@@ -1,6 +1,6 @@
 # Styles
 
-`styles.css` in the repository root is the only stylesheet entry point used by pages.
+`site/styles.css` is the only stylesheet entry point used by pages.
 
 The active system lives here:
 

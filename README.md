@@ -19,7 +19,7 @@ It must not contain private credentials, legal ownership records, EIN documents,
 ## Local Preview
 
 ```powershell
-python -m http.server 3001 --bind 127.0.0.1
+python -m http.server 3001 --bind 127.0.0.1 --directory site
 ```
 
 Open:
@@ -30,16 +30,18 @@ http://127.0.0.1:3001/
 
 ## Production Structure
 
-The website is served from the repository root because GitHub Pages publishes a static artifact from these folders.
+The repository root is reserved for company-grade project structure: documentation, quality scripts, workflow configuration and security policy.
+
+The public website lives in `site/`. GitHub Pages publishes a static artifact generated from that folder.
 
 Important files:
 
-- `index.html`: home page.
-- `styles.css`: stylesheet manifest only.
-- `styles/`: modular CSS system and quarantined legacy CSS.
-- `script.js`: public website behavior.
-- `assets/`: public brand, product and approved marketing assets.
-- `routes-map.json`: source of truth for routes, sitemap and noindex behavior.
+- `site/index.html`: home page.
+- `site/styles.css`: stylesheet manifest only.
+- `site/styles/`: modular CSS system and quarantined legacy CSS.
+- `site/script.js`: public website behavior.
+- `site/assets/`: public brand, product and approved marketing assets.
+- `config/routes-map.json`: source of truth for routes, sitemap and noindex behavior.
 - `scripts/quality/`: automated checks.
 - `docs/`: repository architecture, CSS rules and public/private policy.
 
@@ -52,19 +54,19 @@ More detail:
 
 ## CSS Rule
 
-Do not add new CSS to `styles/legacy-quarantine.css`.
+Do not add new CSS to `site/styles/legacy-quarantine.css`.
 
 New visual work belongs in:
 
 ```text
-styles/tokens.css
-styles/reset.css
-styles/base.css
-styles/layout.css
-styles/components.css
-styles/pages.css
-styles/utilities.css
-styles/responsive.css
+site/styles/tokens.css
+site/styles/reset.css
+site/styles/base.css
+site/styles/layout.css
+site/styles/components.css
+site/styles/pages.css
+site/styles/utilities.css
+site/styles/responsive.css
 ```
 
 If old CSS conflicts with new CSS, remove or migrate the old rule. Do not keep stacking stronger selectors.

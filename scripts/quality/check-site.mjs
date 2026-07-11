@@ -2,6 +2,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(new URL("../..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
+const siteRoot = path.join(root, "site");
 const ignoredDirs = new Set([".git", "android", "content", "dist", "meta", "node_modules", "output", "social", "tmp"]);
 const failures = [];
 
@@ -40,18 +41,18 @@ async function fileExists(file) {
 }
 
 function routeToFile(routePath) {
-  if (routePath === "/") return path.join(root, "index.html");
-  return path.join(root, routePath.replace(/^\/|\/$/g, ""), "index.html");
+  if (routePath === "/") return path.join(siteRoot, "index.html");
+  return path.join(siteRoot, routePath.replace(/^\/|\/$/g, ""), "index.html");
 }
 
 function hasNoindex(text) {
   return /<meta[^>]+name=["']robots["'][^>]+content=["']noindex,\s*follow["']/i.test(text);
 }
 
-const files = await walk(root);
+const files = await walk(siteRoot);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
 const textFiles = files.filter((file) => /\.(html|css|js|mjs|json|md|xml|txt)$/i.test(file));
-const publicScript = path.join(root, "script.js");
+const publicScript = path.join(siteRoot, "script.js");
 
 for (const file of htmlFiles) {
   const text = await readFile(file, "utf8");
@@ -157,11 +158,11 @@ for (const file of textFiles) {
   }
 }
 
-const routesMapPath = path.join(root, "routes-map.json");
+const routesMapPath = path.join(root, "config", "routes-map.json");
 const routesMap = JSON.parse(await readFile(routesMapPath, "utf8"));
 const routes = routesMap.routes ?? [];
 
-const sitemap = path.join(root, "sitemap.xml");
+const sitemap = path.join(siteRoot, "sitemap.xml");
 const sitemapText = await readFile(sitemap, "utf8");
 const sitemapUrls = new Set([...sitemapText.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 const expectedSitemapUrls = new Set(
@@ -225,7 +226,7 @@ for (const staleCopy of [
   }
 }
 
-const contact = path.join(root, "contact", "index.html");
+const contact = path.join(siteRoot, "contact", "index.html");
 const contactText = await readFile(contact, "utf8");
 if (/name=["']_captcha["'][^>]+value=["']false["']/i.test(contactText)) {
   fail(contact, "FormSubmit captcha is disabled; remove _captcha=false or replace the form endpoint.");

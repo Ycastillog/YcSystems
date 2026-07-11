@@ -4,19 +4,19 @@ YC Systems uses a modular CSS system. New visual work must go into the modular f
 
 ## Entry Point
 
-`styles.css` is a manifest. It should only import CSS files.
+`site/styles.css` is a manifest. It should only import CSS files.
 
 Current order:
 
-1. `styles/legacy-quarantine.css`
-2. `styles/tokens.css`
-3. `styles/reset.css`
-4. `styles/base.css`
-5. `styles/layout.css`
-6. `styles/components.css`
-7. `styles/pages.css`
-8. `styles/utilities.css`
-9. `styles/responsive.css`
+1. `site/styles/legacy-quarantine.css`
+2. `site/styles/tokens.css`
+3. `site/styles/reset.css`
+4. `site/styles/base.css`
+5. `site/styles/layout.css`
+6. `site/styles/components.css`
+7. `site/styles/pages.css`
+8. `site/styles/utilities.css`
+9. `site/styles/responsive.css`
 
 ## Ownership
 

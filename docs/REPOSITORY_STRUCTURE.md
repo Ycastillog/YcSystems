@@ -2,22 +2,26 @@
 
 This repository is the public corporate website for YC Systems LLC.
 
-The site is intentionally served from the repository root because GitHub Pages deploys the static artifact from these public files. Do not move public routes into a private source folder unless the deployment workflow is changed at the same time.
+The public website lives in `site/`.
+
+The repository root is reserved for company structure: documentation, quality scripts, workflow configuration, route configuration and security policy.
+
+GitHub Pages deploys the static artifact produced from `site/`.
 
 ## Production Surface
 
-- `index.html`: home page.
-- `products/`, `solutions/`, `operating-systems/`, `industries/`, `case-studies/`, `process/`, `company/`, `contact/`, `trust-center/`, `documentation/`, `developers/`, `documents/`, `privacy/`, `terms/`: approved public route folders.
-- `assets/`: public brand, product, preview and social media assets that are safe to publish.
-- `script.js`: public website behavior.
-- `styles.css`: CSS manifest only.
-- `styles/`: active modular CSS system plus quarantined legacy CSS.
+- `site/index.html`: home page.
+- `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
+- `site/assets/`: public brand, product, preview and social media assets that are safe to publish.
+- `site/script.js`: public website behavior.
+- `site/styles.css`: CSS manifest only.
+- `site/styles/`: active modular CSS system plus quarantined legacy CSS.
 
 ## Route Source Of Truth
 
-`routes-map.json` defines whether each route is canonical, private, legacy, support-only or excluded from the sitemap.
+`config/routes-map.json` defines whether each route is canonical, private, legacy, support-only or excluded from the sitemap.
 
-Before changing navigation, sitemap, noindex rules or redirects, update `routes-map.json` first.
+Before changing navigation, sitemap, noindex rules or redirects, update `config/routes-map.json` first.
 
 ## Legacy Compatibility
 

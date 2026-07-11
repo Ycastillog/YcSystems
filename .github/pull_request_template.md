@@ -15,4 +15,4 @@
 - [ ] No secrets, tokens or `.env` values committed
 - [ ] No private legal or ownership details exposed
 - [ ] No customer-facing copy mentions repositories, commits or deployment internals
-- [ ] No new CSS was added to `styles/legacy-quarantine.css`
+- [ ] No new CSS was added to `site/styles/legacy-quarantine.css`

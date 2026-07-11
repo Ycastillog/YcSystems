@@ -1,6 +1,20 @@
 # YC Systems LLC Corporate Website
 
-Corporate website for YC Systems LLC, a software company building business operating systems, SaaS products, client portals, automation and digital infrastructure for modern companies.
+Public corporate website for YC Systems LLC.
+
+YC Systems builds operating software, SaaS products, internal systems, CRM, dashboards, automation and digital infrastructure for real businesses.
+
+## Public URL
+
+```text
+https://ycsystems.io/
+```
+
+## Repository Purpose
+
+This repository is public brand infrastructure. It should contain only customer-safe website code, public copy, approved assets and quality scripts.
+
+It must not contain private credentials, legal ownership records, EIN documents, operating agreements, personal addresses, private customer data or source-control details exposed in customer-facing pages.
 
 ## Local Preview
 
@@ -11,10 +25,51 @@ python -m http.server 3001 --bind 127.0.0.1
 Open:
 
 ```text
-http://127.0.0.1:3001/index.html
+http://127.0.0.1:3001/
 ```
 
-## Public IA
+## Production Structure
+
+The website is served from the repository root because GitHub Pages publishes a static artifact from these folders.
+
+Important files:
+
+- `index.html`: home page.
+- `styles.css`: stylesheet manifest only.
+- `styles/`: modular CSS system and quarantined legacy CSS.
+- `script.js`: public website behavior.
+- `assets/`: public brand, product and approved marketing assets.
+- `routes-map.json`: source of truth for routes, sitemap and noindex behavior.
+- `scripts/quality/`: automated checks.
+- `docs/`: repository architecture, CSS rules and public/private policy.
+
+More detail:
+
+- [Repository structure](docs/REPOSITORY_STRUCTURE.md)
+- [CSS architecture](docs/CSS_ARCHITECTURE.md)
+- [Public repository policy](docs/PUBLIC_REPOSITORY_POLICY.md)
+- [Security policy](SECURITY.md)
+
+## CSS Rule
+
+Do not add new CSS to `styles/legacy-quarantine.css`.
+
+New visual work belongs in:
+
+```text
+styles/tokens.css
+styles/reset.css
+styles/base.css
+styles/layout.css
+styles/components.css
+styles/pages.css
+styles/utilities.css
+styles/responsive.css
+```
+
+If old CSS conflicts with new CSS, remove or migrate the old rule. Do not keep stacking stronger selectors.
+
+## Approved Public Routes
 
 ```text
 /
@@ -43,35 +98,25 @@ Controlled-access product and client proof routes are intentionally excluded fro
 /brands/ghostwear/
 ```
 
-Compatibility routes such as `/projects/`, `/about/`, `/brands/` and `/services/` are kept only as legacy redirects. The route policy is declared in `routes-map.json`; `sitemap.xml`, navigation and deployment should match that file.
+Compatibility routes such as `/projects/`, `/about/`, `/brands/`, `/services/`, `/cleanloop/`, `/soc/`, `/brokercontrol/` and `/ghostwear/` are kept only as legacy redirects.
 
-## Route And SEO Source Of Truth
+## Quality Gates
 
-`routes-map.json` is the canonical map for:
+Run before commit:
 
-- public indexable URLs
-- private product URLs
-- client proof URLs
-- legacy redirects
-- support pages that should not be in the sitemap yet
-
-Before changing navigation, sitemap, noindex rules or redirects, update `routes-map.json` first.
-
-## Public URL
-
-Current public URL:
-
-```text
-https://ycsystems.io/
+```powershell
+node scripts/quality/check-repo-structure.mjs
+node scripts/quality/check-site.mjs
 ```
+
+## Environment Variables
+
+Use `.env.example` for variable names only.
+
+Real `.env` files are local and ignored by Git.
 
 ## Corporate Contact
 
 ```text
 contact@ycsystems.io
 ```
-
-## Contact Values To Finalize
-
-- Public WhatsApp number, when ready
-- Public LinkedIn company/founder profile, when ready

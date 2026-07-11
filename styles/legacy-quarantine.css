@@ -1,3 +1,14 @@
+/*
+  YC Systems legacy quarantine.
+
+  This file is kept only to preserve current public pages while the modular
+  CSS system takes ownership in tokens.css, reset.css, base.css, layout.css,
+  components.css, pages.css, utilities.css and responsive.css.
+
+  Do not add new rules here. Move active styles into the modular files and
+  remove the matching legacy block once verified.
+*/
+
 :root {
   color-scheme: dark;
   --navy: #080b1a;

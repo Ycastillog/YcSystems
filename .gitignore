@@ -18,6 +18,7 @@ scripts/generate_commercial_social_kit.py
 .vercel/
 .env
 .env.*
+!.env.example
 *.log
 *.token
 *.secret
@@ -30,3 +31,6 @@ scripts/generate_commercial_social_kit.py
 *.bak
 *.tmp
 *.zip
+private/
+secrets/
+credentials/

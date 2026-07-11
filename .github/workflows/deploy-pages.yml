@@ -28,13 +28,16 @@ jobs:
         with:
           enablement: true
       - name: Check site quality gates
-        run: node scripts/quality/check-site.mjs
+        run: |
+          node scripts/quality/check-repo-structure.mjs
+          node scripts/quality/check-site.mjs
       - name: Prepare public artifact
         run: |
           mkdir -p dist
           cp -R about ai-automation brands brokercontrol careers case-studies cleanloop company contact crm-development custom-software dashboard-development developers documentation documents ghostwear industries internal-systems mvp-development operating-systems partners press privacy process products projects saas-development services soc solutions start technology terms trust-center dist/
           cp -R assets dist/
           rm -rf dist/assets/merchandising
+          cp -R styles dist/
           cp CNAME index.html robots.txt script.js site.webmanifest sitemap.xml styles.css dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

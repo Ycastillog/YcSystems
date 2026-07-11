@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+.yc-brand-v2 :where(a, button, [role="button"], input, select, textarea, .button, .nav-toggle, .language-chip):focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px rgba(0, 216, 255, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  .yc-brand-v2,
+  .yc-brand-v2 * {
+    scroll-behavior: auto;
+  }
+
+  .yc-brand-v2 *,
+  .yc-brand-v2 *::before,
+  .yc-brand-v2 *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}

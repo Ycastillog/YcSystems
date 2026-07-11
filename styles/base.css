@@ -1,0 +1,36 @@
+.yc-brand-v2 {
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(37, 99, 235, 0.18), transparent 34rem),
+    radial-gradient(circle at 82% 18%, rgba(0, 216, 255, 0.12), transparent 30rem),
+    linear-gradient(135deg, var(--color-bg-deep), var(--color-bg));
+}
+
+.yc-brand-v2 :where(h1, h2, h3, strong) {
+  color: var(--color-text);
+  letter-spacing: 0 !important;
+  text-wrap: balance;
+}
+
+.yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1, .legal-layout h1) {
+  max-width: 19ch !important;
+  font-size: var(--font-h1) !important;
+  line-height: 1.03 !important;
+}
+
+.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2) {
+  max-width: 20ch !important;
+  font-size: var(--font-h2) !important;
+  line-height: 1.06 !important;
+}
+
+.yc-brand-v2 :where(.hero-lede, .product-hero .hero-lede, .enterprise-hero .hero-lede, .section-head p, .contact-panel p, .cta-panel p:not(.eyebrow), .featured-product-copy p, .buyer-confidence-copy p, .enterprise-trust-copy p, .legal-layout > div > p) {
+  max-width: 62ch !important;
+  color: var(--color-text-muted);
+  font-size: var(--font-body) !important;
+  line-height: 1.56 !important;
+}
+
+.yc-brand-v2 :where(.eyebrow, .breadcrumb) {
+  color: var(--color-accent);
+}

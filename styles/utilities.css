@@ -1,0 +1,11 @@
+.yc-brand-v2 .client-detail-extra {
+  display: none !important;
+}
+
+.yc-brand-v2 .documents-grid article {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .footer-map strong {
+  font-size: 0.96rem !important;
+}

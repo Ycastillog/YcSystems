@@ -1,0 +1,40 @@
+:root {
+  color-scheme: dark;
+  --color-bg: #07111f;
+  --color-bg-deep: #020817;
+  --color-surface: #0b192b;
+  --color-surface-soft: #10233b;
+  --color-primary: #2563eb;
+  --color-accent: #00d8ff;
+  --color-success: #22c55e;
+  --color-text: #f8fbff;
+  --color-text-muted: #a9bdd5;
+  --color-border: rgba(169, 189, 213, 0.18);
+  --container-width: 1200px;
+  --container-padding: clamp(20px, 4vw, 48px);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --space-section: clamp(72px, 9vw, 128px);
+  --space-section-compact: clamp(54px, 6.2vw, 92px);
+  --space-hero: clamp(54px, 6.6vw, 96px);
+  --font-h1: clamp(2.45rem, 4.4vw, 4.12rem);
+  --font-h2: clamp(1.9rem, 3vw, 2.85rem);
+  --font-h3: clamp(1rem, 1.35vw, 1.24rem);
+  --font-body: clamp(0.98rem, 1.08vw, 1.08rem);
+  --font-small: 0.88rem;
+  --card-padding: clamp(18px, 2.1vw, 26px);
+  --shadow-panel: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.yc-brand-v2 {
+  --yc-page-max: var(--container-width);
+  --yc-section-y: var(--space-section-compact);
+  --yc-hero-y: var(--space-hero);
+  --yc-h1: var(--font-h1);
+  --yc-h2: var(--font-h2);
+  --yc-h3: var(--font-h3);
+  --yc-body: var(--font-body);
+  --yc-small: var(--font-small);
+  --yc-card-pad: var(--card-padding);
+}

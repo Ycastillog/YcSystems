@@ -2652,9 +2652,9 @@ function createConceptChat() {
   chat.className = "concept-chat";
   chat.dataset.conceptChat = "";
   chat.innerHTML = `
-    <button class="concept-chat-launcher" type="button" aria-expanded="false" aria-controls="concept-chat-panel">
-      <span>YC</span>
-      <strong>Cotizar</strong>
+    <button class="concept-chat-launcher" type="button" aria-label="Cotizar proyecto con YC Systems" aria-expanded="false" aria-controls="concept-chat-panel">
+      <span aria-hidden="true">YC</span>
+      <strong aria-hidden="true">Cotizar</strong>
     </button>
     <div class="concept-chat-panel" id="concept-chat-panel" aria-live="polite">
       <div class="concept-chat-head">

@@ -1,0 +1,53 @@
+.yc-brand-v2 :where(.button, .nav-cta, .hero-actions .button, .cta-panel .button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
+  min-height: 42px !important;
+  border-radius: 999px;
+  padding-inline: 19px !important;
+  font-size: 0.88rem !important;
+  line-height: 1;
+}
+
+.yc-brand-v2 :where(.nav-toggle, .language-chip, .main-nav a) {
+  min-height: 42px;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card, .documents-grid article) {
+  min-height: 0 !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--card-padding) !important;
+}
+
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .product-page-shot) {
+  border-radius: var(--radius-lg) !important;
+}
+
+.yc-brand-v2 .hero-authority-strip {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.yc-brand-v2 .hero-authority-strip span {
+  display: grid !important;
+  min-height: 42px !important;
+  place-items: center !important;
+  padding: 10px 12px !important;
+  text-align: center !important;
+  line-height: 1.18 !important;
+}
+
+.yc-brand-v2 .diagnostic-form {
+  gap: 12px !important;
+  padding: clamp(16px, 2vw, 22px) !important;
+}
+
+.yc-brand-v2 .diagnostic-form :is(input, select) {
+  min-height: 42px !important;
+}
+
+.yc-brand-v2 .diagnostic-form textarea {
+  min-height: 120px !important;
+}
+
+.yc-brand-v2 .concept-chat-launcher strong {
+  display: none !important;
+}

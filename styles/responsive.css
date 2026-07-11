@@ -1,3 +1,12 @@
+/* Final responsive ownership for dense visual grids. */
+.yc-brand-v2 .delivery-roadmap {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.yc-brand-v2 .delivery-roadmap article {
+  min-height: 0 !important;
+}
+
 @media (max-width: 980px) {
   .yc-brand-v2 {
     --space-section-compact: 44px;
@@ -32,6 +41,10 @@
   .yc-brand-v2.product-sales-page .product-hero .hero-lede {
     max-width: 62ch !important;
     overflow-wrap: normal !important;
+  }
+
+  .yc-brand-v2 .delivery-roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   .yc-brand-v2 .legal-card {
@@ -82,6 +95,12 @@
   }
 
   .yc-brand-v2.product-sales-page .product-sales-strip {
+    grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2.product-sales-page .product-meta-grid,
+  .yc-brand-v2.product-sales-page .product-detail-grid,
+  .yc-brand-v2 .delivery-roadmap {
     grid-template-columns: 1fr !important;
   }
 

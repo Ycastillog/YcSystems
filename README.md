@@ -18,10 +18,12 @@ http://127.0.0.1:3001/index.html
 
 ```text
 /
+/products/
 /operating-systems/
 /solutions/
 /industries/
 /case-studies/
+/process/
 /company/
 /contact/
 /trust-center/
@@ -32,7 +34,7 @@ http://127.0.0.1:3001/index.html
 /terms/
 ```
 
-Product detail and case detail routes remain available under:
+Private product and client proof routes remain available, but are intentionally excluded from the public sitemap while legal/product positioning is still controlled:
 
 ```text
 /products/cleanloop/
@@ -41,11 +43,25 @@ Product detail and case detail routes remain available under:
 /brands/ghostwear/
 ```
 
-Compatibility routes such as `/products/`, `/projects/`, `/about/`, `/brands/`, `/process/` and `/services/` are kept for old links, but the public sitemap and primary navigation use the final IA above.
+Compatibility routes such as `/projects/`, `/about/`, `/brands/` and `/services/` are kept only as legacy redirects. The route policy is declared in `routes-map.json`; `sitemap.xml`, navigation and deployment should match that file.
+
+## Route And SEO Source Of Truth
+
+`routes-map.json` is the canonical map for:
+
+- public indexable URLs
+- private product URLs
+- client proof URLs
+- legacy redirects
+- support pages that should not be in the sitemap yet
+
+Before changing navigation, sitemap, noindex rules or redirects, update `routes-map.json` first.
 
 ## Deployment
 
 This is a static website deployed to GitHub Pages through `.github/workflows/deploy-pages.yml`.
+
+GitHub Pages is the only active production deployment source of truth. `netlify.toml` and `vercel.json` are retained only as legacy compatibility references and must not be treated as the production deploy path unless explicitly reactivated.
 
 ## Public URL
 

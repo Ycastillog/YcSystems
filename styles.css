@@ -1058,6 +1058,19 @@ a {
   outline-offset: 4px;
 }
 
+.form-honey {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 body:not(.lang-es) .lang-es,
 body.lang-es .lang-en {
   display: none;
@@ -4086,7 +4099,8 @@ p {
 .product-page-shot img {
   display: block;
   width: 100%;
-  min-height: 360px;
+  height: clamp(320px, 42vw, 540px);
+  min-height: 0;
   object-fit: cover;
   object-position: top left;
 }
@@ -4623,9 +4637,9 @@ p {
 }
 
 .contact-panel h1 {
-  max-width: 640px;
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.02;
+  max-width: 690px;
+  font-size: clamp(36px, 4.35vw, 56px);
+  line-height: 1.04;
 }
 
 .contact-panel p {
@@ -4914,7 +4928,8 @@ p {
     max-width: 100%;
     font-size: clamp(29px, 8vw, 34px);
     line-height: 1.08;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   h2 {
@@ -6140,224 +6155,6 @@ p {
 
 }
 
-/* Premium cleanup: stronger contrast, calmer cards, clearer case studies */
-.yc-brand-v2 :is(
-  .compact-showcase,
-  .yc-identity-system,
-  .about-snapshot,
-  .technology-hero,
-  .method-section,
-  .business-outcomes,
-  .nexus-method-strip,
-  .contact
-) :is(h1, h2, h3) {
-  color: #f8fbff !important;
-}
-
-.yc-brand-v2 :is(
-  .compact-showcase,
-  .yc-identity-system,
-  .about-snapshot,
-  .technology-hero,
-  .method-section,
-  .business-outcomes,
-  .nexus-method-strip,
-  .contact
-) :is(p, li, dd, small, em) {
-  color: #c7d7ea;
-}
-
-.yc-brand-v2 :is(
-  .yc-os-product-card,
-  .live-client-card,
-  .trust-grid article,
-  .values-mini-grid article,
-  .method-grid article,
-  .outcome-grid article
-) {
-  border: 1px solid rgba(0, 216, 255, 0.18);
-  border-radius: 18px;
-  background:
-    linear-gradient(145deg, rgba(10, 27, 50, 0.84), rgba(4, 13, 27, 0.82)),
-    radial-gradient(circle at 90% 110%, rgba(0, 216, 255, 0.12), transparent 12rem);
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.yc-brand-v2 :is(.yc-os-product-card, .live-client-card, .method-grid article, .outcome-grid article):hover {
-  transform: translateY(-3px);
-  border-color: rgba(92, 255, 92, 0.34);
-}
-
-.yc-brand-v2 .yc-os-product-card {
-  min-height: 0;
-  padding: 16px;
-  gap: 12px;
-}
-
-.yc-brand-v2 .yc-os-product-card > img,
-.yc-brand-v2 .yc-os-product-card > picture > img {
-  border-radius: 14px;
-}
-
-.yc-brand-v2 .yc-os-product-card h3 {
-  margin: 0;
-  font-size: 1.35rem;
-  color: #ffffff;
-}
-
-.yc-brand-v2 .yc-os-product-card dl {
-  margin: 0;
-}
-
-.yc-brand-v2 .yc-os-product-card .product-summary {
-  margin: 0;
-  color: #c7d7ea;
-  font-size: 0.92rem;
-  line-height: 1.5;
-}
-
-.yc-brand-v2 .yc-os-product-card > strong {
-  margin-top: auto;
-  color: var(--yc-os-action);
-}
-
-.yc-brand-v2 .client-card-grid {
-  align-items: stretch;
-}
-
-.yc-brand-v2 .live-client-card {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px;
-  min-width: 0;
-}
-
-.yc-brand-v2 .live-client-card img,
-.yc-brand-v2 .live-client-card > picture > img {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: 14px;
-}
-
-.yc-brand-v2 .live-client-card h3 {
-  margin: 2px 0 0;
-  color: #ffffff;
-  font-size: 1.28rem;
-  line-height: 1.08;
-  overflow-wrap: normal;
-}
-
-.yc-brand-v2 .live-client-card em {
-  display: block;
-  max-width: 100%;
-  margin: -4px 0 2px;
-  font-style: normal;
-  color: #90a9c5;
-  font-size: 0.78rem;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
-}
-
-.yc-brand-v2 .live-client-card > span {
-  border-color: rgba(0, 216, 255, 0.28);
-  background: rgba(0, 216, 255, 0.1);
-  color: #bfeeff;
-}
-
-.yc-brand-v2 .live-client-card p,
-.yc-brand-v2 .live-client-card p:nth-of-type(n + 2) {
-  display: block;
-  margin: 0;
-  color: #c7d7ea;
-  font-size: 0.86rem;
-  line-height: 1.45;
-}
-
-.yc-brand-v2 .live-client-card p strong {
-  color: #f8fbff;
-}
-
-.yc-brand-v2 .live-client-card small {
-  margin-top: auto;
-  color: #06111f;
-  background: linear-gradient(135deg, var(--yc-os-action), var(--yc-os-cyan));
-  border: 0;
-  font-size: 0.72rem;
-}
-
-.yc-brand-v2 .project-logo-mark {
-  min-height: 48px;
-  border-radius: 12px;
-}
-
-.yc-brand-v2 .method-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.yc-brand-v2 .method-grid article {
-  min-height: 230px;
-}
-
-@media (max-width: 1100px) {
-  .yc-brand-v2 .method-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 760px) {
-  .yc-brand-v2 .yc-os-product-grid,
-  .yc-brand-v2 .client-card-grid,
-  .yc-brand-v2 .method-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .yc-brand-v2 .concept-chat {
-    right: 14px;
-    bottom: 14px;
-  }
-
-  .yc-brand-v2 .concept-chat-launcher {
-    width: 48px !important;
-    min-width: 48px !important;
-    height: 48px !important;
-    min-height: 48px !important;
-    padding: 6px !important;
-    border-radius: 999px !important;
-  }
-
-  .yc-brand-v2 .concept-chat-launcher span {
-    width: 34px !important;
-    height: 34px !important;
-    border-radius: 999px !important;
-  }
-
-  .yc-brand-v2 .concept-chat-launcher strong {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    clip: rect(0 0 0 0) !important;
-    white-space: nowrap !important;
-  }
-}
-
-
-/* Tablet and narrow desktop should not make proyectos de clientes feel like one long feed. */
-@media (min-width: 680px) and (max-width: 900px) {
-  .yc-brand-v2 .client-card-grid,
-  .yc-brand-v2 .projects-page .client-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-
-  .yc-brand-v2 .client-card-grid .live-client-card,
-  .yc-brand-v2 .projects-page .client-card-grid .live-client-card {
-    grid-column: auto !important;
-  }
-}
-
 /* Microphase final lock: keep the floating quote control helpful, not intrusive. */
 .yc-brand-v2 .concept-chat {
   display: block !important;
@@ -6874,9 +6671,9 @@ p {
 }
 
 .product-hero h1 {
-  max-width: 760px;
-  font-size: clamp(42px, 5vw, 72px);
-  line-height: 0.98;
+  max-width: 820px;
+  font-size: clamp(40px, 4.4vw, 64px);
+  line-height: 1;
 }
 
 .product-hero .hero-lede {
@@ -7343,9 +7140,9 @@ body {
   font-weight: 950;
 }
 
-.node-cleanloop { right: 360px; top: 206px; }
-.node-soc { right: 80px; top: 230px; }
-.node-broker { right: 244px; top: 78px; }
+.ecosystem-node.node-cleanloop { right: 360px; top: 206px; }
+.ecosystem-node.node-soc { right: 80px; top: 230px; }
+.ecosystem-node.node-broker { right: 244px; top: 78px; }
 
 .ecosystem-signal {
   position: absolute;
@@ -8740,11 +8537,11 @@ body {
 
 .yc-enterprise-v2 .enterprise-hero h1,
 .yc-brand-v2 .enterprise-hero h1 {
-  max-width: 980px;
+  max-width: min(100%, 15.5ch);
   margin: 0;
   color: var(--yc-v2-text);
-  font-size: clamp(2.8rem, 6.4vw, 5.9rem);
-  line-height: 0.95;
+  font-size: clamp(2.55rem, 4.55vw, 4.45rem);
+  line-height: 1.02;
   letter-spacing: 0;
 }
 
@@ -8875,9 +8672,10 @@ body {
 
 .enterprise-split h2 {
   margin: 0;
+  max-width: min(100%, 16ch);
   color: #fff;
-  font-size: clamp(2.3rem, 5vw, 4.7rem);
-  line-height: 0.96;
+  font-size: clamp(2.15rem, 4.1vw, 3.7rem);
+  line-height: 1.02;
 }
 
 .enterprise-split > p {
@@ -8918,7 +8716,8 @@ body {
 
   .yc-enterprise-v2 .enterprise-hero h1,
   .yc-brand-v2 .enterprise-hero h1 {
-    font-size: clamp(2.55rem, 13vw, 3.9rem);
+    font-size: clamp(2.25rem, 9vw, 3rem);
+    line-height: 1.04;
   }
 
   .enterprise-command-card {
@@ -9029,13 +8828,14 @@ body {
   }
 
   .yc-brand-v2 .products-hero h1 {
-    max-width: 100%;
-    font-size: clamp(2.65rem, 12vw, 3.35rem);
+    max-width: min(100%, 15ch);
+    font-size: clamp(2.15rem, 8.8vw, 3rem);
+    line-height: 1.04;
   }
 
   .yc-brand-v2 .products-hero .yc-os-product-stack {
     width: 100%;
-    min-height: 280px;
+    min-height: 230px;
     border-radius: 24px;
   }
 
@@ -9695,8 +9495,9 @@ body.nav-open.yc-brand-v2::before {
   }
 
   .yc-brand-v2.about-page .about-hero h1 {
-    max-width: 100%;
-    font-size: clamp(2.55rem, 11vw, 3.35rem);
+    max-width: min(100%, 15.5ch);
+    font-size: clamp(2.2rem, 8.8vw, 2.95rem);
+    line-height: 1.04;
   }
 
   .yc-brand-v2.about-page .hero-actions {
@@ -10000,8 +9801,8 @@ body.nav-open.yc-brand-v2::before {
   max-width: 760px;
   margin-bottom: 14px;
   color: #f8fbff;
-  font-size: clamp(3rem, 7vw, 6.2rem);
-  line-height: 0.88;
+  font-size: clamp(2.9rem, 5.8vw, 5.15rem);
+  line-height: 0.98;
 }
 
 .yc-brand-v2.product-sales-page .product-hero .hero-lede {
@@ -10147,7 +9948,8 @@ body.nav-open.yc-brand-v2::before {
   }
 
   .yc-brand-v2.product-sales-page .product-hero h1 {
-    font-size: clamp(2.8rem, 16vw, 3.8rem);
+    font-size: clamp(2.35rem, 10vw, 3.1rem);
+    line-height: 1.02;
   }
 
   .yc-brand-v2 .product-sales-strip {
@@ -10353,8 +10155,11 @@ body.nav-open.yc-brand-v2::before {
 .yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1, .section-head h2, .cta-panel h2) {
   letter-spacing: 0 !important;
   font-weight: 860;
-  line-height: 0.98;
+  line-height: 1.02;
   text-wrap: balance;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.04),
     0 18px 44px rgba(0, 0, 0, 0.34);
@@ -10362,29 +10167,30 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1) {
-  max-width: 12.5ch;
+  max-width: min(100%, 16.5ch);
 }
 
 .yc-brand-v2 .section-head h2,
 .yc-brand-v2 .cta-panel h2 {
-  max-width: 14ch;
+  max-width: min(100%, 16ch);
 }
 
 @media (max-width: 680px) {
   .yc-brand-v2 :is(.hero h1, .product-hero h1, .enterprise-hero h1, .contact-panel h1) {
-    max-width: 13.5ch;
-    line-height: 1;
+    max-width: min(100%, 16ch);
+    font-size: clamp(2.1rem, 8.7vw, 3rem);
+    line-height: 1.04;
   }
 
   .yc-brand-v2 .contact-panel h1 {
-    max-width: 12.8ch;
-    font-size: clamp(2.65rem, 10.8vw, 3.45rem);
+    max-width: min(100%, 15ch);
+    font-size: clamp(2.15rem, 8.8vw, 2.9rem);
     font-weight: 820;
   }
 
   .yc-brand-v2 .section-head h2,
   .yc-brand-v2 .cta-panel h2 {
-    max-width: 12.5ch;
+    max-width: min(100%, 15ch);
   }
 }
 /* Instagram/start page: compact conversion hub for social traffic. */
@@ -10441,10 +10247,12 @@ body.nav-open.yc-brand-v2::before {
 .start-option-grid a {
   position: relative;
   display: grid;
+  align-content: start;
   gap: 0.55rem;
   min-height: 132px;
   padding: 1.1rem;
   overflow: hidden;
+  isolation: isolate;
   border: 1px solid rgba(0, 216, 255, 0.24);
   border-radius: 18px;
   background: linear-gradient(135deg, rgba(2, 8, 23, 0.92), rgba(7, 28, 45, 0.86));
@@ -10458,10 +10266,19 @@ body.nav-open.yc-brand-v2::before {
 .start-option-grid a::after {
   content: "";
   position: absolute;
-  inset: auto -20% -55% 35%;
+  right: 0;
+  bottom: 0;
+  width: min(42%, 180px);
   height: 90px;
   background: radial-gradient(circle, rgba(0, 216, 255, 0.18), transparent 68%);
   pointer-events: none;
+  z-index: 0;
+}
+
+.start-action > *,
+.start-option-grid a > * {
+  position: relative;
+  z-index: 1;
 }
 
 .start-action:hover,
@@ -10905,9 +10722,9 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .hero h1 {
-  max-width: 14.5ch !important;
-  font-size: clamp(3.45rem, 5.1vw, 5.85rem);
-  line-height: 0.93 !important;
+  max-width: min(100%, 15ch) !important;
+  font-size: clamp(3.1rem, 4.45vw, 5rem);
+  line-height: 1 !important;
 }
 
 .yc-brand-v2 .hero-lede {
@@ -11135,15 +10952,13 @@ body.nav-open.yc-brand-v2::before {
 }
 
 .yc-brand-v2 .services-capability-grid {
-  grid-template-columns: repeat(7, minmax(220px, 1fr));
-  overflow-x: auto;
-  padding-bottom: 10px;
-  scroll-snap-type: x proximity;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: visible;
+  padding-bottom: 0;
 }
 
 .yc-brand-v2 .services-capability-grid article {
-  min-height: 380px;
-  scroll-snap-align: start;
+  min-height: 320px;
 }
 
 .floating-proposal-cta {
@@ -11437,5 +11252,246 @@ body.nav-open.yc-brand-v2::before {
 
   .yc-brand-v2 .site-header .nav-toggle span {
     opacity: 0 !important;
+  }
+}
+
+/* 2026 conversion audit: tighter home, clearer sales path, less agency noise. */
+.yc-brand-v2 .hero h1 {
+  max-width: 12.8ch;
+}
+
+.yc-brand-v2 .hero-lede {
+  max-width: 66ch;
+}
+
+.yc-brand-v2 .hero-actions .button-primary {
+  min-width: 210px;
+}
+
+.yc-brand-v2 .home-products-section .section-head,
+.yc-brand-v2 .home-clients-section .section-head,
+.yc-brand-v2 .sales-offer-section .section-head {
+  max-width: 920px;
+}
+
+.yc-brand-v2 .home-products-section .section-head h2,
+.yc-brand-v2 .sales-offer-section .section-head h2,
+.yc-brand-v2 .home-clients-section .section-head h2 {
+  max-width: min(100%, 16ch);
+}
+
+.yc-brand-v2 .featured-product-panel {
+  align-items: center;
+}
+
+.yc-brand-v2 .product-company-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card {
+  padding: 18px;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card picture {
+  margin-bottom: 14px;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img {
+  aspect-ratio: 16 / 10;
+}
+
+.yc-brand-v2 .product-company-grid .yc-os-product-card h3 {
+  min-height: 0;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+}
+
+.yc-brand-v2 .sales-offer-grid article {
+  padding: 22px;
+}
+
+.yc-brand-v2 .sales-offer-grid article:nth-child(n + 5) {
+  background: linear-gradient(180deg, rgba(8, 20, 38, 0.72), rgba(3, 10, 24, 0.82));
+}
+
+.yc-brand-v2 .home-clients-section .client-card-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .home-clients-section .client-card-grid .live-client-card:nth-child(n + 4) {
+  display: none;
+}
+
+@media (max-width: 1180px) {
+  .yc-brand-v2 .product-company-grid,
+  .yc-brand-v2 .services-capability-grid,
+  .yc-brand-v2 .home-clients-section .client-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .hero h1 {
+    max-width: min(100%, 15ch) !important;
+    font-size: clamp(2.18rem, 8.8vw, 3.1rem) !important;
+    line-height: 1.04;
+  }
+
+  .yc-brand-v2 .hero-actions .button-primary {
+    min-width: 0;
+  }
+
+  .yc-brand-v2 .hero-actions .button:nth-child(n + 3) {
+    display: none;
+  }
+
+  .yc-brand-v2 .home-products-section .section-head h2,
+  .yc-brand-v2 .sales-offer-section .section-head h2,
+  .yc-brand-v2 .home-clients-section .section-head h2 {
+    max-width: min(100%, 15ch);
+  }
+
+  .yc-brand-v2 .featured-product-panel {
+    padding-top: 30px;
+  }
+
+  .yc-brand-v2 .product-company-grid,
+  .yc-brand-v2 .services-capability-grid,
+  .yc-brand-v2 .home-clients-section .client-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2 .home-products-section .product-company-grid .yc-os-product-card:nth-child(n + 3) {
+    display: none;
+  }
+
+  .yc-brand-v2 .services-capability-grid article:nth-child(n + 5) {
+    display: none;
+  }
+
+  .yc-brand-v2 .home-clients-section .client-card-grid .live-client-card:nth-child(n + 3) {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .yc-brand-v2 .site-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 68px !important;
+    padding: 9px 14px !important;
+  }
+
+  .yc-brand-v2 .brand,
+  .yc-brand-v2 .brand-logo {
+    min-width: 0 !important;
+  }
+
+  .yc-brand-v2 .brand-logo {
+    height: 48px !important;
+  }
+
+  .yc-brand-v2 .brand-logo img.brand-logo-mark {
+    width: 48px !important;
+    max-width: 48px !important;
+    height: 48px !important;
+  }
+
+  .yc-brand-v2 .brand-logo-text {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+  }
+
+  .yc-brand-v2 .nav-toggle {
+    position: fixed !important;
+    top: 10px !important;
+    right: 14px !important;
+    z-index: 120 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 46px !important;
+    height: 46px !important;
+    flex: 0 0 46px !important;
+    border: 1px solid rgba(0, 216, 255, 0.34) !important;
+    border-radius: 14px !important;
+    background: rgba(8, 20, 38, 0.92) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: transparent !important;
+    font-size: 0 !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::before,
+  .yc-brand-v2 .nav-toggle::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 12px !important;
+    right: 12px !important;
+    display: block !important;
+    height: 2px !important;
+    border-radius: 999px !important;
+    background: #f8fbff !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::before {
+    top: 16px !important;
+  }
+
+  .yc-brand-v2 .nav-toggle::after {
+    top: 28px !important;
+  }
+
+  .yc-brand-v2 .nav-toggle span {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .main-nav {
+    position: fixed !important;
+    top: 76px !important;
+    left: 14px !important;
+    right: 14px !important;
+    z-index: 110 !important;
+    display: grid !important;
+    gap: 6px !important;
+    width: auto !important;
+    max-width: none !important;
+    padding: 10px !important;
+    border: 1px solid rgba(0, 216, 255, 0.22) !important;
+    border-radius: 18px !important;
+    background: rgba(3, 10, 23, 0.96) !important;
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) !important;
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease !important;
+  }
+
+  .yc-brand-v2 .main-nav.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
+  }
+
+  .yc-brand-v2 .main-nav a,
+  .yc-brand-v2 .main-nav .language-chip {
+    width: 100% !important;
+  }
+
+  .yc-brand-v2 .main-nav a,
+  .yc-brand-v2 .main-nav .nav-cta {
+    justify-content: flex-start !important;
+    padding: 13px 14px !important;
+  }
+
+  .yc-brand-v2 .language-chip {
+    justify-content: center !important;
+    margin-top: 4px !important;
   }
 }

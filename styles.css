@@ -12161,3 +12161,292 @@ body.nav-open.yc-brand-v2::before {
     max-height: 240px !important;
   }
 }
+
+/* 2026-07-11 owner audit: final public-site governance layer. */
+.yc-brand-v2 {
+  --yc-page-max: 1200px;
+  --yc-section-y: clamp(54px, 6.2vw, 92px);
+  --yc-hero-y: clamp(54px, 6.6vw, 96px);
+  --yc-h1: clamp(2.45rem, 4.4vw, 4.12rem);
+  --yc-h2: clamp(1.9rem, 3vw, 2.85rem);
+  --yc-h3: clamp(1rem, 1.35vw, 1.24rem);
+  --yc-body: clamp(0.98rem, 1.08vw, 1.08rem);
+  --yc-small: 0.88rem;
+  --yc-card-pad: clamp(18px, 2.1vw, 26px);
+}
+
+.yc-brand-v2 :where(h1, h2, h3, strong) {
+  text-wrap: balance;
+  letter-spacing: 0 !important;
+}
+
+.yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1, .legal-layout h1) {
+  max-width: 19ch !important;
+  font-size: var(--yc-h1) !important;
+  line-height: 1.03 !important;
+}
+
+.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2) {
+  max-width: 20ch !important;
+  font-size: var(--yc-h2) !important;
+  line-height: 1.06 !important;
+}
+
+.yc-brand-v2 :where(.hero-lede, .product-hero .hero-lede, .enterprise-hero .hero-lede, .section-head p, .contact-panel p, .cta-panel p:not(.eyebrow), .featured-product-copy p, .buyer-confidence-copy p, .enterprise-trust-copy p, .legal-layout > div > p) {
+  max-width: 62ch !important;
+  font-size: var(--yc-body) !important;
+  line-height: 1.56 !important;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card, .documents-grid article) {
+  padding: var(--yc-card-pad) !important;
+  border-radius: 18px !important;
+}
+
+.yc-brand-v2 :where(.button, .nav-cta, .hero-actions .button, .cta-panel .button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
+  min-height: 42px !important;
+  padding-inline: 19px !important;
+  font-size: 0.88rem !important;
+}
+
+.yc-brand-v2 .featured-product-panel {
+  align-items: center !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 216, 255, 0.12), transparent 55%),
+    rgba(5, 18, 35, 0.72) !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture > img {
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.yc-brand-v2 .hero-authority-strip {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.yc-brand-v2 .hero-authority-strip span {
+  display: grid !important;
+  min-height: 42px !important;
+  place-items: center !important;
+  padding: 10px 12px !important;
+  text-align: center !important;
+  line-height: 1.18 !important;
+}
+
+.yc-brand-v2 .site-footer {
+  border-top: 1px solid rgba(0, 216, 255, 0.16) !important;
+  background:
+    linear-gradient(180deg, rgba(3, 12, 25, 0.98), rgba(1, 7, 16, 0.98)) !important;
+}
+
+.yc-brand-v2 .site-footer .footer-map {
+  grid-template-columns: minmax(220px, 1.15fr) repeat(4, minmax(135px, 0.85fr)) !important;
+  gap: clamp(26px, 4vw, 56px) !important;
+  padding-block: clamp(28px, 4vw, 46px) 22px !important;
+}
+
+.yc-brand-v2 .footer-map strong {
+  font-size: 0.96rem !important;
+}
+
+.yc-brand-v2 .footer-map :where(p, span, a) {
+  font-size: 0.9rem !important;
+  line-height: 1.48 !important;
+}
+
+.yc-brand-v2 .footer-legal,
+.yc-brand-v2 .site-footer .footer-inner {
+  gap: 14px !important;
+  padding-block: 18px 24px !important;
+}
+
+.yc-brand-v2 .legal-card {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+}
+
+.yc-brand-v2 .legal-card h2 {
+  margin: 0 !important;
+  padding-top: 0 !important;
+}
+
+.yc-brand-v2 .legal-card h2:not(:first-child) {
+  border-top: 1px solid rgba(0, 216, 255, 0.14) !important;
+  padding-top: 14px !important;
+}
+
+.yc-brand-v2 .legal-card h2,
+.yc-brand-v2 .legal-card p {
+  grid-column: span 1 !important;
+}
+
+.yc-brand-v2 .legal-card p {
+  margin: 0 0 4px !important;
+}
+
+.yc-brand-v2 .documents-grid {
+  align-items: stretch !important;
+}
+
+.yc-brand-v2 .documents-grid article {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .contact-panel.contact-sales-panel {
+  align-items: start !important;
+}
+
+.yc-brand-v2 .diagnostic-form {
+  gap: 12px !important;
+  padding: clamp(16px, 2vw, 22px) !important;
+}
+
+.yc-brand-v2 .diagnostic-form :is(input, select) {
+  min-height: 42px !important;
+}
+
+.yc-brand-v2 .diagnostic-form textarea {
+  min-height: 120px !important;
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 {
+    --yc-section-y: 44px;
+    --yc-hero-y: 42px;
+    --yc-h1: clamp(2.1rem, 7.6vw, 3rem);
+    --yc-h2: clamp(1.65rem, 6vw, 2.3rem);
+  }
+
+  .yc-brand-v2 .hero-authority-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .yc-brand-v2 .hero-authority-strip span:last-child {
+    grid-column: 1 / -1 !important;
+  }
+
+  .yc-brand-v2 .site-footer .footer-map {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .yc-brand-v2 .legal-card {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .yc-brand-v2 {
+    --yc-section-y: 38px;
+    --yc-hero-y: 34px;
+    --yc-h1: clamp(2rem, 9.2vw, 2.72rem);
+    --yc-h2: clamp(1.55rem, 7.6vw, 2.05rem);
+    --yc-body: 0.95rem;
+    --yc-small: 0.82rem;
+  }
+
+  .yc-brand-v2 .container {
+    width: min(calc(100% - 28px), var(--yc-page-max)) !important;
+  }
+
+  .yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1, .legal-layout h1) {
+    max-width: 15ch !important;
+    line-height: 1.04 !important;
+  }
+
+  .yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-split h2) {
+    max-width: 16ch !important;
+  }
+
+  .yc-brand-v2 .hero-authority-strip {
+    gap: 8px !important;
+    padding: 12px 0 !important;
+  }
+
+  .yc-brand-v2 .hero-authority-strip span {
+    min-height: 38px !important;
+    padding: 8px 9px !important;
+    font-size: 0.68rem !important;
+  }
+
+  .yc-brand-v2 .featured-product-panel {
+    padding: 18px !important;
+  }
+
+  .yc-brand-v2 .featured-product-panel picture {
+    height: min(250px, 62vw) !important;
+  }
+
+  .yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img,
+  .yc-brand-v2 .home-clients-section .live-client-card picture > img {
+    height: 126px !important;
+    max-height: 126px !important;
+  }
+
+  .yc-brand-v2 .contact-panel.contact-sales-panel {
+    padding: 16px !important;
+    gap: 16px !important;
+  }
+
+  .yc-brand-v2 .contact-steps {
+    gap: 7px !important;
+    margin-top: 14px !important;
+  }
+
+  .yc-brand-v2 .contact-steps span,
+  .yc-brand-v2 .contact-mini-links a,
+  .yc-brand-v2 .contact-mini-links span {
+    min-height: 38px !important;
+    padding: 9px 11px !important;
+    font-size: 0.76rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .yc-brand-v2 .diagnostic-form label span {
+    font-size: 0.72rem !important;
+  }
+
+  .yc-brand-v2 .diagnostic-form :is(input, select) {
+    min-height: 40px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .yc-brand-v2 .diagnostic-form textarea {
+    min-height: 104px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .yc-brand-v2 .legal-page {
+    padding-block: 36px !important;
+  }
+
+  .yc-brand-v2 .legal-card,
+  .yc-brand-v2 .documents-grid article {
+    padding: 18px !important;
+  }
+
+  .yc-brand-v2 .legal-card h2 {
+    font-size: 0.98rem !important;
+  }
+
+  .yc-brand-v2 .legal-card p {
+    font-size: 0.9rem !important;
+    line-height: 1.52 !important;
+  }
+
+  .yc-brand-v2 .site-footer .footer-map {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .yc-brand-v2 .site-footer .footer-inner,
+  .yc-brand-v2 .footer-legal {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+}

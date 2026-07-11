@@ -11855,3 +11855,36 @@ body.nav-open.yc-brand-v2::before {
     max-width: 18ch !important;
   }
 }
+
+/* Owner visual audit: internal pages should sell clearly at tablet widths. */
+@media (min-width: 681px) and (max-width: 980px) {
+  .yc-brand-v2 :where(.product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1) {
+    max-width: 22ch !important;
+    font-size: clamp(2rem, 4.25vw, 2.45rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .yc-brand-v2 :where(.product-hero .hero-lede, .enterprise-hero .hero-lede, .contact-panel p) {
+    max-width: 62ch !important;
+  }
+
+  .yc-brand-v2 .contact-sales-panel {
+    padding: 28px !important;
+  }
+
+  .yc-brand-v2 .contact-steps {
+    gap: 8px !important;
+    margin-top: 18px !important;
+  }
+
+  .yc-brand-v2 .contact-steps span {
+    min-height: 46px !important;
+    padding: 12px 14px !important;
+  }
+}
+
+.yc-brand-v2 .contact-links a,
+.yc-brand-v2 .contact-links span {
+  gap: 4px 7px !important;
+  flex-wrap: wrap !important;
+}

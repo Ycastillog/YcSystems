@@ -52,6 +52,82 @@
   }
 }
 
+@media (min-width: 681px) and (max-width: 980px) {
+  .yc-brand-v2 .yc-hero .yc-ecosystem-visual {
+    height: 280px;
+    min-height: 0;
+  }
+
+  .yc-brand-v2 .yc-ecosystem-visual .ecosystem-nexus {
+    max-height: 270px;
+    object-fit: contain;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products {
+    max-width: 330px;
+    gap: 8px;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products a {
+    min-height: 48px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .yc-hero .yc-ecosystem-visual {
+    min-height: 420px;
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .yc-brand-v2 .yc-ecosystem-visual .ecosystem-logo {
+    width: 112px;
+    top: 18px;
+    left: 18px;
+  }
+
+  .yc-brand-v2 .yc-ecosystem-visual .ecosystem-nexus {
+    right: -12px;
+    bottom: 12px;
+    width: min(300px, 74%);
+    max-height: 66%;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products {
+    position: absolute;
+    left: 20px;
+    top: 136px;
+    bottom: auto;
+    width: min(220px, 62%);
+    gap: 8px;
+    margin: 0;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products a {
+    grid-template-columns: auto 1fr;
+    min-height: 54px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products span {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 0.76rem;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products strong {
+    font-size: 0.86rem;
+    line-height: 1.05;
+  }
+
+  .yc-brand-v2 .yc-hero .ecosystem-products small {
+    font-size: 0.68rem;
+  }
+}
+
 @media (max-width: 680px) {
   .yc-brand-v2 {
     --space-section-compact: 38px;

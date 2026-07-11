@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   color-scheme: dark;
   --navy: #080b1a;
   --navy-2: #10172f;
@@ -6314,20 +6314,6 @@ p {
   display: none !important;
 }
 
-.yc-brand-v2 .yc-ecosystem-visual {
-  min-height: 440px !important;
-}
-
-.yc-brand-v2 .ecosystem-products {
-  width: min(290px, 100%) !important;
-  margin-top: 96px !important;
-}
-
-.yc-brand-v2 .ecosystem-nexus {
-  width: min(360px, 60%) !important;
-  max-height: 92% !important;
-}
-
 .yc-brand-v2 .home-clients-section .section-head,
 .yc-brand-v2 .home-products-section .section-head {
   max-width: 840px;
@@ -6374,53 +6360,6 @@ p {
     display: none !important;
   }
 
-  .yc-brand-v2 .yc-ecosystem-visual {
-    min-height: 420px !important;
-    padding: 18px !important;
-    border-radius: 20px !important;
-  }
-
-  .yc-brand-v2 .ecosystem-logo {
-    width: 112px !important;
-    top: 18px !important;
-    left: 18px !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products {
-    width: min(210px, 66%) !important;
-    gap: 8px !important;
-    margin-top: 116px !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products a {
-    grid-template-columns: auto 1fr !important;
-    min-height: 54px !important;
-    padding: 8px 10px !important;
-    border-radius: 14px !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products span {
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 10px !important;
-    font-size: 0.76rem !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products strong {
-    font-size: 0.86rem !important;
-    line-height: 1.05 !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products small {
-    font-size: 0.68rem !important;
-  }
-
-  .yc-brand-v2 .ecosystem-nexus {
-    right: -36px !important;
-    bottom: -12px !important;
-    width: min(270px, 72%) !important;
-    max-height: 78% !important;
-  }
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -6622,47 +6561,6 @@ p {
     bottom: 58px;
     max-height: min(620px, calc(100vh - 92px));
     overflow-y: auto;
-  }
-}
-
-/* Last-mile Nexus visual correction */
-.yc-brand-v2 .ecosystem-nexus {
-  right: -8px !important;
-  bottom: 42px !important;
-  width: min(350px, 68%) !important;
-  max-height: 86% !important;
-  object-fit: contain !important;
-  object-position: right bottom !important;
-  z-index: 2 !important;
-}
-
-.yc-brand-v2 .ecosystem-products {
-  position: absolute !important;
-  left: 32px !important;
-  top: 188px !important;
-  width: min(260px, 50%) !important;
-  margin: 0 !important;
-}
-
-.yc-brand-v2 .ecosystem-logo {
-  width: min(170px, 38%) !important;
-  opacity: 0.16 !important;
-}
-
-@media (max-width: 760px) {
-  .yc-brand-v2 .ecosystem-nexus {
-    right: -12px !important;
-    bottom: 12px !important;
-    width: min(300px, 74%) !important;
-    max-height: 66% !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products {
-    position: absolute !important;
-    left: 20px !important;
-    top: 136px !important;
-    width: min(220px, 62%) !important;
-    margin: 0 !important;
   }
 }
 
@@ -11223,19 +11121,6 @@ body.nav-open.yc-brand-v2::before {
   align-items: center;
 }
 
-.yc-brand-v2 .yc-hero .yc-ecosystem-visual {
-  min-height: 480px !important;
-}
-
-.yc-brand-v2 .yc-hero .ecosystem-products {
-  gap: 8px;
-  margin-top: 36px !important;
-}
-
-.yc-brand-v2 .yc-hero .ecosystem-products a {
-  min-height: 56px;
-}
-
 .yc-brand-v2 .enterprise-os-grid article,
 .yc-brand-v2 .launch-grid article,
 .yc-brand-v2 .sales-offer-grid article,
@@ -11740,26 +11625,6 @@ body.nav-open.yc-brand-v2::before {
     max-height: 280px !important;
     overflow: hidden !important;
     border-radius: var(--yc-radius-panel) !important;
-  }
-
-  .yc-brand-v2 .yc-ecosystem-visual {
-    min-height: 0 !important;
-    height: 280px !important;
-  }
-
-  .yc-brand-v2 .yc-ecosystem-visual .ecosystem-nexus {
-    max-height: 270px !important;
-    object-fit: contain !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products {
-    max-width: 330px !important;
-    gap: 8px !important;
-  }
-
-  .yc-brand-v2 .ecosystem-products a {
-    min-height: 48px !important;
-    padding: 8px 10px !important;
   }
 
   .yc-brand-v2 .hero-authority-strip {

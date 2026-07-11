@@ -6,6 +6,13 @@ node_modules/
 output/
 tmp/
 scripts/android/
+scripts/meta/
+scripts/social/
+scripts/build_auto_reels_assets.py
+scripts/build_static_feed_v3_assets.py
+scripts/build_web_offer_art.py
+scripts/generate-enterprise-carousels.mjs
+scripts/generate_commercial_social_kit.py
 .cache/
 .netlify/
 .vercel/

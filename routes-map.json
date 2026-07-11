@@ -1,9 +1,4 @@
 {
-  "deployment": {
-    "sourceOfTruth": "GitHub Pages",
-    "workflow": ".github/workflows/deploy-pages.yml",
-    "legacyConfigs": ["netlify.toml", "vercel.json"]
-  },
   "routes": [
     { "path": "/", "status": "canonical", "index": true, "sitemap": true, "label": "Home" },
     { "path": "/products/", "status": "canonical", "index": true, "sitemap": true, "label": "Productos" },

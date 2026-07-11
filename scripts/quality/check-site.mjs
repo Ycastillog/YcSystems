@@ -2,7 +2,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(new URL("../..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
-const ignoredDirs = new Set([".git", "android", "content", "dist", "node_modules", "output", "tmp"]);
+const ignoredDirs = new Set([".git", "android", "content", "dist", "meta", "node_modules", "output", "social", "tmp"]);
 const failures = [];
 
 async function walk(dir) {
@@ -92,7 +92,7 @@ const publicExposureRules = [
     message: "public site exposes GitHub or repository contact details.",
   },
   {
-    pattern: /\b(repositorio|repositorios|repository|repositories)\b/i,
+    pattern: /\b(repo|repos|repositorio|repositorios|repository|repositories)\b/i,
     message: "public site mentions repositories; keep source-control details out of customer-facing copy.",
   },
   {
@@ -106,6 +106,10 @@ const publicExposureRules = [
   {
     pattern: /\bEIN\b|Operating Agreement|direcci[oó]n personal|porcentajes societarios|ownership percentages|unprotected products/i,
     message: "public site mentions sensitive legal or ownership details.",
+  },
+  {
+    pattern: /demo\s+SaaS|vertical\s+MVP|prototipo en desarrollo|MVP operativo|ecosistema demo/i,
+    message: "public product copy uses demo/prototype wording; use controlled access and phased implementation language.",
   },
 ];
 
@@ -156,10 +160,6 @@ for (const file of textFiles) {
 const routesMapPath = path.join(root, "routes-map.json");
 const routesMap = JSON.parse(await readFile(routesMapPath, "utf8"));
 const routes = routesMap.routes ?? [];
-
-if (routesMap.deployment?.sourceOfTruth !== "GitHub Pages") {
-  fail(routesMapPath, "deployment.sourceOfTruth must remain GitHub Pages.");
-}
 
 const sitemap = path.join(root, "sitemap.xml");
 const sitemapText = await readFile(sitemap, "utf8");

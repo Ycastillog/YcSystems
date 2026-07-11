@@ -9814,14 +9814,25 @@ body.nav-open.yc-brand-v2::before {
 
 .yc-brand-v2.product-sales-page .product-page-shot {
   position: relative;
+  overflow: hidden;
   border-radius: 24px;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(0, 216, 255, 0.12), transparent 24rem),
+    #020817;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
 }
 
+.yc-brand-v2.product-sales-page .product-page-shot picture {
+  display: block;
+}
+
 .yc-brand-v2.product-sales-page .product-page-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
   min-height: 0;
-  max-height: 520px;
-  object-fit: cover;
+  max-height: none;
+  object-fit: contain;
 }
 
 .yc-brand-v2 .product-shot-badges {
@@ -9934,7 +9945,7 @@ body.nav-open.yc-brand-v2::before {
   }
 
   .yc-brand-v2.product-sales-page .product-page-shot img {
-    max-height: 420px;
+    max-height: none;
   }
 
   .yc-brand-v2 .product-cta-actions {
@@ -9969,7 +9980,7 @@ body.nav-open.yc-brand-v2::before {
   }
 
   .yc-brand-v2.product-sales-page .product-page-shot img {
-    max-height: 220px;
+    max-height: none;
   }
 
   .yc-brand-v2 .product-shot-badges {

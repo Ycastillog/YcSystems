@@ -5,7 +5,7 @@ Corporate website for YC Systems LLC, a software company building business opera
 ## Local Preview
 
 ```powershell
-C:\Users\Yeica\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe -m http.server 3001 --bind 127.0.0.1
+python -m http.server 3001 --bind 127.0.0.1
 ```
 
 Open:
@@ -34,7 +34,7 @@ http://127.0.0.1:3001/index.html
 /terms/
 ```
 
-Private product and client proof routes remain available, but are intentionally excluded from the public sitemap while legal/product positioning is still controlled:
+Controlled-access product and client proof routes are intentionally excluded from the public sitemap while product positioning is reviewed:
 
 ```text
 /products/cleanloop/
@@ -56,12 +56,6 @@ Compatibility routes such as `/projects/`, `/about/`, `/brands/` and `/services/
 - support pages that should not be in the sitemap yet
 
 Before changing navigation, sitemap, noindex rules or redirects, update `routes-map.json` first.
-
-## Deployment
-
-This is a static website deployed to GitHub Pages through `.github/workflows/deploy-pages.yml`.
-
-GitHub Pages is the only active production deployment source of truth. `netlify.toml` and `vercel.json` are retained only as legacy compatibility references and must not be treated as the production deploy path unless explicitly reactivated.
 
 ## Public URL
 

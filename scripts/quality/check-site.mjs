@@ -2,7 +2,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
 const root = path.resolve(new URL("../..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
-const ignoredDirs = new Set([".git", "dist", "node_modules", "output", "tmp"]);
+const ignoredDirs = new Set([".git", "android", "content", "dist", "node_modules", "output", "tmp"]);
 const failures = [];
 
 async function walk(dir) {

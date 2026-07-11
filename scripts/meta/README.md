@@ -1,6 +1,6 @@
 ﻿# YC Systems Meta Publishing
 
-This folder contains the official Meta API publishing flow for YC Systems.
+This folder contains the local Meta API publishing flow for YC Systems.
 
 It publishes one queued post to:
 
@@ -24,7 +24,7 @@ The Instagram account must be connected to the Facebook Page in Meta Business Su
 Set these in PowerShell or in a local `.env` file before running:
 
 ```powershell
-$env:META_PAGE_ID = "1078101082062602"
+$env:META_PAGE_ID = "YOUR_FACEBOOK_PAGE_ID"
 $env:META_IG_USER_ID = "YOUR_INSTAGRAM_BUSINESS_ACCOUNT_ID"
 $env:META_PAGE_ACCESS_TOKEN = "YOUR_LONG_LIVED_PAGE_ACCESS_TOKEN"
 $env:META_APP_ID = "YOUR_META_APP_ID"
@@ -32,6 +32,8 @@ $env:META_APP_SECRET = "YOUR_META_APP_SECRET"
 ```
 
 Do not commit tokens.
+
+The publishing queue and planning files live in the local `content/` folder. That folder is intentionally ignored by Git because it contains internal marketing operations, future posts and local run logs.
 
 ## Verify configuration
 

@@ -11888,3 +11888,276 @@ body.nav-open.yc-brand-v2::before {
   gap: 4px 7px !important;
   flex-wrap: wrap !important;
 }
+
+/* System line audit: keep every public page on the same visual scale. */
+.yc-brand-v2 .home-clients-section .live-client-card,
+.yc-brand-v2 .projects-page .case-detail-grid article,
+.yc-brand-v2 .featured-product-panel {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .home-clients-section .client-card-grid {
+  align-items: stretch !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card {
+  gap: 8px !important;
+  padding: 16px !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card > picture {
+  margin: 0 0 8px !important;
+  aspect-ratio: 16 / 10 !important;
+  max-height: 138px !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card > picture > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card p,
+.yc-brand-v2 .home-clients-section .live-client-card small {
+  font-size: 0.78rem !important;
+  line-height: 1.38 !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card p:nth-of-type(n + 2) {
+  display: none !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid {
+  align-items: stretch !important;
+  gap: 14px !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid article {
+  display: grid !important;
+  grid-template-rows: auto 1fr !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid picture,
+.yc-brand-v2 .projects-page .case-detail-grid article > img {
+  height: 150px !important;
+  max-height: 150px !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid picture > img,
+.yc-brand-v2 .projects-page .case-detail-grid article > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid div {
+  padding: 16px !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid p {
+  margin-bottom: 8px !important;
+  font-size: 0.78rem !important;
+  line-height: 1.38 !important;
+}
+
+.yc-brand-v2 .projects-page .case-detail-grid p:nth-of-type(n + 4) {
+  display: none !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture {
+  max-height: 360px !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture > img {
+  max-height: 360px !important;
+  object-fit: contain !important;
+}
+
+.yc-start-page .start-hero {
+  padding-top: var(--yc-hero-y) !important;
+}
+
+.yc-start-page .start-brand-block h1 {
+  max-width: 18ch !important;
+  font-size: var(--yc-h1) !important;
+  line-height: 1.04 !important;
+}
+
+.yc-start-page .start-brand-block p:not(.eyebrow) {
+  max-width: 62ch !important;
+  font-size: var(--yc-body) !important;
+  line-height: 1.58 !important;
+}
+
+@media (min-width: 681px) and (max-width: 980px) {
+  .yc-brand-v2 .legal-layout h1 {
+    font-size: clamp(2rem, 4.25vw, 2.45rem) !important;
+  }
+
+  .yc-start-page .start-brand-block img {
+    width: min(300px, 58vw) !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .yc-start-page .start-brand-block h1 {
+    max-width: 22ch !important;
+    font-size: clamp(2rem, 4.25vw, 2.45rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  .yc-start-page .start-shell {
+    align-items: start !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .yc-brand-v2 .projects-page .case-detail-grid,
+  .yc-brand-v2 .home-clients-section .client-card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Final cleanup over older visual rules that kept cards oversized. */
+.yc-brand-v2 .home-clients-section .live-client-card picture,
+.yc-brand-v2 .home-clients-section .live-client-card picture > img {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .home-clients-section .live-client-card picture > img {
+  height: 138px !important;
+  max-height: 138px !important;
+  aspect-ratio: 16 / 10 !important;
+  object-fit: cover !important;
+}
+
+.yc-brand-v2 .featured-product-panel {
+  grid-template-columns: minmax(260px, 0.86fr) minmax(320px, 1.14fr) !important;
+  gap: clamp(18px, 3vw, 36px) !important;
+}
+
+.yc-brand-v2 .featured-product-copy {
+  height: auto !important;
+  min-height: 0 !important;
+  align-self: start !important;
+  justify-content: center !important;
+}
+
+.yc-brand-v2 .featured-product-copy h2 {
+  max-width: 15ch !important;
+  font-size: clamp(2rem, 3vw, 3.2rem) !important;
+  line-height: 1.02 !important;
+}
+
+.yc-brand-v2 .featured-product-copy p {
+  font-size: clamp(0.94rem, 1vw, 1.02rem) !important;
+  line-height: 1.52 !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture,
+.yc-brand-v2 .featured-product-panel img {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .featured-product-panel picture {
+  height: min(360px, 48vw) !important;
+}
+
+.yc-brand-v2 .featured-product-panel img {
+  height: 100% !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel {
+  min-height: 0 !important;
+  padding: clamp(22px, 3vw, 34px) !important;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel picture,
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel picture > img {
+  min-height: 0 !important;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel picture {
+  max-height: 340px !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .home-nexus-section .nexus-brand-panel picture > img {
+  max-height: 340px !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 980px) {
+  .yc-brand-v2 .featured-product-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+    padding: 22px !important;
+  }
+
+  .yc-brand-v2 .featured-product-copy {
+    display: block !important;
+    max-width: 100% !important;
+  }
+
+  .yc-brand-v2 .featured-product-copy h2 {
+    font-size: clamp(2rem, 5vw, 2.75rem) !important;
+    margin-bottom: 12px !important;
+  }
+
+  .yc-brand-v2 .featured-product-copy p {
+    margin-bottom: 0 !important;
+  }
+
+  .yc-brand-v2 .product-status-row {
+    gap: 6px !important;
+    margin: 14px 0 !important;
+  }
+
+  .yc-brand-v2 .product-status-row span {
+    padding: 5px 8px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .yc-brand-v2 .featured-product-copy small {
+    display: none !important;
+  }
+
+  .yc-brand-v2 .featured-product-panel picture {
+    height: min(300px, 58vw) !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-copy h2 {
+    font-size: clamp(1.95rem, 5vw, 2.55rem) !important;
+    line-height: 1.04 !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-copy p {
+    font-size: 1rem !important;
+    line-height: 1.52 !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-steps {
+    gap: 6px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-panel picture {
+    width: min(260px, 62vw) !important;
+    max-height: 240px !important;
+    justify-self: center !important;
+  }
+
+  .yc-brand-v2 .home-nexus-section .nexus-brand-panel picture > img {
+    max-height: 240px !important;
+  }
+}

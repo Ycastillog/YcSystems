@@ -2,6 +2,7 @@
   "routes": [
     { "path": "/", "status": "canonical", "index": true, "sitemap": true, "label": "Home" },
     { "path": "/products/", "status": "canonical", "index": true, "sitemap": true, "label": "Productos" },
+    { "path": "/operating-systems/", "status": "canonical", "index": true, "sitemap": true, "label": "Sistemas operativos" },
     { "path": "/solutions/", "status": "canonical", "index": true, "sitemap": true, "label": "Soluciones" },
     { "path": "/industries/", "status": "canonical", "index": true, "sitemap": true, "label": "Industrias" },
     { "path": "/case-studies/", "status": "canonical", "index": true, "sitemap": true, "label": "Clientes" },

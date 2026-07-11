@@ -10,7 +10,8 @@ const YC_CONTACT = Object.freeze({
   futureEmail: "support@ycsystems.io",
   adminEmail: "admin@ycsystems.io",
   helloEmail: "hello@ycsystems.io",
-  whatsapp: "",
+  whatsapp: "https://wa.me/18099411105",
+  whatsappLabel: "WhatsApp Business: +1 809-941-1105",
   instagram: "https://www.instagram.com/yc.systems",
   facebook: "https://www.facebook.com/profile.php?id=61590842845172",
 });
@@ -548,6 +549,7 @@ Object.assign(textTranslations, {
   "Hablemos de tu próxima página, aplicación, sistema o plataforma.": "Let's talk about your next website, application, system or platform.",
   "Canales actuales para proyectos: email, Instagram, Facebook, diagnóstico y portafolio de soluciones construidas por YC Systems.": "Current channels for projects: email, Instagram, Facebook, diagnostics and a portfolio of solutions built by YC Systems.",
   "Email principal: contact@ycsystems.io": "Primary email: contact@ycsystems.io",
+  "Responder por WhatsApp Business": "Reply by WhatsApp Business",
   "Instagram oficial: @yc.systems": "Official Instagram: @yc.systems",
   "Facebook oficial: YC Systems": "Official Facebook: YC Systems",
   "Centro de confianza": "Trust Center",
@@ -1344,6 +1346,7 @@ Object.assign(englishTextTranslations, {
   "Founded: July 2026": "Fundada: julio de 2026",
   "Website: ycsystems.io": "Sitio web: ycsystems.io",
   "Primary email: contact@ycsystems.io": "Correo principal: contact@ycsystems.io",
+  "Reply by WhatsApp Business": "Responder por WhatsApp Business",
   "Commercial proposal": "Propuesta comercial",
   "Purpose:": "Objetivo:",
   "define business problem, recommended system, project scope, phases, delivery timeline and investment reference.": "definir el problema de negocio, sistema recomendado, alcance del proyecto, fases, calendario de entrega y referencia de inversión.",
@@ -2478,6 +2481,11 @@ function applyContactConfig() {
     element.setAttribute("href", YC_CONTACT.facebook);
   });
 
+  document.querySelectorAll("[data-yc-contact-whatsapp]").forEach((element) => {
+    element.setAttribute("href", YC_CONTACT.whatsapp);
+    element.textContent = element.dataset.ycContactWhatsappLabel || YC_CONTACT.whatsappLabel;
+  });
+
   document.querySelectorAll("[data-yc-mailto]").forEach((element) => {
     element.setAttribute("href", buildYCEmailLink(element.dataset.ycMailtoSubject || "Nuevo proyecto YC Systems"));
   });
@@ -2524,7 +2532,7 @@ document.addEventListener("click", (event) => {
   if (!link) return;
   const href = link.getAttribute("href") || "";
   const trackedPaths = ["contact", "products", "case-studies", "partners", "documents", "privacy", "terms"];
-  if (!trackedPaths.some((path) => href.includes(path)) && !href.startsWith("mailto:")) {
+  if (!trackedPaths.some((path) => href.includes(path)) && !href.startsWith("mailto:") && !href.includes("wa.me")) {
     return;
   }
   trackYCEvent("cta_click", {

@@ -11792,3 +11792,66 @@ body.nav-open.yc-brand-v2::before {
     max-height: 190px !important;
   }
 }
+
+/* Public legal pages: keep trust content inside the YC Systems visual system. */
+.yc-brand-v2 .legal-page {
+  background:
+    radial-gradient(circle at 18% 10%, rgba(0, 216, 255, 0.14), transparent 30rem),
+    linear-gradient(180deg, rgba(7, 20, 38, 0.98), rgba(3, 10, 23, 0.98)) !important;
+  color: #f8fbff !important;
+}
+
+.yc-brand-v2 .legal-layout {
+  grid-template-columns: minmax(240px, 0.68fr) minmax(0, 1.32fr) !important;
+  gap: var(--yc-gap) !important;
+}
+
+.yc-brand-v2 .legal-layout h1 {
+  max-width: 12ch !important;
+  margin-bottom: 14px !important;
+  color: #f8fbff !important;
+  font-size: var(--yc-h1) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0 !important;
+}
+
+.yc-brand-v2 .legal-layout > div > p {
+  max-width: 58ch !important;
+  color: #b9c7d8 !important;
+  font-size: var(--yc-body) !important;
+  line-height: 1.58 !important;
+}
+
+.yc-brand-v2 .legal-card {
+  border: 1px solid rgba(0, 216, 255, 0.18) !important;
+  border-radius: var(--yc-radius-panel) !important;
+  padding: clamp(22px, 3vw, 34px) !important;
+  background:
+    linear-gradient(135deg, rgba(0, 216, 255, 0.08), transparent 42%),
+    rgba(5, 17, 32, 0.88) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24) !important;
+}
+
+.yc-brand-v2 .legal-card h2 {
+  margin-bottom: 8px !important;
+  color: #f8fbff !important;
+  font-size: clamp(1.02rem, 1.35vw, 1.2rem) !important;
+  line-height: 1.18 !important;
+}
+
+.yc-brand-v2 .legal-card p {
+  margin-bottom: 22px !important;
+  color: #b9c7d8 !important;
+  font-size: var(--yc-small) !important;
+  line-height: 1.58 !important;
+}
+
+@media (max-width: 900px) {
+  .yc-brand-v2 .legal-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2 .legal-layout h1 {
+    max-width: 18ch !important;
+  }
+}

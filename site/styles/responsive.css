@@ -47,6 +47,17 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
+  .yc-brand-v2 .enterprise-trust-panel,
+  .yc-brand-v2 .delivery-process-panel {
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: start !important;
+  }
+
+  .yc-brand-v2 .enterprise-trust-grid,
+  .yc-brand-v2 .delivery-roadmap {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
   .yc-brand-v2 .legal-card {
     grid-template-columns: 1fr !important;
   }
@@ -176,8 +187,14 @@
 
   .yc-brand-v2.product-sales-page .product-meta-grid,
   .yc-brand-v2.product-sales-page .product-detail-grid,
+  .yc-brand-v2 .enterprise-trust-grid,
   .yc-brand-v2 .delivery-roadmap {
     grid-template-columns: 1fr !important;
+  }
+
+  .yc-brand-v2 .enterprise-trust-copy h2,
+  .yc-brand-v2 .delivery-process-panel .section-head h2 {
+    max-width: 100% !important;
   }
 
   .yc-brand-v2 .product-company-grid .yc-os-product-card > picture > img,

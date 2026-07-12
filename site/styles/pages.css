@@ -106,3 +106,90 @@
   bottom: clamp(10px, 2vw, 22px) !important;
   font-size: clamp(72px, 13vw, 168px) !important;
 }
+
+.yc-brand-v2 .enterprise-trust-panel,
+.yc-brand-v2 .delivery-process-panel {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr) !important;
+  align-items: center !important;
+  gap: clamp(22px, 3.2vw, 42px) !important;
+  overflow: hidden !important;
+}
+
+.yc-brand-v2 .enterprise-trust-copy,
+.yc-brand-v2 .delivery-process-panel .section-head {
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-copy h2,
+.yc-brand-v2 .delivery-process-panel .section-head h2 {
+  max-width: 18ch !important;
+  margin-bottom: 14px !important;
+  font-size: clamp(2rem, 2.95vw, 3.25rem) !important;
+  line-height: 1.04 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-copy p:not(.eyebrow),
+.yc-brand-v2 .delivery-process-panel .section-head p {
+  max-width: 54ch !important;
+  color: #c3d4e8 !important;
+  line-height: 1.58 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid,
+.yc-brand-v2 .delivery-roadmap {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  margin: 0 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid article,
+.yc-brand-v2 .delivery-roadmap article {
+  display: grid !important;
+  gap: 6px !important;
+  min-height: 0 !important;
+  padding: 14px 15px !important;
+  border-color: rgba(0, 216, 255, 0.18) !important;
+  background:
+    linear-gradient(145deg, rgba(8, 20, 38, 0.84), rgba(2, 8, 20, 0.78)),
+    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%) !important;
+  box-shadow: none !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid article::before,
+.yc-brand-v2 .delivery-roadmap article::before {
+  border-top-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid span,
+.yc-brand-v2 .delivery-roadmap article > span {
+  margin-bottom: 2px !important;
+  padding: 5px 8px !important;
+  font-size: 0.68rem !important;
+  line-height: 1 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid strong,
+.yc-brand-v2 .delivery-roadmap strong {
+  margin: 0 !important;
+  font-size: clamp(0.92rem, 1vw, 1.04rem) !important;
+  line-height: 1.15 !important;
+}
+
+.yc-brand-v2 .enterprise-trust-grid p,
+.yc-brand-v2 .delivery-roadmap p {
+  margin: 0 !important;
+  color: #a9bdd5 !important;
+  font-size: 0.8rem !important;
+  line-height: 1.42 !important;
+}
+
+.yc-brand-v2 .delivery-roadmap article:last-child {
+  border-color: rgba(0, 216, 255, 0.18) !important;
+  background:
+    linear-gradient(145deg, rgba(8, 20, 38, 0.84), rgba(2, 8, 20, 0.78)),
+    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%) !important;
+  transform: none !important;
+}

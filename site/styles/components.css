@@ -51,3 +51,44 @@
 .yc-brand-v2 .concept-chat-launcher strong {
   display: none !important;
 }
+
+.yc-brand-v2 .brand-logo img.brand-logo-mark {
+  width: 56px !important;
+  max-width: 56px !important;
+  height: 38px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: drop-shadow(0 0 12px rgba(0, 216, 255, 0.16)) !important;
+}
+
+.yc-brand-v2 .brand-logo {
+  gap: 10px !important;
+}
+
+.yc-brand-v2 .main-nav .nav-cta {
+  min-height: 40px !important;
+  border: 1px solid rgba(0, 216, 255, 0.28) !important;
+  border-radius: 999px !important;
+  padding: 0 18px !important;
+  background: rgba(255, 255, 255, 0.015) !important;
+  color: #d8e5f4 !important;
+  box-shadow: none !important;
+}
+
+.yc-brand-v2 .main-nav .nav-cta::after {
+  content: none !important;
+}
+
+.yc-brand-v2 .main-nav .nav-cta:hover,
+.yc-brand-v2 .main-nav .nav-cta:focus-visible {
+  border-color: rgba(0, 216, 255, 0.55) !important;
+  background: rgba(0, 216, 255, 0.08) !important;
+  color: var(--color-accent) !important;
+  text-shadow: 0 0 16px rgba(0, 216, 255, 0.22) !important;
+}
+
+.yc-brand-v2 .main-nav .nav-cta[aria-current="page"] {
+  border-color: rgba(92, 255, 92, 0.42) !important;
+  background: linear-gradient(135deg, rgba(0, 216, 255, 0.16), rgba(92, 255, 92, 0.12)) !important;
+  color: #f8fbff !important;
+}

@@ -4891,7 +4891,7 @@ p {
   }
 
   .brand-logo img {
-    content: url("./assets/brand/yc-logo-mark-white.png");
+    content: url("../assets/brand/yc-logo-mark-nav.svg");
     object-position: left center;
   }
 
@@ -7496,7 +7496,7 @@ body {
   }
 
   .yc-brand-v2 .brand-logo img {
-    content: url("./assets/brand/yc-logo-mark-white.png");
+    content: url("../assets/brand/yc-logo-mark-nav.svg");
     width: 76px !important;
     max-width: 76px !important;
     height: auto !important;
@@ -11246,10 +11246,6 @@ body.nav-open.yc-brand-v2::before {
 
   .yc-brand-v2 .hero-actions .button-primary {
     min-width: 0;
-  }
-
-  .yc-brand-v2 .hero-actions .button:nth-child(n + 3) {
-    display: none;
   }
 
   .yc-brand-v2 .home-products-section .section-head h2,

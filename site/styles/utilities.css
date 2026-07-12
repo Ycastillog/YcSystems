@@ -1,11 +1,12 @@
 .yc-brand-v2 .client-detail-extra {
-  display: none !important;
+  display: none;
 }
 
-.yc-brand-v2 .documents-grid article {
-  min-height: 0 !important;
+.yc-brand-v2 .coming-soon-card {
+  opacity: 0.92;
 }
 
-.yc-brand-v2 .footer-map strong {
-  font-size: 0.96rem !important;
+.yc-brand-v2 .lang-en .lang-es,
+.yc-brand-v2 .lang-es .lang-en {
+  display: none;
 }

@@ -13,6 +13,6 @@ The active system lives here:
 - `utilities.css`
 - `responsive.css`
 
-`legacy-quarantine.css` is frozen compatibility. Do not add new rules there.
+Legacy stylesheets are not part of the public site anymore.
 
-When a visual issue appears, remove or migrate the conflicting old rule instead of stacking a stronger rule on top.
+When a visual issue appears, fix the owning modular file instead of stacking a stronger duplicate selector on top.

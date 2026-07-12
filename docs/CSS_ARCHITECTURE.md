@@ -1,6 +1,6 @@
 # YC Systems CSS Architecture
 
-YC Systems uses a modular CSS system. New visual work must go into the modular files, not into legacy quarantine.
+YC Systems uses a modular CSS system. New visual work must go into the modular files only.
 
 ## Entry Point
 
@@ -8,15 +8,14 @@ YC Systems uses a modular CSS system. New visual work must go into the modular f
 
 Current order:
 
-1. `site/styles/legacy-quarantine.css`
-2. `site/styles/tokens.css`
-3. `site/styles/reset.css`
-4. `site/styles/base.css`
-5. `site/styles/layout.css`
-6. `site/styles/components.css`
-7. `site/styles/pages.css`
-8. `site/styles/utilities.css`
-9. `site/styles/responsive.css`
+1. `site/styles/tokens.css`
+2. `site/styles/reset.css`
+3. `site/styles/base.css`
+4. `site/styles/layout.css`
+5. `site/styles/components.css`
+6. `site/styles/pages.css`
+7. `site/styles/utilities.css`
+8. `site/styles/responsive.css`
 
 ## Ownership
 
@@ -28,18 +27,13 @@ Current order:
 - `pages.css`: page-specific layouts and high-value visual sections.
 - `utilities.css`: small utility rules only.
 - `responsive.css`: breakpoint rules and mobile/tablet ownership.
-- `legacy-quarantine.css`: frozen compatibility only.
 
 ## Rules
 
-- Do not add new CSS to `legacy-quarantine.css`.
+- Do not add or import legacy CSS files.
 - Do not fix layout by adding a stronger duplicate selector above an older rule.
-- If a legacy rule conflicts, move the active behavior into the right modular file and delete the matching legacy rule.
-- Avoid `!important`. Use it only for accessibility or when removing it would require a verified larger migration.
+- If a rule conflicts, move the active behavior into the correct modular file and delete the duplicate.
+- Avoid `!important`. Use it only for accessibility or reduced-motion safeguards.
 - Keep typography controlled by tokens. Do not create one-off hero sizes unless the page has a clear reason.
 - Keep cards and panels on shared radii, spacing and grid rules.
 - Test desktop, tablet and mobile after touching layout or type.
-
-## Why Legacy Is Still Imported
-
-The legacy file is imported only to preserve existing public pages while the site is migrated safely. It must shrink over time.

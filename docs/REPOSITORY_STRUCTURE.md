@@ -15,7 +15,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 - `site/assets/`: public brand, product, preview and social media assets that are safe to publish.
 - `site/script.js`: public website behavior.
 - `site/styles.css`: CSS manifest only.
-- `site/styles/`: active modular CSS system plus quarantined legacy CSS.
+- `site/styles/`: active modular CSS system.
 
 ## Route Source Of Truth
 

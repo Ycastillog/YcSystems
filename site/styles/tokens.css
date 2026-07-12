@@ -1,30 +1,51 @@
 :root {
   color-scheme: dark;
-  --color-bg: #07111f;
-  --color-bg-deep: #020817;
-  --color-surface: #0b192b;
+
+  --color-bg: #061120;
+  --color-bg-deep: #020814;
+  --color-surface: #081729;
+  --color-surface-strong: #0b1e34;
   --color-surface-soft: #10233b;
   --color-primary: #2563eb;
+  --color-primary-soft: rgba(37, 99, 235, 0.18);
   --color-accent: #00d8ff;
-  --color-success: #22c55e;
+  --color-accent-soft: rgba(0, 216, 255, 0.14);
+  --color-success: #48f06f;
+  --color-success-soft: rgba(72, 240, 111, 0.14);
   --color-text: #f8fbff;
+  --color-text-soft: #d8e5f4;
   --color-text-muted: #a9bdd5;
+  --color-text-dim: #7f93aa;
   --color-border: rgba(169, 189, 213, 0.18);
+  --color-border-strong: rgba(0, 216, 255, 0.34);
+
+  --font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-h1: clamp(2.55rem, 3.05vw, 3.25rem);
+  --font-h2: clamp(1.9rem, 2.55vw, 2.8rem);
+  --font-h3: clamp(1.08rem, 1.25vw, 1.32rem);
+  --font-body: clamp(0.98rem, 1vw, 1.08rem);
+  --font-small: 0.88rem;
+  --font-micro: 0.72rem;
+
   --container-width: 1200px;
   --container-padding: clamp(20px, 4vw, 48px);
-  --radius-sm: 10px;
+  --space-hero: clamp(40px, 4.6vw, 64px);
+  --space-section: clamp(72px, 8vw, 118px);
+  --space-section-compact: clamp(48px, 5.5vw, 78px);
+  --space-card: clamp(18px, 2vw, 26px);
+  --space-gap: clamp(18px, 3vw, 36px);
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --space-section: clamp(72px, 9vw, 128px);
-  --space-section-compact: clamp(50px, 5.8vw, 82px);
-  --space-hero: clamp(42px, 5vw, 70px);
-  --font-h1: clamp(2.3rem, 3.2vw, 3.35rem);
-  --font-h2: clamp(1.9rem, 3vw, 2.85rem);
-  --font-h3: clamp(1rem, 1.35vw, 1.24rem);
-  --font-body: clamp(0.98rem, 1.08vw, 1.08rem);
-  --font-small: 0.88rem;
-  --card-padding: clamp(18px, 2.1vw, 26px);
-  --shadow-panel: 0 24px 70px rgba(0, 0, 0, 0.24);
+  --radius-xl: 30px;
+  --radius-pill: 999px;
+
+  --shadow-panel: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --shadow-glow: 0 0 46px rgba(0, 216, 255, 0.16);
+  --header-height: 76px;
+  --transition-fast: 160ms ease;
 }
 
 .yc-brand-v2 {
@@ -36,5 +57,5 @@
   --yc-h3: var(--font-h3);
   --yc-body: var(--font-body);
   --yc-small: var(--font-small);
-  --yc-card-pad: var(--card-padding);
+  --yc-card-pad: var(--space-card);
 }

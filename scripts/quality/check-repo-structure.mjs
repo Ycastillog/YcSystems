@@ -108,15 +108,15 @@ for (const entry of publicRootEntries) {
 }
 
 if (await exists(rootLegacy)) {
-  fail("styles.legacy.css must not live in the repository root. Use styles/legacy-quarantine.css.");
+  fail("styles.legacy.css must not exist. Legacy CSS is not allowed in the public site.");
 }
 
 if (await exists(siteLegacy)) {
-  fail("site/styles.legacy.css must not exist. Use site/styles/legacy-quarantine.css.");
+  fail("site/styles.legacy.css must not exist. Legacy CSS is not allowed in the public site.");
 }
 
-if (!(await exists(quarantinedLegacy))) {
-  fail("site/styles/legacy-quarantine.css is missing.");
+if (await exists(quarantinedLegacy)) {
+  fail("site/styles/legacy-quarantine.css must not exist. Migrate active rules into modular CSS files.");
 }
 
 if (!(await exists(envExample))) {
@@ -124,8 +124,8 @@ if (!(await exists(envExample))) {
 }
 
 const stylesManifestText = await readFile(stylesManifest, "utf8");
-if (!stylesManifestText.includes("./styles/legacy-quarantine.css")) {
-  fail("styles.css must import ./styles/legacy-quarantine.css while migration is active.");
+if (stylesManifestText.includes("./styles/legacy-quarantine.css")) {
+  fail("styles.css must not import legacy-quarantine.css.");
 }
 
 if (stylesManifestText.includes("./styles.legacy.css")) {
@@ -174,6 +174,7 @@ const secretPatterns = [
 
 for (const file of trackedFiles) {
   const fullPath = path.join(root, file);
+  if (!(await exists(fullPath))) continue;
   if (!textExtensions.has(path.extname(file).toLowerCase())) continue;
 
   const text = await readFile(fullPath, "utf8");

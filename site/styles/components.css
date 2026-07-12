@@ -1,94 +1,425 @@
-.yc-brand-v2 :where(.button, .nav-cta, .hero-actions .button, .cta-panel .button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
-  min-height: 42px !important;
-  border-radius: 999px;
-  padding-inline: 19px !important;
-  font-size: 0.88rem !important;
+.yc-brand-v2 :where(.button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary, .start-action) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 0 20px;
+  font-size: 0.88rem;
+  font-weight: 850;
+  line-height: 1;
+  text-align: center;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.yc-brand-v2 .button:hover,
+.yc-brand-v2 .sales-offer-grid a:hover,
+.yc-brand-v2 .contact-links a:hover {
+  transform: translateY(-1px);
+}
+
+.yc-brand-v2 .button-primary,
+.yc-brand-v2 .diagnostic-form .button-primary {
+  color: #020814;
+  background: linear-gradient(135deg, #14d5ea, #54f35f);
+  box-shadow: 0 18px 44px rgba(0, 216, 255, 0.16);
+}
+
+.yc-brand-v2 .button-secondary,
+.yc-brand-v2 .sales-offer-grid a,
+.yc-brand-v2 .contact-links a,
+.yc-brand-v2 .project-match-grid a {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.yc-brand-v2 .button-secondary:hover,
+.yc-brand-v2 .sales-offer-grid a:hover,
+.yc-brand-v2 .contact-links a:hover,
+.yc-brand-v2 .project-match-grid a:hover {
+  border-color: rgba(0, 216, 255, 0.58);
+  background: rgba(0, 216, 255, 0.08);
+  color: var(--color-accent);
+}
+
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .product-page-shot, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card) {
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(145deg, rgba(8, 22, 40, 0.88), rgba(2, 8, 20, 0.78)),
+    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%);
+  box-shadow: var(--shadow-panel);
+}
+
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .technology-proof-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel) {
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.yc-brand-v2 :where(.enterprise-command-card, .product-page-shot) {
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid, .product-meta-grid, .product-detail-grid, .sales-offer-grid, .buyer-confidence-grid, .enterprise-trust-grid, .delivery-roadmap, .contact-request-grid, .documents-grid, .trust-grid, .method-grid, .outcome-grid, .business-grid, .business-checks, .light-checks, .start-option-grid, .product-comparison-grid, .launch-grid) {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card, .documents-grid article, .trust-grid article, .method-grid article, .outcome-grid article, .business-grid article, .business-checks span, .light-checks span, .start-option-grid a, .product-comparison-grid article, .launch-grid article) {
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid rgba(0, 216, 255, 0.17);
+  border-radius: var(--radius-md);
+  padding: var(--space-card);
+  background:
+    linear-gradient(145deg, rgba(8, 20, 38, 0.84), rgba(2, 8, 20, 0.78)),
+    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%);
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid article, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .documents-grid article, .trust-grid article, .method-grid article, .outcome-grid article, .business-grid article, .product-comparison-grid article, .launch-grid article) > * + * {
+  margin-top: 10px;
+}
+
+.yc-brand-v2 :where(.enterprise-os-grid span, .product-meta-grid span, .product-detail-grid span, .buyer-confidence-grid span, .enterprise-trust-grid span, .delivery-roadmap article > span, .contact-request-grid span, .documents-grid span, .sales-offer-grid article > span, .product-comparison-grid span, .launch-grid span) {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid rgba(0, 216, 255, 0.26);
+  border-radius: var(--radius-pill);
+  padding: 5px 9px;
+  color: var(--color-accent);
+  background: rgba(0, 216, 255, 0.06);
+  font-size: var(--font-micro);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.yc-brand-v2 :where(.product-card-grid, .client-card-grid) {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.yc-brand-v2 :where(.product-card, .client-card) {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid rgba(0, 216, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  background: rgba(4, 14, 28, 0.78);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.yc-brand-v2 :where(.product-card, .client-card):hover {
+  border-color: rgba(0, 216, 255, 0.42);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-3px);
+}
+
+.yc-brand-v2 :where(.product-card picture, .client-card picture, .product-page-shot picture, .featured-product-panel picture) {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 50% 50%, rgba(0, 216, 255, 0.12), transparent 55%),
+    rgba(5, 18, 35, 0.72);
+}
+
+.yc-brand-v2 :where(.product-card picture, .client-card picture) {
+  aspect-ratio: 16 / 10;
+}
+
+.yc-brand-v2 :where(.product-card img, .client-card img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yc-brand-v2 .featured-product-panel picture > img,
+.yc-brand-v2 .product-page-shot img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  object-position: center;
+  opacity: 1;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.yc-brand-v2 .yc-os-card-line,
+.yc-brand-v2 .product-status-row,
+.yc-brand-v2 .method-badges,
+.yc-brand-v2 .nexus-steps,
+.yc-brand-v2 .tech-stack-list,
+.yc-brand-v2 .industry-list,
+.yc-brand-v2 .product-shot-badges,
+.yc-brand-v2 .start-primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.yc-brand-v2 :where(.status-pill, .product-status-row span, .method-badges span, .nexus-steps span, .tech-stack-list span, .industry-list span, .product-shot-badges span) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border: 1px solid rgba(0, 216, 255, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 5px 9px;
+  color: var(--color-text-soft);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.72rem;
+  font-weight: 800;
   line-height: 1;
 }
 
-.yc-brand-v2 :where(.nav-toggle, .language-chip, .main-nav a) {
+.yc-brand-v2 .status-pill.ready,
+.yc-brand-v2 .status-pill.pilot,
+.yc-brand-v2 .status-pill.primary {
+  border-color: rgba(72, 240, 111, 0.42);
+  color: #a9ffbd;
+  background: rgba(72, 240, 111, 0.12);
+}
+
+.yc-brand-v2 .status-pill.soon {
+  border-color: rgba(169, 189, 213, 0.28);
+  color: var(--color-text-muted);
+}
+
+.yc-brand-v2 .contact-links,
+.yc-brand-v2 .contact-steps {
+  display: grid;
+  gap: 10px;
+}
+
+.yc-brand-v2 .contact-steps span {
+  display: block;
+  border-left: 3px solid var(--color-accent);
+  padding: 8px 0 8px 14px;
+  color: var(--color-text-soft);
+  font-weight: 750;
+}
+
+.yc-brand-v2 .diagnostic-form,
+.yc-brand-v2 .project-brief-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.yc-brand-v2 .diagnostic-form label {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.yc-brand-v2 .diagnostic-form label span {
+  color: var(--color-text-soft);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.yc-brand-v2 .diagnostic-form :where(input, select, textarea) {
+  width: 100%;
   min-height: 42px;
-}
-
-.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card, .documents-grid article) {
-  min-height: 0 !important;
-  border-radius: var(--radius-md) !important;
-  padding: var(--card-padding) !important;
-}
-
-.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .product-page-shot) {
-  border-radius: var(--radius-lg) !important;
-}
-
-.yc-brand-v2 .hero-authority-strip {
-  display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: 10px !important;
-}
-
-.yc-brand-v2 .hero-authority-strip span {
-  display: grid !important;
-  min-height: 42px !important;
-  place-items: center !important;
-  padding: 10px 12px !important;
-  text-align: center !important;
-  line-height: 1.18 !important;
-}
-
-.yc-brand-v2 .diagnostic-form {
-  gap: 12px !important;
-  padding: clamp(16px, 2vw, 22px) !important;
-}
-
-.yc-brand-v2 .diagnostic-form :is(input, select) {
-  min-height: 42px !important;
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 13px;
+  padding: 10px 12px;
+  color: var(--color-text);
+  background: rgba(2, 8, 20, 0.72);
 }
 
 .yc-brand-v2 .diagnostic-form textarea {
-  min-height: 120px !important;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.yc-brand-v2 .diagnostic-form ::placeholder {
+  color: #6f839d;
+}
+
+.yc-brand-v2 .brief-full {
+  grid-column: 1 / -1;
+}
+
+.yc-brand-v2 .brief-note {
+  color: var(--color-text-dim);
+  font-size: 0.82rem;
+}
+
+.yc-brand-v2 .enterprise-command-card {
+  display: grid;
+  gap: 16px;
+}
+
+.yc-brand-v2 .enterprise-command-card > span,
+.yc-brand-v2 .enterprise-command-card em {
+  color: var(--color-accent);
+  font-size: var(--font-micro);
+  font-weight: 850;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.yc-brand-v2 .enterprise-command-card > strong {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.1;
+}
+
+.yc-brand-v2 .enterprise-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.yc-brand-v2 .enterprise-signal-grid em {
+  border: 1px solid rgba(0, 216, 255, 0.18);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.yc-brand-v2 .floating-proposal-cta {
+  position: fixed;
+  right: 20px;
+  bottom: 86px;
+  z-index: 95;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid rgba(0, 216, 255, 0.36);
+  border-radius: var(--radius-pill);
+  padding: 0 16px;
+  color: #02111f;
+  background: linear-gradient(135deg, #14d5ea, #54f35f);
+  font-size: 0.82rem;
+  font-weight: 850;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.yc-brand-v2.show-floating-proposal .floating-proposal-cta {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.yc-brand-v2 .concept-chat {
+  position: fixed;
+  right: 24px;
+  bottom: 22px;
+  z-index: 110;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.yc-brand-v2.show-concept-chat .concept-chat,
+.yc-brand-v2 .concept-chat.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.yc-brand-v2 .concept-chat-launcher {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border: 4px solid rgba(72, 240, 111, 0.86);
+  border-radius: 50%;
+  color: var(--color-text);
+  background: #061120;
+  box-shadow: 0 0 0 6px rgba(0, 216, 255, 0.18);
+  cursor: pointer;
 }
 
 .yc-brand-v2 .concept-chat-launcher strong {
-  display: none !important;
+  display: none;
 }
 
-.yc-brand-v2 .brand-logo img.brand-logo-mark {
-  width: 56px !important;
-  max-width: 56px !important;
-  height: 38px !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  filter: drop-shadow(0 0 12px rgba(0, 216, 255, 0.16)) !important;
+.yc-brand-v2 .concept-chat-panel {
+  position: absolute;
+  right: 0;
+  bottom: 70px;
+  width: min(360px, calc(100vw - 28px));
+  overflow: hidden;
+  border: 1px solid rgba(0, 216, 255, 0.26);
+  border-radius: 18px;
+  background: rgba(3, 10, 23, 0.98);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
-.yc-brand-v2 .brand-logo {
-  gap: 10px !important;
+.yc-brand-v2 .concept-chat.is-open .concept-chat-panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
-.yc-brand-v2 .main-nav .nav-cta {
-  min-height: 40px !important;
-  border: 1px solid rgba(0, 216, 255, 0.28) !important;
-  border-radius: 999px !important;
-  padding: 0 18px !important;
-  background: rgba(255, 255, 255, 0.015) !important;
-  color: #d8e5f4 !important;
-  box-shadow: none !important;
+.yc-brand-v2 .concept-chat-head,
+.yc-brand-v2 .concept-chat-body {
+  padding: 16px;
 }
 
-.yc-brand-v2 .main-nav .nav-cta::after {
-  content: none !important;
+.yc-brand-v2 .concept-chat-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 216, 255, 0.16);
 }
 
-.yc-brand-v2 .main-nav .nav-cta:hover,
-.yc-brand-v2 .main-nav .nav-cta:focus-visible {
-  border-color: rgba(0, 216, 255, 0.55) !important;
-  background: rgba(0, 216, 255, 0.08) !important;
-  color: var(--color-accent) !important;
-  text-shadow: 0 0 16px rgba(0, 216, 255, 0.22) !important;
+.yc-brand-v2 .concept-chat-head button {
+  border: 0;
+  color: var(--color-text);
+  background: transparent;
+  cursor: pointer;
 }
 
-.yc-brand-v2 .main-nav .nav-cta[aria-current="page"] {
-  border-color: rgba(92, 255, 92, 0.42) !important;
-  background: linear-gradient(135deg, rgba(0, 216, 255, 0.16), rgba(92, 255, 92, 0.12)) !important;
-  color: #f8fbff !important;
+.yc-brand-v2 .chat-options,
+.yc-brand-v2 .chat-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.yc-brand-v2 .chat-options button,
+.yc-brand-v2 .chat-primary,
+.yc-brand-v2 .chat-actions a {
+  border: 1px solid rgba(0, 216, 255, 0.22);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.035);
+  font-weight: 750;
+}
+
+.yc-brand-v2 .chat-summary {
+  max-height: 180px;
+  overflow: auto;
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--color-text-soft);
+  background: rgba(255, 255, 255, 0.04);
+  white-space: pre-wrap;
 }

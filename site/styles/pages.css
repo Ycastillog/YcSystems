@@ -222,6 +222,19 @@
   margin-bottom: clamp(22px, 3vw, 34px);
 }
 
+.yc-brand-v2 .buyer-confidence-panel {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.yc-brand-v2 .buyer-confidence-copy {
+  max-width: 850px;
+}
+
+.yc-brand-v2 .buyer-confidence-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .yc-brand-v2 .featured-product-copy small {
   color: var(--color-text-dim);
 }
@@ -260,10 +273,10 @@
 .yc-brand-v2 .enterprise-trust-panel,
 .yc-brand-v2 .delivery-process-panel {
   display: grid;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
-  align-items: center;
-  gap: clamp(22px, 3.2vw, 42px);
-  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(20px, 3vw, 34px);
+  overflow: visible;
   padding: clamp(24px, 4vw, 44px);
   border: 1px solid rgba(0, 216, 255, 0.2);
   border-radius: var(--radius-lg);
@@ -274,21 +287,21 @@
 
 .yc-brand-v2 .enterprise-trust-copy,
 .yc-brand-v2 .delivery-process-panel .section-head {
-  max-width: none;
+  max-width: 840px;
   margin: 0;
 }
 
 .yc-brand-v2 .enterprise-trust-copy h2,
 .yc-brand-v2 .delivery-process-panel .section-head h2 {
-  max-width: 18ch;
+  max-width: 22ch;
   margin-bottom: 14px;
-  font-size: clamp(2rem, 2.8vw, 3.05rem);
-  line-height: 1.04;
+  font-size: var(--font-h2);
+  line-height: 1.06;
 }
 
 .yc-brand-v2 .enterprise-trust-grid,
 .yc-brand-v2 .delivery-roadmap {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .yc-brand-v2 .delivery-roadmap {
@@ -322,79 +335,6 @@
   color: var(--color-text-muted);
   font-size: 0.8rem;
   line-height: 1.42;
-}
-
-.yc-brand-v2 .platform-flow {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 26px;
-}
-
-.yc-brand-v2 .platform-flow span {
-  border: 1px solid rgba(0, 216, 255, 0.22);
-  border-radius: var(--radius-pill);
-  padding: 9px 13px;
-  color: var(--color-text-soft);
-  background: rgba(255, 255, 255, 0.03);
-  font-size: 0.82rem;
-  font-weight: 850;
-}
-
-.yc-brand-v2 .platform-map {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.yc-brand-v2 .platform-core,
-.yc-brand-v2 .platform-node {
-  min-width: 0;
-  border: 1px solid rgba(0, 216, 255, 0.2);
-  border-radius: var(--radius-md);
-  padding: 18px;
-  background: rgba(4, 14, 28, 0.78);
-}
-
-.yc-brand-v2 .platform-core {
-  grid-column: 1 / -1;
-  text-align: center;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(72, 240, 111, 0.14), transparent 50%),
-    rgba(4, 14, 28, 0.86);
-}
-
-.yc-brand-v2 .platform-node {
-  display: grid;
-  gap: 8px;
-}
-
-.yc-brand-v2 .platform-node span,
-.yc-brand-v2 .platform-core span {
-  color: var(--color-accent);
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.yc-brand-v2 .platform-node small,
-.yc-brand-v2 .platform-core small {
-  color: var(--color-text-muted);
-  font-size: 0.82rem;
-  line-height: 1.35;
-}
-
-.yc-brand-v2 .technology-proof-panel,
-.yc-brand-v2 .industry-strip {
-  align-items: start;
-}
-
-.yc-brand-v2 .tech-stack-list,
-.yc-brand-v2 .industry-list {
-  justify-content: flex-start;
 }
 
 .yc-brand-v2 .nexus-brand-panel {

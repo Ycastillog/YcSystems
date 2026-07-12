@@ -2210,7 +2210,7 @@ Object.assign(englishTextTranslations, {
   "Modern architecture": "Arquitectura moderna",
   "Foundations prepared for users, roles, data, modules, integrations and new phases.": "Bases preparadas para usuarios, roles, datos, módulos, integraciones y nuevas fases.",
   "Secure development": "Desarrollo seguro",
-  "Alcance definido, privacidad, control de cambios y publicación responsable.": "Defined scope, privacy, change control and responsible publishing.",
+  "Defined scope, privacy, change control and responsible publishing.": "Alcance definido, privacidad, control de cambios y publicación responsable.",
   "Long-term support": "Soporte a largo plazo",
   "The project is ready for maintenance, improvements, documentation and evolution.": "El proyecto queda listo para mantenimiento, mejoras, documentación y evolución.",
   "Product + execution": "Producto + ejecución",
@@ -2226,11 +2226,18 @@ Object.assign(textTranslations, {
   "Software operativo para negocios que necesitan control y crecimiento": "Operating software for businesses that need control and growth",
   "Construimos productos SaaS, sistemas internos, CRM, dashboards y automatización para convertir operaciones desordenadas en plataformas claras, medibles y listas para crecer.": "We build SaaS products, internal systems, CRM, dashboards and automation to turn messy operations into clear, measurable platforms ready to grow.",
   "Solicitar diagnóstico": "Request a diagnostic",
+  "Elegir solución": "Choose a solution",
   "Ver productos": "View products",
   "Ver clientes": "View clients",
+  "Productos SaaS · sistemas internos · automatización · soporte para crecimiento por fases": "SaaS products · internal systems · automation · phased growth support",
+  "Implementación por fases": "Phased implementation",
   "Productos propios para mercados operativos claros": "Owned products for clear operational markets",
   "YC Systems construye software propio a partir de problemas reales: lavanderías, ventas, bienes raíces, operaciones internas y futuros verticales financieros.": "YC Systems builds owned software from real problems: laundry operations, sales, real estate, internal operations and future financial verticals.",
   "El primer producto público de YC Systems: órdenes, clientes, recogidas, entregas, pagos y flujo diario desde un solo sistema.": "YC Systems' first public product: orders, customers, pickups, deliveries, payments and daily workflow from one system.",
+  "CleanLoop para lavanderías modernas": "CleanLoop for modern laundry businesses",
+  "Plataforma operativa para lavanderías modernas": "Operating platform for modern laundry businesses",
+  "Construido con mentalidad de producto, no con improvisación": "Built with a product mindset, not improvisation",
+  "Primero entendemos la operación y luego diseñamos el sistema": "First we understand the operation, then we design the system",
   "Soluciones para clientes": "Client solutions",
   "Construimos la primera versión del sistema que tu negocio necesita": "We build the first version of the system your business needs",
   "Menos catálogo, más dirección: diagnosticamos la operación y convertimos la necesidad en una primera fase clara, vendible y mantenible.": "Less catalog, more direction: we diagnose the operation and turn the need into a clear, sellable and maintainable first phase.",
@@ -2247,8 +2254,11 @@ Object.assign(textTranslations, {
   "Producto SaaS": "Producto SaaS",
   "Primera versión, lanzamiento por fases y base técnica para productos que deben crecer.": "First version, phased launch and technical foundation for products that need to grow.",
   "Soporte continuo": "Continuous support",
+  "Casos publicados que prueban ejecución": "Published cases that prove execution",
   "Proyectos publicados que prueban ejecución": "Published projects that prove execution",
+  "Negocios reales, sitios activos y entregas visibles. Estos casos muestran ejecución sin mezclarse con los productos propios de YC Systems.": "Real businesses, active websites and visible delivery. These cases show execution without mixing them with YC Systems-owned products.",
   "Negocios reales, sitios activos y entregas visibles. Estos proyectos muestran ejecución sin mezclarse con los productos propios de YC Systems.": "Real businesses, active websites and visible delivery. These projects show execution without mixing them with YC Systems-owned products.",
+  "República Dominicana": "Dominican Republic",
   "Convierte tu operación en un sistema claro": "Turn your operation into a clear system",
   "Cuéntanos qué necesitas controlar, vender o automatizar. YC Systems responde con una ruta inicial: alcance, primera fase, entregables y recomendación técnica.": "Tell us what you need to control, sell or automate. YC Systems responds with an initial route: scope, first phase, deliverables and technical recommendation.",
 });
@@ -2262,11 +2272,18 @@ Object.assign(englishTextTranslations, {
   "Operating software for businesses that need control and growth": "Software operativo para negocios que necesitan control y crecimiento",
   "We build SaaS products, internal systems, CRM, dashboards and automation to turn messy operations into clear, measurable platforms ready to grow.": "Construimos productos SaaS, sistemas internos, CRM, dashboards y automatización para convertir operaciones desordenadas en plataformas claras, medibles y listas para crecer.",
   "Request a diagnostic": "Solicitar diagnóstico",
+  "Choose a solution": "Elegir solución",
   "View products": "Ver productos",
   "View clients": "Ver clientes",
+  "SaaS products · internal systems · automation · phased growth support": "Productos SaaS · sistemas internos · automatización · soporte para crecimiento por fases",
+  "Phased implementation": "Implementación por fases",
   "Owned products for clear operational markets": "Productos propios para mercados operativos claros",
   "YC Systems builds owned software from real problems: laundry operations, sales, real estate, internal operations and future financial verticals.": "YC Systems construye software propio a partir de problemas reales: lavanderías, ventas, bienes raíces, operaciones internas y futuros verticales financieros.",
   "YC Systems' first public product: orders, customers, pickups, deliveries, payments and daily workflow from one system.": "El primer producto público de YC Systems: órdenes, clientes, recogidas, entregas, pagos y flujo diario desde un solo sistema.",
+  "CleanLoop for modern laundry businesses": "CleanLoop para lavanderías modernas",
+  "Operating platform for modern laundry businesses": "Plataforma operativa para lavanderías modernas",
+  "Built with a product mindset, not improvisation": "Construido con mentalidad de producto, no con improvisación",
+  "First we understand the operation, then we design the system": "Primero entendemos la operación y luego diseñamos el sistema",
   "Client solutions": "Soluciones para clientes",
   "We build the first version of the system your business needs": "Construimos la primera versión del sistema que tu negocio necesita",
   "Less catalog, more direction: we diagnose the operation and turn the need into a clear, sellable and maintainable first phase.": "Menos catálogo, más dirección: diagnosticamos la operación y convertimos la necesidad en una primera fase clara, vendible y mantenible.",
@@ -2283,8 +2300,11 @@ Object.assign(englishTextTranslations, {
   "Producto SaaS": "Producto SaaS",
   "First version, phased launch and technical foundation for products that need to grow.": "Primera versión, lanzamiento por fases y base técnica para productos que deben crecer.",
   "Continuous support": "Soporte continuo",
+  "Published cases that prove execution": "Casos publicados que prueban ejecución",
   "Published projects that prove execution": "Proyectos publicados que prueban ejecución",
+  "Real businesses, active websites and visible delivery. These cases show execution without mixing them with YC Systems-owned products.": "Negocios reales, sitios activos y entregas visibles. Estos casos muestran ejecución sin mezclarse con los productos propios de YC Systems.",
   "Real businesses, active websites and visible delivery. These projects show execution without mixing them with YC Systems-owned products.": "Negocios reales, sitios activos y entregas visibles. Estos proyectos muestran ejecución sin mezclarse con los productos propios de YC Systems.",
+  "Dominican Republic": "República Dominicana",
   "Turn your operation into a clear system": "Convierte tu operación en un sistema claro",
   "Tell us what you need to control, sell or automate. YC Systems responds with an initial route: scope, first phase, deliverables and technical recommendation.": "Cuéntanos qué necesitas controlar, vender o automatizar. YC Systems responde con una ruta inicial: alcance, primera fase, entregables y recomendación técnica.",
 });
@@ -2314,6 +2334,21 @@ Object.assign(englishTextTranslations, {
 const translatedTextNodes = new WeakMap();
 const translatedAttributes = new WeakMap();
 
+function getPlainTextTranslation(text, lang) {
+  const trimmed = text.trim();
+  if (!trimmed) return "";
+
+  if (lang === "en") {
+    return textTranslations[trimmed] || "";
+  }
+
+  if (textTranslations[trimmed]) {
+    return "";
+  }
+
+  return englishTextTranslations[trimmed] || spanishTextTranslations[trimmed] || "";
+}
+
 function translatePlainText(lang) {
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
     acceptNode(node) {
@@ -2332,7 +2367,7 @@ function translatePlainText(lang) {
     if (!translatedTextNodes.has(node)) translatedTextNodes.set(node, node.textContent);
     const original = translatedTextNodes.get(node);
     const trimmed = original.trim();
-    const translated = lang === "en" ? textTranslations[trimmed] : englishTextTranslations[trimmed] || spanishTextTranslations[trimmed];
+    const translated = getPlainTextTranslation(trimmed, lang);
     node.textContent = translated ? original.replace(trimmed, translated) : original;
   });
 
@@ -2346,7 +2381,7 @@ function translatePlainText(lang) {
     }
     const original = translatedAttributes.get(element)[key];
     if (!original) return;
-    const translated = lang === "en" ? textTranslations[original.trim()] : englishTextTranslations[original.trim()] || spanishTextTranslations[original.trim()];
+    const translated = getPlainTextTranslation(original, lang);
     if (key === "text") element.textContent = translated || original;
     else element.setAttribute("placeholder", translated || original);
   });

@@ -2,11 +2,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  gap: 8px;
+  min-height: 46px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   padding: 0 20px;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 850;
   line-height: 1;
   text-align: center;
@@ -119,7 +120,7 @@
   line-height: 1.3;
 }
 
-.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .technology-proof-panel, .product-page-shot, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card) {
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .product-page-shot, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card) {
   border: 1px solid rgba(0, 216, 255, 0.2);
   border-radius: var(--radius-lg);
   background:
@@ -128,7 +129,7 @@
   box-shadow: var(--shadow-panel);
 }
 
-.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .technology-proof-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel) {
+.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel) {
   padding: clamp(24px, 4vw, 44px);
 }
 
@@ -174,18 +175,25 @@
 
 .yc-brand-v2 :where(.product-card-grid, .client-card-grid) {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(16px, 2vw, 24px);
+}
+
+.yc-brand-v2 .product-card-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.yc-brand-v2 .client-card-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .yc-brand-v2 :where(.product-card, .client-card) {
   display: grid;
   align-content: start;
-  gap: 12px;
+  gap: 11px;
   min-width: 0;
   border: 1px solid rgba(0, 216, 255, 0.2);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 16px;
   background: rgba(4, 14, 28, 0.78);
   transition:
     transform var(--transition-fast),
@@ -210,6 +218,7 @@
 
 .yc-brand-v2 :where(.product-card picture, .client-card picture) {
   aspect-ratio: 16 / 10;
+  max-height: 210px;
 }
 
 .yc-brand-v2 :where(.product-card img, .client-card img) {
@@ -232,8 +241,6 @@
 .yc-brand-v2 .product-status-row,
 .yc-brand-v2 .method-badges,
 .yc-brand-v2 .nexus-steps,
-.yc-brand-v2 .tech-stack-list,
-.yc-brand-v2 .industry-list,
 .yc-brand-v2 .product-shot-badges {
   display: flex;
   flex-wrap: wrap;
@@ -241,7 +248,7 @@
   gap: 8px;
 }
 
-.yc-brand-v2 :where(.status-pill, .product-status-row span, .method-badges span, .nexus-steps span, .tech-stack-list span, .industry-list span, .product-shot-badges span) {
+.yc-brand-v2 :where(.status-pill, .product-status-row span, .method-badges span, .nexus-steps span, .product-shot-badges span) {
   display: inline-flex;
   align-items: center;
   min-height: 28px;

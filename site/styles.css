@@ -1,11 +1,11 @@
-@import url("./styles/tokens.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/reset.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/base.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/layout.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/components.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/pages.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/utilities.css?v=yc-v2-20260712-visual-system1");
-@import url("./styles/responsive.css?v=yc-v2-20260712-visual-system1");
+@import url("./styles/tokens.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/reset.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/base.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/layout.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/components.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/pages.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/utilities.css?v=yc-v2-20260712-visual-system3");
+@import url("./styles/responsive.css?v=yc-v2-20260712-visual-system3");
 
 @media (max-width: 980px) {
   .yc-brand-v2 .main-nav.is-open {

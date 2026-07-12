@@ -43,7 +43,7 @@
   font-weight: 850;
 }
 
-.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2, .technology-proof-panel h2, .industry-strip h2, .nexus-brand-copy h2, .nexus-contact-card h2, .business-section h2) {
+.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2, .nexus-brand-copy h2, .nexus-contact-card h2, .business-section h2) {
   max-width: 21ch;
   font-size: var(--font-h2);
   line-height: 1.06;
@@ -81,8 +81,15 @@
 }
 
 .yc-brand-v2 :where(.breadcrumb) {
-  margin-bottom: 18px;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 12px;
   letter-spacing: 0.08em;
+}
+
+.yc-brand-v2 .breadcrumb + .eyebrow {
+  margin-top: 0;
 }
 
 .yc-brand-v2 :where(small, em, span) {

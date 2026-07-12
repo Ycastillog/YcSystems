@@ -21,7 +21,7 @@
   min-height: var(--header-height);
   padding-inline: max(var(--container-padding), calc((100vw - var(--container-width)) / 2));
   border-bottom: 1px solid rgba(0, 216, 255, 0.16);
-  background: rgba(3, 10, 23, 0.9);
+  background: rgba(3, 10, 23, 0.94);
   backdrop-filter: blur(18px);
 }
 
@@ -37,11 +37,11 @@
 }
 
 .yc-brand-v2 .brand-logo img.brand-logo-mark {
-  width: clamp(210px, 16vw, 238px);
-  height: 58px;
+  width: clamp(238px, 18vw, 292px);
+  height: 64px;
   object-fit: contain;
-  object-position: center;
-  filter: drop-shadow(0 0 18px rgba(0, 216, 255, 0.24));
+  object-position: left center;
+  filter: drop-shadow(0 0 20px rgba(0, 216, 255, 0.2));
 }
 
 .yc-brand-v2 .brand-logo-text {
@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: clamp(18px, 2.3vw, 34px);
+  gap: clamp(16px, 2vw, 30px);
   min-width: 0;
 }
 
@@ -67,7 +67,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 46px;
   color: var(--color-text-soft);
   font-size: 0.9rem;
   font-weight: 800;
@@ -107,7 +107,7 @@
 }
 
 .yc-brand-v2 .main-nav .nav-cta {
-  min-height: 48px;
+  min-height: 46px;
   padding: 0 18px;
   border: 1px solid rgba(0, 216, 255, 0.28);
   border-radius: var(--radius-pill);
@@ -178,7 +178,6 @@
 .yc-brand-v2 .contact-panel,
 .yc-brand-v2 .featured-product-panel,
 .yc-brand-v2 .buyer-confidence-panel,
-.yc-brand-v2 .technology-proof-panel,
 .yc-brand-v2 .nexus-brand-panel,
 .yc-brand-v2 .nexus-contact-card,
 .yc-brand-v2 .business-hero .container,

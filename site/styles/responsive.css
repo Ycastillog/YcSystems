@@ -27,8 +27,8 @@
   }
 
   .yc-brand-v2 .brand-logo img.brand-logo-mark {
-    width: min(158px, 42vw);
-    height: 44px;
+    width: min(176px, 48vw);
+    height: 48px;
   }
 
   .yc-brand-v2 .brand-logo-text {
@@ -99,7 +99,6 @@
   .yc-brand-v2 .contact-panel,
   .yc-brand-v2 .featured-product-panel,
   .yc-brand-v2 .buyer-confidence-panel,
-  .yc-brand-v2 .technology-proof-panel,
   .yc-brand-v2 .nexus-brand-panel,
   .yc-brand-v2 .nexus-contact-card,
   .yc-brand-v2 .business-hero .container,
@@ -138,10 +137,6 @@
   .yc-brand-v2 .delivery-process-panel {
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
-  }
-
-  .yc-brand-v2 .platform-map {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .yc-brand-v2 .legal-card {
@@ -228,7 +223,7 @@
   }
 
   .yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1, .legal-layout h1, .start-hero h1, .business-hero h1) {
-    max-width: 15.5ch;
+    max-width: 16.5ch;
     line-height: 1.04;
   }
 
@@ -275,7 +270,6 @@
   .yc-brand-v2 .start-option-grid,
   .yc-brand-v2 .product-card-grid,
   .yc-brand-v2 .client-card-grid,
-  .yc-brand-v2 .platform-map,
   .yc-brand-v2 .diagnostic-form,
   .yc-brand-v2 .project-brief-form {
     grid-template-columns: 1fr;
@@ -291,7 +285,7 @@
     font-size: 0.68rem;
   }
 
-  .yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .technology-proof-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel, .enterprise-trust-panel, .delivery-process-panel) {
+  .yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel, .enterprise-trust-panel, .delivery-process-panel) {
     padding: 18px;
     border-radius: 20px;
   }

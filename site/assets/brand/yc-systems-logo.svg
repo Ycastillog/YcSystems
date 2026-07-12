@@ -1,12 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="220" viewBox="0 0 980 220" role="img" aria-labelledby="title desc">
-  <title id="title">YC Systems</title>
-  <desc id="desc">YC Systems horizontal logo in navy and blue.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="220" viewBox="0 0 980 220" role="img" aria-labelledby="ycLogoTitle ycLogoDesc">
+  <title id="ycLogoTitle">YC Systems</title>
+  <desc id="ycLogoDesc">Premium YC Systems horizontal logo inspired by the official metallic brand mark.</desc>
+  <defs>
+    <linearGradient id="ycLogoMetal" x1="18" x2="236" y1="38" y2="208" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.22" stop-color="#d7e7f7"/>
+      <stop offset="0.5" stop-color="#f8fbff"/>
+      <stop offset="0.72" stop-color="#8fa8c4"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="ycLogoBlue" x1="145" x2="416" y1="38" y2="210" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eef9ff"/>
+      <stop offset="0.2" stop-color="#00d8ff"/>
+      <stop offset="0.48" stop-color="#2563eb"/>
+      <stop offset="0.78" stop-color="#0f3fb8"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="ycWordMetal" x1="452" x2="932" y1="50" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.34" stop-color="#dfeeff"/>
+      <stop offset="0.6" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#9fb4cc"/>
+    </linearGradient>
+    <filter id="ycLogoGlow" x="-12%" y="-28%" width="124%" height="156%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00d8ff" flood-opacity="0.36"/>
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000716" flood-opacity="0.55"/>
+    </filter>
+  </defs>
   <rect width="980" height="220" fill="none"/>
-  <g transform="translate(18 38)">
-    <path d="M0 0h44l55 64L154 0h48L121 92v78H77V92L0 0Z" fill="#071526"/>
-    <path d="M218 0h168l-28 36H248c-28 0-48 20-48 48s20 49 48 49h114l31 37H218c-54 0-94-37-94-86S164 0 218 0Z" fill="#1769ff"/>
+  <g filter="url(#ycLogoGlow)" transform="translate(18 30) scale(0.94)">
+    <path d="M0 0h44l55 64L154 0h48L121 92v78H77V92L0 0Z" fill="url(#ycLogoMetal)" stroke="#eaf6ff" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M218 0h168l-28 36H248c-28 0-48 20-48 48s20 49 48 49h114l31 37H218c-54 0-94-37-94-86S164 0 218 0Z" fill="url(#ycLogoBlue)" stroke="#b9edff" stroke-width="1.6" stroke-linejoin="round"/>
   </g>
-  <text x="452" y="105" font-family="Inter, Arial, sans-serif" font-size="66" font-weight="800" letter-spacing="10" fill="#071526">YC SYSTEMS</text>
-  <line x1="452" y1="143" x2="548" y2="143" stroke="#1769ff" stroke-width="4"/>
-  <text x="570" y="153" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="6" fill="#102033">SMART SOLUTIONS. REAL RESULTS.</text>
+  <text x="448" y="134" font-family="Inter, Arial, sans-serif" font-size="84" font-weight="800" letter-spacing="0" fill="url(#ycWordMetal)" filter="url(#ycLogoGlow)">Systems</text>
+  <text x="452" y="170" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="750" letter-spacing="5" fill="#00d8ff">SMART SOLUTIONS. REAL RESULTS.</text>
 </svg>

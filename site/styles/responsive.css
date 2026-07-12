@@ -27,7 +27,7 @@
   }
 
   .yc-brand-v2 .brand-logo img.brand-logo-mark {
-    width: 48px;
+    width: 50px;
     height: 36px;
   }
 
@@ -125,7 +125,8 @@
   .yc-brand-v2 .business-grid,
   .yc-brand-v2 .business-product-map,
   .yc-brand-v2 .product-comparison-grid,
-  .yc-brand-v2 .launch-grid {
+  .yc-brand-v2 .launch-grid,
+  .yc-brand-v2 .start-option-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -240,6 +241,15 @@
     align-items: stretch;
   }
 
+  .yc-brand-v2 .start-primary-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .yc-brand-v2 .start-action {
+    min-height: 76px;
+    padding: 12px;
+  }
+
   .yc-brand-v2 .hero-actions .button,
   .yc-brand-v2 .start-primary-actions .button {
     width: 100%;
@@ -262,6 +272,7 @@
   .yc-brand-v2 .business-product-map,
   .yc-brand-v2 .product-comparison-grid,
   .yc-brand-v2 .launch-grid,
+  .yc-brand-v2 .start-option-grid,
   .yc-brand-v2 .product-card-grid,
   .yc-brand-v2 .client-card-grid,
   .yc-brand-v2 .platform-map,

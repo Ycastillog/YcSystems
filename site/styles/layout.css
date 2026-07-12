@@ -37,11 +37,11 @@
 }
 
 .yc-brand-v2 .brand-logo img.brand-logo-mark {
-  width: 56px;
+  width: 60px;
   height: 38px;
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 0 12px rgba(0, 216, 255, 0.16));
+  filter: drop-shadow(0 0 14px rgba(0, 216, 255, 0.2));
 }
 
 .yc-brand-v2 .brand-logo-text {
@@ -50,6 +50,7 @@
   font-weight: 850;
   line-height: 1;
   white-space: nowrap;
+  text-shadow: 0 0 14px rgba(0, 216, 255, 0.12);
 }
 
 .yc-brand-v2 .main-nav {

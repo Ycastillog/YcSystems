@@ -1,474 +1,63 @@
-.yc-brand-v2 :where(.button, .sales-offer-grid a, .contact-links a, .project-match-grid a, .diagnostic-form .button-primary) {
+.actions, .form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.button, .nav-cta, .lang-chip {
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 46px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-pill);
-  padding: 0 20px;
-  font-size: 0.86rem;
-  font-weight: 850;
-  line-height: 1;
-  text-align: center;
-  transition:
-    transform var(--transition-fast),
-    border-color var(--transition-fast),
-    background-color var(--transition-fast),
-    color var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.yc-brand-v2 .button:hover,
-.yc-brand-v2 .sales-offer-grid a:hover,
-.yc-brand-v2 .contact-links a:hover {
-  transform: translateY(-1px);
-}
-
-.yc-brand-v2 .button-primary,
-.yc-brand-v2 .diagnostic-form .button-primary {
-  color: #020814;
-  background: linear-gradient(135deg, #14d5ea, #54f35f);
-  box-shadow: 0 18px 44px rgba(0, 216, 255, 0.16);
-}
-
-.yc-brand-v2 .button-secondary,
-.yc-brand-v2 .sales-offer-grid a,
-.yc-brand-v2 .contact-links a,
-.yc-brand-v2 .project-match-grid a {
-  border-color: var(--color-border-strong);
-  color: var(--color-text);
-  background: rgba(255, 255, 255, 0.018);
-}
-
-.yc-brand-v2 .button-secondary:hover,
-.yc-brand-v2 .sales-offer-grid a:hover,
-.yc-brand-v2 .contact-links a:hover,
-.yc-brand-v2 .project-match-grid a:hover {
-  border-color: rgba(0, 216, 255, 0.58);
-  background: rgba(0, 216, 255, 0.08);
-  color: var(--color-accent);
-}
-
-.yc-brand-v2 .start-primary-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.yc-brand-v2 .start-action {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: 4px 10px;
-  min-height: 86px;
-  border: 1px solid rgba(0, 216, 255, 0.22);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  color: var(--color-text);
-  background: rgba(4, 14, 28, 0.78);
-  text-align: left;
-  text-decoration: none;
-  transition:
-    transform var(--transition-fast),
-    border-color var(--transition-fast),
-    background-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.yc-brand-v2 .start-action:hover {
-  border-color: rgba(0, 216, 255, 0.52);
-  background: rgba(0, 216, 255, 0.07);
-  box-shadow: 0 16px 42px rgba(0, 216, 255, 0.12);
-  transform: translateY(-1px);
-}
-
-.yc-brand-v2 .start-action.primary {
-  border-color: rgba(72, 240, 111, 0.42);
-  background: linear-gradient(145deg, rgba(72, 240, 111, 0.14), rgba(0, 216, 255, 0.07));
-}
-
-.yc-brand-v2 .start-action span {
-  grid-row: 1 / span 2;
-  display: inline-grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 11px;
-  color: #02111f;
-  background: linear-gradient(135deg, #14d5ea, #54f35f);
-  font-size: 0.78rem;
-  font-weight: 900;
-}
-
-.yc-brand-v2 .start-action strong,
-.yc-brand-v2 .start-action small {
-  min-width: 0;
-}
-
-.yc-brand-v2 .start-action strong {
-  font-size: 0.9rem;
-  line-height: 1.12;
-}
-
-.yc-brand-v2 .start-action small {
-  color: var(--color-text-muted);
-  font-size: 0.76rem;
-  font-weight: 750;
-  line-height: 1.3;
-}
-
-.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .enterprise-command-card, .cta-panel, .buyer-confidence-panel, .enterprise-trust-panel, .delivery-process-panel, .product-page-shot, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card) {
-  border: 1px solid rgba(0, 216, 255, 0.2);
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(145deg, rgba(8, 22, 40, 0.88), rgba(2, 8, 20, 0.78)),
-    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%);
-  box-shadow: var(--shadow-panel);
-}
-
-.yc-brand-v2 :where(.contact-panel, .featured-product-panel, .buyer-confidence-panel, .nexus-brand-panel, .nexus-contact-card, .business-panel, .business-investor-panel, .about-identity-card, .identity-card, .legal-card, .cta-panel) {
-  padding: clamp(24px, 4vw, 44px);
-}
-
-.yc-brand-v2 :where(.enterprise-command-card, .product-page-shot) {
-  padding: clamp(22px, 3vw, 34px);
-}
-
-.yc-brand-v2 :where(.enterprise-os-grid, .product-meta-grid, .product-detail-grid, .sales-offer-grid, .buyer-confidence-grid, .enterprise-trust-grid, .delivery-roadmap, .contact-request-grid, .documents-grid, .trust-grid, .method-grid, .outcome-grid, .business-grid, .business-checks, .light-checks, .start-option-grid, .product-comparison-grid, .launch-grid) {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(14px, 2vw, 22px);
-}
-
-.yc-brand-v2 :where(.enterprise-os-grid article, .enterprise-os-grid a, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .live-client-card, .yc-os-product-card, .documents-grid article, .trust-grid article, .method-grid article, .outcome-grid article, .business-grid article, .business-checks span, .light-checks span, .start-option-grid a, .product-comparison-grid article, .launch-grid article) {
-  min-width: 0;
-  min-height: 0;
-  border: 1px solid rgba(0, 216, 255, 0.17);
-  border-radius: var(--radius-md);
-  padding: var(--space-card);
-  background:
-    linear-gradient(145deg, rgba(8, 20, 38, 0.84), rgba(2, 8, 20, 0.78)),
-    radial-gradient(circle at 100% 0%, rgba(0, 216, 255, 0.08), transparent 48%);
-}
-
-.yc-brand-v2 :where(.enterprise-os-grid article, .product-meta-grid article, .product-detail-grid article, .sales-offer-grid article, .buyer-confidence-grid article, .enterprise-trust-grid article, .delivery-roadmap article, .contact-request-grid article, .documents-grid article, .trust-grid article, .method-grid article, .outcome-grid article, .business-grid article, .product-comparison-grid article, .launch-grid article) > * + * {
-  margin-top: 10px;
-}
-
-.yc-brand-v2 :where(.enterprise-os-grid span, .product-meta-grid span, .product-detail-grid span, .buyer-confidence-grid span, .enterprise-trust-grid span, .delivery-roadmap article > span, .contact-request-grid span, .documents-grid span, .sales-offer-grid article > span, .product-comparison-grid span, .launch-grid span) {
-  display: inline-flex;
-  width: fit-content;
-  border: 1px solid rgba(0, 216, 255, 0.26);
-  border-radius: var(--radius-pill);
-  padding: 5px 9px;
-  color: var(--color-accent);
-  background: rgba(0, 216, 255, 0.06);
-  font-size: var(--font-micro);
-  font-weight: 850;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.yc-brand-v2 :where(.product-card-grid, .client-card-grid) {
-  display: grid;
-  gap: clamp(16px, 2vw, 24px);
-}
-
-.yc-brand-v2 .product-card-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.yc-brand-v2 .client-card-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
-.yc-brand-v2 :where(.product-card, .client-card) {
-  display: grid;
-  align-content: start;
-  gap: 11px;
-  min-width: 0;
-  border: 1px solid rgba(0, 216, 255, 0.2);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  background: rgba(4, 14, 28, 0.78);
-  transition:
-    transform var(--transition-fast),
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
-}
-
-.yc-brand-v2 :where(.product-card, .client-card):hover {
-  border-color: rgba(0, 216, 255, 0.42);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-3px);
-}
-
-.yc-brand-v2 :where(.product-card picture, .client-card picture, .product-page-shot picture, .featured-product-panel picture) {
-  display: block;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background:
-    radial-gradient(circle at 50% 50%, rgba(0, 216, 255, 0.12), transparent 55%),
-    rgba(5, 18, 35, 0.72);
-}
-
-.yc-brand-v2 :where(.product-card picture, .client-card picture) {
-  aspect-ratio: 16 / 10;
-  max-height: 210px;
-}
-
-.yc-brand-v2 :where(.product-card img, .client-card img) {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.yc-brand-v2 .featured-product-panel picture > img,
-.yc-brand-v2 .product-page-shot img {
-  width: 100%;
-  max-height: 380px;
-  object-fit: contain;
-  object-position: center;
-  opacity: 1;
-  filter: saturate(1.04) contrast(1.02);
-}
-
-.yc-brand-v2 .yc-os-card-line,
-.yc-brand-v2 .product-status-row,
-.yc-brand-v2 .method-badges,
-.yc-brand-v2 .nexus-steps,
-.yc-brand-v2 .product-shot-badges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-.yc-brand-v2 :where(.status-pill, .product-status-row span, .method-badges span, .nexus-steps span, .product-shot-badges span) {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  border: 1px solid rgba(0, 216, 255, 0.25);
-  border-radius: var(--radius-pill);
-  padding: 5px 9px;
-  color: var(--color-text-soft);
-  background: rgba(255, 255, 255, 0.035);
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.yc-brand-v2 .status-pill.ready,
-.yc-brand-v2 .status-pill.pilot,
-.yc-brand-v2 .status-pill.primary {
-  border-color: rgba(72, 240, 111, 0.42);
-  color: #a9ffbd;
-  background: rgba(72, 240, 111, 0.12);
-}
-
-.yc-brand-v2 .status-pill.soon {
-  border-color: rgba(169, 189, 213, 0.28);
-  color: var(--color-text-muted);
-}
-
-.yc-brand-v2 .contact-links,
-.yc-brand-v2 .contact-steps {
-  display: grid;
-  gap: 10px;
-}
-
-.yc-brand-v2 .contact-steps span {
-  display: block;
-  border-left: 3px solid var(--color-accent);
-  padding: 8px 0 8px 14px;
-  color: var(--color-text-soft);
-  font-weight: 750;
-}
-
-.yc-brand-v2 .diagnostic-form,
-.yc-brand-v2 .project-brief-form {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.yc-brand-v2 .diagnostic-form label {
-  display: grid;
-  gap: 7px;
-  min-width: 0;
-}
-
-.yc-brand-v2 .diagnostic-form label span {
-  color: var(--color-text-soft);
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.yc-brand-v2 .diagnostic-form :where(input, select, textarea) {
-  width: 100%;
-  min-height: 42px;
-  border: 1px solid rgba(0, 216, 255, 0.22);
-  border-radius: 13px;
-  padding: 10px 12px;
-  color: var(--color-text);
-  background: rgba(2, 8, 20, 0.72);
-}
-
-.yc-brand-v2 .diagnostic-form textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-.yc-brand-v2 .diagnostic-form ::placeholder {
-  color: #6f839d;
-}
-
-.yc-brand-v2 .brief-full {
-  grid-column: 1 / -1;
-}
-
-.yc-brand-v2 .brief-note {
-  color: var(--color-text-dim);
-  font-size: 0.82rem;
-}
-
-.yc-brand-v2 .enterprise-command-card {
-  display: grid;
-  gap: 16px;
-}
-
-.yc-brand-v2 .enterprise-command-card > span,
-.yc-brand-v2 .enterprise-command-card em {
-  color: var(--color-accent);
-  font-size: var(--font-micro);
-  font-weight: 850;
-  font-style: normal;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.yc-brand-v2 .enterprise-command-card > strong {
-  font-size: clamp(1.35rem, 2vw, 2rem);
-  line-height: 1.1;
-}
-
-.yc-brand-v2 .enterprise-signal-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.yc-brand-v2 .enterprise-signal-grid em {
-  border: 1px solid rgba(0, 216, 255, 0.18);
-  border-radius: 12px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.yc-brand-v2 .concept-chat {
-  position: fixed;
-  right: 24px;
-  bottom: 22px;
-  z-index: 110;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.yc-brand-v2.show-concept-chat .concept-chat,
-.yc-brand-v2 .concept-chat.is-open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.yc-brand-v2 .concept-chat-launcher {
-  display: grid;
-  width: 56px;
-  height: 56px;
-  place-items: center;
-  border: 4px solid rgba(72, 240, 111, 0.86);
-  border-radius: 50%;
-  color: var(--color-text);
-  background: #061120;
-  box-shadow: 0 0 0 6px rgba(0, 216, 255, 0.18);
-  cursor: pointer;
-}
-
-.yc-brand-v2 .concept-chat-launcher strong {
-  display: none;
-}
-
-.yc-brand-v2 .concept-chat-panel {
-  position: absolute;
-  right: 0;
-  bottom: 70px;
-  width: min(360px, calc(100vw - 28px));
-  overflow: hidden;
-  border: 1px solid rgba(0, 216, 255, 0.26);
-  border-radius: 18px;
-  background: rgba(3, 10, 23, 0.98);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.yc-brand-v2 .concept-chat.is-open .concept-chat-panel {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.yc-brand-v2 .concept-chat-head,
-.yc-brand-v2 .concept-chat-body {
-  padding: 16px;
-}
-
-.yc-brand-v2 .concept-chat-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 216, 255, 0.16);
-}
-
-.yc-brand-v2 .concept-chat-head button {
-  border: 0;
-  color: var(--color-text);
+  border: 1px solid var(--color-border-600);
+  border-radius: var(--radius-sm);
+  padding-inline: 20px;
   background: transparent;
-  cursor: pointer;
+  color: var(--color-text-primary);
+  font-weight: 700;
+  line-height: 1;
+  transition: border-color var(--transition), background-color var(--transition), color var(--transition), transform var(--transition);
 }
+.button:hover, .nav-cta:hover { transform: translateY(-1px); border-color: var(--color-brand-400); }
+.button.primary { border-color: transparent; background: var(--color-brand-400); color: var(--color-text-inverse); }
+.button.primary:hover { background: #70ddff; }
+.button.secondary { background: rgba(17, 31, 56, 0.58); }
+.nav-cta { min-height: 42px; border-color: rgba(51, 200, 255, 0.52); font-size: 0.88rem; }
+.lang-chip { min-width: 46px; min-height: 42px; padding-inline: 12px; color: var(--color-brand-400); font-size: 0.82rem; cursor: not-allowed; opacity: 0.72; }
+.text-link, .card-link { display: inline-flex; align-items: center; gap: 8px; color: var(--color-brand-400); font-weight: 700; }
+.text-link::after, .card-link::after { content: "→"; }
 
-.yc-brand-v2 .chat-options,
-.yc-brand-v2 .chat-actions {
-  display: grid;
-  gap: 8px;
-  margin-top: 12px;
+.choice, .product-card, .case-card, .solution-card, .value-grid article, .document-card, .company-facts article, .status-list span {
+  border: 1px solid var(--color-border-600);
+  border-radius: var(--radius-md);
+  background: rgba(11, 20, 38, 0.76);
 }
+.choice { min-height: 220px; display: flex; flex-direction: column; padding: 28px; }
+.choice > span, .solution-card > span, .case-card > span, .document-card > span, .company-facts article > span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.choice strong { margin: 18px 0 10px; font-size: 1.35rem; line-height: 1.25; }
+.choice p { margin-bottom: 0; }
+.choice:hover, .product-card:hover, .case-card:hover, .document-card:hover { border-color: rgba(51, 200, 255, 0.64); background: rgba(17, 31, 56, 0.82); }
 
-.yc-brand-v2 .chat-options button,
-.yc-brand-v2 .chat-primary,
-.yc-brand-v2 .chat-actions a {
-  border: 1px solid rgba(0, 216, 255, 0.22);
-  border-radius: 12px;
-  padding: 10px 12px;
-  color: var(--color-text);
-  background: rgba(255, 255, 255, 0.035);
-  font-weight: 750;
-}
+.product-card, .case-card { min-width: 0; display: flex; flex-direction: column; padding: 12px 12px 20px; }
+.product-card img, .case-card img { width: 100%; aspect-ratio: 4 / 3; margin-bottom: 18px; border-radius: var(--radius-sm); background: #e9eff7; object-fit: cover; object-position: top center; }
+.product-card h3, .case-card h3 { margin-bottom: 8px; padding-inline: 8px; }
+.product-card > strong, .product-card p, .case-card p, .product-card .card-link, .case-card small, .case-card > span { padding-inline: 8px; }
+.product-card > strong { display: block; margin-bottom: 10px; line-height: 1.35; }
+.product-card p, .case-card p { font-size: 0.94rem; }
+.product-card .card-link, .case-card small { margin-top: auto; color: var(--color-brand-400); font-weight: 700; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 8px 16px; }
+.card-meta small { color: var(--color-text-secondary); text-align: right; }
+.status-badge { display: inline-flex; align-items: center; min-height: 28px; border: 1px solid rgba(50, 213, 131, 0.48); border-radius: 999px; padding-inline: 10px; color: #79e8ad; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+.status-prototype { border-color: rgba(51, 200, 255, 0.5); color: var(--color-brand-400); }
+.status-in-development { border-color: rgba(245, 185, 66, 0.5); color: #ffd176; }
 
-.yc-brand-v2 .chat-summary {
-  max-height: 180px;
-  overflow: auto;
-  border-radius: 12px;
-  padding: 12px;
-  color: var(--color-text-soft);
-  background: rgba(255, 255, 255, 0.04);
-  white-space: pre-wrap;
-}
+.solution-card { min-height: 280px; padding: 28px; }
+.solution-card h2 { margin-top: 28px; font-size: 1.55rem; }
+.solution-card .text-link { margin-top: 16px; }
+.value-grid article { min-height: 180px; padding: 24px; }
+.value-grid article > strong { display: block; margin-bottom: 12px; font-size: 1.15rem; }
+.document-card { min-height: 190px; padding: 28px; }
+.document-card h2 { margin: 20px 0 10px; font-size: 1.6rem; }
+
+.brief-form { border: 1px solid var(--color-border-600); border-radius: var(--radius-md); padding: 30px; background: var(--color-surface-800); box-shadow: var(--shadow-panel); }
+.brief-form [data-step] { display: grid; gap: 18px; }
+.brief-form label { display: grid; gap: 8px; color: var(--color-text-primary); font-weight: 600; }
+.brief-form input, .brief-form select, .brief-form textarea { width: 100%; border: 1px solid #5d6f89; border-radius: var(--radius-sm); padding: 13px 14px; background: #f8fbff; color: #071225; }
+.brief-form textarea { resize: vertical; }
+.form-step { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+.form-note { margin: 18px 0 0; font-size: 0.82rem; }

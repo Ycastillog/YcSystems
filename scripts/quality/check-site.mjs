@@ -87,6 +87,29 @@ for (const file of htmlFiles) {
   }
 }
 
+for (const file of htmlFiles) {
+  const text = await readFile(file, "utf8");
+  const references = [...text.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)].map((match) => match[1]);
+
+  for (const reference of references) {
+    if (/^(?:https?:|mailto:|tel:|data:|#)/i.test(reference)) continue;
+
+    const cleanReference = decodeURIComponent(reference.split(/[?#]/)[0]);
+    if (!cleanReference) continue;
+
+    const base = cleanReference.startsWith("/") ? siteRoot : path.dirname(file);
+    let target = path.resolve(base, cleanReference.replace(/^\//, ""));
+
+    if (cleanReference.endsWith("/")) {
+      target = path.join(target, "index.html");
+    }
+
+    if (!(await fileExists(target))) {
+      fail(file, `broken local reference ${reference}`);
+    }
+  }
+}
+
 const publicExposureRules = [
   {
     pattern: /github\.com\/Ycastillog|GitHub|data-yc-contact-github|YC_CONTACT\.github/i,

@@ -1,0 +1,112 @@
+{
+  "brand": {
+    "name": "YC Systems",
+    "legalName": "YC Systems LLC",
+    "tagline": "Software operativo para negocios reales",
+    "positioning": "YC Systems construye software operativo para empresas que necesitan controlar, medir y crecer."
+  },
+  "contact": {
+    "email": "contact@ycsystems.io",
+    "whatsappLabel": "+1 809-941-1105",
+    "whatsappUrl": "https://wa.me/18099411105",
+    "instagramUrl": "https://www.instagram.com/yc.systems"
+  },
+  "navigation": {
+    "primary": [
+      { "label": "Soluciones", "path": "/solutions/" },
+      { "label": "Productos", "path": "/products/" },
+      { "label": "Casos", "path": "/case-studies/" },
+      { "label": "Método", "path": "/process/" },
+      { "label": "Empresa", "path": "/company/" }
+    ],
+    "primaryAction": { "label": "Solicitar diagnóstico", "path": "/contact/" },
+    "language": { "label": "EN", "state": "coming-soon" }
+  },
+  "products": [
+    {
+      "slug": "cleanloop",
+      "name": "CleanLoop",
+      "path": "/products/cleanloop/",
+      "status": "early-access",
+      "statusLabel": "Acceso temprano",
+      "exposure": "public",
+      "market": "Lavanderías",
+      "title": "Operación de lavandería en una sola plataforma",
+      "summary": "Pedidos, clientes, recogidas, entregas, rutas y pagos conectados en un flujo operativo claro.",
+      "image": "/assets/products-showcase/cleanloop-showcase.webp"
+    },
+    {
+      "slug": "soc",
+      "name": "SOC",
+      "path": "/products/soc/",
+      "status": "prototype",
+      "statusLabel": "Prototipo",
+      "exposure": "public",
+      "market": "Operaciones comerciales",
+      "title": "Visibilidad comercial para equipos que necesitan control",
+      "summary": "Pipeline, actividad, indicadores y seguimiento ejecutivo reunidos en un centro operativo.",
+      "image": "/assets/products-showcase/soc-showcase.webp"
+    },
+    {
+      "slug": "brokercontrol",
+      "name": "BrokerControl",
+      "path": "/products/brokercontrol/",
+      "status": "selected-pilot",
+      "statusLabel": "Piloto seleccionado",
+      "exposure": "public",
+      "market": "Bienes raíces",
+      "title": "CRM inmobiliario para ordenar la operación comercial",
+      "summary": "Prospectos, propiedades, reservas, documentos, agenda y comisiones dentro de un mismo flujo.",
+      "image": "/assets/products-showcase/brokercontrol-os-showcase.webp"
+    },
+    {
+      "slug": "creditpilot",
+      "name": "CreditPilot",
+      "path": "/products/",
+      "status": "in-development",
+      "statusLabel": "En desarrollo",
+      "exposure": "limited",
+      "market": "Operaciones de crédito",
+      "title": "Gestión guiada para equipos de reparación de crédito",
+      "summary": "Una línea de producto en desarrollo para casos, documentos, cartas y seguimiento de clientes.",
+      "image": "/assets/products-showcase/creditpilot-showcase.webp"
+    }
+  ],
+  "cases": [
+    {
+      "name": "GhostWear",
+      "category": "Comercio electrónico",
+      "url": "https://ghostwear1.com/",
+      "image": "/assets/screenshots/ghostwear-live-2026.webp",
+      "summary": "Catálogo, carrito y pedidos conectados a WhatsApp para convertir visitas en conversaciones de venta."
+    },
+    {
+      "name": "Antony Real Estate",
+      "category": "Bienes raíces",
+      "url": "https://antonyrealestate.com/",
+      "image": "/assets/screenshots/antonyrealestate-live.webp",
+      "summary": "Presencia comercial enfocada en confianza, captación y contacto directo con compradores."
+    },
+    {
+      "name": "LPS Company",
+      "category": "Sitio corporativo",
+      "url": "https://lps-company.com/",
+      "image": "/assets/screenshots/lps-company-live.webp",
+      "summary": "Base digital para presentar la empresa, sus marcas y una propuesta comercial coherente."
+    },
+    {
+      "name": "LucianoWash",
+      "category": "Servicios",
+      "url": "https://lucianowash.lps-company.com/",
+      "image": "/assets/screenshots/lucianowash-live.webp",
+      "summary": "Experiencia móvil bilingüe con servicios, confianza y contacto rápido por WhatsApp."
+    },
+    {
+      "name": "Snackeria",
+      "category": "Marca de conveniencia",
+      "url": "https://snackeriado.lps-company.com/",
+      "image": "/assets/screenshots/snackeriado-live.webp",
+      "summary": "Presentación digital compacta para explicar una oferta nueva y activar el primer contacto."
+    }
+  ]
+}

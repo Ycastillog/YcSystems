@@ -1,79 +1,56 @@
 <!doctype html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Documentación pública de YC Systems: productos, guías de implementación, soporte, releases, integraciones y estándares operativos." />
-    <title>Documentación | YC Systems</title>
+    <meta name="description" content="Recursos públicos para entender el proceso, los productos y el soporte de YC Systems." />
+    <meta name="theme-color" content="#020817" />
+    <meta property="og:title" content="Documentación | YC Systems" />
+    <meta property="og:description" content="Recursos públicos para entender el proceso, los productos y el soporte de YC Systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ycsystems.io/documentation/" />
+    <meta property="og:image" content="https://ycsystems.io/assets/previews/yc-systems-og.png" />
     <link rel="canonical" href="https://ycsystems.io/documentation/" />
+    <title>Documentación | YC Systems</title>
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
-    <link rel="stylesheet" href="../styles.css?v=yc-v2-20260712-visual-system3" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css?v=yc-v2-foundation-20260712" />
   </head>
-  <body class="yc-brand-v2 yc-enterprise-v2">
-    <header class="site-header" data-header>
-      <a class="brand" href="../" aria-label="Inicio YC Systems"><span class="brand-logo"><img decoding="async" class="brand-logo-mark" src="../assets/brand/yc-systems-logo.svg?v=yc-official-wordmark2" alt="" aria-hidden="true" width="980" height="220" /><span class="brand-logo-text">YC Systems</span></span></a>
-      <button class="nav-toggle" type="button" aria-label="Abrir navegación" aria-expanded="false" aria-controls="main-navigation" data-nav-toggle><span></span><span></span></button>
-      <nav id="main-navigation" class="main-nav" data-nav><a href="../products/">Productos</a><a href="../solutions/">Soluciones</a><a href="../case-studies/">Clientes</a><a href="../process/">Método</a><a href="../company/">Empresa</a><a class="nav-cta" href="../contact/">Diagnóstico</a><button class="language-chip" type="button" data-lang-toggle aria-label="Cambiar a inglés" aria-pressed="false">EN</button></nav>
-    </header>
-    <main>
-      <section class="enterprise-hero section-pad">
-        <div class="container enterprise-hero-grid">
-          <div>
-            <a class="breadcrumb" href="../">YC Systems / Documentación</a>
-            <p class="eyebrow">Documentación</p>
-            <h1>Una base organizada para productos, clientes y operación</h1>
-            <p class="hero-lede">La documentación organiza cómo YC Systems presenta productos, entrega proyectos, da soporte, registra cambios y prepara integraciones futuras sin improvisar cada vez.</p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="../operating-systems/">Ver productos</a>
-              <a class="button button-secondary" href="../developers/">Desarrolladores</a>
-            </div>
-          </div>
-          <div class="enterprise-command-card">
-            <span>Docs roadmap</span>
-            <strong>Producto. Soporte. Releases.</strong>
-            <div class="enterprise-signal-grid">
-              <em>Guides</em>
-              <em>API</em>
-              <em>Soporte</em>
-              <em>Legal</em>
-            </div>
-          </div>
+<body class="" data-route="/documentation/">
+  <a class="skip-link" href="#main-content">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="Inicio YC Systems">
+        <img src="../assets/brand/yc-systems-logo-header-dark.png" alt="YC Systems" width="764" height="240" />
+      </a>
+      <button class="menu-button" type="button" data-nav-toggle aria-label="Abrir menú" aria-expanded="false" aria-controls="site-navigation"><span></span><span></span></button>
+      <div class="header-panel" id="site-navigation" data-nav-panel>
+        <nav class="main-nav" aria-label="Navegación principal"><a href="../solutions/">Soluciones</a><a href="../products/">Productos</a><a href="../case-studies/">Casos</a><a href="../process/">Método</a><a href="../company/">Empresa</a></nav>
+        <div class="header-actions">
+          <a class="nav-cta" href="../contact/">Solicitar diagnóstico</a>
+          <button class="lang-chip" type="button" aria-label="Versión en inglés en preparación" disabled>EN</button>
         </div>
-      </section>
-      <section class="section-pad">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Biblioteca principal</p>
-            <h2>Lo que debe estar documentado antes de escalar</h2>
-            <p>YC Systems se está organizando como una empresa de productos. Cada producto necesita guías, criterios de entrega, soporte y una historia operativa clara.</p>
-          </div>
-          <div class="enterprise-os-grid">
-            <article><span>01</span><strong>Producto</strong><p>CleanLoop OS, SOC OS, BrokerControl OS y CreditPilot OS con descripción, mercado, módulos, estado y siguiente fase.</p></article>
-            <article><span>02</span><strong>Implementación</strong><p>Alcance, fases, onboarding, roles, datos necesarios, revisión visual, entrega, dominio, publicación y mantenimiento.</p></article>
-            <article><span>03</span><strong>Soporte</strong><p>Canales oficiales, prioridad, tiempos esperados, tipos de solicitud, mantenimiento, cambios menores y escalamiento.</p></article>
-            <article><span>04</span><strong>Releases</strong><p>Registro de versiones, mejoras, correcciones, cambios visuales, nuevas rutas y estado de publicación.</p></article>
-            <article><span>05</span><strong>Integraciones</strong><p>Roadmap para APIs, webhooks, autenticación, pagos, formularios, analítica y conectores por producto.</p></article>
-            <article><span>06</span><strong>Legal y confianza</strong><p>Políticas, términos, privacidad, documentos corporativos, contactos oficiales y responsabilidades del cliente.</p></article>
-          </div>
-        </div>
-      </section>
-      <section class="section-pad">
-        <div class="container">
-          <div class="section-head narrow">
-            <p class="eyebrow">Estándar de entrega</p>
-            <h2>Cada proyecto debe quedar entendible después de publicarse</h2>
-            <p>Un sitio o sistema no termina cuando se ve bonito. Debe quedar claro cómo se usa, qué resuelve, quién lo mantiene y qué se puede mejorar después.</p>
-          </div>
-          <div class="trust-grid">
-            <article><span>Cliente</span><strong>Resumen ejecutivo</strong><p>Problema, solución, alcance entregado, URLs, responsables, próximos pasos y recomendaciones.</p></article>
-            <article><span>Producto</span><strong>Mapa funcional</strong><p>Módulos, pantallas, roles, datos, flujos principales y criterios para nuevas versiones.</p></article>
-            <article><span>Operación</span><strong>Checklist de publicación</strong><p>Dominio, DNS, SSL, activos visuales, formularios, SEO, analítica, respaldo y mantenimiento.</p></article>
-            <article><span>Soporte</span><strong>Ruta de mantenimiento</strong><p>Cómo reportar cambios, cómo priorizarlos, qué entra en soporte y qué se cotiza como nueva fase.</p></article>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer class="site-footer"><div class="container footer-inner"><span>&copy; 2026 YC Systems LLC. All rights reserved.</span><span><a href="../company/">Empresa</a> | <a href="../documents/">Documentos</a> | <a href="../privacy/">Privacidad</a> | <a href="../terms/">Términos</a></span></div></footer>
-    <script src="../script.js?v=yc-v2-20260712-language-safe2"></script>
-  </body>
+      </div>
+    </div>
+  </header>
+  <main id="main-content"><section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Documentación</p><h1>Recursos para clientes y equipos</h1><p class="lead">Una entrada pública a proceso, productos, confianza y canales de soporte.</p></div></section><section class="section"><div class="container document-grid"><a class="document-card" href="../process/"><span>Proceso</span><h2>Método de trabajo</h2><p>Cómo se define y entrega una primera fase.</p></a><a class="document-card" href="../products/"><span>Productos</span><h2>Disponibilidad</h2><p>Estados y formas de acceso a productos YC Systems.</p></a><a class="document-card" href="../trust-center/"><span>Confianza</span><h2>Seguridad y privacidad</h2><p>Principios públicos para clientes y visitantes.</p></a><a class="document-card" href="../contact/"><span>Soporte</span><h2>Canales oficiales</h2><p>Solicita orientación o comparte una necesidad.</p></a></div></section></main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>YC Systems LLC</strong>
+        <p>YC Systems construye software operativo para empresas que necesitan controlar, medir y crecer.</p>
+        <p>Operación digital con alcance internacional.</p>
+      </div>
+      <div><strong>Empresa</strong><a href="../company/">Información corporativa</a><a href="../process/">Método de trabajo</a><a href="../trust-center/">Centro de confianza</a></div>
+      <div><strong>Explorar</strong><a href="../solutions/">Soluciones</a><a href="../products/">Productos</a><a href="../case-studies/">Casos</a></div>
+      <div><strong>Contacto</strong><a href="mailto:contact@ycsystems.io">contact@ycsystems.io</a><a href="https://wa.me/18099411105" target="_blank" rel="noopener">WhatsApp +1 809-941-1105</a><a href="https://www.instagram.com/yc.systems" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="container footer-bottom"><span>&copy; 2026 YC Systems LLC. All rights reserved.</span><span><a href="../documents/">Documentos</a><a href="../privacy/">Privacidad</a><a href="../terms/">Términos</a></span></div>
+  </footer>
+  <script src="../script.js?v=yc-v2-foundation-20260712"></script>
+</body>
 </html>

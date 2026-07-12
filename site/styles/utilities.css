@@ -1,12 +1,1 @@
-.yc-brand-v2 .client-detail-extra {
-  display: none;
-}
-
-.yc-brand-v2 .coming-soon-card {
-  opacity: 0.92;
-}
-
-.yc-brand-v2 .lang-en .lang-es,
-.yc-brand-v2 .lang-es .lang-en {
-  display: none;
-}
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }

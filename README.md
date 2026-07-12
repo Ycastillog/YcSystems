@@ -19,7 +19,8 @@ It must not contain private credentials, legal ownership records, EIN documents,
 ## Local Preview
 
 ```powershell
-python -m http.server 3001 --bind 127.0.0.1 --directory site
+node scripts/build-site.mjs
+node scripts/local-preview-server.js --port 3001
 ```
 
 Open:
@@ -37,11 +38,13 @@ The public website lives in `site/`. GitHub Pages publishes a static artifact ge
 Important files:
 
 - `site/index.html`: home page.
+- `site/data/site-content.json`: shared brand, navigation, product and case-study content.
 - `site/styles.css`: stylesheet manifest only.
 - `site/styles/`: active modular CSS system.
 - `site/script.js`: public website behavior.
 - `site/assets/`: public brand, product and approved marketing assets.
 - `config/routes-map.json`: source of truth for routes, sitemap and noindex behavior.
+- `scripts/build-site.mjs`: static page generator for the shared header, footer and page system.
 - `scripts/quality/`: automated checks.
 - `docs/`: repository architecture, CSS rules and public/private policy.
 
@@ -123,6 +126,7 @@ Compatibility routes such as `/projects/`, `/about/`, `/brands/`, `/services/`, 
 Run before commit:
 
 ```powershell
+node scripts/build-site.mjs
 node scripts/quality/check-repo-structure.mjs
 node scripts/quality/check-site.mjs
 ```

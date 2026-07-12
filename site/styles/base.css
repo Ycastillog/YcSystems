@@ -1,97 +1,34 @@
-.yc-brand-v2 {
-  min-height: 100vh;
-  color: var(--color-text);
+body {
+  min-width: 320px;
+  color: var(--color-text-primary);
   background:
-    radial-gradient(circle at 16% 8%, rgba(37, 99, 235, 0.18), transparent 32rem),
-    radial-gradient(circle at 84% 12%, rgba(0, 216, 255, 0.12), transparent 30rem),
-    linear-gradient(135deg, var(--color-bg-deep), var(--color-bg) 58%, #041627);
-  font-family: var(--font-family);
-  font-size: 16px;
-  line-height: 1.55;
+    radial-gradient(circle at 12% 0%, rgba(51, 200, 255, 0.08), transparent 28rem),
+    linear-gradient(180deg, var(--color-bg-950), var(--color-bg-900));
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
-.yc-brand-v2::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(0, 216, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 216, 255, 0.035) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 70%);
-}
+body.nav-open { overflow: hidden; }
+main { min-height: 65vh; }
+h1, h2, h3 { margin-bottom: 18px; color: var(--color-text-primary); font-weight: 700; letter-spacing: 0; }
+h1 { max-width: 920px; font-size: 3.75rem; line-height: 1.04; }
+h2 { max-width: 760px; font-size: 2.75rem; line-height: 1.08; }
+h3 { font-size: 1.35rem; line-height: 1.2; }
+p { margin-bottom: 18px; color: var(--color-text-secondary); }
+strong { color: var(--color-text-primary); }
+small { font-size: 0.82rem; }
 
-.yc-brand-v2 :where(h1, h2, h3, p) {
-  margin: 0;
-}
-
-.yc-brand-v2 :where(h1, h2, h3, strong) {
-  color: var(--color-text);
-  letter-spacing: 0;
-}
-
-.yc-brand-v2 :where(h1, h2) {
-  text-wrap: balance;
-}
-
-.yc-brand-v2 :where(.hero h1, .product-hero h1, .enterprise-hero h1, .products-hero h1, .contact-panel h1, .legal-layout h1, .start-hero h1, .business-hero h1) {
-  max-width: 19ch;
-  font-size: var(--font-h1);
-  line-height: 1.03;
-  font-weight: 850;
-}
-
-.yc-brand-v2 :where(.section-head h2, .cta-panel h2, .contact-panel h2, .featured-product-copy h2, .buyer-confidence-copy h2, .enterprise-trust-copy h2, .enterprise-split h2, .product-story-head h2, .delivery-process-panel .section-head h2, .sales-offer-section .section-head h2, .nexus-brand-copy h2, .nexus-contact-card h2, .business-section h2) {
-  max-width: 21ch;
-  font-size: var(--font-h2);
-  line-height: 1.06;
-  font-weight: 840;
-}
-
-.yc-brand-v2 :where(h3, .product-card h3, .client-card h3) {
-  font-size: var(--font-h3);
-  line-height: 1.16;
-  font-weight: 800;
-}
-
-.yc-brand-v2 :where(p, li, input, select, textarea) {
-  color: var(--color-text-muted);
-  font-size: var(--font-body);
-}
-
-.yc-brand-v2 :where(.hero-lede, .product-hero .hero-lede, .enterprise-hero .hero-lede, .section-head p, .contact-panel p, .cta-panel p:not(.eyebrow), .featured-product-copy p, .buyer-confidence-copy p, .enterprise-trust-copy p, .legal-layout p, .business-hero p) {
-  max-width: 64ch;
-  color: var(--color-text-muted);
-  font-size: var(--font-body);
-  line-height: 1.56;
-}
-
-.yc-brand-v2 :where(.eyebrow, .breadcrumb) {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--color-accent);
-  font-size: var(--font-micro);
-  font-weight: 850;
-  letter-spacing: 0.18em;
-  line-height: 1.2;
+.lead { max-width: 760px; font-size: 1.22rem; line-height: 1.6; }
+.kicker {
+  margin-bottom: 18px;
+  color: var(--color-brand-400);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-
-.yc-brand-v2 :where(.breadcrumb) {
-  display: flex;
-  width: fit-content;
-  max-width: 100%;
-  margin-bottom: 12px;
-  letter-spacing: 0.08em;
-}
-
-.yc-brand-v2 .breadcrumb + .eyebrow {
-  margin-top: 0;
-}
-
-.yc-brand-v2 :where(small, em, span) {
-  color: inherit;
-}
+.skip-link { position: fixed; z-index: 100; top: 12px; left: 12px; transform: translateY(-140%); padding: 10px 14px; border-radius: var(--radius-sm); background: var(--color-text-primary); color: var(--color-text-inverse); font-weight: 700; }
+.skip-link:focus { transform: translateY(0); }

@@ -1,29 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="467" height="262" viewBox="0 0 467 262" role="img" aria-labelledby="ycMarkTitle ycMarkDesc">
   <title id="ycMarkTitle">YC Systems</title>
-  <desc id="ycMarkDesc">Premium YC Systems monogram with metallic white and electric blue accents.</desc>
+  <desc id="ycMarkDesc">Official YC Systems monogram.</desc>
   <defs>
-    <linearGradient id="ycMetal" x1="36" x2="238" y1="46" y2="216" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="0.22" stop-color="#d7e7f7"/>
-      <stop offset="0.48" stop-color="#f8fbff"/>
-      <stop offset="0.72" stop-color="#8fa8c4"/>
-      <stop offset="1" stop-color="#ffffff"/>
+    <linearGradient id="ycMarkA" x1="0" x2="410" y1="0" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="0.38" stop-color="#0f47d8"/>
+      <stop offset="0.72" stop-color="#07142a"/>
+      <stop offset="1" stop-color="#0f172a"/>
     </linearGradient>
-    <linearGradient id="ycBlueMetal" x1="160" x2="430" y1="48" y2="215" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#eef9ff"/>
-      <stop offset="0.22" stop-color="#00d8ff"/>
-      <stop offset="0.48" stop-color="#2563eb"/>
-      <stop offset="0.78" stop-color="#0f3fb8"/>
-      <stop offset="1" stop-color="#f8fbff"/>
+    <linearGradient id="ycMarkB" x1="124" x2="398" y1="0" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="0.5" stop-color="#0057ff"/>
+      <stop offset="1" stop-color="#06319b"/>
     </linearGradient>
-    <filter id="ycGlow" x="-20%" y="-28%" width="140%" height="156%" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#00d8ff" flood-opacity="0.42"/>
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#000716" flood-opacity="0.5"/>
-    </filter>
   </defs>
-  <g filter="url(#ycGlow)" transform="translate(36 46)">
-    <path d="M0 0h44l55 64L154 0h48L121 92v78H77V92L0 0Z" fill="url(#ycMetal)" stroke="#eaf6ff" stroke-width="1.6" stroke-linejoin="round"/>
-    <path d="M218 0h168l-28 36H248c-28 0-48 20-48 48s20 49 48 49h114l31 37H218c-54 0-94-37-94-86S164 0 218 0Z" fill="url(#ycBlueMetal)" stroke="#b9edff" stroke-width="1.6" stroke-linejoin="round"/>
+  <rect width="467" height="262" fill="none"/>
+  <g transform="translate(36 46)">
+    <path d="M0 0h44l55 64L154 0h48L121 92v78H77V92L0 0Z" fill="url(#ycMarkA)"/>
+    <path d="M218 0h168l-28 36H248c-28 0-48 20-48 48s20 49 48 49h114l31 37H218c-54 0-94-37-94-86S164 0 218 0Z" fill="url(#ycMarkB)"/>
   </g>
-  <path d="M269 46h153l-18 23H292c-39 0-70 28-70 63 0 34 31 61 70 61h116l20 23H268c-61 0-106-36-106-84 0-50 46-86 107-86Z" fill="none" stroke="#00d8ff" stroke-width="1.2" stroke-opacity="0.32"/>
 </svg>

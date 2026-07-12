@@ -76,6 +76,7 @@
     {
       "name": "GhostWear",
       "category": "Comercio electrónico",
+      "internalPath": "/brands/ghostwear/",
       "url": "https://ghostwear1.com/",
       "image": "/assets/screenshots/ghostwear-live-2026.webp",
       "summary": "Catálogo, carrito y pedidos conectados a WhatsApp para convertir visitas en conversaciones de venta."
@@ -83,6 +84,7 @@
     {
       "name": "Antony Real Estate",
       "category": "Bienes raíces",
+      "internalPath": "/case-studies/antony-real-estate/",
       "url": "https://antonyrealestate.com/",
       "image": "/assets/screenshots/antonyrealestate-live.webp",
       "summary": "Presencia comercial enfocada en confianza, captación y contacto directo con compradores."

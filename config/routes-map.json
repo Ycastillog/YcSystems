@@ -19,6 +19,7 @@
     { "path": "/products/soc/", "status": "private-product", "index": false, "sitemap": false, "label": "SOC" },
     { "path": "/products/brokercontrol/", "status": "private-product", "index": false, "sitemap": false, "label": "BrokerControl" },
     { "path": "/brands/ghostwear/", "status": "client-proof", "index": false, "sitemap": false, "label": "GhostWear" },
+    { "path": "/case-studies/antony-real-estate/", "status": "client-proof", "index": false, "sitemap": false, "label": "Antony Real Estate" },
     { "path": "/services/", "status": "legacy-redirect", "target": "/solutions/", "index": false, "sitemap": false, "label": "Servicios legacy" },
     { "path": "/about/", "status": "legacy-redirect", "target": "/company/", "index": false, "sitemap": false, "label": "About legacy" },
     { "path": "/projects/", "status": "legacy-redirect", "target": "/case-studies/", "index": false, "sitemap": false, "label": "Projects legacy" },

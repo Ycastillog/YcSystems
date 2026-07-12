@@ -15,11 +15,11 @@
   --font-sans: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --container: 1180px;
-  --content-narrow: 820px;
+  --container: 1200px;
+  --content-narrow: 760px;
   --gutter: 32px;
   --header-height: 76px;
-  --section-space: 96px;
+  --section-space: 88px;
   --radius-sm: 6px;
   --radius-md: 8px;
   --shadow-panel: 0 22px 70px rgba(0, 0, 0, 0.28);

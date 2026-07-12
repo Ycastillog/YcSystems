@@ -211,6 +211,22 @@ if (scriptText.includes('href.includes("projects")')) {
   fail(script, "CTA analytics still tracks the legacy /projects/ route instead of /case-studies/.");
 }
 
+if (scriptText.includes("yc-last-event")) {
+  fail(script, "analytics events must not be persisted in localStorage as yc-last-event.");
+}
+
+if (scriptText.includes("installFloatingProposalCta") || scriptText.includes("floating-proposal-cta")) {
+  fail(script, "only the concept chat floating conversion widget should be installed.");
+}
+
+if (scriptText.includes("Enviar por Gmail")) {
+  fail(script, 'use neutral email copy instead of "Enviar por Gmail".');
+}
+
+if (scriptText.includes('<pre class="chat-summary">${summary}</pre>')) {
+  fail(script, "chat summary must be assigned with textContent, not interpolated into innerHTML.");
+}
+
 for (const staleCopy of [
   "YC Systems construye productos de software que resuelven problemas operativos reales.",
   "Un proceso simple desde la idea hasta el lanzamiento.",
@@ -230,6 +246,24 @@ const contact = path.join(siteRoot, "contact", "index.html");
 const contactText = await readFile(contact, "utf8");
 if (/name=["']_captcha["'][^>]+value=["']false["']/i.test(contactText)) {
   fail(contact, "FormSubmit captcha is disabled; remove _captcha=false or replace the form endpoint.");
+}
+
+if (contactText.includes("formsubmit.co") && !contactText.includes("FormSubmit")) {
+  fail(contact, "FormSubmit forms must disclose FormSubmit before submission.");
+}
+
+if (/brief directo|diagn[oó]stico directo/i.test(contactText)) {
+  fail(contact, "FormSubmit forms must not describe submissions as direct to YC Systems.");
+}
+
+const privacy = path.join(siteRoot, "privacy", "index.html");
+const privacyText = await readFile(privacy, "utf8");
+if (!privacyText.includes("FormSubmit")) {
+  fail(privacy, "privacy policy must name FormSubmit while the contact form uses it.");
+}
+
+if (!privacyText.includes("yc-lang") || !privacyText.includes("localStorage")) {
+  fail(privacy, "privacy policy must disclose localStorage language preference.");
 }
 
 if (failures.length) {

@@ -53,6 +53,9 @@ function gitLsFiles(args = []) {
 const rootLegacy = path.join(root, "styles.legacy.css");
 const siteLegacy = path.join(siteRoot, "styles.legacy.css");
 const quarantinedLegacy = path.join(siteRoot, "styles", "legacy-quarantine.css");
+const publicSocialAssets = path.join(siteRoot, "assets", "social");
+const publicDebtZeroPng = path.join(siteRoot, "assets", "products-showcase", "debtzero-showcase.png");
+const publicDebtZeroWebp = path.join(siteRoot, "assets", "products-showcase", "debtzero-showcase.webp");
 const stylesManifest = path.join(siteRoot, "styles.css");
 const envExample = path.join(root, ".env.example");
 const workflow = path.join(root, ".github", "workflows", "deploy-pages.yml");
@@ -119,6 +122,14 @@ if (await exists(quarantinedLegacy)) {
   fail("site/styles/legacy-quarantine.css must not exist. Migrate active rules into modular CSS files.");
 }
 
+if (await exists(publicSocialAssets)) {
+  fail("site/assets/social must not exist. Social publishing assets belong in content/social, outside the public website artifact.");
+}
+
+if ((await exists(publicDebtZeroPng)) || (await exists(publicDebtZeroWebp))) {
+  fail("DebtZero product showcase assets are not part of the public YC Systems site.");
+}
+
 if (!(await exists(envExample))) {
   fail(".env.example is missing.");
 }
@@ -162,6 +173,16 @@ if (!workflowText.includes("check-repo-structure.mjs") || !workflowText.includes
 }
 
 const trackedFiles = gitLsFiles();
+const trackedPublicSocial = trackedFiles.filter((file) => file.startsWith("site/assets/social/"));
+if (trackedPublicSocial.length) {
+  fail(`tracked public social assets are not allowed: ${trackedPublicSocial.length} file(s) under site/assets/social`);
+}
+
+const trackedDebtZero = trackedFiles.filter((file) => /^site\/assets\/products-showcase\/debtzero-showcase\.(png|webp)$/i.test(file));
+if (trackedDebtZero.length) {
+  fail(`tracked DebtZero showcase assets are not allowed: ${trackedDebtZero.join(", ")}`);
+}
+
 const secretPatterns = [
   /\bMETA_PAGE_ACCESS_TOKEN\s*=\s*\S+/i,
   /\bMETA_APP_SECRET\s*=\s*\S+/i,

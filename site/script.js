@@ -25,32 +25,6 @@ function prepareMobileNavigationButton() {
 
 prepareMobileNavigationButton();
 
-function resolveSitePath(path) {
-  const base = document.querySelector('base')?.href || window.location.href;
-  return new URL(path, base).href;
-}
-
-function installFloatingProposalCta() {
-  if (document.querySelector(".floating-proposal-cta")) return;
-  const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
-  if (currentPath === "/contact/") return;
-  const link = document.createElement("a");
-  link.className = "floating-proposal-cta";
-  link.href = resolveSitePath("/contact/");
-  link.textContent = "Solicitar diagnóstico";
-  link.setAttribute("data-floating-proposal", "");
-  document.body.appendChild(link);
-
-  const updateFloatingProposalVisibility = () => {
-    document.body.classList.toggle("show-floating-proposal", window.scrollY > 460);
-  };
-
-  window.addEventListener("scroll", updateFloatingProposalVisibility, { passive: true });
-  updateFloatingProposalVisibility();
-}
-
-installFloatingProposalCta();
-
 nav?.querySelectorAll("a[href]").forEach((link) => {
   const href = link.getAttribute("href") || "";
   const linkUrl = new URL(href, window.location.href);
@@ -2540,11 +2514,6 @@ function trackYCEvent(eventName, payload = {}) {
     window.plausible(eventName, { props: eventPayload });
   }
 
-  try {
-    localStorage.setItem("yc-last-event", JSON.stringify({ event: eventName, ...eventPayload }));
-  } catch {
-    // Analytics should never block the visitor experience.
-  }
 }
 
 trackYCEvent("page_view");
@@ -2574,7 +2543,7 @@ projectBriefForm?.addEventListener("submit", (event) => {
 
   if (projectBriefForm.dataset.directSubmit === "true") {
     const status = projectBriefForm.querySelector("[data-brief-status]");
-    if (status) status.textContent = "Enviando brief directo a YC Systems...";
+    if (status) status.textContent = "Enviando diagnóstico mediante FormSubmit...";
     return;
   }
 
@@ -2772,8 +2741,6 @@ function createConceptChat() {
     updateChatHeader();
     const note = body.querySelector("[data-chat-note]")?.value || "";
     const summary = buildSummary(note);
-    const mailSubject = encodeURIComponent("Nueva idea para YC Systems");
-    const mailBody = encodeURIComponent(summary);
     const copy = isEnglish()
       ? {
           message: "Done. This is the initial concept I will receive to respond with a proposal.",
@@ -2782,18 +2749,31 @@ function createConceptChat() {
         }
       : {
           message: "Listo. Este es el concepto inicial que recibiré para responder con una propuesta.",
-          send: "Enviar por Gmail",
+          send: "Enviar por correo",
           contact: "Ver contacto",
         };
 
     body.innerHTML = `
-      <div class="chat-message chat-message-yc">${copy.message}</div>
-      <pre class="chat-summary">${summary}</pre>
+      <div class="chat-message chat-message-yc"></div>
+      <pre class="chat-summary"></pre>
       <div class="chat-actions">
-        <a class="chat-primary" href="${buildYCEmailLink(decodeURIComponent(mailSubject), decodeURIComponent(mailBody))}">${copy.send}</a>
-        <a href="${contactUrl}">${copy.contact}</a>
+        <a class="chat-primary" href=""></a>
+        <a href=""></a>
       </div>
     `;
+    body.querySelector(".chat-message-yc").textContent = copy.message;
+    body.querySelector(".chat-summary").textContent = summary;
+
+    const sendLink = body.querySelector(".chat-primary");
+    const contactLink = body.querySelector(".chat-actions a:last-child");
+    if (sendLink) {
+      sendLink.href = buildYCEmailLink("Nueva idea para YC Systems", summary);
+      sendLink.textContent = copy.send;
+    }
+    if (contactLink) {
+      contactLink.href = contactUrl;
+      contactLink.textContent = copy.contact;
+    }
   }
 
   launcher.addEventListener("click", () => {

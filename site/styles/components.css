@@ -293,33 +293,6 @@
   background: rgba(255, 255, 255, 0.025);
 }
 
-.yc-brand-v2 .floating-proposal-cta {
-  position: fixed;
-  right: 20px;
-  bottom: 86px;
-  z-index: 95;
-  display: inline-flex;
-  align-items: center;
-  min-height: 42px;
-  border: 1px solid rgba(0, 216, 255, 0.36);
-  border-radius: var(--radius-pill);
-  padding: 0 16px;
-  color: #02111f;
-  background: linear-gradient(135deg, #14d5ea, #54f35f);
-  font-size: 0.82rem;
-  font-weight: 850;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.yc-brand-v2.show-floating-proposal .floating-proposal-cta {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
 .yc-brand-v2 .concept-chat {
   position: fixed;
   right: 24px;

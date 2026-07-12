@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 48px;
   border: 1px solid transparent;
   border-radius: var(--radius-pill);
   padding: 0 20px;

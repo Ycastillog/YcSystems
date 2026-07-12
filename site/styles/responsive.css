@@ -16,9 +16,9 @@
   .yc-brand-v2 {
     --space-section-compact: 44px;
     --space-hero: 42px;
-    --font-h1: clamp(2.1rem, 7vw, 3rem);
+    --font-h1: clamp(2rem, 6.4vw, 2.75rem);
     --font-h2: clamp(1.65rem, 5.8vw, 2.3rem);
-    --header-height: 68px;
+    --header-height: 76px;
   }
 
   .yc-brand-v2 .site-header {
@@ -27,8 +27,8 @@
   }
 
   .yc-brand-v2 .brand-logo img.brand-logo-mark {
-    width: 50px;
-    height: 36px;
+    width: min(158px, 42vw);
+    height: 44px;
   }
 
   .yc-brand-v2 .brand-logo-text {
@@ -221,7 +221,7 @@
     --container-padding: 14px;
     --space-section-compact: 38px;
     --space-hero: 34px;
-    --font-h1: clamp(2rem, 8.7vw, 2.62rem);
+    --font-h1: clamp(1.86rem, 7.7vw, 2.35rem);
     --font-h2: clamp(1.55rem, 7.4vw, 2.05rem);
     --font-body: 0.95rem;
     --font-small: 0.82rem;

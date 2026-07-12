@@ -33,24 +33,24 @@
 }
 
 .yc-brand-v2 .brand-logo {
-  gap: 10px;
+  gap: 0;
 }
 
 .yc-brand-v2 .brand-logo img.brand-logo-mark {
-  width: 60px;
-  height: 38px;
+  width: clamp(210px, 16vw, 238px);
+  height: 58px;
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 0 14px rgba(0, 216, 255, 0.2));
+  filter: drop-shadow(0 0 18px rgba(0, 216, 255, 0.24));
 }
 
 .yc-brand-v2 .brand-logo-text {
-  color: var(--color-text);
-  font-size: 1rem;
-  font-weight: 850;
-  line-height: 1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   white-space: nowrap;
-  text-shadow: 0 0 14px rgba(0, 216, 255, 0.12);
 }
 
 .yc-brand-v2 .main-nav {
@@ -67,7 +67,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 48px;
   color: var(--color-text-soft);
   font-size: 0.9rem;
   font-weight: 800;
@@ -107,7 +107,7 @@
 }
 
 .yc-brand-v2 .main-nav .nav-cta {
-  min-height: 40px;
+  min-height: 48px;
   padding: 0 18px;
   border: 1px solid rgba(0, 216, 255, 0.28);
   border-radius: var(--radius-pill);

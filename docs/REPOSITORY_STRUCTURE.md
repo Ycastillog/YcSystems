@@ -12,7 +12,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 
 - `site/index.html`: home page.
 - `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
-- `site/assets/`: public brand, product, preview and social media assets that are safe to publish.
+- `site/assets/`: public brand, product and preview assets that are safe to publish with the website.
 - `site/script.js`: public website behavior.
 - `site/styles.css`: CSS manifest only.
 - `site/styles/`: active modular CSS system.
@@ -44,6 +44,7 @@ The following should not become public website copy by accident:
 
 - `.env`, tokens, app secrets, API keys, credentials or local config.
 - `output/`, `dist/`, `tmp/`, `.cache/`.
+- `content/`, social publishing queues, generated carousels, reels and campaign working files.
 - private automations, unpublished scripts or local experiments.
 - legal ownership details, EIN documents, operating agreements or personal addresses.
 

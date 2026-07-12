@@ -11,7 +11,7 @@ The public website should build trust without exposing internal operations, cred
 - Public service and product positioning.
 - Public case studies and client proof already approved for publication.
 - Public legal pages such as privacy, terms, company information and trust center content.
-- Public social assets intended for marketing.
+- Website preview assets used by public meta tags.
 
 ## Not Allowed
 
@@ -22,6 +22,8 @@ The public website should build trust without exposing internal operations, cred
 - source-control links, repository URLs, deployment internals or GitHub workflow details in customer-facing pages.
 - product internals that should remain private before legal, trademark or launch readiness.
 - unapproved screenshots, dashboards, customer data or private product modules.
+- social publishing queues, reels, carousels, campaign working files, generated exports or local QA screenshots.
+- ZIP backups, `.bak` files, temporary folders or generated output folders.
 
 ## Environment Variables
 

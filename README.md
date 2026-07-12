@@ -38,7 +38,7 @@ Important files:
 
 - `site/index.html`: home page.
 - `site/styles.css`: stylesheet manifest only.
-- `site/styles/`: modular CSS system and quarantined legacy CSS.
+- `site/styles/`: active modular CSS system.
 - `site/script.js`: public website behavior.
 - `site/assets/`: public brand, product and approved marketing assets.
 - `config/routes-map.json`: source of truth for routes, sitemap and noindex behavior.
@@ -70,6 +70,22 @@ site/styles/responsive.css
 ```
 
 If old CSS conflicts with new CSS, remove or migrate the old rule. Do not keep stacking stronger selectors.
+
+## Repository Hygiene
+
+Generated content, social publishing assets, local screenshots, temporary files and backups do not belong in this public repository.
+
+Keep these outside Git:
+
+```text
+content/
+output/
+tmp/
+*.zip
+*.bak
+```
+
+Use a local backup outside the project when old material must be preserved.
 
 ## Approved Public Routes
 

@@ -123,7 +123,7 @@ if (await exists(quarantinedLegacy)) {
 }
 
 if (await exists(publicSocialAssets)) {
-  fail("site/assets/social must not exist. Social publishing assets belong in content/social, outside the public website artifact.");
+  fail("site/assets/social must not exist. Social publishing assets belong outside the public website repository.");
 }
 
 if ((await exists(publicDebtZeroPng)) || (await exists(publicDebtZeroWebp))) {
@@ -176,6 +176,17 @@ const trackedFiles = gitLsFiles();
 const trackedPublicSocial = trackedFiles.filter((file) => file.startsWith("site/assets/social/"));
 if (trackedPublicSocial.length) {
   fail(`tracked public social assets are not allowed: ${trackedPublicSocial.length} file(s) under site/assets/social`);
+}
+
+const trackedGeneratedOrOperational = trackedFiles.filter((file) =>
+  file.startsWith("content/")
+  || file.startsWith("output/")
+  || file.startsWith("tmp/")
+  || /\.bak(?:$|[.-])/i.test(file)
+  || /\.zip$/i.test(file)
+);
+if (trackedGeneratedOrOperational.length) {
+  fail(`tracked generated, operational or backup material is not allowed: ${trackedGeneratedOrOperational.length} file(s)`);
 }
 
 const trackedDebtZero = trackedFiles.filter((file) => /^site\/assets\/products-showcase\/debtzero-showcase\.(png|webp)$/i.test(file));

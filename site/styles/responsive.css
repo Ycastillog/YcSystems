@@ -104,12 +104,18 @@
   .home-page .hero .kicker { margin-bottom: 12px; }
   .home-page .hero .lead { margin-bottom: 14px; }
   .home-page .hero .actions {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
     gap: 8px;
-    margin-top: 18px;
+    margin-top: 16px;
   }
-  .home-page .hero .button { min-height: 44px; padding-inline: 10px; font-size: 0.82rem; }
+  .home-page .hero .button { width: 100%; min-width: 0; max-width: 100%; min-height: 42px; padding-inline: 10px; font-size: 0.82rem; }
+  .home-page .hero-copy,
+  .home-page .hero-copy p,
+  .home-page .trust-line { max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
   .solutions-hero,
   .products-hero,
   .company-hero,

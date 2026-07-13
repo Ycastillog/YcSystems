@@ -99,9 +99,24 @@
   .page-hero,
   .compact-hero,
   .product-hero { padding-block: 44px; }
+  .home-page .hero { padding-block: 34px; }
   .identity-showcase { min-height: 0; grid-template-columns: 1fr; }
-  .identity-message { padding: 26px 24px; }
-  .identity-message h2 { font-size: 1.75rem; }
+  .identity-message { padding: 22px; }
+  .identity-message h2 { font-size: 1.55rem; }
+  .home-page .identity-showcase .identity-message { display: none; }
+  .home-page .identity-message > p:not(.identity-label),
+  .home-page .identity-message ul { display: none; }
+  .home-page .identity-showcase .nexus-home {
+    min-height: 220px;
+    border-top: 1px solid rgba(51, 200, 255, 0.24);
+    border-left: 0;
+  }
+  .home-page .identity-showcase .nexus-home img {
+    max-height: 230px;
+    min-height: 220px;
+    object-position: center 18%;
+  }
+  .home-page .identity-showcase .nexus-home figcaption { display: none; }
   .identity-nexus { min-height: 280px; order: -1; }
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
@@ -131,8 +146,10 @@
   .form-actions { display: grid; }
   .conversion-panel { align-items: stretch; flex-direction: column; }
   .solution-grid { gap: 14px; }
-  .solution-card { min-height: 180px; padding: 22px; }
-  .solution-card h2 { margin-top: 18px; }
+  .solution-card { min-height: 0; padding: 20px; }
+  .solution-card h2 { margin-top: 14px; font-size: 1.32rem; }
+  .solution-card p { font-size: 0.91rem; }
+  .solution-problem { margin-top: 14px; padding-top: 14px; }
   .home-page .case-card:nth-child(n+2) { display: none; }
   .home-product-highlight { padding: 18px; }
   .home-product-copy h2 { font-size: 1.72rem; }

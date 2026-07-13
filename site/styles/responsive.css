@@ -100,6 +100,14 @@
   .compact-hero,
   .product-hero { padding-block: 44px; }
   .home-page .hero { padding-block: 34px; }
+  .solutions-hero,
+  .products-hero,
+  .company-hero,
+  .cases-hero { padding-block: 34px; }
+  .solutions-hero .interior-hero-grid,
+  .products-hero .interior-hero-grid,
+  .company-hero .interior-hero-grid,
+  .cases-hero .interior-hero-grid { gap: 24px; }
   .identity-showcase { min-height: 0; grid-template-columns: 1fr; }
   .identity-message { padding: 22px; }
   .identity-message h2 { font-size: 1.55rem; }
@@ -136,9 +144,25 @@
   .capability-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .capability-map strong { grid-column: 1 / -1; }
   .hero-status-guide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero-status-guide span { min-height: 80px; grid-template-columns: 1fr; gap: 2px; }
+  .hero-status-guide,
+  .capability-map,
+  .company-signals { padding: 16px; gap: 8px; }
+  .hero-status-guide span,
+  .capability-map span,
+  .company-signals span { min-height: 56px; grid-template-columns: 1fr; gap: 2px; padding: 10px; font-size: 0.82rem; }
   .case-actions { align-items: stretch; flex-direction: column; }
   .case-actions .text-link { min-height: 42px; }
+  .case-feature-list .case-card,
+  .case-archive-grid .case-card { padding: 12px; }
+  .case-feature-list .case-card .card-media,
+  .case-archive-grid .case-card .card-media { max-height: 180px; aspect-ratio: 16 / 8; }
+  .case-feature-list .case-card h3 { font-size: 1.42rem; }
+  .case-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
   .process-list li { grid-template-columns: 52px 1fr; gap: 16px; padding-block: 24px; }
   .architecture { padding: 18px; }
   .architecture-grid { grid-template-columns: 1fr; }

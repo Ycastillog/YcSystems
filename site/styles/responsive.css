@@ -8,7 +8,7 @@
   .header-panel,
   .main-nav { gap: 18px; }
   .main-nav a { font-size: 0.86rem; }
-  .hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr); gap: 36px; }
+  .hero-grid { grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr); gap: 32px; }
   .product-hero-grid,
   .split,
   .contact-grid,
@@ -57,7 +57,7 @@
 
 @media (max-width: 768px) {
   :root { --gutter: 20px; --section-space: 62px; }
-  .hero { padding-block: 56px; }
+  .hero { padding-block: 46px; }
   .page-hero,
   .product-hero { padding-block: 52px; }
   .page-hero .interior-hero-grid { min-height: 0; }
@@ -89,25 +89,37 @@
   :root { --gutter: 18px; --section-space: 46px; }
   body { font-size: 0.98rem; }
   h1,
-  .narrow h1 { font-size: 2.25rem; line-height: 1.07; }
+  .narrow h1 { font-size: 2.05rem; line-height: 1.06; }
   .page-hero h1,
-  .product-hero h1 { font-size: 2.25rem; }
+  .product-hero h1 { font-size: 2.05rem; }
   h2 { font-size: 1.9rem; line-height: 1.12; }
   h3 { font-size: 1.35rem; }
-  .lead { font-size: 1.04rem; }
+  .lead { font-size: 0.98rem; line-height: 1.52; }
   .hero,
   .page-hero,
   .compact-hero,
-  .product-hero { padding-block: 44px; }
-  .home-page .hero { padding-block: 34px; }
+  .product-hero { padding-block: 34px; }
+  .home-page .hero { padding-block: 24px 28px; }
+  .home-page .hero h1 { font-size: 1.86rem; line-height: 1.04; }
+  .home-page .hero .kicker { margin-bottom: 12px; }
+  .home-page .hero .lead { margin-bottom: 14px; }
+  .home-page .hero .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .home-page .hero .button { min-height: 44px; padding-inline: 10px; font-size: 0.82rem; }
   .solutions-hero,
   .products-hero,
   .company-hero,
-  .cases-hero { padding-block: 34px; }
+  .cases-hero { padding-block: 30px; }
+  .solutions-hero { padding-block: 24px; }
+  .hero-grid { gap: 22px; }
   .solutions-hero .interior-hero-grid,
   .products-hero .interior-hero-grid,
   .company-hero .interior-hero-grid,
-  .cases-hero .interior-hero-grid { gap: 24px; }
+  .cases-hero .interior-hero-grid { gap: 18px; }
   .identity-showcase { min-height: 0; grid-template-columns: 1fr; }
   .identity-message { padding: 22px; }
   .identity-message h2 { font-size: 1.55rem; }
@@ -115,13 +127,13 @@
   .home-page .identity-message > p:not(.identity-label),
   .home-page .identity-message ul { display: none; }
   .home-page .identity-showcase .nexus-home {
-    min-height: 220px;
+    min-height: 138px;
     border-top: 1px solid rgba(51, 200, 255, 0.24);
     border-left: 0;
   }
   .home-page .identity-showcase .nexus-home img {
-    max-height: 230px;
-    min-height: 220px;
+    max-height: 148px;
+    min-height: 138px;
     object-position: center 18%;
   }
   .home-page .identity-showcase .nexus-home figcaption { display: none; }
@@ -129,17 +141,20 @@
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
   .button { width: 100%; }
-  .trust-line { font-size: 0.82rem; }
+  .trust-line { margin-top: 14px; font-size: 0.8rem; }
   .choice { min-height: auto; }
   .authority-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .authority-list span { min-height: 76px; display: grid; align-content: center; justify-content: stretch; border-bottom: 1px solid var(--color-border-600); border-left: 0; text-align: left; }
+  .authority-list span { min-height: 66px; display: grid; align-content: center; justify-content: stretch; border-bottom: 1px solid var(--color-border-600); border-left: 0; text-align: left; }
+  .mini-proof-band .authority-list { min-height: 0; }
+  .mini-proof-band .authority-list span { min-height: 54px; padding: 8px 12px; }
   .authority-list span:nth-child(odd) { border-right: 1px solid var(--color-border-600); }
   .authority-list span:nth-last-child(-n+2) { border-bottom: 0; }
   .nexus-strip { grid-template-columns: 1fr; text-align: left; }
   .nexus-strip > img { width: 112px; height: 112px; }
   .nexus-panel { padding: 18px; }
   .nexus-copy h2 { font-size: 1.72rem; }
-  .nexus-steps { gap: 8px; }
+  .nexus-steps,
+  .nexus-mini-system { grid-template-columns: 1fr; gap: 8px; }
   .nexus-steps span { min-height: 76px; padding: 12px; }
   .capability-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .capability-map strong { grid-column: 1 / -1; }
@@ -153,15 +168,20 @@
   .case-actions { align-items: stretch; flex-direction: column; }
   .case-actions .text-link { min-height: 42px; }
   .case-feature-list .case-card,
-  .case-archive-grid .case-card { padding: 12px; }
+  .case-archive-grid .case-card { padding: 10px; }
   .case-feature-list .case-card .card-media,
-  .case-archive-grid .case-card .card-media { max-height: 180px; aspect-ratio: 16 / 8; }
-  .case-feature-list .case-card h3 { font-size: 1.42rem; }
+  .case-archive-grid .case-card .card-media { max-height: 120px; aspect-ratio: 16 / 7; margin: 8px 0; }
+  .case-feature-list .case-card h3 { font-size: 1.32rem; }
+  .case-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .case-facts div { border-color: transparent; padding: 0; background: transparent; }
+  .case-facts dt { font-size: 0.56rem; }
+  .case-facts dd { font-size: 0.72rem; }
+  .case-actions { flex-direction: row; gap: 8px; padding-top: 8px; }
+  .case-actions .button,
+  .case-actions .text-link { flex: 1 1 0; justify-content: center; min-height: 40px; font-size: 0.82rem; }
+  .method-hero .process-preview { display: none; }
   .case-card p {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    display: none;
   }
   .process-list li { grid-template-columns: 52px 1fr; gap: 16px; padding-block: 24px; }
   .architecture { padding: 18px; }
@@ -170,8 +190,8 @@
   .form-actions { display: grid; }
   .conversion-panel { align-items: stretch; flex-direction: column; }
   .solution-grid { gap: 14px; }
-  .solution-card { min-height: 0; padding: 20px; }
-  .solution-card h2 { margin-top: 14px; font-size: 1.32rem; }
+  .solution-card { min-height: 0; padding: 18px; }
+  .solution-card h2 { margin-top: 12px; font-size: 1.22rem; }
   .solution-card p { font-size: 0.91rem; }
   .solution-problem { margin-top: 14px; padding-top: 14px; }
   .home-page .case-card:nth-child(n+2) { display: none; }

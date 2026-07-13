@@ -1,6 +1,7 @@
 .container { width: min(calc(100% - (var(--gutter) * 2)), var(--container)); margin-inline: auto; }
 .narrow { max-width: var(--content-narrow); margin-inline: auto; text-align: center; }
 .section { padding-block: var(--section-space); }
+.section + .section { border-top: 1px solid rgba(255, 255, 255, 0.06); }
 .section-alt { border-block: 1px solid rgba(32, 52, 81, 0.74); background: var(--color-bg-900); }
 .section-head { max-width: 760px; margin-bottom: 48px; }
 .narrow .section-head { margin-inline: auto; }

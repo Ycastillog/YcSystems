@@ -42,7 +42,8 @@
   .interior-hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
   .home-product-highlight,
-  .related-product-card { grid-template-columns: 1fr; }
+  .related-product-card,
+  .nexus-panel { grid-template-columns: 1fr; }
   .identity-showcase,
   .featured-case-preview,
   .hero-status-guide,
@@ -80,6 +81,7 @@
   .nexus-strip { grid-template-columns: 130px minmax(0, 1fr); gap: 24px; }
   .nexus-strip > img { width: 130px; height: 130px; }
   .nexus-strip .section-head h2 { font-size: 1.9rem; }
+  .nexus-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cta-panel { align-items: stretch; flex-direction: column; gap: 28px; }
 }
 
@@ -112,6 +114,10 @@
   .authority-list span:nth-last-child(-n+2) { border-bottom: 0; }
   .nexus-strip { grid-template-columns: 1fr; text-align: left; }
   .nexus-strip > img { width: 112px; height: 112px; }
+  .nexus-panel { padding: 18px; }
+  .nexus-copy h2 { font-size: 1.72rem; }
+  .nexus-steps { gap: 8px; }
+  .nexus-steps span { min-height: 76px; padding: 12px; }
   .capability-map { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .capability-map strong { grid-column: 1 / -1; }
   .hero-status-guide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -127,8 +133,7 @@
   .solution-grid { gap: 14px; }
   .solution-card { min-height: 180px; padding: 22px; }
   .solution-card h2 { margin-top: 18px; }
-  .home-page .case-card:nth-child(n+2),
-  .home-page .nexus-section { display: none; }
+  .home-page .case-card:nth-child(n+2) { display: none; }
   .home-product-highlight { padding: 18px; }
   .home-product-copy h2 { font-size: 1.72rem; }
   .product-card-head { flex-direction: column; }

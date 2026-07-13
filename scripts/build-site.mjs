@@ -125,13 +125,54 @@ function sectionHead(kicker, title, text = "") {
   return `<div class="section-head"><p class="kicker">${kicker}</p><h2>${title}</h2>${text ? `<p>${text}</p>` : ""}</div>`;
 }
 
+const productImageDimensions = {
+  "cleanloop": { width: 1672, height: 941 },
+  "soc": { width: 1600, height: 900 },
+  "brokercontrol": { width: 1672, height: 941 },
+  "creditpilot": { width: 1672, height: 941 },
+};
+
+function productImage(product, prefix, className = "", loading = "lazy") {
+  const dimensions = productImageDimensions[product.slug] ?? { width: 1672, height: 941 };
+  const large = relativeHref(product.image, prefix);
+  const small = large.replace(/\.webp$/, "-840.webp");
+  const attrs = [
+    `src="${large}"`,
+    `srcset="${small} 840w, ${large} ${dimensions.width}w"`,
+    `sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 1100px) 48vw, 560px"`,
+    `alt="Vista de ${product.name}"`,
+    `width="${dimensions.width}"`,
+    `height="${dimensions.height}"`,
+    loading === "eager" ? `fetchpriority="high"` : `loading="${loading}"`,
+  ];
+  return `<img${className ? ` class="${className}"` : ""} ${attrs.join(" ")} />`;
+}
+
+function productBySlug(slug) {
+  return content.products.find((product) => product.slug === slug);
+}
+
 function productCards(prefix, limit = content.products.length) {
   return content.products.slice(0, limit).map((product) => `<article class="product-card">
-    <div class="card-media"><img src="${relativeHref(product.image, prefix)}" alt="Vista de ${product.name}" width="1672" height="941" loading="lazy" /></div>
-    <div class="card-meta"><span class="status-badge status-${product.status}">${product.statusLabel}</span><small>${product.market}</small></div>
-    <h3>${product.name}</h3><strong>${product.title}</strong><p>${product.summary}</p>${product.path !== "/products/" ? `<a class="card-link" href="${relativeHref(product.path, prefix)}">${product.name}</a>` : ""}
+    <div class="product-card-head"><div><small>${product.market}</small><h3>${product.name}</h3></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div>
+    <strong>${product.title}</strong><p>${product.summary}</p>
+    <div class="card-media">${productImage(product, prefix)}</div>
+    ${product.path !== "/products/" ? `<a class="card-link" href="${relativeHref(product.path, prefix)}">Ver producto</a>` : `<span class="availability-note">Disponibilidad futura</span>`}
   </article>`).join("");
 }
+
+function relatedProductCards(prefix, slugs) {
+  return slugs.map((slug) => productBySlug(slug)).filter(Boolean).map((product) => `<article class="related-product-card">
+    <div class="related-product-copy"><div class="product-card-head"><div><small>${product.market}</small><h3>${product.name}</h3></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div><strong>${product.title}</strong><p>${product.summary}</p><a class="card-link" href="${relativeHref(product.path, prefix)}">Ver producto</a></div>
+    <figure class="related-product-media">${productImage(product, prefix)}</figure>
+  </article>`).join("");
+}
+
+function homeProductHighlight(prefix) {
+  const product = productBySlug("cleanloop");
+  return `<div class="home-product-highlight"><div class="home-product-copy"><p class="kicker">Producto destacado</p><div class="product-card-head"><div><small>${product.market}</small><h2>${product.name} convierte una operaci&oacute;n diaria en un flujo visible</h2></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div><p>${product.summary}</p><div class="actions"><a class="button primary" href="${relativeHref(product.path, prefix)}">Ver CleanLoop</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver cat&aacute;logo</a></div></div><figure class="home-product-media">${productImage(product, prefix)}</figure></div>`;
+}
+
 
 function caseCards(prefix, limit = content.cases.length, offset = 0) {
   return content.cases.slice(offset, offset + limit).map((item) => `<article class="case-card">
@@ -152,7 +193,7 @@ renderPage({
   body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC · Software operativo</p><h1>Software operativo para empresas que quieren crecer con control</h1><p class="lead">Centralizamos procesos, clientes y datos en sistemas que tu equipo puede operar, medir y mejorar.</p>${actions(prefix)}<p class="trust-line">Producto propio · implementación por fases · soporte continuo</p></div><div class="identity-showcase" aria-label="Identidad y propuesta de YC Systems"><div class="identity-message"><p class="identity-label">YC Systems</p><h2>Convertimos operaciones reales en sistemas claros</h2><p>Diseñamos software para que equipos y empresas puedan vender, operar y crecer con una base confiable.</p><ul><li>Productos propios</li><li>Sistemas para empresas</li><li>Automatización y evolución</li></ul></div><figure class="identity-nexus"><img src="${prefix}assets/brand/nexus/nexus-hero.webp" alt="Nexus, identidad visual de YC Systems" width="720" height="720" fetchpriority="high" /><figcaption><strong>Nexus</strong><span>Asistente visual de YC Systems</span></figcaption></figure></div></div></section>
   <section class="authority-band" aria-label="Señales de confianza"><div class="container authority-list"><span><small>Entidad</small><strong>YC Systems LLC</strong></span><span><small>Alcance</small><strong>Operación internacional</strong></span><span><small>Proceso</small><strong>Alcance y entrega por fases</strong></span><span><small>Continuidad</small><strong>Soporte y evolución</strong></span></div></section>
   <section class="section route-section"><div class="container">${sectionHead("Elige tu ruta", "Dos formas claras de empezar", "Selecciona un producto existente o define una primera fase para tu propia operación.")}<div class="choice-grid"><a class="choice" href="${relativeHref("/products/", prefix)}"><span>01</span><strong>Explorar productos propios</strong><p>Conoce plataformas desarrolladas para operaciones específicas y revisa su disponibilidad.</p><small>Ver productos</small></a><a class="choice" href="${relativeHref("/contact/", prefix)}"><span>02</span><strong>Construir un sistema para mi empresa</strong><p>Ordena un proceso comercial, administrativo u operativo mediante una primera fase clara.</p><small>Solicitar diagnóstico</small></a></div><p class="route-note">¿Todavía no sabes qué necesitas? El diagnóstico inicial ayuda a definir el primer paso.</p></div></section>
-  <section class="section section-alt"><div class="container">${sectionHead("Productos", "Software propio construido alrededor de operaciones reales", "Cada producto comunica con precisión su alcance y estado actual.")}<div class="product-grid">${productCards(prefix)}</div><div class="section-action"><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div></section>
+  <section class="section section-alt"><div class="container">${homeProductHighlight(prefix)}</div></section>
   <section class="section nexus-section"><div class="container nexus-strip"><img src="${prefix}assets/brand/nexus/nexus-avatar.webp" alt="Nexus" width="720" height="720" loading="lazy" /><div>${sectionHead("Nexus", "Nexus representa cómo pensamos los sistemas", "Un lenguaje visual para explicar flujos, decisiones, estados y mejora continua dentro del ecosistema YC Systems.")}<a class="text-link" href="${relativeHref("/process/", prefix)}">Método</a></div></div></section>
   <section class="section section-alt"><div class="container">${sectionHead("Casos", "Proyectos publicados para negocios reales", "Una selección de experiencias digitales entregadas para comercio, bienes raíces y presencia corporativa.")}<div class="case-grid case-feature-list">${caseCards(prefix, 2)}</div><div class="section-action"><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div></section>${finalCta(prefix)}`,
 });
@@ -165,19 +206,43 @@ renderPage({
 });
 
 const solutions = [
-  ["Sistemas internos", "Centraliza usuarios, roles, tareas, estados, documentos y decisiones del día a día."],
-  ["CRM operativo", "Convierte prospectos, seguimiento, tareas y cierres en un flujo comercial visible."],
-  ["Paneles ejecutivos", "Presenta indicadores, actividad y prioridades sin depender de reportes dispersos."],
-  ["Automatización", "Conecta reglas, alertas e integraciones para reducir trabajo repetitivo y errores."],
-  ["Productos SaaS", "Define y construye una primera versión con arquitectura preparada para evolucionar."],
-  ["Presencia comercial", "Crea un sitio claro, rápido y orientado a convertir visitas en oportunidades."],
+  {
+    title: "Sistemas internos",
+    problem: "La operaci&oacute;n depende de hojas, mensajes y decisiones dispersas.",
+    result: "Centralizamos usuarios, roles, tareas, estados, documentos y seguimiento dentro de un flujo &uacute;nico.",
+  },
+  {
+    title: "CRM operativo",
+    problem: "El equipo vende, pero no tiene una lectura clara de prospectos, tareas y cierres.",
+    result: "Convertimos el seguimiento comercial en una operaci&oacute;n visible, medible y accionable.",
+  },
+  {
+    title: "Paneles ejecutivos",
+    problem: "Los indicadores llegan tarde o viven en reportes que nadie revisa a tiempo.",
+    result: "Dise&ntilde;amos paneles visuales que muestran actividad, prioridades y resultados para decidir m&aacute;s r&aacute;pido.",
+  },
+  {
+    title: "Automatizaci&oacute;n",
+    problem: "El equipo repite tareas manuales que consumen tiempo y aumentan errores.",
+    result: "Conectamos reglas, alertas e integraciones para reducir fricci&oacute;n operativa.",
+  },
+  {
+    title: "Portales y plataformas",
+    problem: "Clientes, socios o equipos necesitan acceder a informaci&oacute;n sin depender de conversaciones sueltas.",
+    result: "Creamos portales con roles, datos y acciones claras para cada tipo de usuario.",
+  },
+  {
+    title: "Productos SaaS",
+    problem: "Existe una oportunidad de producto, pero falta convertirla en una primera versi&oacute;n usable.",
+    result: "Definimos alcance, arquitectura y una primera fase preparada para evolucionar.",
+  },
 ];
 
 renderPage({
   route: "/solutions/",
   title: "Soluciones | YC Systems",
-  description: "Software a medida, CRM, paneles ejecutivos, automatización y productos SaaS para operaciones reales.",
-  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versión del sistema que tu operación necesita</h1><p class="lead">Traducimos un problema de negocio en una solución clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatización</span><span>Indicadores</span><span>Soporte y evolución</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container"><div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item[0]}</h2><p>${item[1]}</p></article>`).join("")}</div><div class="conversion-panel"><p><strong>¿Tu necesidad cruza varias áreas?</strong><span>Ordenamos el problema y definimos una primera fase viable.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Criterio de construcción", "El sistema se diseña alrededor de la operación", "Antes de elegir tecnología, definimos usuarios, decisiones, información, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la solución.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validación y acompañamiento después del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
+  description: "Software a medida, CRM, paneles ejecutivos, automatizaci&oacute;n y productos SaaS para operaciones reales.",
+  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versi&oacute;n del sistema que tu operaci&oacute;n necesita</h1><p class="lead">Traducimos un problema de negocio en una soluci&oacute;n clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatizaci&oacute;n</span><span>Indicadores</span><span>Soporte y evoluci&oacute;n</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container">${sectionHead("Problemas que resolvemos", "Soluciones organizadas por intenci&oacute;n de compra", "Cada bloque parte de una fricci&oacute;n operativa concreta y termina en una primera fase construible.")}<div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item.title}</h2><p class="solution-problem"><strong>Problema</strong>${item.problem}</p><p><strong>Resultado</strong>${item.result}</p></article>`).join("")}</div><div class="conversion-panel"><p><strong>&iquest;Tu necesidad cruza varias &aacute;reas?</strong><span>Ordenamos el problema y definimos una primera fase viable.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Productos relacionados", "Productos propios que aceleran operaciones espec&iacute;ficas", "CleanLoop y SOC muestran c&oacute;mo YC Systems convierte problemas reales en software operable. El cat&aacute;logo completo vive en Productos.")}<div class="related-product-grid">${relatedProductCards(prefix, ["cleanloop", "soc"])}</div><div class="section-action"><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver cat&aacute;logo completo</a></div></div></section><section class="section"><div class="container">${sectionHead("Criterio de construcci&oacute;n", "El sistema se dise&ntilde;a alrededor de la operaci&oacute;n", "Antes de elegir tecnolog&iacute;a, definimos usuarios, decisiones, informaci&oacute;n, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la soluci&oacute;n.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validaci&oacute;n y acompa&ntilde;amiento despu&eacute;s del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -331,7 +396,7 @@ for (const product of content.products.filter((item) => productDetails[item.slug
     noindex: true,
     bodyClass: "product-page",
     ogImage: `https://ycsystems.io${product.image}`,
-    body: (prefix) => `<section class="product-hero"><div class="container product-hero-grid"><div><p class="kicker">${detail.kicker}</p><h1>${detail.title}</h1><p class="lead">${detail.lead}</p><div class="actions"><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div><div class="product-visual"><img src="${relativeHref(product.image, prefix)}" alt="Vista de ${product.name}" width="1672" height="941" fetchpriority="high" /><span class="status-badge status-${product.status}">${product.statusLabel}</span></div></div></section><section class="section"><div class="container">${sectionHead("Capacidades", `Una vista operativa diseñada para ${product.market.toLowerCase()}`)}<div class="value-grid">${detail.features.map((feature) => `<article><strong>${feature[0]}</strong><p>${feature[1]}</p></article>`).join("")}</div></div></section><section class="section section-alt product-evidence"><div class="container product-evidence-grid"><figure><img src="${relativeHref(detail.evidenceImage, prefix)}" alt="Evidencia visual de ${product.name}" width="${detail.evidenceSize[0]}" height="${detail.evidenceSize[1]}" loading="lazy" /></figure><div>${sectionHead("Evidencia de producto", detail.evidenceTitle, detail.evidenceText)}<a class="text-link" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Evaluar acceso</a></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Modalidad", "Implementación guiada con alcance definido", "Revisamos ajuste, prioridades y condiciones antes de confirmar acceso o piloto.")}</div><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a></div></section>`,
+    body: (prefix) => `<section class="product-hero"><div class="container product-hero-grid"><div><p class="kicker">${detail.kicker}</p><h1>${detail.title}</h1><p class="lead">${detail.lead}</p><div class="actions"><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div><div class="product-visual">${productImage(product, prefix, "", "eager")}<span class="status-badge status-${product.status}">${product.statusLabel}</span></div></div></section><section class="section"><div class="container">${sectionHead("Capacidades", `Una vista operativa diseñada para ${product.market.toLowerCase()}`)}<div class="value-grid">${detail.features.map((feature) => `<article><strong>${feature[0]}</strong><p>${feature[1]}</p></article>`).join("")}</div></div></section><section class="section section-alt product-evidence"><div class="container product-evidence-grid"><figure><img src="${relativeHref(detail.evidenceImage, prefix)}" alt="Evidencia visual de ${product.name}" width="${detail.evidenceSize[0]}" height="${detail.evidenceSize[1]}" loading="lazy" /></figure><div>${sectionHead("Evidencia de producto", detail.evidenceTitle, detail.evidenceText)}<a class="text-link" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Evaluar acceso</a></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Modalidad", "Implementación guiada con alcance definido", "Revisamos ajuste, prioridades y condiciones antes de confirmar acceso o piloto.")}</div><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a></div></section>`,
   });
 }
 

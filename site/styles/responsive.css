@@ -41,6 +41,8 @@
   .contact-grid,
   .interior-hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
+  .home-product-highlight,
+  .related-product-card { grid-template-columns: 1fr; }
   .identity-showcase,
   .featured-case-preview,
   .hero-status-guide,
@@ -125,9 +127,12 @@
   .solution-grid { gap: 14px; }
   .solution-card { min-height: 180px; padding: 22px; }
   .solution-card h2 { margin-top: 18px; }
-  .home-page .product-card:nth-child(n+3),
   .home-page .case-card:nth-child(n+2),
   .home-page .nexus-section { display: none; }
+  .home-product-highlight { padding: 18px; }
+  .home-product-copy h2 { font-size: 1.72rem; }
+  .product-card-head { flex-direction: column; }
+  .related-product-card { padding: 16px; }
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 22px; padding-bottom: 18px; }
   .footer-brand { grid-column: 1 / -1; }
   .site-footer { padding: 34px 0 18px; }

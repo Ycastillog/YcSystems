@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -40,7 +40,6 @@ function renderHeader(route, prefix) {
         <nav class="main-nav" aria-label="Navegación principal">${nav}</nav>
         <div class="header-actions">
           <a class="nav-cta" href="${relativeHref(content.navigation.primaryAction.path, prefix)}">${content.navigation.primaryAction.label}</a>
-          <button class="lang-chip" type="button" aria-label="Versión en inglés en preparación" disabled>EN</button>
         </div>
       </div>
     </div>
@@ -55,16 +54,26 @@ function renderFooter(prefix) {
         <p>${content.brand.positioning}</p>
         <p>Operación digital con alcance internacional.</p>
       </div>
-      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Información corporativa</a><a href="${relativeHref("/process/", prefix)}">Método de trabajo</a><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a></div>
-      <div><strong>Explorar</strong><a href="${relativeHref("/solutions/", prefix)}">Soluciones</a><a href="${relativeHref("/products/", prefix)}">Productos</a><a href="${relativeHref("/case-studies/", prefix)}">Casos</a></div>
-      <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp ${content.contact.whatsappLabel}</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
+      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Empresa</a><a href="${relativeHref("/process/", prefix)}">Método</a><a href="${relativeHref("/case-studies/", prefix)}">Casos</a></div>
+      <div><strong>Productos</strong><a href="${relativeHref("/products/cleanloop/", prefix)}">CleanLoop</a><a href="${relativeHref("/products/soc/", prefix)}">SOC</a><a href="${relativeHref("/products/brokercontrol/", prefix)}">BrokerControl</a></div>
+      <div><strong>Información</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">Términos</a></div>
+      <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
     </div>
     <div class="container footer-bottom"><span>&copy; 2026 ${content.brand.legalName}. Todos los derechos reservados.</span><span><a href="${relativeHref("/documents/", prefix)}">Documentos</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">Términos</a></span></div>
   </footer>`;
 }
 
-function pageHead({ route, prefix, title, description, noindex = false }) {
+function pageHead({ route, prefix, title, description, noindex = false, ogImage = "https://ycsystems.io/assets/previews/yc-systems-og.png" }) {
   const canonical = `https://ycsystems.io${route}`;
+  const organizationData = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "YC Systems LLC",
+    url: "https://ycsystems.io/",
+    logo: "https://ycsystems.io/assets/previews/yc-systems-og.png",
+    email: content.contact.email,
+    sameAs: [content.contact.instagramUrl],
+  });
   return `<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -74,7 +83,8 @@ ${noindex ? '    <meta name="robots" content="noindex, follow" />\n' : ""}    <m
     <meta property="og:description" content="${description}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${canonical}" />
-    <meta property="og:image" content="https://ycsystems.io/assets/previews/yc-systems-og.png" />
+    <meta property="og:image" content="${ogImage}" />
+    <meta property="og:locale" content="es_ES" />
     <link rel="canonical" href="${canonical}" />
     <title>${title}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="${prefix}assets/favicon-32.png" />
@@ -83,21 +93,24 @@ ${noindex ? '    <meta name="robots" content="noindex, follow" />\n' : ""}    <m
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="${prefix}styles.css?v=yc-v2-foundation-20260712" />
+    <link rel="stylesheet" href="${prefix}styles.css?v=yc-v2-release-20260712" />
+    <script type="application/ld+json">${organizationData}</script>
   </head>`;
 }
 
-function renderPage({ route, title, description, body, noindex = false, bodyClass = "" }) {
+function renderPage({ route, title, description, body, noindex = false, bodyClass = "", ogImage }) {
   const prefix = relativePrefix(route);
+  const routeDefinition = routesMap.routes.find((item) => item.path === route);
+  const effectiveNoindex = noindex || routeDefinition?.indexable === false;
   const html = `<!doctype html>
 <html lang="es">
-${pageHead({ route, prefix, title, description, noindex })}
+${pageHead({ route, prefix, title, description, noindex: effectiveNoindex, ogImage })}
 <body class="${bodyClass}" data-route="${route}">
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
   ${renderHeader(route, prefix)}
   <main id="main-content">${body(prefix)}</main>
   ${renderFooter(prefix)}
-  <script src="${prefix}script.js?v=yc-v2-foundation-20260712"></script>
+  <script src="${prefix}script.js?v=yc-v2-release-20260712"></script>
 </body>
 </html>
 `;
@@ -116,12 +129,12 @@ function productCards(prefix, limit = content.products.length) {
   return content.products.slice(0, limit).map((product) => `<article class="product-card">
     <div class="card-media"><img src="${relativeHref(product.image, prefix)}" alt="Vista de ${product.name}" width="1672" height="941" loading="lazy" /></div>
     <div class="card-meta"><span class="status-badge status-${product.status}">${product.statusLabel}</span><small>${product.market}</small></div>
-    <h3>${product.name}</h3><strong>${product.title}</strong><p>${product.summary}</p>${product.path !== "/products/" ? `<a class="card-link" href="${relativeHref(product.path, prefix)}">${product.name}</a>` : '<span class="availability-note">En desarrollo</span>'}
+    <h3>${product.name}</h3><strong>${product.title}</strong><p>${product.summary}</p>${product.path !== "/products/" ? `<a class="card-link" href="${relativeHref(product.path, prefix)}">${product.name}</a>` : ""}
   </article>`).join("");
 }
 
-function caseCards(prefix, limit = content.cases.length) {
-  return content.cases.slice(0, limit).map((item) => `<article class="case-card">
+function caseCards(prefix, limit = content.cases.length, offset = 0) {
+  return content.cases.slice(offset, offset + limit).map((item) => `<article class="case-card">
     <div class="card-media"><img src="${relativeHref(item.image, prefix)}" alt="Sitio publicado de ${item.name}" width="1440" height="1000" loading="lazy" /></div>
     <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver caso completo</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener">Visitar sitio</a></div></div>
   </article>`).join("");
@@ -134,8 +147,9 @@ function finalCta(prefix, title = "Define la primera fase de tu sistema") {
 renderPage({
   route: "/",
   title: "YC Systems LLC | Software operativo para negocios reales",
-  description: "YC Systems construye productos SaaS, sistemas internos, CRM, dashboards y automatización para empresas que necesitan control y crecimiento.",
-  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC · Software operativo</p><h1>Software operativo para empresas que necesitan control y crecimiento</h1><p class="lead">Centralizamos procesos, clientes y datos en sistemas que tu equipo puede operar, medir y mejorar.</p>${actions(prefix)}<p class="trust-line">Producto propio · implementación por fases · soporte continuo</p></div><div class="software-proof" aria-label="Evidencia visual de productos YC Systems"><figure class="proof-main"><img src="${prefix}assets/products-showcase/cleanloop-showcase.webp" alt="Interfaz operativa de CleanLoop" width="1672" height="941" fetchpriority="high" /><figcaption><span>CleanLoop</span><strong>Operación diaria conectada</strong></figcaption></figure><div class="proof-stack"><figure class="proof-secondary"><img src="${prefix}assets/screenshots/soc-dashboard.png" alt="Dashboard operativo de SOC" width="2000" height="1406" loading="eager" /><figcaption><span>SOC</span><strong>Lectura ejecutiva</strong></figcaption></figure><div class="nexus-support"><img src="${prefix}assets/brand/nexus/nexus-avatar.webp" alt="Nexus" width="720" height="720" /><p><strong>Nexus</strong><span>Contexto visual para explicar sistemas y decisiones.</span></p></div></div></div></div></section>
+  description: "YC Systems construye productos SaaS, sistemas internos, CRM, paneles y automatización para empresas que necesitan control y crecimiento.",
+  bodyClass: "home-page",
+  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC · Software operativo</p><h1>Software operativo para empresas que quieren crecer con control</h1><p class="lead">Centralizamos procesos, clientes y datos en sistemas que tu equipo puede operar, medir y mejorar.</p>${actions(prefix)}<p class="trust-line">Producto propio · implementación por fases · soporte continuo</p></div><div class="software-proof" aria-label="Evidencia visual de productos YC Systems"><figure class="proof-main"><img src="${prefix}assets/products-showcase/cleanloop-showcase.webp" alt="Interfaz operativa de CleanLoop" width="1672" height="941" fetchpriority="high" /><figcaption><span>CleanLoop</span><strong>Operación diaria conectada</strong></figcaption></figure><div class="proof-stack"><figure class="proof-secondary"><img src="${prefix}assets/screenshots/soc-dashboard.png" alt="Panel operativo de SOC" width="2000" height="1406" loading="eager" /><figcaption><span>SOC</span><strong>Lectura ejecutiva</strong></figcaption></figure><div class="nexus-support"><img src="${prefix}assets/brand/nexus/nexus-avatar.webp" alt="Nexus" width="720" height="720" /><p><strong>Nexus</strong><span>Contexto visual para explicar sistemas y decisiones.</span></p></div></div></div></div></section>
   <section class="authority-band"><div class="container authority-list"><span>Empresa de software</span><span>Sistemas para operaciones reales</span><span>Entrega por fases</span><span>Soporte para evolución</span></div></section>
   <section class="section route-section"><div class="container">${sectionHead("Elige tu ruta", "Dos formas claras de empezar", "Selecciona un producto existente o define una primera fase para tu propia operación.")}<div class="choice-grid"><a class="choice" href="${relativeHref("/products/", prefix)}"><span>01</span><strong>Explorar productos propios</strong><p>Conoce plataformas desarrolladas para operaciones específicas y revisa su disponibilidad.</p><small>Ver productos</small></a><a class="choice" href="${relativeHref("/contact/", prefix)}"><span>02</span><strong>Construir un sistema para mi empresa</strong><p>Ordena un proceso comercial, administrativo u operativo mediante una primera fase clara.</p><small>Solicitar diagnóstico</small></a></div><p class="route-note">¿Todavía no sabes qué necesitas? El diagnóstico inicial ayuda a definir el primer paso.</p></div></section>
   <section class="section section-alt"><div class="container">${sectionHead("Productos", "Software propio construido alrededor de operaciones reales", "Cada producto comunica con precisión su alcance y estado actual.")}<div class="product-grid">${productCards(prefix)}</div><div class="section-action"><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div></section>
@@ -147,13 +161,13 @@ renderPage({
   route: "/products/",
   title: "Productos | YC Systems",
   description: "Conoce los productos de software operativo de YC Systems y su estado de disponibilidad.",
-  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Productos YC Systems</p><h1>Software propio para operaciones que necesitan control</h1><p class="lead">Plataformas enfocadas en problemas concretos, con una disponibilidad pública y verificable.</p></div><div class="hero-status-guide" aria-label="Estados de producto"><span><b>Acceso temprano</b> Operadores seleccionados</span><span><b>Piloto seleccionado</b> Implementación guiada</span><span><b>Prototipo</b> Validación funcional</span><span><b>En desarrollo</b> Línea futura</span></div></div></section><section class="section"><div class="container"><div class="product-grid product-grid-full">${productCards(prefix)}</div></div></section><section class="section section-alt"><div class="container split"><div>${sectionHead("Disponibilidad", "Un estado claro para cada producto", "Cada etiqueta describe lo que una empresa puede esperar hoy, sin presentar conceptos futuros como funciones disponibles.")}</div><div class="status-list"><span><b>Acceso temprano</b> Disponible para operadores seleccionados</span><span><b>Piloto seleccionado</b> Implementación guiada con alcance definido</span><span><b>Prototipo</b> Validación funcional y comercial</span><span><b>En desarrollo</b> Línea futura sin promesa de disponibilidad inmediata</span></div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Productos YC Systems</p><h1>Software propio para operaciones que necesitan control</h1><p class="lead">Plataformas enfocadas en problemas concretos, con una disponibilidad pública y verificable.</p></div><div class="hero-status-guide" aria-label="Estados de producto"><span><b>Acceso temprano</b> Operadores seleccionados</span><span><b>Piloto seleccionado</b> Implementación guiada</span><span><b>Prototipo</b> Validación funcional</span><span><b>En desarrollo</b> Línea futura</span></div></div></section><section class="section"><div class="container"><div class="product-grid product-grid-full">${productCards(prefix)}</div></div></section>${finalCta(prefix)}`,
 });
 
 const solutions = [
   ["Sistemas internos", "Centraliza usuarios, roles, tareas, estados, documentos y decisiones del día a día."],
   ["CRM operativo", "Convierte prospectos, seguimiento, tareas y cierres en un flujo comercial visible."],
-  ["Dashboards ejecutivos", "Presenta indicadores, actividad y prioridades sin depender de reportes dispersos."],
+  ["Paneles ejecutivos", "Presenta indicadores, actividad y prioridades sin depender de reportes dispersos."],
   ["Automatización", "Conecta reglas, alertas e integraciones para reducir trabajo repetitivo y errores."],
   ["Productos SaaS", "Define y construye una primera versión con arquitectura preparada para evolucionar."],
   ["Presencia comercial", "Crea un sitio claro, rápido y orientado a convertir visitas en oportunidades."],
@@ -162,15 +176,15 @@ const solutions = [
 renderPage({
   route: "/solutions/",
   title: "Soluciones | YC Systems",
-  description: "Software a medida, CRM, dashboards, automatización y productos SaaS para operaciones reales.",
-  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versión del sistema que tu operación necesita</h1><p class="lead">Traducimos un problema de negocio en una solución clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatización</span><span>Indicadores</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container"><div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item[0]}</h2><p>${item[1]}</p><a class="text-link" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a></article>`).join("")}</div></div></section><section class="section section-alt"><div class="container">${sectionHead("Criterio de construcción", "El sistema se diseña alrededor de la operación", "Antes de elegir tecnología, definimos usuarios, decisiones, información, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la solución.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validación y acompañamiento después del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
+  description: "Software a medida, CRM, paneles ejecutivos, automatización y productos SaaS para operaciones reales.",
+  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versión del sistema que tu operación necesita</h1><p class="lead">Traducimos un problema de negocio en una solución clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatización</span><span>Indicadores</span><span>Soporte y evolución</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container"><div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item[0]}</h2><p>${item[1]}</p></article>`).join("")}</div><div class="conversion-panel"><p><strong>¿Tu necesidad cruza varias áreas?</strong><span>Ordenamos el problema y definimos una primera fase viable.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagnóstico</a></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Criterio de construcción", "El sistema se diseña alrededor de la operación", "Antes de elegir tecnología, definimos usuarios, decisiones, información, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la solución.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validación y acompañamiento después del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
   route: "/case-studies/",
   title: "Casos | YC Systems",
   description: "Casos publicados de sitios y experiencias digitales construidos por YC Systems.",
-  body: (prefix) => `<section class="page-hero cases-hero"><div class="container interior-hero-grid"><div><p class="kicker">Casos</p><h1>Proyectos publicados para negocios reales</h1><p class="lead">Una selección de experiencias digitales entregadas para comercio, bienes raíces y presencia corporativa.</p></div><figure class="featured-case-preview"><img src="${prefix}assets/screenshots/ghostwear-live-2026.webp" alt="Experiencia publicada de GhostWear" width="1440" height="1000" fetchpriority="high" /><figcaption><span>Caso destacado</span><strong>GhostWear</strong></figcaption></figure></div></section><section class="section"><div class="container"><div class="case-grid case-grid-full case-feature-list">${caseCards(prefix)}</div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero cases-hero"><div class="container interior-hero-grid"><div><p class="kicker">Casos</p><h1>Proyectos publicados para negocios reales</h1><p class="lead">Una selección de experiencias digitales entregadas para comercio, bienes raíces y presencia corporativa.</p><a class="text-link" href="${relativeHref("/brands/ghostwear/", prefix)}">Ver caso GhostWear</a></div><figure class="featured-case-preview"><img src="${prefix}assets/screenshots/ghostwear-live-2026.webp" alt="Experiencia publicada de GhostWear" width="1440" height="1000" fetchpriority="high" /><figcaption><span>Caso destacado</span><strong>GhostWear</strong></figcaption></figure></div></section><section class="section"><div class="container">${sectionHead("Caso de estudio", "Una presencia comercial convertida en canal de confianza")}<div class="case-grid case-feature-list">${caseCards(prefix, 1, 1)}</div></div></section><section class="section section-alt"><div class="container">${sectionHead("Trabajos publicados", "Más experiencias activas construidas por YC Systems", "Una muestra del trabajo entregado para empresas y marcas reales.")}<div class="case-grid case-archive-grid">${caseCards(prefix, 3, 2)}</div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -178,7 +192,7 @@ renderPage({
   title: "GhostWear | Caso de YC Systems",
   description: "Caso publicado de comercio electrónico construido por YC Systems para GhostWear.",
   noindex: true,
-  body: (prefix) => `<section class="product-hero case-detail-hero"><div class="container product-hero-grid"><div><p class="kicker">Caso de cliente</p><h1>GhostWear convirtió su catálogo en una experiencia de venta directa</h1><p class="lead">Una tienda responsive con catálogo, carrito y pedidos conectados a WhatsApp para reducir fricción entre descubrimiento y conversación de compra.</p><div class="actions"><a class="text-link" href="https://ghostwear1.com/" target="_blank" rel="noopener">Visitar sitio</a><a class="button secondary" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="product-visual"><img src="${prefix}assets/screenshots/ghostwear-live-2026.webp" alt="Sitio publicado de GhostWear" width="1440" height="1000" fetchpriority="high" /></div></div></section><section class="section"><div class="container value-grid"><article><strong>Situación</strong><p>La marca necesitaba presentar su oferta y facilitar pedidos desde móvil.</p></article><article><strong>Primera fase</strong><p>Catálogo, carrito y contacto comercial integrado.</p></article><article><strong>Evidencia</strong><p>Navegación publicada y flujo de compra accesible en dispositivos reales.</p></article><article><strong>Estado actual</strong><p>Tienda activa y disponible para recibir oportunidades.</p></article></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="product-hero case-detail-hero"><div class="container product-hero-grid"><div><p class="kicker">Caso de cliente</p><h1>GhostWear convirtió su catálogo en una experiencia de venta directa</h1><p class="lead">Una tienda adaptable con catálogo, carrito y pedidos conectados a WhatsApp para reducir fricción entre descubrimiento y conversación de compra.</p><div class="actions"><a class="text-link" href="https://ghostwear1.com/" target="_blank" rel="noopener">Visitar sitio</a><a class="button secondary" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="product-visual"><img src="${prefix}assets/screenshots/ghostwear-live-2026.webp" alt="Sitio publicado de GhostWear" width="1440" height="1000" fetchpriority="high" /></div></div></section><section class="section"><div class="container value-grid"><article><strong>Situación</strong><p>La marca necesitaba presentar su oferta y facilitar pedidos desde móvil.</p></article><article><strong>Primera fase</strong><p>Catálogo, carrito y contacto comercial integrado.</p></article><article><strong>Evidencia</strong><p>Navegación publicada y flujo de compra accesible en dispositivos reales.</p></article><article><strong>Estado actual</strong><p>Tienda activa y disponible para recibir oportunidades.</p></article></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -186,7 +200,7 @@ renderPage({
   title: "Antony Real Estate | Caso de YC Systems",
   description: "Caso publicado de presencia comercial inmobiliaria construida por YC Systems para Antony Real Estate.",
   noindex: true,
-  body: (prefix) => `<section class="product-hero case-detail-hero"><div class="container product-hero-grid"><div><p class="kicker">Caso de cliente</p><h1>Antony Real Estate convirtió su presencia digital en un canal de confianza</h1><p class="lead">Una experiencia responsive para presentar propiedades, fortalecer credibilidad y facilitar el contacto directo con compradores interesados.</p><div class="actions"><a class="text-link" href="https://antonyrealestate.com/" target="_blank" rel="noopener">Visitar sitio</a><a class="button secondary" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="product-visual"><img src="${prefix}assets/screenshots/antonyrealestate-live.webp" alt="Sitio publicado de Antony Real Estate" width="1440" height="1000" fetchpriority="high" /></div></div></section><section class="section"><div class="container value-grid"><article><strong>Situación</strong><p>La operación necesitaba una presencia clara para presentar oferta y generar confianza.</p></article><article><strong>Primera fase</strong><p>Estructura comercial, propiedades destacadas y canales de contacto directo.</p></article><article><strong>Evidencia</strong><p>Experiencia publicada con navegación adaptable y jerarquía orientada a consultas.</p></article><article><strong>Estado actual</strong><p>Sitio activo como punto de entrada para compradores y oportunidades.</p></article></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="product-hero case-detail-hero"><div class="container product-hero-grid"><div><p class="kicker">Caso de cliente</p><h1>Antony Real Estate convirtió su presencia digital en un canal de confianza</h1><p class="lead">Una experiencia adaptable para presentar propiedades, fortalecer credibilidad y facilitar el contacto directo con compradores interesados.</p><div class="actions"><a class="text-link" href="https://antonyrealestate.com/" target="_blank" rel="noopener">Visitar sitio</a><a class="button secondary" href="${relativeHref("/case-studies/", prefix)}">Casos</a></div></div><div class="product-visual"><img src="${prefix}assets/screenshots/antonyrealestate-live.webp" alt="Sitio publicado de Antony Real Estate" width="1440" height="1000" fetchpriority="high" /></div></div></section><section class="section"><div class="container value-grid"><article><strong>Situación</strong><p>La operación necesitaba una presencia clara para presentar oferta y generar confianza.</p></article><article><strong>Primera fase</strong><p>Estructura comercial, propiedades destacadas y canales de contacto directo.</p></article><article><strong>Evidencia</strong><p>Experiencia publicada con navegación adaptable y jerarquía orientada a consultas.</p></article><article><strong>Estado actual</strong><p>Sitio activo como punto de entrada para compradores y oportunidades.</p></article></div></section>${finalCta(prefix)}`,
 });
 
 const processSteps = [
@@ -208,7 +222,7 @@ renderPage({
   route: "/company/",
   title: "Empresa | YC Systems",
   description: "Información corporativa, enfoque y principios de YC Systems LLC.",
-  body: (prefix) => `<section class="page-hero company-hero"><div class="container interior-hero-grid"><div><p class="kicker">Empresa</p><h1>YC Systems LLC construye software para operaciones reales</h1><p class="lead">Empresa de software constituida en New York, con operación digital y capacidad para trabajar con negocios en distintos mercados.</p></div><div class="company-signals"><span><small>Entidad</small><strong>YC Systems LLC</strong></span><span><small>Operación</small><strong>Digital e internacional</strong></span><span><small>Enfoque</small><strong>Productos y sistemas operativos</strong></span></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Dirección", "Producto, ingeniería y negocio dentro de una misma conversación", "No construimos pantallas aisladas. Diseñamos sistemas que conectan información, personas y decisiones.")}<p>YC Systems combina productos propios con implementación de software para clientes. Esa combinación mantiene la empresa cerca de problemas reales y obliga a construir con criterio de largo plazo.</p></div><div class="company-facts"><article><span>Entidad</span><strong>YC Systems LLC</strong><p>New York Domestic Limited Liability Company</p></article><article><span>Operación</span><strong>Digital e internacional</strong><p>Atención remota para empresas y socios</p></article><article><span>Contacto</span><strong>${content.contact.email}</strong><p>Canal corporativo principal</p></article></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Principios", "La forma en que decidimos qué construir")}<div class="value-grid"><article><strong>Claridad</strong><p>El cliente y el equipo deben entender el sistema.</p></article><article><strong>Responsabilidad</strong><p>La confianza se protege con procesos y límites claros.</p></article><article><strong>Evolución</strong><p>Una solución útil hoy debe poder mejorar mañana.</p></article><article><strong>Resultados</strong><p>La tecnología debe cambiar una operación, no decorar una propuesta.</p></article></div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero company-hero"><div class="container interior-hero-grid"><div><p class="kicker">Empresa</p><h1>YC Systems LLC construye software para operaciones reales</h1><p class="lead">Empresa de software constituida en Nueva York, con operación digital y capacidad para trabajar con negocios en distintos mercados.</p></div><div class="company-signals"><span><small>Entidad</small><strong>YC Systems LLC</strong></span><span><small>Operación</small><strong>Digital e internacional</strong></span><span><small>Enfoque</small><strong>Productos y sistemas operativos</strong></span></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Dirección", "Producto, ingeniería y negocio dentro de una misma conversación", "No construimos pantallas aisladas. Diseñamos sistemas que conectan información, personas y decisiones.")}<p>YC Systems combina productos propios con implementación de software para clientes. Esa combinación mantiene la empresa cerca de problemas reales y obliga a construir con criterio de largo plazo.</p></div><div class="company-scope"><span><small>Qué construimos</small><strong>Productos propios</strong></span><span><strong>Sistemas para clientes</strong></span><span><strong>Evolución y soporte</strong></span></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Principios", "La forma en que decidimos qué construir")}<div class="value-grid"><article><strong>Claridad</strong><p>El cliente y el equipo deben entender el sistema.</p></article><article><strong>Responsabilidad</strong><p>La confianza se protege con procesos y límites claros.</p></article><article><strong>Evolución</strong><p>Una solución útil hoy debe poder mejorar mañana.</p></article><article><strong>Resultados</strong><p>La tecnología debe cambiar una operación, no decorar una propuesta.</p></article></div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -216,7 +230,7 @@ renderPage({
   title: "Solicitar diagnóstico | YC Systems",
   description: "Solicita un diagnóstico inicial para definir el software, producto o sistema que tu empresa necesita.",
   bodyClass: "contact-page",
-  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Solicitar diagnóstico</p><h1>Cuéntanos qué necesitas controlar, medir o automatizar</h1><p class="lead">Completa un brief breve y recibe una ruta inicial para definir prioridad, alcance y siguiente decisión.</p></div></section><section class="section contact-section"><div class="container contact-grid"><div class="contact-copy"><h2>Qué puedes esperar</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp ${content.contact.whatsappLabel}</a></div></div><form class="brief-form" action="https://formsubmit.co/${content.contact.email}" method="post" data-brief-form data-step="1"><input type="hidden" name="_subject" value="Nuevo diagnóstico desde ycsystems.io" /><p class="form-step" data-brief-step>Paso 1 de 2</p><div data-step="1"><label>Nombre<input name="name" autocomplete="name" required /></label><label>Correo de trabajo<input type="email" name="email" autocomplete="email" required /></label><label>Empresa<input name="company" autocomplete="organization" required /></label><label>¿Qué necesitas mejorar?<select name="need" required><option value="">Selecciona una opción</option><option>Sistema interno</option><option>CRM o ventas</option><option>Dashboard o reportes</option><option>Automatización</option><option>Producto SaaS</option><option>Sitio comercial</option><option>No estoy seguro</option></select></label><button class="button primary" type="button" data-brief-next>Continuar</button></div><div data-step="2" hidden><label>Prioridad<select name="priority" required><option value="">Selecciona una opción</option><option>Necesito resolverlo ahora</option><option>Durante los próximos 3 meses</option><option>Estoy evaluando opciones</option></select></label><label>Cuéntanos el contexto<textarea name="message" rows="6" required placeholder="Describe el proceso actual, el problema y el resultado que buscas"></textarea></label><label>Referencia de presupuesto<select name="budget" required><option value="">Selecciona una opción</option><option>Necesito orientación</option><option>US$1,000 - US$3,000</option><option>US$3,000 - US$10,000</option><option>US$10,000 o más</option></select></label><div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit">Enviar diagnóstico</button></div></div><p class="form-note">El formulario es procesado por FormSubmit. También puedes escribir directamente a ${content.contact.email}.</p></form></div></section>`,
+  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Solicitar diagnóstico</p><h1>Cuéntanos qué necesitas controlar, medir o automatizar</h1><p class="lead">Completa un breve formulario y recibe una ruta inicial para definir prioridad, alcance y siguiente decisión.</p></div></section><section class="section contact-section"><div class="container contact-grid"><div class="contact-copy"><h2>Qué puedes esperar</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp ${content.contact.whatsappLabel}</a></div></div><form class="brief-form" action="https://formsubmit.co/${content.contact.email}" method="post" data-brief-form data-step="1"><input type="hidden" name="_subject" value="Nuevo diagnóstico desde ycsystems.io" /><input type="hidden" name="_honey" value="" /><input type="hidden" name="source_product" data-source-product /><input type="hidden" name="source_path" data-source-path /><p class="form-step" data-brief-step>Paso 1 de 2</p><div data-step="1"><label>Nombre<input name="name" autocomplete="name" required /></label><label>Correo de trabajo<input type="email" name="email" autocomplete="email" required /></label><label>Empresa<input name="company" autocomplete="organization" required /></label><label>Teléfono <small>Opcional</small><input type="tel" name="phone" autocomplete="tel" /></label><label>¿Qué necesitas mejorar?<select name="need" required><option value="">Selecciona una opción</option><option>Sistema interno</option><option>CRM o ventas</option><option>Panel o reportes</option><option>Automatización</option><option>Producto SaaS</option><option>Sitio comercial</option><option>No estoy seguro</option></select></label><button class="button primary" type="button" data-brief-next>Continuar</button></div><div data-step="2" hidden><label>Industria<input name="industry" autocomplete="organization-title" required /></label><label>Proceso actual<textarea name="current_process" rows="3" required placeholder="¿Cómo resuelven esta operación hoy?"></textarea></label><label>Tamaño del equipo<select name="team_size" required><option value="">Selecciona una opción</option><option>1 a 5 personas</option><option>6 a 20 personas</option><option>21 a 50 personas</option><option>Más de 50 personas</option></select></label><label>Resultado esperado<textarea name="desired_result" rows="3" required placeholder="¿Qué debería mejorar con la primera fase?"></textarea></label><label>Canal preferido<select name="preferred_channel" required><option value="">Selecciona una opción</option><option>Correo</option><option>WhatsApp</option><option>Videollamada</option></select></label><label>Contexto adicional <small>Opcional</small><textarea name="message" rows="4"></textarea></label><label class="consent-field"><input type="checkbox" name="consent" value="accepted" required /><span>Acepto que YC Systems use esta información para responder mi solicitud, conforme a la <a href="${relativeHref("/privacy/", prefix)}">Política de privacidad</a>.</span></label><div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit" data-brief-submit>Enviar diagnóstico</button></div></div><p class="form-status" data-brief-status aria-live="polite"></p><div class="form-success" data-brief-success hidden><strong>Solicitud enviada</strong><p>Recibimos tu información. Te responderemos por el canal indicado.</p></div></form></div></section>`,
 });
 
 renderPage({
@@ -230,7 +244,7 @@ renderPage({
   route: "/industries/",
   title: "Industrias | YC Systems",
   description: "Mercados donde YC Systems aplica software operativo y automatización.",
-  body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">Industrias</p><h1>Software adaptable a operaciones con necesidades concretas</h1><p class="lead">Partimos del flujo de trabajo de cada empresa y reutilizamos principios sólidos de producto, datos y automatización.</p></div></section><section class="section"><div class="container"><div class="solution-grid">${[["Lavanderías", "Pedidos, rutas, entregas y pagos"], ["Bienes raíces", "Prospectos, reservas, propiedades y comisiones"], ["Comercio", "Catálogo, ventas y seguimiento de clientes"], ["Servicios", "Agenda, solicitudes, estados y comunicación"], ["Operaciones comerciales", "Pipeline, actividad, inventario e indicadores"], ["Nuevos productos", "Validación y construcción de una primera versión"]].map((item, i) => `<article class="solution-card"><span>${String(i + 1).padStart(2, "0")}</span><h2>${item[0]}</h2><p>${item[1]}</p></article>`).join("")}</div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">Industrias</p><h1>Software adaptable a operaciones con necesidades concretas</h1><p class="lead">Partimos del flujo de trabajo de cada empresa y reutilizamos principios sólidos de producto, datos y automatización.</p></div></section><section class="section"><div class="container"><div class="solution-grid">${[["Lavanderías", "Pedidos, rutas, entregas y pagos"], ["Bienes raíces", "Prospectos, reservas, propiedades y comisiones"], ["Comercio", "Catálogo, ventas y seguimiento de clientes"], ["Servicios", "Agenda, solicitudes, estados y comunicación"], ["Operaciones comerciales", "Proceso comercial, actividad, inventario e indicadores"], ["Nuevos productos", "Validación y construcción de una primera versión"]].map((item, i) => `<article class="solution-card"><span>${String(i + 1).padStart(2, "0")}</span><h2>${item[0]}</h2><p>${item[1]}</p></article>`).join("")}</div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -251,7 +265,7 @@ renderPage({
   route: "/privacy/",
   title: "Privacidad | YC Systems",
   description: "Política de privacidad del sitio web de YC Systems LLC.",
-  body: () => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Privacidad</p><h1>Política de privacidad</h1><p class="lead">Esta política explica qué información puede recibir YC Systems LLC a través de su sitio web y cómo se utiliza.</p></div></section><section class="section"><article class="container prose"><h2>Información que podemos recibir</h2><p>Podemos recibir nombre, empresa, correo, tipo de necesidad, prioridad, referencia de presupuesto y el contexto que decidas compartir al solicitar un diagnóstico.</p><h2>Cómo utilizamos la información</h2><p>La utilizamos para responder solicitudes, evaluar necesidades, preparar una ruta inicial, mantener comunicaciones comerciales y cumplir obligaciones aplicables.</p><h2>Procesamiento del formulario</h2><p>El formulario de diagnóstico utiliza FormSubmit para transmitir la información a YC Systems. Si prefieres no utilizarlo, puedes escribir directamente a ${content.contact.email}.</p><h2>Preferencias del sitio</h2><p>Cuando se habilite el selector bilingüe, la preferencia podrá guardarse en localStorage bajo la clave yc-lang. No utilizamos esa preferencia para publicidad.</p><h2>Conservación y derechos</h2><p>Conservamos la información durante el tiempo necesario para responder, prestar el servicio o cumplir obligaciones. Puedes solicitar acceso, corrección o eliminación escribiendo a legal@ycsystems.io.</p><h2>Contacto</h2><p>YC Systems LLC · ${content.contact.email} · Operación digital internacional.</p><p>Última actualización: 12 de julio de 2026.</p></article></section>`,
+  body: () => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Privacidad</p><h1>Política de privacidad</h1><p class="lead">Esta política explica qué información puede recibir YC Systems LLC a través de su sitio web y cómo se utiliza.</p></div></section><section class="section"><article class="container prose"><h2>Información que podemos recibir</h2><p>Podemos recibir nombre, empresa, correo, teléfono opcional, industria, tamaño del equipo, proceso actual, necesidad, canal preferido y el contexto que decidas compartir al solicitar un diagnóstico.</p><h2>Cómo utilizamos la información</h2><p>La utilizamos para responder solicitudes, evaluar necesidades, preparar una ruta inicial, mantener comunicaciones comerciales y cumplir obligaciones aplicables.</p><h2>Procesamiento del formulario</h2><p>El formulario de diagnóstico utiliza FormSubmit como proveedor técnico para transmitir la información a YC Systems. Los datos se envían con el propósito de gestionar tu solicitud comercial. No incluyas contraseñas, datos financieros ni otra información sensible. Si prefieres no utilizar el formulario, puedes escribir directamente a ${content.contact.email}.</p><h2>Conservación y derechos</h2><p>Conservamos la información durante el tiempo necesario para responder, prestar el servicio o cumplir obligaciones. Puedes solicitar acceso, corrección o eliminación escribiendo a legal@ycsystems.io.</p><h2>Contacto</h2><p>YC Systems LLC · ${content.contact.email} · Operación digital internacional.</p><p>Última actualización: 12 de julio de 2026.</p></article></section>`,
 });
 
 renderPage({
@@ -281,18 +295,30 @@ const productDetails = {
     title: "CleanLoop organiza la operación completa de una lavandería",
     lead: "Pedidos, clientes, recogidas, entregas, rutas y pagos conectados en una plataforma diseñada para el trabajo diario.",
     features: [["Pedidos", "Estados, servicios, prendas, precios y pagos"], ["Rutas", "Recogidas, entregas y asignación operativa"], ["Clientes", "Direcciones, historial y preferencias"], ["Control", "Vista administrativa de actividad y prioridades"]],
+    evidenceImage: "/assets/screenshots/cleanloop-role-demo.webp",
+    evidenceSize: [1400, 943],
+    evidenceTitle: "Una operación visible desde el pedido hasta la entrega",
+    evidenceText: "La vista combina actividad diaria, responsables y estados para que el equipo pueda decidir sin depender de conversaciones dispersas.",
   },
   soc: {
     kicker: "Prototipo",
     title: "SOC convierte actividad comercial en visibilidad ejecutiva",
-    lead: "Una línea de producto para equipos que necesitan reunir pipeline, operación, indicadores y seguimiento dentro de una misma lectura.",
-    features: [["Pipeline", "Prospectos, etapas, tareas y próximos pasos"], ["Actividad", "Movimientos del equipo y prioridades"], ["Indicadores", "Lectura ejecutiva de resultados"], ["Operación", "Roles, estados y seguimiento centralizado"]],
+    lead: "Una línea de producto para equipos que necesitan reunir proceso comercial, operación, indicadores y seguimiento dentro de una misma lectura.",
+    features: [["Proceso comercial", "Prospectos, etapas, tareas y próximos pasos"], ["Actividad", "Movimientos del equipo y prioridades"], ["Indicadores", "Lectura ejecutiva de resultados"], ["Operación", "Roles, estados y seguimiento centralizado"]],
+    evidenceImage: "/assets/screenshots/soc-dashboard.webp",
+    evidenceSize: [1400, 984],
+    evidenceTitle: "Lectura ejecutiva sin perder el detalle operativo",
+    evidenceText: "SOC reúne indicadores, actividad y prioridades para convertir el seguimiento comercial en decisiones visibles.",
   },
   brokercontrol: {
     kicker: "Piloto seleccionado",
     title: "BrokerControl ordena la operación comercial inmobiliaria",
     lead: "Un CRM operativo para prospectos, propiedades, reservas, documentos, agenda y comisiones de equipos inmobiliarios.",
     features: [["Prospectos", "Seguimiento claro desde el primer contacto"], ["Propiedades", "Inventario, disponibilidad y relación comercial"], ["Documentos", "Información importante dentro del flujo"], ["Comisiones", "Visibilidad de cierres, asesores y pagos"]],
+    evidenceImage: "/assets/screenshots/brokercontrol-dashboard.webp",
+    evidenceSize: [1400, 1081],
+    evidenceTitle: "El proceso inmobiliario dentro de una sola vista",
+    evidenceText: "BrokerControl relaciona prospectos, propiedades, documentos y comisiones para mantener la operación comercial bajo control.",
   },
 };
 
@@ -304,32 +330,15 @@ for (const product of content.products.filter((item) => productDetails[item.slug
     description: product.summary,
     noindex: true,
     bodyClass: "product-page",
-    body: (prefix) => `<section class="product-hero"><div class="container product-hero-grid"><div><p class="kicker">${detail.kicker}</p><h1>${detail.title}</h1><p class="lead">${detail.lead}</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar acceso</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div><div class="product-visual"><img src="${relativeHref(product.image, prefix)}" alt="Vista de ${product.name}" width="1672" height="941" fetchpriority="high" /><span class="status-badge status-${product.status}">${product.statusLabel}</span></div></div></section><section class="section"><div class="container">${sectionHead("Capacidades", `Una vista operativa diseñada para ${product.market.toLowerCase()}`)}<div class="value-grid">${detail.features.map((feature) => `<article><strong>${feature[0]}</strong><p>${feature[1]}</p></article>`).join("")}</div></div></section><section class="section section-alt"><div class="container split"><div>${sectionHead("Modalidad", "Implementación guiada con alcance definido", "Revisamos ajuste, prioridades y condiciones antes de confirmar acceso o piloto.")}</div><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar acceso</a></div></section>`,
-  });
-}
-
-const supportPages = [
-  ["/technology/", "Tecnología", "Tecnología aplicada a operaciones", "Arquitectura, automatización y asistencia inteligente con un propósito operativo."],
-  ["/partners/", "Socios", "Construyamos mejores soluciones juntos", "Colaboramos con especialistas y empresas que complementan producto, implementación o distribución."],
-  ["/careers/", "Carreras", "Ayuda a construir software para operaciones reales", "Publicaremos oportunidades cuando exista una posición activa y un proceso definido."],
-  ["/press/", "Prensa", "Información pública de YC Systems", "Consultas de medios, marca y comunicación corporativa."],
-  ["/start/", "Empezar", "Elige el punto de partida correcto", "Producto, solución o diagnóstico: te ayudamos a convertir una necesidad amplia en una primera decisión."],
-];
-
-for (const [route, kicker, title, lead] of supportPages) {
-  renderPage({
-    route,
-    title: `${kicker} | YC Systems`,
-    description: lead,
-    noindex: true,
-    body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">${kicker}</p><h1>${title}</h1><p class="lead">${lead}</p>${actions(prefix)}</div></section>`,
+    ogImage: `https://ycsystems.io${product.image}`,
+    body: (prefix) => `<section class="product-hero"><div class="container product-hero-grid"><div><p class="kicker">${detail.kicker}</p><h1>${detail.title}</h1><p class="lead">${detail.lead}</p><div class="actions"><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div><div class="product-visual"><img src="${relativeHref(product.image, prefix)}" alt="Vista de ${product.name}" width="1672" height="941" fetchpriority="high" /><span class="status-badge status-${product.status}">${product.statusLabel}</span></div></div></section><section class="section"><div class="container">${sectionHead("Capacidades", `Una vista operativa diseñada para ${product.market.toLowerCase()}`)}<div class="value-grid">${detail.features.map((feature) => `<article><strong>${feature[0]}</strong><p>${feature[1]}</p></article>`).join("")}</div></div></section><section class="section section-alt product-evidence"><div class="container product-evidence-grid"><figure><img src="${relativeHref(detail.evidenceImage, prefix)}" alt="Evidencia visual de ${product.name}" width="${detail.evidenceSize[0]}" height="${detail.evidenceSize[1]}" loading="lazy" /></figure><div>${sectionHead("Evidencia de producto", detail.evidenceTitle, detail.evidenceText)}<a class="text-link" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Evaluar acceso</a></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Modalidad", "Implementación guiada con alcance definido", "Revisamos ajuste, prioridades y condiciones antes de confirmar acceso o piloto.")}</div><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a></div></section>`,
   });
 }
 
 const intentPages = [
   ["/custom-software/", "Software a medida", "Sistemas diseñados alrededor de una operación real"],
   ["/crm-development/", "CRM operativo", "Seguimiento comercial visible y accionable"],
-  ["/dashboard-development/", "Dashboards", "Indicadores para decidir con más claridad"],
+  ["/dashboard-development/", "Paneles ejecutivos", "Indicadores para decidir con más claridad"],
   ["/internal-systems/", "Sistemas internos", "Procesos, roles y datos dentro de un solo flujo"],
   ["/saas-development/", "Producto SaaS", "Una primera versión preparada para evolucionar"],
   ["/ai-automation/", "Automatización", "Menos trabajo repetitivo y más control operativo"],
@@ -348,17 +357,23 @@ for (const [route, kicker, title] of intentPages) {
 
 function redirectDocument(route, target) {
   const prefix = relativePrefix(route);
-  return `<!doctype html><html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, follow" /><meta http-equiv="refresh" content="0; url=${relativeHref(target, prefix)}" /><link rel="canonical" href="https://ycsystems.io${target}" /><title>Redirigiendo | YC Systems</title></head><body><p>Esta página se movió. <a href="${relativeHref(target, prefix)}">Continuar</a></p></body></html>\n`;
+  const destination = relativeHref(target, prefix);
+  return `<!doctype html><html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="robots" content="noindex, follow" /><meta http-equiv="refresh" content="0; url=${destination}" /><link rel="canonical" href="https://ycsystems.io${target}" /><title>Redirigiendo | YC Systems</title><script>location.replace(${JSON.stringify(destination)});</script></head><body><p>Esta página se movió. <a href="${destination}">Continuar</a></p></body></html>\n`;
 }
 
 for (const route of routesMap.routes) {
   const output = route.path === "/"
     ? path.join(siteRoot, "index.html")
     : path.join(siteRoot, route.path.replace(/^\//, ""), "index.html");
+  if (route.status === "retired") {
+    await rm(path.dirname(output), { recursive: true, force: true });
+    continue;
+  }
+
   await mkdir(path.dirname(output), { recursive: true });
 
-  if (route.status === "legacy-redirect" && route.target) {
-    await writeFile(output, redirectDocument(route.path, route.target), "utf8");
+  if (route.status === "redirect" && route.redirectTo) {
+    await writeFile(output, redirectDocument(route.path, route.redirectTo), "utf8");
     continue;
   }
 
@@ -371,5 +386,9 @@ const sitemapEntries = routesMap.routes
   .map((route) => `  <url><loc>https://ycsystems.io${route.path}</loc></url>`)
   .join("\n");
 await writeFile(path.join(siteRoot, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`, "utf8");
+
+const notFoundPrefix = "./";
+const notFound = `<!doctype html><html lang="es">${pageHead({ route: "/404.html", prefix: notFoundPrefix, title: "Página no encontrada | YC Systems", description: "La página solicitada no existe o ya no está disponible.", noindex: true })}<body class="not-found-page"><a class="skip-link" href="#main-content">Saltar al contenido</a>${renderHeader("/404.html", notFoundPrefix)}<main id="main-content"><section class="page-hero"><div class="container narrow"><p class="kicker">Error 404</p><h1>Esta página no está disponible</h1><p class="lead">Puedes volver al inicio, explorar productos o solicitar un diagnóstico.</p><div class="actions"><a class="button primary" href="./">Volver al inicio</a><a class="button secondary" href="./products/">Ver productos</a></div></div></section></main>${renderFooter(notFoundPrefix)}<script src="./script.js?v=yc-v2-release-20260712"></script></body></html>\n`;
+await writeFile(path.join(siteRoot, "404.html"), notFound, "utf8");
 
 console.log(`Built ${canonicalPages.size} YC Systems V2 pages.`);

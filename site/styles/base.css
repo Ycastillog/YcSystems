@@ -11,7 +11,7 @@ body {
 body.nav-open { overflow: hidden; }
 main { min-height: 65vh; }
 h1, h2, h3 { margin-bottom: 18px; color: var(--color-text-primary); font-weight: 700; letter-spacing: 0; }
-h1 { max-width: 920px; font-size: 3.75rem; line-height: 1.04; }
+h1 { max-width: 920px; font-size: clamp(3rem, 3.5vw, 3.5rem); line-height: 1.04; text-wrap: balance; }
 h2 { max-width: 760px; font-size: 2.5rem; line-height: 1.1; }
 h3 { font-size: 1.5rem; line-height: 1.2; }
 p { margin-bottom: 18px; color: var(--color-text-secondary); }

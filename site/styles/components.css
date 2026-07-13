@@ -1,5 +1,5 @@
 .actions, .form-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.button, .nav-cta, .lang-chip {
+.button, .nav-cta {
   min-height: 48px;
   display: inline-flex;
   align-items: center;
@@ -18,17 +18,16 @@
 .button.primary:hover { background: #70ddff; }
 .button.secondary { background: rgba(17, 31, 56, 0.58); }
 .nav-cta { min-height: 42px; border-color: rgba(51, 200, 255, 0.52); font-size: 0.88rem; }
-.lang-chip { min-width: 46px; min-height: 42px; padding-inline: 12px; color: var(--color-brand-400); font-size: 0.82rem; cursor: not-allowed; opacity: 0.72; }
 .text-link, .card-link { display: inline-flex; align-items: center; gap: 8px; color: var(--color-brand-400); font-weight: 700; }
 .text-link::after, .card-link::after { content: "→"; }
 
-.choice, .product-card, .case-card, .solution-card, .value-grid article, .document-card, .company-facts article, .status-list span {
+.choice, .product-card, .case-card, .solution-card, .value-grid article, .document-card, .company-scope {
   border: 1px solid var(--color-border-600);
   border-radius: var(--radius-md);
   background: rgba(11, 20, 38, 0.76);
 }
 .choice { min-height: 210px; display: flex; flex-direction: column; padding: 28px; }
-.choice > span, .solution-card > span, .case-card > span, .document-card > span, .company-facts article > span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.choice > span, .solution-card > span, .case-card > span, .document-card > span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .choice strong { margin: 18px 0 10px; font-size: 1.35rem; line-height: 1.25; }
 .choice p { margin-bottom: 18px; }
 .choice small { margin-top: auto; color: var(--color-brand-400); font-weight: 700; }
@@ -69,3 +68,12 @@
 .brief-form textarea { resize: vertical; }
 .form-step { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
 .form-note { margin: 18px 0 0; font-size: 0.82rem; }
+.consent-field { grid-template-columns: 22px 1fr; align-items: start; font-size: 0.88rem; font-weight: 400; }
+.consent-field input { width: 20px; height: 20px; margin-top: 2px; }
+.consent-field a { color: var(--color-brand-400); text-decoration: underline; }
+.form-status { min-height: 24px; margin: 16px 0 0; font-size: 0.9rem; }
+.form-status[data-state="error"] { color: #ffb4b4; }
+.form-status[data-state="sending"] { color: var(--color-brand-400); }
+.form-success { border: 1px solid rgba(50, 213, 131, 0.45); border-radius: var(--radius-sm); padding: 20px; background: rgba(50, 213, 131, 0.08); }
+.form-success strong { display: block; margin-bottom: 6px; }
+.form-success p { margin: 0; }

@@ -25,6 +25,10 @@ const briefForm = document.querySelector("[data-brief-form]");
 const briefStep = briefForm?.querySelector("[data-brief-step]");
 const briefNext = briefForm?.querySelector("[data-brief-next]");
 const briefBack = briefForm?.querySelector("[data-brief-back]");
+const briefSubmit = briefForm?.querySelector("[data-brief-submit]");
+const briefStatus = briefForm?.querySelector("[data-brief-status]");
+const briefSuccess = briefForm?.querySelector("[data-brief-success]");
+let briefSending = false;
 
 function showBriefStep(step) {
   if (!briefForm || !briefStep) return;
@@ -35,10 +39,13 @@ function showBriefStep(step) {
   });
 }
 
+function firstInvalidField(panel) {
+  return [...panel.querySelectorAll("input, select, textarea")].find((field) => !field.checkValidity());
+}
+
 briefNext?.addEventListener("click", () => {
   const firstPanel = briefForm.querySelector('[data-step="1"]');
-  const fields = [...firstPanel.querySelectorAll("input, select, textarea")];
-  const invalidField = fields.find((field) => !field.checkValidity());
+  const invalidField = firstInvalidField(firstPanel);
   if (invalidField) {
     invalidField.reportValidity();
     return;
@@ -48,3 +55,51 @@ briefNext?.addEventListener("click", () => {
 });
 
 briefBack?.addEventListener("click", () => showBriefStep(1));
+
+if (briefForm) {
+  const params = new URLSearchParams(window.location.search);
+  briefForm.querySelector("[data-source-product]").value = params.get("product") || "General";
+  briefForm.querySelector("[data-source-path]").value = `${window.location.pathname}${window.location.search}`;
+
+  briefForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (briefSending) return;
+
+    const secondPanel = briefForm.querySelector('[data-step="2"]');
+    const invalidField = firstInvalidField(secondPanel);
+    if (invalidField) {
+      invalidField.reportValidity();
+      return;
+    }
+
+    briefSending = true;
+    briefSubmit.disabled = true;
+    briefSubmit.textContent = "Enviando";
+    briefStatus.dataset.state = "sending";
+    briefStatus.textContent = "Enviando tu solicitud de forma segura...";
+
+    try {
+      const endpoint = briefForm.action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(briefForm),
+      });
+
+      if (!response.ok) throw new Error(`Request failed with ${response.status}`);
+
+      briefForm.querySelectorAll("[data-step], [data-brief-step], [data-brief-status]").forEach((element) => {
+        element.hidden = true;
+      });
+      briefSuccess.hidden = false;
+      briefSuccess.focus?.();
+    } catch {
+      briefStatus.dataset.state = "error";
+      briefStatus.textContent = "No pudimos enviar la solicitud. Revisa tu conexión e inténtalo nuevamente; tus datos siguen en el formulario.";
+    } finally {
+      briefSending = false;
+      briefSubmit.disabled = false;
+      briefSubmit.textContent = "Enviar diagnóstico";
+    }
+  });
+}

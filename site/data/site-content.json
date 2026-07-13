@@ -19,8 +19,7 @@
       { "label": "Método", "path": "/process/" },
       { "label": "Empresa", "path": "/company/" }
     ],
-    "primaryAction": { "label": "Solicitar diagnóstico", "path": "/contact/" },
-    "language": { "label": "EN", "state": "coming-soon" }
+    "primaryAction": { "label": "Solicitar diagnóstico", "path": "/contact/" }
   },
   "products": [
     {
@@ -44,7 +43,7 @@
       "exposure": "public",
       "market": "Operaciones comerciales",
       "title": "Visibilidad comercial para equipos que necesitan control",
-      "summary": "Pipeline, actividad, indicadores y seguimiento ejecutivo reunidos en un centro operativo.",
+      "summary": "Proceso comercial, actividad, indicadores y seguimiento ejecutivo reunidos en un centro operativo.",
       "image": "/assets/products-showcase/soc-showcase.webp"
     },
     {

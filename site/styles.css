@@ -1,8 +1,9 @@
-@import "./styles/tokens.css";
-@import "./styles/reset.css";
-@import "./styles/base.css";
-@import "./styles/layout.css";
-@import "./styles/components.css";
-@import "./styles/pages.css";
-@import "./styles/utilities.css";
-@import "./styles/responsive.css";
+@layer reset, tokens, base, layout, components, pages, utilities, responsive;
+@import "./styles/reset.css" layer(reset);
+@import "./styles/tokens.css" layer(tokens);
+@import "./styles/base.css" layer(base);
+@import "./styles/layout.css" layer(layout);
+@import "./styles/components.css" layer(components);
+@import "./styles/pages.css" layer(pages);
+@import "./styles/utilities.css" layer(utilities);
+@import "./styles/responsive.css" layer(responsive);

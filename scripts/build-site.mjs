@@ -125,6 +125,14 @@ function sectionHead(kicker, title, text = "") {
   return `<div class="section-head"><p class="kicker">${kicker}</p><h2>${title}</h2>${text ? `<p>${text}</p>` : ""}</div>`;
 }
 
+function nexusAvatar(prefix, state = "idle", message = "Primero entendamos el proceso.", modifier = "") {
+  return `<figure class="nexus-avatar ${modifier}" data-nexus data-nexus-state="${state}">
+    <div class="nexus-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+    <img src="${prefix}assets/brand/nexus/nexus-avatar.webp" alt="Nexus, capa visual de YC Systems" width="720" height="720" loading="lazy" />
+    <figcaption><strong>Nexus</strong><span data-nexus-message>${message}</span></figcaption>
+  </figure>`;
+}
+
 const reservedCapabilities = [
   { label: "01", title: "Operaciones conectadas", text: "Flujos de trabajo, estados, responsables y seguimiento en una misma base operativa." },
   { label: "02", title: "Visibilidad ejecutiva", text: "Indicadores y lecturas claras para decidir sin depender de reportes dispersos." },
@@ -164,7 +172,7 @@ renderPage({
   title: "YC Systems LLC | Software operativo para negocios reales",
   description: "YC Systems construye productos SaaS, sistemas internos, CRM, paneles y automatización para empresas que necesitan control y crecimiento.",
   bodyClass: "home-page",
-  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC · Software operativo</p><h1>Software operativo para empresas que quieren crecer con control</h1><p class="lead">Centralizamos procesos, clientes y datos en sistemas que tu equipo puede operar, medir y mejorar.</p>${actions(prefix)}<p class="trust-line">Producto propio · implementación por fases · soporte continuo</p></div><div class="identity-showcase" aria-label="Identidad y propuesta de YC Systems"><div class="identity-message"><p class="identity-label">YC Systems</p><h2>Convertimos operaciones reales en sistemas claros</h2><p>Diseñamos software para que equipos y empresas puedan vender, operar y crecer con una base confiable.</p><ul><li>Productos propios</li><li>Sistemas para empresas</li><li>Automatización y evolución</li></ul></div><figure class="identity-nexus"><img src="${prefix}assets/brand/nexus/nexus-hero.webp" alt="Nexus, identidad visual de YC Systems" width="720" height="720" fetchpriority="high" /><figcaption><strong>Nexus</strong><span>Asistente visual de YC Systems</span></figcaption></figure></div></div></section>
+  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC · Software operativo</p><h1>Software operativo para empresas que quieren crecer con control</h1><p class="lead">Centralizamos procesos, clientes y datos en sistemas que tu equipo puede operar, medir y mejorar.</p>${actions(prefix)}<p class="trust-line">Producto propio · implementación por fases · soporte continuo</p></div><div class="identity-showcase" aria-label="Identidad y propuesta de YC Systems"><div class="identity-message"><p class="identity-label">YC Systems</p><h2>Convertimos operaciones reales en sistemas claros</h2><p>Diseñamos software para que equipos y empresas puedan vender, operar y crecer con una base confiable.</p><ul><li>Productos propios</li><li>Sistemas para empresas</li><li>Automatización y evolución</li></ul></div>${nexusAvatar(prefix, "idle", "Observamos la operación antes de construir.", "nexus-home")}</div></div></section>
   <section class="authority-band" aria-label="Señales de confianza"><div class="container authority-list"><span><small>Entidad</small><strong>YC Systems LLC</strong></span><span><small>Alcance</small><strong>Operación internacional</strong></span><span><small>Proceso</small><strong>Alcance y entrega por fases</strong></span><span><small>Continuidad</small><strong>Soporte y evolución</strong></span></div></section>
   <section class="section route-section"><div class="container">${sectionHead("Elige tu ruta", "Dos formas claras de empezar", "Selecciona un producto existente o define una primera fase para tu propia operación.")}<div class="choice-grid"><a class="choice" href="${relativeHref("/products/", prefix)}"><span>01</span><strong>Explorar productos propios</strong><p>Conoce plataformas desarrolladas para operaciones específicas y revisa su disponibilidad.</p><small>Ver productos</small></a><a class="choice" href="${relativeHref("/contact/", prefix)}"><span>02</span><strong>Construir un sistema para mi empresa</strong><p>Ordena un proceso comercial, administrativo u operativo mediante una primera fase clara.</p><small>Solicitar diagnóstico</small></a></div><p class="route-note">¿Todavía no sabes qué necesitas? El diagnóstico inicial ayuda a definir el primer paso.</p></div></section>
   <section class="section section-alt"><div class="container">${homeProductHighlight(prefix)}</div></section>
@@ -243,19 +251,75 @@ renderPage({
 });
 
 const processSteps = [
-  ["Diagnóstico", "Entendemos operación, usuarios, prioridades, riesgo y resultado esperado."],
-  ["Arquitectura", "Definimos módulos, datos, integraciones y límites de la primera versión."],
-  ["Diseño", "Convertimos el flujo en una experiencia clara para cada tipo de usuario."],
-  ["Construcción", "Desarrollamos, validamos y entregamos por versiones controladas."],
-  ["Evolución", "Medimos el uso, corregimos fricción y priorizamos la siguiente fase."],
+  {
+    id: "diagnostico",
+    state: "observe",
+    title: "Diagnóstico",
+    summary: "Entendemos operación, usuarios, prioridades, riesgo y resultado esperado.",
+    deliverable: "Mapa inicial del problema, prioridad y primera decisión de alcance.",
+    risk: "Reduce construir algo bonito que no resuelve la operación real.",
+    message: "Primero entendamos el proceso."
+  },
+  {
+    id: "arquitectura",
+    state: "connect",
+    title: "Arquitectura",
+    summary: "Definimos módulos, datos, integraciones y límites de la primera versión.",
+    deliverable: "Estructura del sistema, módulos, datos y conexiones principales.",
+    risk: "Reduce rehacer la base cuando el sistema empiece a crecer."
+  },
+  {
+    id: "diseno",
+    state: "design",
+    title: "Diseño",
+    summary: "Convertimos el flujo en una experiencia clara para cada tipo de usuario.",
+    deliverable: "Flujos, pantallas clave y reglas de interacción listas para validar.",
+    risk: "Reduce confusión, pantallas innecesarias y adopción débil."
+  },
+  {
+    id: "desarrollo",
+    state: "build",
+    title: "Desarrollo",
+    summary: "Construimos, validamos y entregamos por versiones controladas.",
+    deliverable: "Primera versión funcional con componentes, datos y pruebas esenciales.",
+    risk: "Reduce entregas incompletas, deuda temprana y cambios sin control."
+  },
+  {
+    id: "lanzamiento",
+    state: "activate",
+    title: "Lanzamiento",
+    summary: "Preparamos publicación, adopción, uso inicial y soporte de salida.",
+    deliverable: "Checklist de activación, acceso, capacitación y seguimiento inicial.",
+    risk: "Reduce lanzar sin operación, sin responsables y sin ruta de soporte."
+  },
+  {
+    id: "soporte",
+    state: "monitor",
+    title: "Soporte",
+    summary: "Medimos uso, corregimos fricción y priorizamos la siguiente fase.",
+    deliverable: "Plan de mejora, soporte y evolución con señales de uso reales.",
+    risk: "Reduce abandono, errores repetidos y crecimiento sin dirección."
+  },
 ];
+
+function nexusMethodExplorer(prefix) {
+  const first = processSteps[0];
+  return `<section class="section nexus-method-section"><div class="container nexus-method" data-nexus-method>
+    <div class="nexus-method-steps" role="tablist" aria-label="Estados del método YC Systems">${processSteps.map((step, index) => `<button type="button" role="tab" data-nexus-step="${index}" data-state="${step.state}" data-message="${step.message || step.summary}" aria-selected="${index === 0 ? "true" : "false"}"${index === 0 ? ' aria-current="step"' : ""}><span>${String(index + 1).padStart(2, "0")}</span><strong>${step.title}</strong><small>${step.summary}</small></button>`).join("")}</div>
+    <div class="nexus-method-stage">${nexusAvatar(prefix, first.state, first.message, "nexus-method-avatar")}<div class="nexus-method-diagram" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div></div>
+    <article class="nexus-method-detail" data-nexus-detail aria-live="polite"><p class="kicker" data-nexus-detail-state>${first.state}</p><h2 data-nexus-detail-title>${first.title}</h2><p data-nexus-detail-summary>${first.summary}</p><dl><div><dt>Entregable</dt><dd data-nexus-detail-deliverable>${first.deliverable}</dd></div><div><dt>Riesgo que reduce</dt><dd data-nexus-detail-risk>${first.risk}</dd></div></dl></article>
+    <script type="application/json" data-nexus-steps>${JSON.stringify(processSteps).replace(/</g, "\u003c")}</script>
+  </div></section>`;
+}
+
 
 renderPage({
   route: "/process/",
   title: "Método | YC Systems",
   description: "El método de YC Systems para diagnosticar, diseñar, construir y mejorar software operativo.",
-  body: (prefix) => `<section class="page-hero method-hero"><div class="container interior-hero-grid"><div><p class="kicker">Método</p><h1>Primero entendemos la operación y después construimos el sistema</h1><p class="lead">Cada fase reduce incertidumbre y convierte una idea amplia en decisiones, entregables y resultados observables.</p></div><ol class="process-preview">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${step[0]}</li>`).join("")}</ol></div></section><section class="section"><div class="container"><ol class="process-list">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h2>${step[0]}</h2><p>${step[1]}</p></div></li>`).join("")}</ol></div></section><section class="section section-alt"><div class="container">${sectionHead("Qué recibe el cliente", "Una ruta de trabajo entendible desde el inicio")}<div class="value-grid"><article><strong>Prioridades</strong><p>Qué resolver primero y qué puede esperar.</p></article><article><strong>Alcance</strong><p>Qué incluye la fase y cuáles son sus límites.</p></article><article><strong>Entregables</strong><p>Qué se diseña, construye, valida y publica.</p></article><article><strong>Continuidad</strong><p>Cómo se mantiene y evoluciona después.</p></article></div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero method-hero"><div class="container interior-hero-grid"><div><p class="kicker">Método</p><h1>Nexus convierte el proceso en una ruta de construcción clara</h1><p class="lead">Cada fase reduce incertidumbre y muestra qué se decide, qué se entrega y qué riesgo se controla antes de avanzar.</p></div><ol class="process-preview">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${step.title}</li>`).join("")}</ol></div></section>${nexusMethodExplorer(prefix)}<section class="section"><div class="container"><ol class="process-list">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h2>${step.title}</h2><p>${step.summary}</p></div></li>`).join("")}</ol></div></section><section class="section section-alt"><div class="container">${sectionHead("Qué recibe el cliente", "Una ruta de trabajo entendible desde el inicio")}<div class="value-grid"><article><strong>Prioridades</strong><p>Qué resolver primero y qué puede esperar.</p></article><article><strong>Alcance</strong><p>Qué incluye la fase y cuáles son sus límites.</p></article><article><strong>Entregables</strong><p>Qué se diseña, construye, valida y publica.</p></article><article><strong>Continuidad</strong><p>Cómo se mantiene y evoluciona después.</p></article></div></div></section>${finalCta(prefix)}`,
 });
+
 
 renderPage({
   route: "/company/",
@@ -269,7 +333,7 @@ renderPage({
   title: "Solicitar diagnóstico | YC Systems",
   description: "Solicita un diagnóstico inicial para definir el software, producto o sistema que tu empresa necesita.",
   bodyClass: "contact-page",
-  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Solicitar diagnóstico</p><h1>Cuéntanos qué necesitas controlar, medir o automatizar</h1><p class="lead">Completa un breve formulario y recibe una ruta inicial para definir prioridad, alcance y siguiente decisión.</p></div></section><section class="section contact-section"><div class="container contact-grid"><div class="contact-copy"><h2>Qué puedes esperar</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp ${content.contact.whatsappLabel}</a></div></div><form class="brief-form" action="https://formsubmit.co/${content.contact.email}" method="post" data-brief-form data-step="1"><input type="hidden" name="_subject" value="Nuevo diagnóstico desde ycsystems.io" /><input type="hidden" name="_honey" value="" /><input type="hidden" name="source_product" data-source-product /><input type="hidden" name="source_path" data-source-path /><p class="form-step" data-brief-step>Paso 1 de 2</p><div data-step="1"><label>Nombre<input name="name" autocomplete="name" required /></label><label>Correo de trabajo<input type="email" name="email" autocomplete="email" required /></label><label>Empresa<input name="company" autocomplete="organization" required /></label><label>Teléfono <small>Opcional</small><input type="tel" name="phone" autocomplete="tel" /></label><label>¿Qué necesitas mejorar?<select name="need" required><option value="">Selecciona una opción</option><option>Sistema interno</option><option>CRM o ventas</option><option>Panel o reportes</option><option>Automatización</option><option>Producto SaaS</option><option>Sitio comercial</option><option>No estoy seguro</option></select></label><button class="button primary" type="button" data-brief-next>Continuar</button></div><div data-step="2" hidden><label>Industria<input name="industry" autocomplete="organization-title" required /></label><label>Proceso actual<textarea name="current_process" rows="3" required placeholder="¿Cómo resuelven esta operación hoy?"></textarea></label><label>Tamaño del equipo<select name="team_size" required><option value="">Selecciona una opción</option><option>1 a 5 personas</option><option>6 a 20 personas</option><option>21 a 50 personas</option><option>Más de 50 personas</option></select></label><label>Resultado esperado<textarea name="desired_result" rows="3" required placeholder="¿Qué debería mejorar con la primera fase?"></textarea></label><label>Canal preferido<select name="preferred_channel" required><option value="">Selecciona una opción</option><option>Correo</option><option>WhatsApp</option><option>Videollamada</option></select></label><label>Contexto adicional <small>Opcional</small><textarea name="message" rows="4"></textarea></label><label class="consent-field"><input type="checkbox" name="consent" value="accepted" required /><span>Acepto que YC Systems use esta información para responder mi solicitud, conforme a la <a href="${relativeHref("/privacy/", prefix)}">Política de privacidad</a>.</span></label><div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit" data-brief-submit>Enviar diagnóstico</button></div></div><p class="form-status" data-brief-status aria-live="polite"></p><div class="form-success" data-brief-success hidden><strong>Solicitud enviada</strong><p>Recibimos tu información. Te responderemos por el canal indicado.</p></div></form></div></section>`,
+  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Solicitar diagnóstico</p><h1>Cuéntanos qué necesitas controlar, medir o automatizar</h1><p class="lead">Completa un breve formulario y recibe una ruta inicial para definir prioridad, alcance y siguiente decisión.</p></div></section><section class="section contact-section"><div class="container contact-grid"><div class="contact-copy"><h2>Qué puedes esperar</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp ${content.contact.whatsappLabel}</a></div><div class="nexus-form-companion" data-nexus-form>${nexusAvatar(prefix, "observe", "Primero entendamos qué proceso necesita más control.", "nexus-form-avatar")}<p data-nexus-form-text>Primero entendamos qué proceso necesita más control.</p></div></div><form class="brief-form" action="https://formsubmit.co/${content.contact.email}" method="post" data-brief-form data-step="1"><input type="hidden" name="_subject" value="Nuevo diagnóstico desde ycsystems.io" /><input type="hidden" name="_honey" value="" /><input type="hidden" name="source_product" data-source-product /><input type="hidden" name="source_path" data-source-path /><p class="form-step" data-brief-step>Paso 1 de 2</p><div data-step="1"><label>Nombre<input name="name" autocomplete="name" required /></label><label>Correo de trabajo<input type="email" name="email" autocomplete="email" required /></label><label>Empresa<input name="company" autocomplete="organization" required /></label><label>Teléfono <small>Opcional</small><input type="tel" name="phone" autocomplete="tel" /></label><label>¿Qué necesitas mejorar?<select name="need" required><option value="">Selecciona una opción</option><option>Sistema interno</option><option>CRM o ventas</option><option>Panel o reportes</option><option>Automatización</option><option>Producto SaaS</option><option>Sitio comercial</option><option>No estoy seguro</option></select></label><button class="button primary" type="button" data-brief-next>Continuar</button></div><div data-step="2" hidden><label>Industria<input name="industry" autocomplete="organization-title" required /></label><label>Proceso actual<textarea name="current_process" rows="3" required placeholder="¿Cómo resuelven esta operación hoy?"></textarea></label><label>Tamaño del equipo<select name="team_size" required><option value="">Selecciona una opción</option><option>1 a 5 personas</option><option>6 a 20 personas</option><option>21 a 50 personas</option><option>Más de 50 personas</option></select></label><label>Resultado esperado<textarea name="desired_result" rows="3" required placeholder="¿Qué debería mejorar con la primera fase?"></textarea></label><label>Canal preferido<select name="preferred_channel" required><option value="">Selecciona una opción</option><option>Correo</option><option>WhatsApp</option><option>Videollamada</option></select></label><label>Contexto adicional <small>Opcional</small><textarea name="message" rows="4"></textarea></label><label class="consent-field"><input type="checkbox" name="consent" value="accepted" required /><span>Acepto que YC Systems use esta información para responder mi solicitud, conforme a la <a href="${relativeHref("/privacy/", prefix)}">Política de privacidad</a>.</span></label><div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit" data-brief-submit>Enviar diagnóstico</button></div></div><p class="form-status" data-brief-status aria-live="polite"></p><div class="form-success" data-brief-success hidden><strong>Solicitud enviada</strong><p>Recibimos tu información. Te responderemos por el canal indicado.</p></div></form></div></section>`,
 });
 
 renderPage({

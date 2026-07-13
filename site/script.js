@@ -37,6 +37,7 @@ function showBriefStep(step) {
   briefForm.querySelectorAll("[data-step]").forEach((panel) => {
     panel.hidden = Number(panel.dataset.step) !== step;
   });
+  briefForm.dispatchEvent(new CustomEvent("yc:brief-step", { detail: { step } }));
 }
 
 function firstInvalidField(panel) {
@@ -73,6 +74,7 @@ if (briefForm) {
     }
 
     briefSending = true;
+    briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "sending" } }));
     briefSubmit.disabled = true;
     briefSubmit.textContent = "Enviando";
     briefStatus.dataset.state = "sending";
@@ -93,13 +95,19 @@ if (briefForm) {
       });
       briefSuccess.hidden = false;
       briefSuccess.focus?.();
+      briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "success" } }));
     } catch {
       briefStatus.dataset.state = "error";
       briefStatus.textContent = "No pudimos enviar la solicitud. Revisa tu conexión e inténtalo nuevamente; tus datos siguen en el formulario.";
+      briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "caution" } }));
     } finally {
       briefSending = false;
       briefSubmit.disabled = false;
       briefSubmit.textContent = "Enviar diagnóstico";
     }
   });
+}
+
+if (document.querySelector("[data-nexus]")) {
+  import("./nexus-controller.js").catch(() => {});
 }

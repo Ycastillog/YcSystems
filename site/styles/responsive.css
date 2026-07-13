@@ -41,7 +41,7 @@
   .contact-grid,
   .interior-hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
-  .software-proof,
+  .identity-showcase,
   .featured-case-preview,
   .hero-status-guide,
   .capability-map,
@@ -95,11 +95,10 @@
   .page-hero,
   .compact-hero,
   .product-hero { padding-block: 44px; }
-  .software-proof { grid-template-columns: 1fr; }
-  .proof-main { aspect-ratio: 16 / 11; }
-  .proof-stack { grid-template-columns: 1fr; grid-template-rows: auto; }
-  .proof-secondary { display: block; aspect-ratio: 16 / 8; }
-  .nexus-support { display: none; }
+  .identity-showcase { min-height: 0; grid-template-columns: 1fr; }
+  .identity-message { padding: 26px 24px; }
+  .identity-message h2 { font-size: 1.75rem; }
+  .identity-nexus { min-height: 280px; order: -1; }
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
   .button { width: 100%; }

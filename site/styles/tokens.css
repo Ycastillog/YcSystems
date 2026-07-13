@@ -7,6 +7,9 @@
   --color-brand-600: #0b5ed7;
   --color-brand-400: #33c8ff;
   --color-success-500: #32d583;
+  --gradient-action: linear-gradient(100deg, #20d8e5 0%, #43ef6b 100%);
+  --gradient-action-hover: linear-gradient(100deg, #46e5ef 0%, #58f77e 100%);
+  --shadow-action: 0 18px 40px rgba(50, 213, 131, 0.18);
   --color-warning-500: #f5b942;
   --color-text-primary: #f5f8ff;
   --color-text-secondary: #a8b3c7;

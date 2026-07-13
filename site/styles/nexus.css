@@ -189,7 +189,13 @@
 }
 
 .nexus-method-steps button[aria-selected="true"] {
+  border-color: rgba(50, 213, 131, 0.6);
+  box-shadow: inset 3px 0 0 var(--color-success-500), 0 18px 38px rgba(50, 213, 131, 0.08);
   transform: translateX(4px);
+}
+
+.nexus-method-steps button[aria-selected="true"] span {
+  color: var(--color-success-500);
 }
 
 .nexus-method-steps span {

@@ -13,64 +13,33 @@
   },
   "navigation": {
     "primary": [
-      { "label": "Soluciones", "path": "/solutions/" },
-      { "label": "Productos", "path": "/products/" },
-      { "label": "Casos", "path": "/case-studies/" },
-      { "label": "Método", "path": "/process/" },
-      { "label": "Empresa", "path": "/company/" }
+      {
+        "label": "Soluciones",
+        "path": "/solutions/"
+      },
+      {
+        "label": "Ecosistema",
+        "path": "/products/"
+      },
+      {
+        "label": "Casos",
+        "path": "/case-studies/"
+      },
+      {
+        "label": "Método",
+        "path": "/process/"
+      },
+      {
+        "label": "Empresa",
+        "path": "/company/"
+      }
     ],
-    "primaryAction": { "label": "Solicitar diagnóstico", "path": "/contact/" }
-  },
-  "products": [
-    {
-      "slug": "cleanloop",
-      "name": "CleanLoop",
-      "path": "/products/cleanloop/",
-      "status": "early-access",
-      "statusLabel": "Acceso temprano",
-      "exposure": "public",
-      "market": "Lavanderías",
-      "title": "Operación de lavandería en una sola plataforma",
-      "summary": "Pedidos, clientes, recogidas, entregas, rutas y pagos conectados en un flujo operativo claro.",
-      "image": "/assets/products-showcase/cleanloop-showcase.webp"
-    },
-    {
-      "slug": "soc",
-      "name": "SOC",
-      "path": "/products/soc/",
-      "status": "prototype",
-      "statusLabel": "Prototipo",
-      "exposure": "public",
-      "market": "Operaciones comerciales",
-      "title": "Visibilidad comercial para equipos que necesitan control",
-      "summary": "Proceso comercial, actividad, indicadores y seguimiento ejecutivo reunidos en un centro operativo.",
-      "image": "/assets/products-showcase/soc-showcase.webp"
-    },
-    {
-      "slug": "brokercontrol",
-      "name": "BrokerControl",
-      "path": "/products/brokercontrol/",
-      "status": "selected-pilot",
-      "statusLabel": "Piloto seleccionado",
-      "exposure": "public",
-      "market": "Bienes raíces",
-      "title": "CRM inmobiliario para ordenar la operación comercial",
-      "summary": "Prospectos, propiedades, reservas, documentos, agenda y comisiones dentro de un mismo flujo.",
-      "image": "/assets/products-showcase/brokercontrol-os-showcase.webp"
-    },
-    {
-      "slug": "creditpilot",
-      "name": "CreditPilot",
-      "path": "/products/",
-      "status": "in-development",
-      "statusLabel": "En desarrollo",
-      "exposure": "limited",
-      "market": "Operaciones de crédito",
-      "title": "Gestión guiada para equipos de reparación de crédito",
-      "summary": "Una línea de producto en desarrollo para casos, documentos, cartas y seguimiento de clientes.",
-      "image": "/assets/products-showcase/creditpilot-showcase.webp"
+    "primaryAction": {
+      "label": "Solicitar diagn&oacute;stico",
+      "path": "/contact/"
     }
-  ],
+  },
+  "products": [],
   "cases": [
     {
       "name": "GhostWear",

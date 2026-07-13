@@ -54,8 +54,7 @@ const rootLegacy = path.join(root, "styles.legacy.css");
 const siteLegacy = path.join(siteRoot, "styles.legacy.css");
 const quarantinedLegacy = path.join(siteRoot, "styles", "legacy-quarantine.css");
 const publicSocialAssets = path.join(siteRoot, "assets", "social");
-const publicDebtZeroPng = path.join(siteRoot, "assets", "products-showcase", "debtzero-showcase.png");
-const publicDebtZeroWebp = path.join(siteRoot, "assets", "products-showcase", "debtzero-showcase.webp");
+const publicProductsShowcase = path.join(siteRoot, "assets", "products-showcase");
 const stylesManifest = path.join(siteRoot, "styles.css");
 const envExample = path.join(root, ".env.example");
 const workflow = path.join(root, ".github", "workflows", "deploy-pages.yml");
@@ -64,10 +63,8 @@ const publicRootEntries = [
   "ai-automation",
   "assets",
   "brands",
-  "brokercontrol",
   "careers",
   "case-studies",
-  "cleanloop",
   "company",
   "contact",
   "crm-development",
@@ -94,7 +91,6 @@ const publicRootEntries = [
   "services",
   "site.webmanifest",
   "sitemap.xml",
-  "soc",
   "solutions",
   "start",
   "styles.css",
@@ -126,8 +122,8 @@ if (await exists(publicSocialAssets)) {
   fail("site/assets/social must not exist. Social publishing assets belong outside the public website repository.");
 }
 
-if ((await exists(publicDebtZeroPng)) || (await exists(publicDebtZeroWebp))) {
-  fail("DebtZero product showcase assets are not part of the public YC Systems site.");
+if (await exists(publicProductsShowcase)) {
+  fail("Private product showcase assets are not allowed in the public YC Systems site.");
 }
 
 if (!(await exists(envExample))) {
@@ -189,9 +185,9 @@ if (trackedGeneratedOrOperational.length) {
   fail(`tracked generated, operational or backup material is not allowed: ${trackedGeneratedOrOperational.length} file(s)`);
 }
 
-const trackedDebtZero = trackedFiles.filter((file) => /^site\/assets\/products-showcase\/debtzero-showcase\.(png|webp)$/i.test(file));
-if (trackedDebtZero.length) {
-  fail(`tracked DebtZero showcase assets are not allowed: ${trackedDebtZero.join(", ")}`);
+const trackedPrivateProductShowcase = trackedFiles.filter((file) => file.startsWith("site/assets/products-showcase/"));
+if (trackedPrivateProductShowcase.length) {
+  fail(`tracked private product showcase assets are not allowed: ${trackedPrivateProductShowcase.length} file(s)`);
 }
 
 const secretPatterns = [

@@ -52,14 +52,14 @@ function renderFooter(prefix) {
       <div class="footer-brand">
         <strong>${content.brand.legalName}</strong>
         <p>${content.brand.positioning}</p>
-        <p>Operación digital con alcance internacional.</p>
+        <p>Operaci&oacute;n digital con alcance internacional.</p>
       </div>
-      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Empresa</a><a href="${relativeHref("/process/", prefix)}">Método</a><a href="${relativeHref("/case-studies/", prefix)}">Casos</a></div>
-      <div><strong>Productos</strong><a href="${relativeHref("/products/cleanloop/", prefix)}">CleanLoop</a><a href="${relativeHref("/products/soc/", prefix)}">SOC</a><a href="${relativeHref("/products/brokercontrol/", prefix)}">BrokerControl</a></div>
-      <div><strong>Información</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">Términos</a></div>
+      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Empresa</a><a href="${relativeHref("/process/", prefix)}">M&eacute;todo</a><a href="${relativeHref("/case-studies/", prefix)}">Casos autorizados</a></div>
+      <div><strong>Soluciones</strong><a href="${relativeHref("/solutions/", prefix)}">Software operativo</a><a href="${relativeHref("/products/", prefix)}">Ecosistema reservado</a><a href="${relativeHref("/developers/", prefix)}">Ingenier&iacute;a</a></div>
+      <div><strong>Informaci&oacute;n</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></div>
       <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
     </div>
-    <div class="container footer-bottom"><span>&copy; 2026 ${content.brand.legalName}. Todos los derechos reservados.</span><span><a href="${relativeHref("/documents/", prefix)}">Documentos</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">Términos</a></span></div>
+    <div class="container footer-bottom"><span>&copy; 2026 ${content.brand.legalName}. Todos los derechos reservados.</span><span><a href="${relativeHref("/documents/", prefix)}">Documentos</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></span></div>
   </footer>`;
 }
 
@@ -125,54 +125,28 @@ function sectionHead(kicker, title, text = "") {
   return `<div class="section-head"><p class="kicker">${kicker}</p><h2>${title}</h2>${text ? `<p>${text}</p>` : ""}</div>`;
 }
 
-const productImageDimensions = {
-  "cleanloop": { width: 1672, height: 941 },
-  "soc": { width: 1600, height: 900 },
-  "brokercontrol": { width: 1672, height: 941 },
-  "creditpilot": { width: 1672, height: 941 },
-};
+const reservedCapabilities = [
+  { label: "01", title: "Operaciones conectadas", text: "Flujos de trabajo, estados, responsables y seguimiento en una misma base operativa." },
+  { label: "02", title: "Visibilidad ejecutiva", text: "Indicadores y lecturas claras para decidir sin depender de reportes dispersos." },
+  { label: "03", title: "Automatizaci&oacute;n por fases", text: "Reglas, alertas e integraciones que reducen trabajo repetitivo sin exponer detalles internos." },
+  { label: "04", title: "Productos reservados", text: "L&iacute;neas propias que se publicar&aacute;n cuando est&eacute;n listas legal, comercial y operativamente." },
+];
 
-function productImage(product, prefix, className = "", loading = "lazy") {
-  const dimensions = productImageDimensions[product.slug] ?? { width: 1672, height: 941 };
-  const large = relativeHref(product.image, prefix);
-  const small = large.replace(/\.webp$/, "-840.webp");
-  const attrs = [
-    `src="${large}"`,
-    `srcset="${small} 840w, ${large} ${dimensions.width}w"`,
-    `sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 1100px) 48vw, 560px"`,
-    `alt="Vista de ${product.name}"`,
-    `width="${dimensions.width}"`,
-    `height="${dimensions.height}"`,
-    loading === "eager" ? `fetchpriority="high"` : `loading="${loading}"`,
-  ];
-  return `<img${className ? ` class="${className}"` : ""} ${attrs.join(" ")} />`;
-}
-
-function productBySlug(slug) {
-  return content.products.find((product) => product.slug === slug);
-}
-
-function productCards(prefix, limit = content.products.length) {
-  return content.products.slice(0, limit).map((product) => `<article class="product-card">
-    <div class="product-card-head"><div><small>${product.market}</small><h3>${product.name}</h3></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div>
-    <span class="nexus-chip">Powered by Nexus</span><strong>${product.title}</strong><p>${product.summary}</p>
-    <div class="card-media">${productImage(product, prefix)}</div>
-    ${product.path !== "/products/" ? `<a class="card-link" href="${relativeHref(product.path, prefix)}">Ver producto</a>` : `<span class="availability-note">Disponibilidad futura</span>`}
-  </article>`).join("");
-}
-
-function relatedProductCards(prefix, slugs) {
-  return slugs.map((slug) => productBySlug(slug)).filter(Boolean).map((product) => `<article class="related-product-card">
-    <div class="related-product-copy"><div class="product-card-head"><div><small>${product.market}</small><h3>${product.name}</h3></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div><span class="nexus-chip">Powered by Nexus</span><strong>${product.title}</strong><p>${product.summary}</p><a class="card-link" href="${relativeHref(product.path, prefix)}">Ver producto</a></div>
-    <figure class="related-product-media">${productImage(product, prefix)}</figure>
-  </article>`).join("");
+function reservedCapabilityCards() {
+  return reservedCapabilities.map((item) => `<article><span>${item.label}</span><strong>${item.title}</strong><p>${item.text}</p></article>`).join("");
 }
 
 function homeProductHighlight(prefix) {
-  const product = productBySlug("cleanloop");
-  return `<div class="home-product-highlight"><div class="home-product-copy"><p class="kicker">Producto destacado</p><div class="product-card-head"><div><small>${product.market}</small><h2>${product.name} convierte una operaci&oacute;n diaria en un flujo visible</h2></div><span class="status-badge status-${product.status}">${product.statusLabel}</span></div><p>${product.summary}</p><div class="actions"><a class="button primary" href="${relativeHref(product.path, prefix)}">Ver CleanLoop</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver cat&aacute;logo</a></div></div><figure class="home-product-media">${productImage(product, prefix)}</figure></div>`;
+  return `<div class="home-product-highlight reserved-product-highlight"><div class="home-product-copy"><p class="kicker">Ecosistema privado</p><h2>Productos propios en desarrollo reservado</h2><p>YC Systems est&aacute; construyendo software propio para operaciones reales. Por estrategia, los nombres, pantallas y detalles internos se mantienen privados hasta su lanzamiento.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="button secondary" href="${relativeHref("/solutions/", prefix)}">Ver soluciones</a></div></div><div class="reserved-system-card" aria-label="Capacidades privadas de producto"><span>Nexus</span><strong>Operating intelligence layer</strong><small>Diagn&oacute;stico &middot; arquitectura &middot; ejecuci&oacute;n</small><div><em>OS</em><em>CRM</em><em>BI</em><em>AI</em></div></div></div>`;
 }
 
+function reservedProductsSection(prefix) {
+  return `<section class="section"><div class="container">${sectionHead("Ecosistema reservado", "Productos propios sin exposici&oacute;n p&uacute;blica prematura", "Estamos construyendo l&iacute;neas de software operativo para mercados concretos. Por protecci&oacute;n legal y estrategia comercial, los nombres, interfaces y detalles se publican solo cuando cada producto est&eacute; listo para salir al mercado.")}<div class="value-grid reserved-capability-grid">${reservedCapabilityCards()}</div><div class="conversion-panel"><p><strong>Si tu empresa necesita algo similar</strong><span>Podemos evaluar tu operaci&oacute;n y definir una primera fase sin revelar informaci&oacute;n sensible de productos internos.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></div></section>`;
+}
+
+function privateAcceleratorsSection(prefix) {
+  return `<section class="section section-alt"><div class="container">${sectionHead("Aceleradores internos", "Capacidades privadas aplicadas al problema del cliente", "Cuando una soluci&oacute;n necesita componentes propios, los evaluamos de forma privada durante el diagn&oacute;stico. No publicamos nombres ni pantallas hasta que est&eacute;n listos para salir al mercado.")}<div class="value-grid reserved-capability-grid">${reservedCapabilityCards()}</div><div class="section-action"><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver enfoque de producto</a></div></div></section>`;
+}
 
 function caseCards(prefix, limit = content.cases.length, offset = 0) {
   return content.cases.slice(offset, offset + limit).map((item) => `<article class="case-card">
@@ -200,9 +174,9 @@ renderPage({
 
 renderPage({
   route: "/products/",
-  title: "Productos | YC Systems",
-  description: "Conoce los productos de software operativo de YC Systems y su estado de disponibilidad.",
-  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Productos YC Systems</p><h1>Software propio para operaciones que necesitan control</h1><p class="lead">Plataformas enfocadas en problemas concretos, con una disponibilidad pública y verificable.</p></div><div class="hero-status-guide" aria-label="Estados de producto"><span><b>Acceso temprano</b> Operadores seleccionados</span><span><b>Piloto seleccionado</b> Implementación guiada</span><span><b>Prototipo</b> Validación funcional</span><span><b>En desarrollo</b> Línea futura</span></div></div></section><section class="section"><div class="container"><div class="product-grid product-grid-full">${productCards(prefix)}</div></div></section>${finalCta(prefix)}`,
+  title: "Ecosistema reservado | YC Systems",
+  description: "YC Systems construye productos propios de software operativo sin exponer nombres, pantallas ni detalles internos antes de su lanzamiento.",
+  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Productos YC Systems</p><h1>Ecosistema propio en desarrollo reservado</h1><p class="lead">La empresa est&aacute; construyendo l&iacute;neas propias de software operativo. Por estrategia legal y comercial, los nombres, interfaces y detalles permanecen privados hasta su lanzamiento.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="button secondary" href="${relativeHref("/solutions/", prefix)}">Ver soluciones</a></div></div><div class="hero-status-guide" aria-label="Principios de exposici&oacute;n"><span><b>Privado por defecto</b> Sin nombres ni pantallas prematuras</span><span><b>Validaci&oacute;n controlada</b> Acceso solo bajo diagn&oacute;stico</span><span><b>Lanzamiento responsable</b> Publicaci&oacute;n cuando est&eacute; listo</span><span><b>Nexus</b> Capa com&uacute;n de claridad operativa</span></div></div></section>${reservedProductsSection(prefix)}${finalCta(prefix)}`,
 });
 
 const solutions = [
@@ -242,7 +216,7 @@ renderPage({
   route: "/solutions/",
   title: "Soluciones | YC Systems",
   description: "Software a medida, CRM, paneles ejecutivos, automatizaci&oacute;n y productos SaaS para operaciones reales.",
-  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versi&oacute;n del sistema que tu operaci&oacute;n necesita</h1><p class="lead">Traducimos un problema de negocio en una soluci&oacute;n clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatizaci&oacute;n</span><span>Indicadores</span><span>Soporte y evoluci&oacute;n</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container">${sectionHead("Problemas que resolvemos", "Soluciones organizadas por intenci&oacute;n de compra", "Cada bloque parte de una fricci&oacute;n operativa concreta y termina en una primera fase construible.")}<div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item.title}</h2><p class="solution-problem"><strong>Problema</strong>${item.problem}</p><p><strong>Resultado</strong>${item.result}</p></article>`).join("")}</div><div class="conversion-panel"><p><strong>&iquest;Tu necesidad cruza varias &aacute;reas?</strong><span>Nexus ayuda a traducir la operaci&oacute;n en una primera fase clara antes de elegir producto o tecnolog&iacute;a.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Productos relacionados", "Productos propios que aceleran operaciones espec&iacute;ficas", "CleanLoop y SOC muestran c&oacute;mo YC Systems convierte problemas reales en software operable. El cat&aacute;logo completo vive en Productos.")}<div class="related-product-grid">${relatedProductCards(prefix, ["cleanloop", "soc"])}</div><div class="section-action"><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver cat&aacute;logo completo</a></div></div></section><section class="section"><div class="container">${sectionHead("Criterio de construcci&oacute;n", "Nexus ordena la conversaci&oacute;n antes de construir", "Antes de elegir tecnolog&iacute;a, definimos usuarios, decisiones, informaci&oacute;n, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la soluci&oacute;n.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validaci&oacute;n y acompa&ntilde;amiento despu&eacute;s del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Construimos la primera versi&oacute;n del sistema que tu operaci&oacute;n necesita</h1><p class="lead">Traducimos un problema de negocio en una soluci&oacute;n clara, medible y preparada para crecer por fases.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver casos</a></div></div><div class="capability-map"><span>Usuarios y roles</span><span>Datos operativos</span><span>Flujos y estados</span><span>Automatizaci&oacute;n</span><span>Indicadores</span><span>Soporte y evoluci&oacute;n</span><strong>Una arquitectura compartida</strong></div></div></section><section class="section"><div class="container">${sectionHead("Problemas que resolvemos", "Soluciones organizadas por intenci&oacute;n de compra", "Cada bloque parte de una fricci&oacute;n operativa concreta y termina en una primera fase construible.")}<div class="solution-grid">${solutions.map((item, index) => `<article class="solution-card"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item.title}</h2><p class="solution-problem"><strong>Problema</strong>${item.problem}</p><p><strong>Resultado</strong>${item.result}</p></article>`).join("")}</div><div class="conversion-panel"><p><strong>&iquest;Tu necesidad cruza varias &aacute;reas?</strong><span>Nexus ayuda a traducir la operaci&oacute;n en una primera fase clara antes de elegir producto o tecnolog&iacute;a.</span></p><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></div></section>${privateAcceleratorsSection(prefix)}<section class="section"><div class="container">${sectionHead("Criterio de construcci&oacute;n", "Nexus ordena la conversaci&oacute;n antes de construir", "Antes de elegir tecnolog&iacute;a, definimos usuarios, decisiones, informaci&oacute;n, riesgos y resultado esperado.")}<div class="value-grid"><article><strong>Alcance claro</strong><p>Una primera fase que el equipo puede entender, usar y medir.</p></article><article><strong>Arquitectura mantenible</strong><p>Una base preparada para cambios sin rehacer toda la soluci&oacute;n.</p></article><article><strong>Entrega responsable</strong><p>Versiones, validaci&oacute;n y acompa&ntilde;amiento despu&eacute;s del lanzamiento.</p></article></div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({
@@ -354,51 +328,6 @@ renderPage({
   body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">Ingeniería de producto</p><h1>Software mantenible, medible y preparado para evolucionar</h1><p class="lead">Nuestra práctica conecta arquitectura, experiencia, datos, automatización y operación sin exponer detalles sensibles de implementación.</p></div></section><section class="section"><div class="container value-grid"><article><strong>Arquitectura modular</strong><p>Responsabilidades claras y cambios con impacto controlado.</p></article><article><strong>Calidad continua</strong><p>Validación funcional, visual y técnica antes de publicar.</p></article><article><strong>Accesibilidad</strong><p>Interfaces utilizables con teclado, contraste y estructura semántica.</p></article><article><strong>Observabilidad</strong><p>Indicadores y señales operativas para detectar problemas.</p></article></div></section>${finalCta(prefix)}`,
 });
 
-const productDetails = {
-  cleanloop: {
-    kicker: "Acceso temprano",
-    title: "CleanLoop organiza la operación completa de una lavandería",
-    lead: "Pedidos, clientes, recogidas, entregas, rutas y pagos conectados en una plataforma diseñada para el trabajo diario.",
-    features: [["Pedidos", "Estados, servicios, prendas, precios y pagos"], ["Rutas", "Recogidas, entregas y asignación operativa"], ["Clientes", "Direcciones, historial y preferencias"], ["Control", "Vista administrativa de actividad y prioridades"]],
-    evidenceImage: "/assets/screenshots/cleanloop-role-demo.webp",
-    evidenceSize: [1400, 943],
-    evidenceTitle: "Una operación visible desde el pedido hasta la entrega",
-    evidenceText: "La vista combina actividad diaria, responsables y estados para que el equipo pueda decidir sin depender de conversaciones dispersas.",
-  },
-  soc: {
-    kicker: "Prototipo",
-    title: "SOC convierte actividad comercial en visibilidad ejecutiva",
-    lead: "Una línea de producto para equipos que necesitan reunir proceso comercial, operación, indicadores y seguimiento dentro de una misma lectura.",
-    features: [["Proceso comercial", "Prospectos, etapas, tareas y próximos pasos"], ["Actividad", "Movimientos del equipo y prioridades"], ["Indicadores", "Lectura ejecutiva de resultados"], ["Operación", "Roles, estados y seguimiento centralizado"]],
-    evidenceImage: "/assets/screenshots/soc-dashboard.webp",
-    evidenceSize: [1400, 984],
-    evidenceTitle: "Lectura ejecutiva sin perder el detalle operativo",
-    evidenceText: "SOC reúne indicadores, actividad y prioridades para convertir el seguimiento comercial en decisiones visibles.",
-  },
-  brokercontrol: {
-    kicker: "Piloto seleccionado",
-    title: "BrokerControl ordena la operación comercial inmobiliaria",
-    lead: "Un CRM operativo para prospectos, propiedades, reservas, documentos, agenda y comisiones de equipos inmobiliarios.",
-    features: [["Prospectos", "Seguimiento claro desde el primer contacto"], ["Propiedades", "Inventario, disponibilidad y relación comercial"], ["Documentos", "Información importante dentro del flujo"], ["Comisiones", "Visibilidad de cierres, asesores y pagos"]],
-    evidenceImage: "/assets/screenshots/brokercontrol-dashboard.webp",
-    evidenceSize: [1400, 1081],
-    evidenceTitle: "El proceso inmobiliario dentro de una sola vista",
-    evidenceText: "BrokerControl relaciona prospectos, propiedades, documentos y comisiones para mantener la operación comercial bajo control.",
-  },
-};
-
-for (const product of content.products.filter((item) => productDetails[item.slug])) {
-  const detail = productDetails[product.slug];
-  renderPage({
-    route: product.path,
-    title: `${product.name} | YC Systems`,
-    description: product.summary,
-    noindex: true,
-    bodyClass: "product-page",
-    ogImage: `https://ycsystems.io${product.image}`,
-    body: (prefix) => `<section class="product-hero"><div class="container product-hero-grid"><div><p class="kicker">${detail.kicker}</p><h1>${detail.title}</h1><p class="lead">${detail.lead}</p><div class="actions"><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a><a class="button secondary" href="${relativeHref("/products/", prefix)}">Ver productos</a></div></div><div class="product-visual">${productImage(product, prefix, "", "eager")}<span class="status-badge status-${product.status}">${product.statusLabel}</span></div></div></section><section class="section"><div class="container">${sectionHead("Capacidades", `Una vista operativa diseñada para ${product.market.toLowerCase()}`)}<div class="value-grid">${detail.features.map((feature) => `<article><strong>${feature[0]}</strong><p>${feature[1]}</p></article>`).join("")}</div></div></section><section class="section section-alt product-evidence"><div class="container product-evidence-grid"><figure><img src="${relativeHref(detail.evidenceImage, prefix)}" alt="Evidencia visual de ${product.name}" width="${detail.evidenceSize[0]}" height="${detail.evidenceSize[1]}" loading="lazy" /></figure><div>${sectionHead("Evidencia de producto", detail.evidenceTitle, detail.evidenceText)}<a class="text-link" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Evaluar acceso</a></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Modalidad", "Implementación guiada con alcance definido", "Revisamos ajuste, prioridades y condiciones antes de confirmar acceso o piloto.")}</div><a class="button primary" href="${relativeHref(`/contact/?product=${encodeURIComponent(product.name)}`, prefix)}">Solicitar acceso</a></div></section>`,
-  });
-}
 
 const intentPages = [
   ["/custom-software/", "Software a medida", "Sistemas diseñados alrededor de una operación real"],

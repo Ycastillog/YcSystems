@@ -110,16 +110,15 @@ Use a local backup outside the project when old material must be preserved.
 /terms/
 ```
 
-Controlled-access product and client proof routes are intentionally excluded from the public sitemap while product positioning is reviewed:
+Client proof routes can remain excluded from the public sitemap when they are approved for limited sharing:
 
 ```text
-/products/cleanloop/
-/products/soc/
-/products/brokercontrol/
 /brands/ghostwear/
 ```
 
-Compatibility routes such as `/projects/`, `/about/`, `/brands/`, `/services/`, `/cleanloop/`, `/soc/`, `/brokercontrol/` and `/ghostwear/` are kept only as legacy redirects.
+Unreleased product names, screenshots, routes, launch plans and roadmaps must stay outside the public repository until they are approved for release.
+
+Compatibility routes such as `/projects/`, `/about/`, `/brands/`, `/services/` and `/ghostwear/` are kept only as legacy redirects.
 
 ## Quality Gates
 

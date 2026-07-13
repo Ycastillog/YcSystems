@@ -12,7 +12,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 
 - `site/index.html`: home page.
 - `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
-- `site/assets/`: public brand, product and preview assets that are safe to publish with the website.
+- `site/assets/`: public brand, client-proof and preview assets that are safe to publish with the website.
 - `site/script.js`: public website behavior.
 - `site/styles.css`: CSS manifest only.
 - `site/styles/`: active modular CSS system.
@@ -29,14 +29,11 @@ Legacy route folders remain only when they are required for redirects or backwar
 
 - `about/`
 - `brands/`
-- `brokercontrol/`
-- `cleanloop/`
 - `ghostwear/`
 - `projects/`
 - `services/`
-- `soc/`
 
-These folders must not become new design surfaces. New product and client pages belong under canonical routes such as `products/` or `case-studies/`.
+These folders must not become new design surfaces. Client pages belong under canonical routes such as `case-studies/`. Product names, screenshots, prototypes, roadmaps and launch plans stay out of the public repository until they are approved for release.
 
 ## Internal Or Generated Material
 
@@ -46,6 +43,7 @@ The following should not become public website copy by accident:
 - `output/`, `dist/`, `tmp/`, `.cache/`.
 - `content/`, social publishing queues, generated carousels, reels and campaign working files.
 - private automations, unpublished scripts or local experiments.
+- private product names, product screenshots, launch plans, roadmaps or unreleased customer-facing concepts.
 - legal ownership details, EIN documents, operating agreements or personal addresses.
 
 Use `.env.example` for variable names only. Never commit real values.

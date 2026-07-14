@@ -2,7 +2,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matc
 
 function setNexusState(element, state, message) {
   if (!element) return;
-  element.dataset.nexusState = reducedMotion ? "idle" : state;
+  element.dataset.nexusState = state;
   const messageTarget = element.querySelector("[data-nexus-message]");
   if (messageTarget && message) messageTarget.textContent = message;
 }
@@ -14,6 +14,10 @@ function setupMethodExplorer() {
   const steps = JSON.parse(explorer.querySelector("[data-nexus-steps]")?.textContent || "[]");
   const avatar = explorer.querySelector("[data-nexus]");
   const buttons = [...explorer.querySelectorAll("[data-nexus-step]")];
+  const progress = explorer.querySelector("[data-nexus-progress]");
+  const prev = explorer.querySelector("[data-nexus-prev]");
+  const next = explorer.querySelector("[data-nexus-next]");
+  let activeIndex = 0;
   const detail = {
     state: explorer.querySelector("[data-nexus-detail-state]"),
     title: explorer.querySelector("[data-nexus-detail-title]"),
@@ -25,6 +29,7 @@ function setupMethodExplorer() {
   function activateStep(index) {
     const step = steps[index];
     if (!step) return;
+    activeIndex = index;
 
     buttons.forEach((button, buttonIndex) => {
       const selected = buttonIndex === index;
@@ -38,6 +43,7 @@ function setupMethodExplorer() {
     detail.summary.textContent = step.summary;
     detail.deliverable.textContent = step.deliverable;
     detail.risk.textContent = step.risk;
+    if (progress) progress.textContent = `Fase ${index + 1} de ${steps.length}`;
   }
 
   buttons.forEach((button, index) => {
@@ -51,6 +57,72 @@ function setupMethodExplorer() {
       activateStep(nextIndex);
     });
   });
+
+  prev?.addEventListener("click", () => {
+    const nextIndex = (activeIndex - 1 + buttons.length) % buttons.length;
+    buttons[nextIndex].focus();
+    activateStep(nextIndex);
+  });
+
+  next?.addEventListener("click", () => {
+    const nextIndex = (activeIndex + 1) % buttons.length;
+    buttons[nextIndex].focus();
+    activateStep(nextIndex);
+  });
+}
+
+function setupNexusGuides() {
+  const triggers = [...document.querySelectorAll("[data-nexus-trigger]")];
+  if (!triggers.length) return;
+
+  function guideFor(trigger) {
+    const scope = trigger.closest("[data-nexus-scope]") || trigger.closest("section") || document;
+    return scope.querySelector?.("[data-nexus-guide]") || document.querySelector("[data-nexus-guide]");
+  }
+
+  function activate(trigger) {
+    const guide = guideFor(trigger);
+    const message = trigger.dataset.nexusMessage;
+    const state = trigger.dataset.nexusState || "connect";
+    if (!guide || !message) return;
+
+    const avatar = guide.querySelector("[data-nexus]");
+    const text = guide.querySelector("[data-nexus-guide-text]");
+    setNexusState(avatar, state, message);
+    if (text) text.textContent = message;
+
+    triggers.forEach((item) => {
+      const sameGuide = guideFor(item) === guide;
+      item.classList.toggle("is-active", sameGuide && item === trigger);
+    });
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("mouseenter", () => activate(trigger));
+    trigger.addEventListener("focus", () => activate(trigger));
+    trigger.addEventListener("click", () => activate(trigger));
+  });
+}
+
+function setupCardLinks() {
+  document.querySelectorAll("[data-card-link]").forEach((card) => {
+    const link = card.querySelector("a[href]");
+    if (!link) return;
+    if (!card.hasAttribute("tabindex")) card.tabIndex = 0;
+    card.setAttribute("role", "link");
+
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      link.click();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (!["Enter", " "].includes(event.key)) return;
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      event.preventDefault();
+      link.click();
+    });
+  });
 }
 
 function setupBriefCompanion() {
@@ -61,11 +133,12 @@ function setupBriefCompanion() {
   const avatar = companion.querySelector("[data-nexus]");
   const text = companion.querySelector("[data-nexus-form-text]");
   const messages = {
-    observe: "Primero entendamos qué proceso necesita más control.",
-    connect: "Ahora conectemos el problema con el contexto de tu operación.",
-    sending: "Estamos organizando la información.",
-    success: "Diagnóstico recibido. El siguiente paso es revisar el alcance inicial.",
-    caution: "Hay un dato o conexión que debemos revisar.",
+    observe: "Primero entendamos qu\u00e9 proceso necesita m\u00e1s control.",
+    connect: "Ahora conectemos el problema con el contexto de tu operaci\u00f3n.",
+    sending: "Estamos organizando la informaci\u00f3n.",
+    success: "Diagn\u00f3stico recibido. El siguiente paso es revisar el alcance inicial.",
+    caution: "Hay un dato que debemos revisar.",
+    error: "Hay una conexi\u00f3n que debemos revisar.",
   };
 
   function update(state) {
@@ -103,5 +176,7 @@ function setupVisibilityPause() {
 }
 
 setupMethodExplorer();
+setupNexusGuides();
+setupCardLinks();
 setupBriefCompanion();
 setupVisibilityPause();

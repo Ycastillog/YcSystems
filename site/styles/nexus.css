@@ -107,6 +107,10 @@
   --nexus-accent: #ffd176;
 }
 
+.nexus-avatar[data-nexus-state="error"] {
+  --nexus-accent: var(--color-error-500);
+}
+
 .nexus-avatar[data-nexus-paused] img,
 .nexus-avatar[data-nexus-paused] .nexus-orbit,
 .nexus-avatar[data-nexus-paused]::after {
@@ -147,6 +151,42 @@
   margin: 0;
   color: var(--color-text-secondary);
   font-size: 0.9rem;
+}
+
+.nexus-form-companion.compact {
+  grid-template-columns: 82px minmax(0, 1fr);
+  align-items: center;
+  margin: 0 0 18px;
+}
+
+.nexus-form-companion.compact .nexus-form-avatar {
+  min-height: 82px;
+  max-width: 82px;
+  border-radius: var(--radius-sm);
+}
+
+.nexus-form-companion.compact .nexus-form-avatar img {
+  min-height: 82px;
+}
+
+.nexus-form-companion.compact .nexus-form-avatar figcaption,
+.nexus-form-companion.compact .nexus-form-avatar .nexus-orbit {
+  display: none;
+}
+
+.nexus-guide-avatar {
+  min-height: 96px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+}
+
+.nexus-guide-avatar img {
+  min-height: 96px;
+}
+
+.nexus-guide-avatar figcaption,
+.nexus-guide-avatar .nexus-orbit {
+  display: none;
 }
 
 .nexus-method-section {
@@ -251,6 +291,21 @@
   background: rgba(11, 20, 38, 0.78);
 }
 
+.nexus-method-progress {
+  width: fit-content;
+  margin: 0 0 12px;
+  border: 1px solid rgba(50, 213, 131, 0.42);
+  border-radius: 999px;
+  padding: 6px 10px;
+  color: var(--color-success-500);
+  background: rgba(50, 213, 131, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .nexus-method-detail h2 {
   margin-bottom: 12px;
   font-size: 2rem;
@@ -280,6 +335,24 @@
 .nexus-method-detail dd {
   margin: 0;
   color: var(--color-text-secondary);
+}
+
+.nexus-method-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.nexus-method-controls .button {
+  min-height: 42px;
+}
+
+html.nexus-static-fallback .nexus-avatar img,
+html.nexus-static-fallback .nexus-orbit,
+html.nexus-static-fallback .nexus-avatar::after {
+  animation: none !important;
+  transform: none !important;
 }
 
 @keyframes nexus-idle {

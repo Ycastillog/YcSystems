@@ -133,16 +133,32 @@
   .home-page .identity-message > p:not(.identity-label),
   .home-page .identity-message ul { display: none; }
   .home-page .identity-showcase .nexus-home {
-    min-height: 138px;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
     border-top: 1px solid rgba(51, 200, 255, 0.24);
     border-left: 0;
+    padding: 14px;
   }
   .home-page .identity-showcase .nexus-home img {
-    max-height: 148px;
-    min-height: 138px;
+    width: 76px;
+    height: 76px;
+    min-height: 76px;
+    border: 1px solid rgba(51, 200, 255, 0.24);
+    border-radius: var(--radius-sm);
     object-position: center 18%;
   }
-  .home-page .identity-showcase .nexus-home figcaption { display: none; }
+  .home-page .identity-showcase .nexus-home .nexus-orbit { display: none; }
+  .home-page .identity-showcase .nexus-home figcaption {
+    position: static;
+    display: grid;
+    border: 0;
+    border-left: 3px solid var(--nexus-accent);
+    padding: 4px 0 4px 12px;
+    background: transparent;
+  }
   .identity-nexus { min-height: 280px; order: -1; }
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
@@ -193,6 +209,12 @@
   .architecture { padding: 18px; }
   .architecture-grid { grid-template-columns: 1fr; }
   .brief-form { padding: 20px; }
+  .nexus-form-companion.compact { grid-template-columns: 64px minmax(0, 1fr); }
+  .nexus-form-companion.compact .nexus-form-avatar,
+  .nexus-form-companion.compact .nexus-form-avatar img { min-height: 64px; max-width: 64px; }
+  .nexus-guide { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; padding: 12px; }
+  .nexus-guide-avatar,
+  .nexus-guide-avatar img { min-height: 72px; }
   .form-actions { display: grid; }
   .conversion-panel { align-items: stretch; flex-direction: column; }
   .solution-grid { gap: 14px; }

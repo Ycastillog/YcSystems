@@ -4,7 +4,7 @@ const navPanel = document.querySelector("[data-nav-panel]");
 function setNavigation(open) {
   if (!navToggle || !navPanel) return;
   navToggle.setAttribute("aria-expanded", String(open));
-  navToggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+  navToggle.setAttribute("aria-label", open ? "Cerrar men\u00fa" : "Abrir men\u00fa");
   navPanel.classList.toggle("is-open", open);
   document.body.classList.toggle("nav-open", open);
 }
@@ -98,16 +98,23 @@ if (briefForm) {
       briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "success" } }));
     } catch {
       briefStatus.dataset.state = "error";
-      briefStatus.textContent = "No pudimos enviar la solicitud. Revisa tu conexión e inténtalo nuevamente; tus datos siguen en el formulario.";
-      briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "caution" } }));
+      briefStatus.textContent = "No pudimos enviar la solicitud. Revisa tu conexi\u00f3n e int\u00e9ntalo nuevamente; tus datos siguen en el formulario.";
+      briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "error" } }));
     } finally {
       briefSending = false;
       briefSubmit.disabled = false;
-      briefSubmit.textContent = "Enviar diagnóstico";
+      briefSubmit.textContent = "Enviar diagn\u00f3stico";
     }
   });
 }
 
 if (document.querySelector("[data-nexus]")) {
-  import("./nexus-controller.js").catch(() => {});
+  import("./nexus-controller.js").catch((error) => {
+    console.error("[Nexus] No fue posible iniciar el controlador", error);
+    document.documentElement.classList.add("nexus-static-fallback");
+    window.reportClientError?.({
+      component: "nexus-controller",
+      message: error?.message || "unknown",
+    });
+  });
 }

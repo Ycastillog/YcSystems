@@ -17,9 +17,20 @@
 .button.primary { border-color: transparent; background: var(--gradient-action); color: var(--color-text-inverse); box-shadow: var(--shadow-action); }
 .button.primary:hover { background: var(--gradient-action-hover); box-shadow: 0 20px 48px rgba(50, 213, 131, 0.26); }
 .button.secondary { background: rgba(17, 31, 56, 0.58); }
+.button:disabled { cursor: not-allowed; opacity: 0.62; transform: none; }
 .nav-cta { min-height: 42px; border-color: rgba(51, 200, 255, 0.52); font-size: 0.88rem; }
 .text-link, .card-link { display: inline-flex; align-items: center; gap: 8px; color: var(--color-brand-400); font-weight: 700; }
-.text-link::after, .card-link::after { content: "?"; }
+.text-link::after,
+.card-link::after,
+.document-card::after,
+.nexus-action::after {
+  content: "";
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m13 6 6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 
 .choice, .product-card, .case-card, .solution-card, .value-grid article, .document-card, .company-scope {
   border: 1px solid var(--color-border-600);
@@ -32,6 +43,20 @@
 .choice p { margin-bottom: 18px; }
 .choice small { margin-top: auto; color: var(--color-brand-400); font-weight: 700; }
 .choice:hover, .product-card:hover, .case-card:hover, .document-card:hover { border-color: rgba(51, 200, 255, 0.64); background: rgba(17, 31, 56, 0.82); }
+.choice:focus-visible,
+.product-card:focus-visible,
+.case-card:focus-visible,
+.document-card:focus-visible,
+.solution-card:focus-visible,
+[data-nexus-trigger]:focus-visible,
+.button:focus-visible,
+.nav-cta:focus-visible,
+.text-link:focus-visible,
+.card-link:focus-visible {
+  outline: 3px solid var(--color-brand-400);
+  outline-offset: 4px;
+}
+.case-card[role="link"] { cursor: pointer; }
 
 .product-card, .case-card { min-width: 0; display: flex; flex-direction: column; padding: 18px; }
 .card-media { width: 100%; aspect-ratio: 16 / 10; margin: 18px 0; overflow: hidden; border-radius: var(--radius-sm); background: #e9eff7; }
@@ -59,6 +84,13 @@
 .status-in-development { border-color: rgba(245, 185, 66, 0.5); color: #ffd176; }
 
 .solution-card { min-height: 0; padding: 24px; }
+.solution-card[data-nexus-trigger] { cursor: pointer; transition: border-color var(--transition), background-color var(--transition), box-shadow var(--transition), transform var(--transition); }
+.solution-card[data-nexus-trigger]:hover,
+.solution-card[data-nexus-trigger].is-active,
+[data-nexus-trigger].is-active {
+  border-color: rgba(50, 213, 131, 0.62);
+  box-shadow: 0 18px 44px rgba(50, 213, 131, 0.08);
+}
 .solution-card h2 { margin-top: 18px; font-size: 1.38rem; }
 .solution-card p { font-size: 0.93rem; }
 .solution-card p strong { display: block; margin-bottom: 5px; color: var(--color-text-primary); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -66,7 +98,8 @@
 .solution-card .text-link { margin-top: 16px; }
 .value-grid article { min-height: 180px; padding: 24px; }
 .value-grid article > strong { display: block; margin-bottom: 12px; font-size: 1.15rem; }
-.document-card { min-height: 190px; padding: 28px; }
+.document-card { position: relative; min-height: 190px; display: grid; align-content: start; padding: 28px 56px 28px 28px; }
+.document-card::after { position: absolute; right: 24px; bottom: 24px; color: var(--color-brand-400); }
 .document-card h2 { margin: 20px 0 10px; font-size: 1.6rem; }
 
 .brief-form { border: 1px solid var(--color-border-600); border-radius: var(--radius-md); padding: 30px; background: var(--color-surface-800); box-shadow: var(--shadow-panel); }
@@ -80,7 +113,7 @@
 .consent-field input { width: 20px; height: 20px; margin-top: 2px; }
 .consent-field a { color: var(--color-brand-400); text-decoration: underline; }
 .form-status { min-height: 24px; margin: 16px 0 0; font-size: 0.9rem; }
-.form-status[data-state="error"] { color: #ffb4b4; }
+.form-status[data-state="error"] { color: var(--color-error-500); }
 .form-status[data-state="sending"] { color: var(--color-brand-400); }
 .form-success { border: 1px solid rgba(50, 213, 131, 0.45); border-radius: var(--radius-sm); padding: 20px; background: rgba(50, 213, 131, 0.08); }
 .form-success strong { display: block; margin-bottom: 6px; }

@@ -41,6 +41,9 @@
   .contact-grid,
   .interior-hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
+  .operational-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ecosystem-preview-grid { grid-template-columns: 1fr; }
+  .company-human-panel { grid-template-columns: 1fr; }
   .home-product-highlight,
   .related-product-card,
   .nexus-panel { grid-template-columns: 1fr; }
@@ -77,6 +80,8 @@
   .case-feature-list .case-card .card-media { height: auto; min-height: 0; }
   .case-feature-list .case-card-copy { padding: 20px 10px 8px; }
   .case-archive-grid { grid-template-columns: 1fr; }
+  .entry-route-grid,
+  .solution-detail-grid { grid-template-columns: 1fr; }
   .product-evidence-grid { grid-template-columns: 1fr; gap: 28px; }
   .nexus-strip { grid-template-columns: 130px minmax(0, 1fr); gap: 24px; }
   .nexus-strip > img { width: 130px; height: 130px; }
@@ -99,10 +104,10 @@
   .page-hero,
   .compact-hero,
   .product-hero { padding-block: 34px; }
-  .home-page .hero { padding-block: 24px 28px; }
-  .home-page .hero h1 { font-size: 1.86rem; line-height: 1.04; }
-  .home-page .hero .kicker { margin-bottom: 12px; }
-  .home-page .hero .lead { margin-bottom: 14px; }
+  .home-page .hero { padding-block: 20px 24px; }
+  .home-page .hero h1 { font-size: 1.78rem; line-height: 1.04; }
+  .home-page .hero .kicker { margin-bottom: 10px; }
+  .home-page .hero .lead { margin-bottom: 12px; }
   .home-page .hero .actions {
     width: 100%;
     max-width: 100%;
@@ -110,9 +115,9 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 14px;
   }
-  .home-page .hero .button { width: 100%; min-width: 0; max-width: 100%; min-height: 42px; padding-inline: 10px; font-size: 0.82rem; }
+  .home-page .hero .button { width: 100%; min-width: 0; max-width: 100%; min-height: 44px; padding-inline: 10px; font-size: 0.82rem; }
   .home-page .hero-copy,
   .home-page .hero-copy p,
   .home-page .trust-line { max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
@@ -121,13 +126,18 @@
   .company-hero,
   .cases-hero { padding-block: 30px; }
   .solutions-hero { padding-block: 24px; }
-  .hero-grid { gap: 22px; }
+  .hero-grid { gap: 18px; }
+  .home-hero-visual { min-height: 330px; }
+  .home-hero-visual img { min-height: 330px; object-position: center 12%; }
+  .home-hero-visual figcaption { right: 12px; bottom: 12px; left: 12px; padding: 12px; }
+  .home-hero-visual figcaption strong { font-size: 0.92rem; }
+  .home-hero-chip { top: 12px; left: 12px; }
   .solutions-hero .interior-hero-grid,
   .products-hero .interior-hero-grid,
   .company-hero .interior-hero-grid,
   .cases-hero .interior-hero-grid { gap: 18px; }
   .identity-showcase { min-height: 0; grid-template-columns: 1fr; }
-  .identity-message { padding: 22px; }
+  .identity-message { padding: 20px; }
   .identity-message h2 { font-size: 1.55rem; }
   .home-page .identity-showcase .identity-message { display: none; }
   .home-page .identity-message > p:not(.identity-label),
@@ -137,15 +147,15 @@
     display: grid;
     grid-template-columns: 76px minmax(0, 1fr);
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     border-top: 1px solid rgba(51, 200, 255, 0.24);
     border-left: 0;
-    padding: 14px;
+    padding: 12px;
   }
   .home-page .identity-showcase .nexus-home img {
-    width: 76px;
-    height: 76px;
-    min-height: 76px;
+    width: 72px;
+    height: 72px;
+    min-height: 72px;
     border: 1px solid rgba(51, 200, 255, 0.24);
     border-radius: var(--radius-sm);
     object-position: center 18%;
@@ -165,17 +175,45 @@
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
   .button { width: 100%; }
-  .trust-line { margin-top: 14px; font-size: 0.8rem; }
+  .trust-line { margin-top: 12px; font-size: 0.78rem; }
   .choice { min-height: auto; }
   .authority-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .authority-list span { min-height: 66px; display: grid; align-content: center; justify-content: stretch; border-bottom: 1px solid var(--color-border-600); border-left: 0; text-align: left; }
+  .authority-list span { min-height: 58px; display: grid; align-content: center; justify-content: stretch; border-bottom: 1px solid var(--color-border-600); border-left: 0; text-align: left; }
   .mini-proof-band .authority-list { min-height: 0; }
-  .mini-proof-band .authority-list span { min-height: 54px; padding: 8px 12px; }
+  .mini-proof-band .authority-list span { min-height: 48px; padding: 7px 12px; }
   .authority-list span:nth-child(odd) { border-right: 1px solid var(--color-border-600); }
   .authority-list span:nth-last-child(-n+2) { border-bottom: 0; }
   .nexus-strip { grid-template-columns: 1fr; text-align: left; }
   .nexus-strip > img { width: 112px; height: 112px; }
   .nexus-panel { padding: 18px; }
+  .nexus-core-panel { grid-template-columns: 1fr; }
+  .nexus-home-core { min-height: 0; grid-template-columns: 76px minmax(0, 1fr); padding: 12px; }
+  .nexus-home-core .nexus-core-visual { width: 68px; }
+  .nexus-mode-flow { grid-template-columns: 1fr; gap: 6px; }
+  .nexus-mode-flow span { border-left: 2px solid rgba(51, 200, 255, 0.42); padding: 7px 10px; background: rgba(2, 8, 23, 0.34); }
+  .nexus-mode-flow i { display: none; }
+  .operational-grid { grid-template-columns: 1fr; }
+  .operational-card { min-height: 0; padding: 20px; }
+  .ecosystem-preview-grid { gap: 28px; }
+  .system-map { min-height: 430px; }
+  .system-map > span { min-width: 96px; padding: 8px; font-size: 0.68rem; }
+  .system-map > span:nth-of-type(2), .system-map > span:nth-of-type(3) { left: 80%; }
+  .system-map > span:nth-of-type(5), .system-map > span:nth-of-type(6) { left: 20%; }
+  .compact-system-map { min-height: 390px; }
+  .ecosystem-layers { grid-template-columns: 1fr; }
+  .ecosystem-layers article { min-height: 130px; border-right: 0; border-bottom: 1px solid var(--color-border-600); padding: 20px; }
+  .ecosystem-layers article:last-child { border-bottom: 0; }
+  .before-after-map { min-height: 0; grid-template-columns: 1fr; padding: 16px; }
+  .before-after-map > div { min-height: 0; }
+  .before-after-map > i { width: 1px; height: 42px; justify-self: center; background: linear-gradient(rgba(51, 200, 255, 0.22), var(--color-brand-400)); }
+  .before-after-map > i::after { top: auto; right: -4px; bottom: 0; transform: rotate(135deg); }
+  .entry-route-grid a { min-height: 190px; padding: 20px; }
+  .solution-detail-grid .solution-card { min-height: 0; }
+  .company-human-panel { padding: 18px; }
+  .company-human-panel h2 { font-size: 1.65rem; }
+  .method-preview-grid { grid-template-columns: 1fr; }
+  .method-preview-grid li, .method-preview-grid li:nth-child(3n), .method-preview-grid li:nth-last-child(-n+3) { min-height: 96px; border-right: 0; border-bottom: 1px solid var(--color-border-600); }
+  .method-preview-grid li:last-child { border-bottom: 0; }
   .nexus-copy h2 { font-size: 1.72rem; }
   .nexus-steps,
   .nexus-mini-system { grid-template-columns: 1fr; gap: 8px; }
@@ -190,7 +228,7 @@
   .capability-map span,
   .company-signals span { min-height: 56px; grid-template-columns: 1fr; gap: 2px; padding: 10px; font-size: 0.82rem; }
   .case-actions { align-items: stretch; flex-direction: column; }
-  .case-actions .text-link { min-height: 42px; }
+  .case-actions .text-link { min-height: 44px; }
   .case-feature-list .case-card,
   .case-archive-grid .case-card { padding: 10px; }
   .case-feature-list .case-card .card-media,
@@ -202,7 +240,7 @@
   .case-facts dd { font-size: 0.72rem; }
   .case-actions { flex-direction: row; gap: 8px; padding-top: 8px; }
   .case-actions .button,
-  .case-actions .text-link { flex: 1 1 0; justify-content: center; min-height: 40px; font-size: 0.82rem; }
+  .case-actions .text-link { flex: 1 1 0; justify-content: center; min-height: 44px; font-size: 0.82rem; }
   .method-hero .process-preview { display: none; }
   .case-card p {
     display: none;
@@ -211,12 +249,24 @@
   .architecture { padding: 18px; }
   .architecture-grid { grid-template-columns: 1fr; }
   .brief-form { padding: 20px; }
-  .nexus-form-companion.compact { grid-template-columns: 64px minmax(0, 1fr); }
-  .nexus-form-companion.compact .nexus-form-avatar,
-  .nexus-form-companion.compact .nexus-form-avatar img { min-height: 64px; max-width: 64px; }
-  .nexus-guide { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; padding: 12px; }
-  .nexus-guide-avatar,
-  .nexus-guide-avatar img { min-height: 72px; }
+  .contact-copy { position: static; padding: 20px; }
+  .nexus-form-companion.compact {
+    top: calc(var(--header-height) + 8px);
+    margin-inline: -8px;
+    border-radius: 14px;
+    padding: 7px;
+    background: rgba(5, 14, 29, 0.97);
+  }
+  .nexus-form-core,
+  .nexus-guide .nexus-core { grid-template-columns: 64px minmax(0, 1fr); gap: 10px; }
+  .nexus-form-core { grid-template-columns: 48px minmax(0, 1fr); min-height: 68px; padding: 8px 10px; }
+  .nexus-form-core .nexus-core-copy { padding-top: 22px; }
+  .nexus-form-core .nexus-core-copy span { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 0.78rem; }
+  .nexus-form-core::before { top: 8px; right: auto; left: 68px; }
+  .nexus-form-core .nexus-core-visual { width: 46px; border-radius: 15px; }
+  .nexus-guide .nexus-core-visual { width: 58px; border-radius: 18px; }
+  .brief-form input, .brief-form select, .brief-form textarea { scroll-margin-top: calc(var(--header-height) + 96px); }
+  .nexus-guide { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
   .form-actions { display: grid; }
   .conversion-panel { align-items: stretch; flex-direction: column; }
   .solution-grid { gap: 14px; }
@@ -232,7 +282,11 @@
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 22px; padding-bottom: 18px; }
   .footer-brand { grid-column: 1 / -1; }
   .site-footer { padding: 34px 0 18px; }
-  .site-footer a { margin-block: 5px; }
+  .text-link,
+  .card-link,
+  .site-footer a,
+  .nexus-method-controls .button { min-height: 44px; display: inline-flex; align-items: center; }
+  .site-footer a { max-width: 100%; margin-block: 0; overflow-wrap: anywhere; }
   .footer-bottom { flex-direction: column; gap: 12px; padding-top: 16px; }
   .footer-bottom span:last-child { flex-wrap: wrap; }
 }

@@ -1,0 +1,140 @@
+{
+  "version": "1.1.0",
+  "defaultMode": "observe",
+  "defaultExpression": "neutral",
+  "defaultPose": "observing",
+  "modes": {
+    "observe": {
+      "label": "Observando",
+      "expression": "observing",
+      "pose": "observing",
+      "message": "Primero entendemos el proceso y sus señales."
+    },
+    "organize": {
+      "label": "Ordenando",
+      "expression": "thinking",
+      "pose": "analyzing",
+      "message": "Priorizamos necesidades, alcance y decisiones."
+    },
+    "design": {
+      "label": "Diseñando",
+      "expression": "designing",
+      "pose": "designing",
+      "message": "Convertimos la prioridad en una experiencia clara."
+    },
+    "build": {
+      "label": "Construyendo",
+      "expression": "building",
+      "pose": "building",
+      "message": "Implementamos y validamos por fases controladas."
+    },
+    "support": {
+      "label": "Acompañando",
+      "expression": "support-neutral",
+      "pose": "supporting",
+      "message": "Medimos resultados y orientamos la siguiente mejora."
+    }
+  },
+  "aliases": {
+    "idle": "observe",
+    "connect": "organize",
+    "monitor": "support",
+    "activate": "build",
+    "success": "support",
+    "caution": "observe",
+    "error": "observe"
+  },
+  "expressions": [
+    "neutral",
+    "happy",
+    "curious",
+    "thinking",
+    "explaining",
+    "greeting",
+    "waiting",
+    "confirming",
+    "soft-alert",
+    "empty",
+    "processing",
+    "celebration"
+  ],
+  "expressionLabels": {
+    "neutral": "Neutral",
+    "happy": "Feliz",
+    "curious": "Curioso",
+    "thinking": "Pensando",
+    "explaining": "Explicando",
+    "greeting": "Saludando",
+    "waiting": "Esperando",
+    "confirming": "Confirmando",
+    "soft-alert": "Alerta suave",
+    "empty": "Sin resultados",
+    "processing": "Procesando",
+    "celebration": "Celebración controlada"
+  },
+  "poses": [
+    "observing",
+    "analyzing",
+    "pointing",
+    "designing",
+    "building",
+    "launching",
+    "supporting",
+    "confirming"
+  ],
+  "assetRegistry": {
+    "nexus-avatar-base": {
+      "status": "ready",
+      "type": "raster",
+      "path": "assets/brand/nexus/nexus-avatar.webp",
+      "usage": "Confirmaciones y fallback temporal"
+    },
+    "nexus-avatar-clean": {
+      "status": "registered-pending-production",
+      "type": "raster",
+      "fallback": "nexus-avatar-base",
+      "requirement": "Versión sin mano ni sombra residual para estados neutrales"
+    },
+    "nexus-pose-designing": {
+      "status": "registered-pending-production",
+      "type": "raster",
+      "fallbackPose": "designing",
+      "requirement": "Nexus trabajando sobre panel o wireframe con stylus"
+    },
+    "nexus-pose-building": {
+      "status": "registered-pending-production",
+      "type": "raster",
+      "fallbackPose": "building",
+      "requirement": "Nexus ensamblando módulos o usando una herramienta"
+    },
+    "nexus-face-support-neutral": {
+      "status": "ready-code-native",
+      "type": "css-expression",
+      "expression": "support-neutral"
+    },
+    "nexus-face-confirming": {
+      "status": "ready-code-native",
+      "type": "css-expression",
+      "expression": "confirming"
+    },
+    "nexus-face-soft-alert": {
+      "status": "ready-code-native",
+      "type": "css-expression",
+      "expression": "soft-alert"
+    },
+    "nexus-face-waiting": {
+      "status": "ready-code-native",
+      "type": "css-expression",
+      "expression": "waiting"
+    }
+  },
+  "sizes": ["avatar", "bust", "half", "hero"],
+  "motion": {
+    "blinkMin": 4000,
+    "blinkMax": 8000,
+    "blinkDuration": 160,
+    "expressionDuration": 220,
+    "entranceDuration": 320,
+    "revealFallback": 1200
+  }
+}

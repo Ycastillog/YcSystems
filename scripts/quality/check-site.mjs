@@ -149,6 +149,52 @@ for (const required of ["briefSending", "data-source-product", "formsubmit.co/aj
 }
 if (/style\.setProperty\([^)]*,\s*["']important["']\s*\)/.test(script)) fail(scriptFile, "uses runtime !important overrides.");
 
+const nexusConfigFile = path.join(root, "config", "nexus-system.json");
+const nexusConfig = JSON.parse(await readFile(nexusConfigFile, "utf8"));
+const expectedModes = {
+  observe: ["Observando", "observing", "observing"],
+  organize: ["Ordenando", "thinking", "analyzing"],
+  design: ["Diseñando", "designing", "designing"],
+  build: ["Construyendo", "building", "building"],
+  support: ["Acompañando", "support-neutral", "supporting"],
+};
+for (const [mode, expected] of Object.entries(expectedModes)) {
+  const actual = nexusConfig.modes?.[mode];
+  if (!actual || actual.label !== expected[0] || actual.expression !== expected[1] || actual.pose !== expected[2]) {
+    fail(nexusConfigFile, `mode ${mode} does not match the canonical label, expression, and pose.`);
+  }
+}
+const expectedExpressions = ["neutral", "happy", "curious", "thinking", "explaining", "greeting", "waiting", "confirming", "soft-alert", "empty", "processing", "celebration"];
+if (JSON.stringify(nexusConfig.expressions) !== JSON.stringify(expectedExpressions)) fail(nexusConfigFile, "expression registry is incomplete or out of order.");
+for (const asset of ["nexus-avatar-clean", "nexus-pose-designing", "nexus-pose-building", "nexus-face-support-neutral", "nexus-face-confirming", "nexus-face-soft-alert", "nexus-face-waiting"]) {
+  if (!nexusConfig.assetRegistry?.[asset]) fail(nexusConfigFile, `asset registry is missing ${asset}.`);
+}
+
+const nexusCssFile = path.join(siteRoot, "styles", "nexus.css");
+const nexusCss = await readFile(nexusCssFile, "utf8");
+if (!/\[data-reveal\]\s*\{\s*opacity:\s*1;\s*transform:\s*none;/m.test(nexusCss)) fail(nexusCssFile, "reveal elements are not visible by default.");
+if (!/@media\s+print,\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\[data-reveal\][\s\S]*?opacity:\s*1\s*!important/m.test(nexusCss)) fail(nexusCssFile, "print/reduced-motion reveal fallback is missing.");
+
+const nexusControllerFile = path.join(siteRoot, "nexus-controller.js");
+const nexusController = await readFile(nexusControllerFile, "utf8");
+for (const required of ["!(\"IntersectionObserver\" in window)", "nexus-reveal-enabled", "nexus-static-fallback", "beforeprint", "nexus-method--selector-docked"]) {
+  if (!nexusController.includes(required)) fail(nexusControllerFile, `missing resilient Nexus behavior ${required}.`);
+}
+
+const methodFile = path.join(siteRoot, "process", "index.html");
+const method = await readFile(methodFile, "utf8");
+const methodOrder = ["nexus-method-active-head", "nexus-method-stage", "nexus-method-detail", "nexus-method-steps"].map((token) => method.indexOf(token));
+if (methodOrder.some((index) => index < 0) || methodOrder.some((index, position) => position > 0 && index <= methodOrder[position - 1])) {
+  fail(methodFile, "mobile method source order must be active heading, Nexus, detail, then phase selector.");
+}
+for (const required of ["role=\"tablist\"", "role=\"tabpanel\"", "tabindex=\"-1\"", "aria-controls=\"nexus-method-panel\""]) {
+  if (!method.includes(required)) fail(methodFile, `method explorer is missing ${required}.`);
+}
+
+for (const required of ["clearBriefStatus", "clearPanelErrors", "focusBriefStep", "aria-invalid", "dataset.briefAnnouncer"]) {
+  if (!script.includes(required)) fail(scriptFile, `contact validation is missing ${required}.`);
+}
+
 if (failures.length) {
   console.error("YC Systems site quality check failed:");
   for (const failure of failures) console.error(`- ${failure}`);

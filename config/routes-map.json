@@ -136,6 +136,15 @@
       "label": "Términos"
     },
     {
+      "path": "/nexus-lab/",
+      "status": "internal-tool",
+      "locale": "es",
+      "public": true,
+      "indexable": false,
+      "sitemap": false,
+      "label": "Nexus Lab"
+    },
+    {
       "path": "/brands/ghostwear/",
       "status": "client-proof",
       "locale": "es",

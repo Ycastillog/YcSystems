@@ -5,6 +5,7 @@
 @import "./styles/layout.css" layer(layout);
 @import "./styles/components.css" layer(components);
 @import "./styles/nexus.css" layer(nexus);
+@import "./styles/nexus-diagnostic.css" layer(nexus);
 @import "./styles/pages.css" layer(pages);
 @import "./styles/utilities.css" layer(utilities);
 @import "./styles/responsive.css" layer(responsive);

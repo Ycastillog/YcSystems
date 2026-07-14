@@ -1,8 +1,21 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const stateLabels = {
+  idle: "En reposo",
+  observe: "Observando",
+  connect: "Conectando",
+  design: "Diseñando",
+  build: "Construyendo",
+  activate: "Activando",
+  monitor: "Monitoreando",
+  success: "Confirmado",
+  caution: "Revisando",
+  error: "Atención",
+};
 
 function setNexusState(element, state, message) {
   if (!element) return;
   element.dataset.nexusState = state;
+  element.dataset.nexusLabel = stateLabels[state] || stateLabels.idle;
   const messageTarget = element.querySelector("[data-nexus-message]");
   if (messageTarget && message) messageTarget.textContent = message;
 }
@@ -44,6 +57,7 @@ function setupMethodExplorer() {
     detail.deliverable.textContent = step.deliverable;
     detail.risk.textContent = step.risk;
     if (progress) progress.textContent = `Fase ${index + 1} de ${steps.length}`;
+    explorer.dataset.nexusState = step.state;
   }
 
   buttons.forEach((button, index) => {
@@ -88,6 +102,7 @@ function setupNexusGuides() {
 
     const avatar = guide.querySelector("[data-nexus]");
     const text = guide.querySelector("[data-nexus-guide-text]");
+    guide.dataset.nexusState = state;
     setNexusState(avatar, state, message);
     if (text) text.textContent = message;
 
@@ -102,6 +117,35 @@ function setupNexusGuides() {
     trigger.addEventListener("focus", () => activate(trigger));
     trigger.addEventListener("click", () => activate(trigger));
   });
+}
+
+function setupHomeNexusFlow() {
+  if (reducedMotion) return;
+  const avatar = document.querySelector(".nexus-home[data-nexus]");
+  if (!avatar) return;
+
+  const states = [
+    ["observe", "Nexus está observando tu operación."],
+    ["connect", "Conectando señales, procesos y próximos pasos."],
+    ["design", "Ordenando la primera ruta antes de construir."],
+  ];
+  let index = 0;
+  let active = false;
+
+  const observer = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        active = entries.some((entry) => entry.isIntersecting);
+      }, { threshold: 0.4 })
+    : null;
+
+  observer?.observe(avatar);
+  active = !observer;
+
+  window.setInterval(() => {
+    if (!active || document.hidden) return;
+    index = (index + 1) % states.length;
+    setNexusState(avatar, states[index][0], states[index][1]);
+  }, 5200);
 }
 
 function setupCardLinks() {
@@ -177,6 +221,7 @@ function setupVisibilityPause() {
 
 setupMethodExplorer();
 setupNexusGuides();
+setupHomeNexusFlow();
 setupCardLinks();
 setupBriefCompanion();
 setupVisibilityPause();

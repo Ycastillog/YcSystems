@@ -13,6 +13,28 @@
   box-shadow: var(--shadow-panel);
 }
 
+.nexus-avatar::before {
+  content: attr(data-nexus-label);
+  position: absolute;
+  z-index: 4;
+  top: 14px;
+  left: 14px;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--nexus-accent) 48%, transparent);
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #dff7ff;
+  background: rgba(2, 8, 23, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
 .nexus-avatar img {
   position: relative;
   z-index: 1;
@@ -23,6 +45,43 @@
   object-position: center top;
   transform: translate3d(0, 0, 0);
   animation: nexus-idle 6.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.nexus-signal-map {
+  position: absolute;
+  z-index: 2;
+  inset: 10% 9%;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.nexus-signal-map i,
+.nexus-signal-map b {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--nexus-accent) 74%, transparent);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--nexus-accent) 48%, transparent);
+}
+
+.nexus-signal-map i {
+  width: 9px;
+  height: 9px;
+  animation: nexus-node-pulse 5.8s ease-in-out infinite;
+}
+
+.nexus-signal-map i:nth-child(1) { top: 18%; left: 16%; animation-delay: 0s; }
+.nexus-signal-map i:nth-child(2) { top: 42%; right: 10%; animation-delay: 1.2s; }
+.nexus-signal-map i:nth-child(3) { right: 28%; bottom: 14%; animation-delay: 2.4s; }
+
+.nexus-signal-map b {
+  top: 50%;
+  left: 19%;
+  width: 58%;
+  height: 1px;
+  opacity: 0.42;
+  transform: rotate(-13deg);
+  transform-origin: left center;
 }
 
 .nexus-avatar figcaption {
@@ -93,6 +152,15 @@
   animation-duration: 5s;
 }
 
+.nexus-avatar[data-nexus-state="design"] .nexus-signal-map b {
+  opacity: 0.72;
+  transform: rotate(0deg);
+}
+
+.nexus-avatar[data-nexus-state="build"] .nexus-signal-map i {
+  border-radius: 4px;
+}
+
 .nexus-avatar[data-nexus-state="activate"] .nexus-orbit,
 .nexus-avatar[data-nexus-state="success"] .nexus-orbit {
   --nexus-accent: var(--color-success-500);
@@ -100,6 +168,10 @@
 }
 
 .nexus-avatar[data-nexus-state="success"] {
+  --nexus-accent: var(--color-success-500);
+}
+
+.nexus-avatar[data-nexus-state="activate"] {
   --nexus-accent: var(--color-success-500);
 }
 
@@ -113,6 +185,7 @@
 
 .nexus-avatar[data-nexus-paused] img,
 .nexus-avatar[data-nexus-paused] .nexus-orbit,
+.nexus-avatar[data-nexus-paused] .nexus-signal-map i,
 .nexus-avatar[data-nexus-paused]::after {
   animation-play-state: paused;
 }
@@ -122,10 +195,25 @@
 }
 
 .identity-showcase .nexus-home {
+  height: 100%;
+  contain: paint;
   border: 0;
   border-left: 1px solid rgba(51, 200, 255, 0.24);
   border-radius: 0;
   box-shadow: none;
+}
+
+.identity-showcase .nexus-home img {
+  min-height: 0;
+  animation: none;
+}
+
+.identity-showcase .nexus-home .nexus-orbit {
+  display: none;
+}
+
+.identity-showcase .nexus-home::after {
+  display: none;
 }
 
 .nexus-form-companion {
@@ -170,7 +258,9 @@
 }
 
 .nexus-form-companion.compact .nexus-form-avatar figcaption,
-.nexus-form-companion.compact .nexus-form-avatar .nexus-orbit {
+.nexus-form-companion.compact .nexus-form-avatar .nexus-orbit,
+.nexus-form-companion.compact .nexus-form-avatar .nexus-signal-map,
+.nexus-form-companion.compact .nexus-form-avatar::before {
   display: none;
 }
 
@@ -185,7 +275,9 @@
 }
 
 .nexus-guide-avatar figcaption,
-.nexus-guide-avatar .nexus-orbit {
+.nexus-guide-avatar .nexus-orbit,
+.nexus-guide-avatar .nexus-signal-map,
+.nexus-guide-avatar::before {
   display: none;
 }
 
@@ -377,6 +469,18 @@ html.nexus-static-fallback .nexus-avatar::after {
   100% { transform: scale(1); opacity: 0.72; }
 }
 
+@keyframes nexus-node-pulse {
+  0%, 100% { opacity: 0.38; transform: scale(0.86); }
+  45% { opacity: 0.92; transform: scale(1.12); }
+  70% { opacity: 0.58; transform: scale(0.98); }
+}
+
+@keyframes nexus-home-presence {
+  0%, 100% { transform: scale(1); }
+  46% { transform: scale(1.006); }
+  68% { transform: scale(1.002); }
+}
+
 @media (max-width: 980px) {
   .nexus-method {
     grid-template-columns: 1fr;
@@ -406,6 +510,7 @@ html.nexus-static-fallback .nexus-avatar::after {
 @media (prefers-reduced-motion: reduce) {
   .nexus-avatar img,
   .nexus-orbit,
+  .nexus-signal-map i,
   .nexus-avatar::after {
     animation: none !important;
     transform: none !important;

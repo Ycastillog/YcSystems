@@ -125,8 +125,23 @@ function sectionHead(kicker, title, text = "") {
   return `<div class="section-head"><p class="kicker">${kicker}</p><h2>${title}</h2>${text ? `<p>${text}</p>` : ""}</div>`;
 }
 
+const nexusStateLabels = {
+  idle: "En reposo",
+  observe: "Observando",
+  connect: "Conectando",
+  design: "Diseñando",
+  build: "Construyendo",
+  activate: "Activando",
+  monitor: "Monitoreando",
+  success: "Confirmado",
+  caution: "Revisando",
+  error: "Atención",
+};
+
 function nexusAvatar(prefix, state = "idle", message = "Primero entendamos el proceso.", modifier = "", action = "") {
-  return `<figure class="nexus-avatar ${modifier}" data-nexus data-nexus-state="${state}">
+  const label = nexusStateLabels[state] || nexusStateLabels.idle;
+  return `<figure class="nexus-avatar ${modifier}" data-nexus data-nexus-state="${state}" data-nexus-label="${label}">
+    <div class="nexus-signal-map" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
     <div class="nexus-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
     <img src="${prefix}assets/brand/nexus/nexus-avatar.webp" alt="Nexus, capa visual de YC Systems" width="720" height="720" loading="lazy" />
     <figcaption><strong>Nexus</strong><span data-nexus-message>${message}</span>${action}</figcaption>

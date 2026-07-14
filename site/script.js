@@ -48,6 +48,7 @@ briefNext?.addEventListener("click", () => {
   const firstPanel = briefForm.querySelector('[data-step="1"]');
   const invalidField = firstInvalidField(firstPanel);
   if (invalidField) {
+    briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "caution" } }));
     invalidField.reportValidity();
     return;
   }
@@ -69,6 +70,7 @@ if (briefForm) {
     const secondPanel = briefForm.querySelector('[data-step="2"]');
     const invalidField = firstInvalidField(secondPanel);
     if (invalidField) {
+      briefForm.dispatchEvent(new CustomEvent("yc:brief-state", { detail: { state: "caution" } }));
       invalidField.reportValidity();
       return;
     }

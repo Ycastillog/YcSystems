@@ -151,6 +151,8 @@
     object-position: center 18%;
   }
   .home-page .identity-showcase .nexus-home .nexus-orbit { display: none; }
+  .home-page .identity-showcase .nexus-home .nexus-signal-map,
+  .home-page .identity-showcase .nexus-home::before { display: none; }
   .home-page .identity-showcase .nexus-home figcaption {
     position: static;
     display: grid;

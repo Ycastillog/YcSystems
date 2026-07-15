@@ -939,13 +939,15 @@ html.nexus-static-fallback .nexus-context-signals i {
 .nexus-visor {
   position: absolute;
   z-index: 3;
-  top: 30.2%;
-  left: 25.7%;
-  width: 58.2%;
-  height: 28.8%;
+  top: 25.9%;
+  left: 29.4%;
+  width: 58%;
+  height: 32.5%;
   overflow: hidden;
-  border-radius: 42% 42% 46% 46% / 38% 38% 53% 53%;
-  background: radial-gradient(circle at 50% 34%, #06162a, var(--nexus-visor) 72%);
+  contain: paint;
+  border-radius: 34% 30% 39% 42% / 27% 27% 47% 49%;
+  clip-path: inset(0 round 34% 30% 39% 42% / 27% 27% 47% 49%);
+  background: radial-gradient(ellipse at 52% 42%, #06162a, var(--nexus-visor) 74%);
   box-shadow: inset 0 0 24px rgba(93, 231, 255, 0.06);
   transition: opacity var(--nexus-expression-duration) ease;
 }
@@ -969,14 +971,15 @@ html.nexus-static-fallback .nexus-context-signals i {
   transform-origin: center;
 }
 
-.nexus-eye--left { left: 25%; }
-.nexus-eye--right { right: 25%; }
+.nexus-eye--left { left: 24%; }
+.nexus-eye--right { right: 18%; }
 
 .nexus-mouth {
   left: 39%;
   bottom: 18%;
   width: 22%;
   height: 12%;
+  margin-left: 3%;
   border-bottom: clamp(2px, 0.35vw, 4px) solid currentColor;
   border-radius: 0 0 999px 999px;
   filter: drop-shadow(0 0 7px currentColor);
@@ -1052,6 +1055,13 @@ html.nexus-static-fallback .nexus-context-signals i {
 .nexus-character[data-nexus-expression="celebration"] { --nexus-accent: var(--nexus-green); }
 .nexus-character[data-nexus-expression="celebration"] .nexus-eye { top: 34%; width: 16%; height: 17%; border: 0; border-top: 4px solid currentColor; border-radius: 999px 999px 0 0; background: transparent; box-shadow: none; }
 .nexus-character[data-nexus-expression="celebration"] .nexus-mouth { left: 31%; bottom: 11%; width: 38%; height: 18%; border-bottom-width: 4px; }
+
+.nexus-character--avatar .nexus-eye { box-shadow: 0 0 9px currentColor, 0 0 16px color-mix(in srgb, currentColor 42%, transparent); }
+.nexus-character--avatar .nexus-mouth { border-bottom-width: 2px; filter: drop-shadow(0 0 4px currentColor); }
+.nexus-character--avatar:is([data-nexus-expression="happy"], [data-nexus-expression="greeting"], [data-nexus-expression="confirming"]) .nexus-eye { border-bottom-width: 2px; box-shadow: none; }
+.nexus-character--avatar[data-nexus-expression="celebration"] .nexus-eye { border-top-width: 2px; box-shadow: none; }
+.nexus-character--avatar[data-nexus-expression="soft-alert"] .nexus-mouth { border-top-width: 2px; }
+.nexus-character--avatar[data-nexus-expression="celebration"] .nexus-mouth { border-bottom-width: 2px; }
 
 .nexus-core[data-nexus-expression="happy"] .nexus-core-face i,
 .nexus-core[data-nexus-expression="confirming"] .nexus-core-face i { top: 43%; height: 4px; background: transparent; border-bottom: 2px solid #67e8ff; box-shadow: none; }

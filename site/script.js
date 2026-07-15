@@ -208,7 +208,7 @@ if (briefForm) {
 }
 
 if (document.querySelector("[data-nexus]")) {
-  import("./nexus-controller.js?v=yc-nexus-live-20260714h").catch((error) => {
+  import("./nexus-controller.js?v=yc-nexus-live-20260714i").catch((error) => {
     console.error("[Nexus] No fue posible iniciar el controlador", error);
     document.documentElement.classList.add("nexus-static-fallback");
     window.reportClientError?.({

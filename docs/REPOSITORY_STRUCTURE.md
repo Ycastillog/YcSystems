@@ -11,7 +11,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 ## Production Surface
 
 - `site/index.html`: home page.
-- `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
+- `site/products/`, `site/solutions/`, `site/web-development/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
 - `site/assets/`: public brand, client-proof and preview assets that are safe to publish with the website.
 - `site/.well-known/security.txt`: public security and privacy reporting instructions.
 - `site/script.js`: public website behavior.

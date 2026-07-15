@@ -100,6 +100,7 @@ const publicRootEntries = [
   "technology",
   "terms",
   "trust-center",
+  "web-development",
 ];
 
 for (const entry of publicRootEntries) {

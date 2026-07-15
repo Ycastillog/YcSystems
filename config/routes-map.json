@@ -37,6 +37,15 @@
       "label": "Soluciones"
     },
     {
+      "path": "/web-development/",
+      "status": "canonical",
+      "locale": "es",
+      "public": true,
+      "indexable": true,
+      "sitemap": true,
+      "label": "Webs"
+    },
+    {
       "path": "/industries/",
       "status": "canonical",
       "locale": "es",

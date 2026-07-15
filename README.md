@@ -103,6 +103,7 @@ Use a local backup outside the project when old material must be preserved.
 /products/
 /operating-systems/
 /solutions/
+/web-development/
 /industries/
 /case-studies/
 /process/

@@ -254,6 +254,10 @@
 .case-archive-grid .card-media { aspect-ratio: 16 / 6; margin: 8px 0 10px; }
 .case-archive-grid .case-card h3 { font-size: 1.3rem; }
 .case-archive-grid .case-card p { display: none; }
+.case-archive-grid .case-facts { grid-template-columns: 1fr; gap: 0; margin: 12px 0 16px; border-top: 1px solid rgba(32, 52, 81, 0.72); }
+.case-archive-grid .case-facts div { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 12px; align-items: start; border: 0; border-bottom: 1px solid rgba(32, 52, 81, 0.72); border-radius: 0; padding: 10px 0; background: transparent; }
+.case-archive-grid .case-facts dt { margin: 1px 0 0; }
+.case-archive-grid .case-facts dd { font-size: 0.82rem; font-weight: 600; line-height: 1.4; overflow-wrap: normal; word-break: normal; hyphens: none; }
 
 .method-hero .interior-hero-grid { grid-template-columns: 1fr; gap: 30px; }
 .method-hero .interior-hero-grid > div { max-width: 820px; }

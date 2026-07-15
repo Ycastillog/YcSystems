@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714l";
+const assetVersion = "yc-nexus-live-20260714m";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],
@@ -444,8 +444,7 @@ renderPage({
   <section class="authority-band mini-proof-band" aria-label="Capacidades principales"><div class="container authority-list"><span><small>01</small><strong>Software empresarial</strong></span><span><small>02</small><strong>Implementaci&oacute;n por fases</strong></span><span><small>03</small><strong>Datos conectados</strong></span><span><small>04</small><strong>Soporte continuo</strong></span></div></section>
   ${homeFrictionSection()}${homeSolutionsSection(prefix)}
   <section class="section nexus-section"><div class="container nexus-panel nexus-core-panel"><div class="nexus-system-visual">${nexusCore("observe", "Nexus identifica se&ntilde;ales y hace visible el siguiente paso.", "nexus-home-core")}<div class="nexus-mode-flow" role="img" aria-label="Modos de Nexus: observa, ordena, diseña, construye y acompaña"><span>Observa</span><i></i><span>Ordena</span><i></i><span>Dise&ntilde;a</span><i></i><span>Construye</span><i></i><span>Acompa&ntilde;a</span></div></div><div class="nexus-copy"><p class="kicker">Nexus &middot; Gu&iacute;a operativa</p><h2>Una forma visual de observar, ordenar y avanzar</h2><p>Nexus representa c&oacute;mo YC Systems entiende una operaci&oacute;n antes de construir: identifica las se&ntilde;ales, organiza la prioridad y hace visible el siguiente paso.</p><a class="text-link" href="${relativeHref("/process/", prefix)}">Ver c&oacute;mo trabaja Nexus</a></div></div></section>
-  ${homeEcosystemSection(prefix)}${homeMethodSection(prefix)}
-  <section class="section"><div class="container">${sectionHead("Webs", "Experiencias publicadas que convierten presencia en un canal &uacute;til", "Dise&ntilde;amos webs para presentar, vender y conectar cada consulta con el siguiente paso del negocio. Estos trabajos muestran alcance y evidencia verificables.")}<div class="case-grid case-feature-list">${caseCards(prefix, 2)}</div><div class="section-action"><a class="text-link" href="${relativeHref("/web-development/", prefix)}">Explorar desarrollo web</a></div></div></section>${finalCta(prefix, "Antes de construir, definamos qu&eacute; necesita m&aacute;s control")}`,
+  ${homeEcosystemSection(prefix)}${homeMethodSection(prefix)}${finalCta(prefix, "Antes de construir, definamos qu&eacute; necesita m&aacute;s control")}`,
 });
 
 renderPage({

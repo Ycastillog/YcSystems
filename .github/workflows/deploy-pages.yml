@@ -33,11 +33,12 @@ jobs:
         run: |
           node scripts/quality/check-repo-structure.mjs
           node scripts/quality/check-site.mjs
+      - name: Verify generated site is committed
+        run: git diff --exit-code -- site
       - name: Prepare public artifact
         run: |
           mkdir -p dist
           cp -R site/. dist/
-          rm -rf dist/assets/merchandising
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:

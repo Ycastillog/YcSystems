@@ -32,11 +32,17 @@ function send(res, status, content, type = "text/plain; charset=utf-8") {
 }
 
 const server = http.createServer((req, res) => {
-  let urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
+  let urlPath;
+  try {
+    urlPath = decodeURIComponent((req.url || "/").split("?")[0]);
+  } catch {
+    return send(res, 400, "Bad request");
+  }
   if (urlPath.endsWith("/")) urlPath += "index.html";
 
   const safePath = path.normalize(path.join(root, urlPath));
-  if (!safePath.startsWith(path.normalize(root))) {
+  const relativePath = path.relative(root, safePath);
+  if (path.isAbsolute(relativePath) || relativePath === ".." || relativePath.startsWith(`..${path.sep}`)) {
     return send(res, 403, "Forbidden");
   }
 

@@ -1,0 +1,22 @@
+name: Validate website
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Build static site
+        run: node scripts/build-site.mjs
+      - name: Check quality gates
+        run: |
+          node scripts/quality/check-repo-structure.mjs
+          node scripts/quality/check-site.mjs
+      - name: Verify generated site is committed
+        run: git diff --exit-code -- site

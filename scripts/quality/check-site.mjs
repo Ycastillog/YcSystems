@@ -44,6 +44,14 @@ function visibleText(html) {
 const files = await walk(siteRoot);
 const htmlFiles = files.filter((file) => file.endsWith(".html"));
 const textFiles = files.filter((file) => /\.(html|css|js|mjs|json|md|xml|txt)$/i.test(file));
+const expectedHtmlFiles = new Set([
+  ...routesMap.routes.filter((route) => route.status !== "retired").map((route) => path.normalize(routeFile(route.path))),
+  path.normalize(path.join(siteRoot, "404.html")),
+]);
+
+for (const file of htmlFiles) {
+  if (!expectedHtmlFiles.has(path.normalize(file))) fail(file, "HTML file is not registered in the route map or generated 404 surface.");
+}
 
 for (const file of htmlFiles) {
   const html = await readFile(file, "utf8");
@@ -110,6 +118,10 @@ const expectedUrls = new Set(routesMap.routes.filter((route) => route.sitemap).m
 for (const url of expectedUrls) if (!actualUrls.has(url)) fail(sitemapFile, `missing ${url}.`);
 for (const url of actualUrls) if (!expectedUrls.has(url)) fail(sitemapFile, `unapproved URL ${url}.`);
 
+const robotsFile = path.join(siteRoot, "robots.txt");
+const robots = await readFile(robotsFile, "utf8");
+if (!/^Disallow:\s*\/nexus-lab\/$/m.test(robots)) fail(robotsFile, "Nexus Lab must be excluded from crawler discovery.");
+
 for (const route of routesMap.routes) {
   const file = routeFile(route.path);
   const fileExists = await exists(file);
@@ -149,6 +161,28 @@ for (const required of ["briefSending", "data-source-product", "formsubmit.co/aj
 }
 if (/style\.setProperty\([^)]*,\s*["']important["']\s*\)/.test(script)) fail(scriptFile, "uses runtime !important overrides.");
 
+const stylesManifestFile = path.join(siteRoot, "styles.css");
+const stylesManifest = await readFile(stylesManifestFile, "utf8");
+const manifestVersions = [...stylesManifest.matchAll(/@import\s+["'][^"']+\.css\?v=([^"']+)["']/g)].map((match) => match[1]);
+const releaseVersions = new Set(manifestVersions);
+if (manifestVersions.length !== 9) fail(stylesManifestFile, "every modular stylesheet must carry the release cache version.");
+
+const controllerVersion = script.match(/nexus-controller\.js\?v=([^"']+)/)?.[1];
+if (!controllerVersion) fail(scriptFile, "Nexus controller import is missing the release cache version.");
+else releaseVersions.add(controllerVersion);
+
+for (const file of htmlFiles) {
+  const html = await readFile(file, "utf8");
+  if (/http-equiv=["']refresh/i.test(html)) continue;
+  const versions = [...html.matchAll(/(?:styles\.css|script\.js)\?v=([^"']+)/g)].map((match) => match[1]);
+  if (versions.length !== 2) fail(file, "must version both the public stylesheet and script.");
+  for (const version of versions) releaseVersions.add(version);
+}
+
+if (releaseVersions.size !== 1) {
+  fail(stylesManifestFile, `asset cache versions are not synchronized: ${[...releaseVersions].sort().join(", ")}.`);
+}
+
 const nexusConfigFile = path.join(root, "config", "nexus-system.json");
 const nexusConfig = JSON.parse(await readFile(nexusConfigFile, "utf8"));
 const expectedModes = {
@@ -174,6 +208,9 @@ const nexusCssFile = path.join(siteRoot, "styles", "nexus.css");
 const nexusCss = await readFile(nexusCssFile, "utf8");
 if (!/\[data-reveal\]\s*\{\s*opacity:\s*1;\s*transform:\s*none;/m.test(nexusCss)) fail(nexusCssFile, "reveal elements are not visible by default.");
 if (!/@media\s+print,\s*\(prefers-reduced-motion:\s*reduce\)[\s\S]*?\[data-reveal\][\s\S]*?opacity:\s*1\s*!important/m.test(nexusCss)) fail(nexusCssFile, "print/reduced-motion reveal fallback is missing.");
+for (const pose of nexusConfig.poses ?? []) {
+  if (!nexusCss.includes(`[data-nexus-pose="${pose}"]`)) fail(nexusCssFile, `registered Nexus pose ${pose} has no visual treatment.`);
+}
 
 const nexusControllerFile = path.join(siteRoot, "nexus-controller.js");
 const nexusController = await readFile(nexusControllerFile, "utf8");

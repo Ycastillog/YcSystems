@@ -14,14 +14,18 @@ GitHub Pages deploys the static artifact produced from `site/`.
 - `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
 - `site/assets/`: public brand, client-proof and preview assets that are safe to publish with the website.
 - `site/script.js`: public website behavior.
+- `site/nexus-controller.js`: Nexus state, interaction and accessibility behavior.
 - `site/styles.css`: CSS manifest only.
 - `site/styles/`: active modular CSS system.
+- `site/nexus-lab/`: noindex visual QA surface, excluded from sitemap and crawler discovery. It is not a security boundary.
 
 ## Route Source Of Truth
 
 `config/routes-map.json` defines whether each route is canonical, private, legacy, support-only or excluded from the sitemap.
 
 Before changing navigation, sitemap, noindex rules or redirects, update `config/routes-map.json` first.
+
+`config/nexus-system.json` defines the canonical Nexus modes, expressions, poses and asset readiness. Update it before adding a new visual state or replacing a registered asset.
 
 ## Legacy Compatibility
 
@@ -46,7 +50,7 @@ The following should not become public website copy by accident:
 - private product names, product screenshots, launch plans, roadmaps or unreleased customer-facing concepts.
 - legal ownership details, EIN documents, operating agreements or personal addresses.
 
-Use `.env.example` for variable names only. Never commit real values.
+The public website currently requires no runtime environment variables. Never commit real values if integrations are added later.
 
 ## Quality Gates
 

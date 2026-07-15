@@ -1,17 +1,18 @@
 {
   "name": "YC Systems",
   "short_name": "YC Systems",
-  "description": "Business operating systems for modern companies.",
+  "description": "Software operativo para empresas que necesitan control, velocidad y crecimiento.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#071526",
-  "theme_color": "#071526",
+  "background_color": "#020817",
+  "theme_color": "#020817",
   "icons": [
     {
       "src": "/assets/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

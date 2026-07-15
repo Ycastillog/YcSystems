@@ -16,14 +16,44 @@ const nexusConfig = configElement ? JSON.parse(configElement.textContent) : {
 const canonicalState = (state) => nexusConfig.aliases?.[state] || (nexusConfig.modes?.[state] ? state : nexusConfig.defaultMode);
 const stateLabels = Object.fromEntries(Object.entries(nexusConfig.modes).map(([key, value]) => [key, value.label]));
 
+function nexusMediaAsset(pose) {
+  const assetKey = pose === "designing"
+    ? "nexus-pose-designing"
+    : pose === "building"
+      ? "nexus-pose-building"
+      : pose === "confirming" || pose === "launching"
+        ? "nexus-avatar-base"
+        : "nexus-avatar-clean";
+  const registry = nexusConfig.assetRegistry || {};
+  const asset = registry[assetKey];
+  const readyPath = asset?.status === "ready" && asset.path ? asset.path : null;
+  const fallbackKey = asset?.fallback || "nexus-avatar-base";
+  const fallbackPath = registry[fallbackKey]?.path || registry["nexus-avatar-base"]?.path;
+  return { key: assetKey, status: readyPath ? "ready" : "fallback", path: readyPath || fallbackPath };
+}
+
+function syncNexusMedia(element, pose) {
+  const image = element.querySelector(".nexus-character-media img");
+  if (!image) return;
+  const asset = nexusMediaAsset(pose);
+  if (!asset.path) return;
+  const source = `${element.dataset.nexusPrefix || ""}${asset.path}`;
+  if (image.getAttribute("src") !== source) image.setAttribute("src", source);
+  element.dataset.nexusAsset = asset.key;
+  element.dataset.nexusAssetStatus = asset.status;
+}
+
 function setNexusState(element, state, message, options = {}) {
   if (!element) return;
   const mode = canonicalState(state);
   const modeConfig = nexusConfig.modes[mode];
+  const expression = options.expression || modeConfig.expression;
+  const pose = options.pose || modeConfig.pose;
   element.dataset.nexusState = mode;
   element.dataset.nexusLabel = options.label || modeConfig.label;
-  element.dataset.nexusExpression = options.expression || modeConfig.expression;
-  element.dataset.nexusPose = options.pose || modeConfig.pose;
+  element.dataset.nexusExpression = expression;
+  element.dataset.nexusPose = pose;
+  syncNexusMedia(element, pose);
   if (options.feedback) element.dataset.nexusFeedback = options.feedback;
   else delete element.dataset.nexusFeedback;
   const messageTarget = element.querySelector("[data-nexus-message]");
@@ -139,7 +169,7 @@ function setupNexusGuides() {
 
     const avatar = guide.querySelector("[data-nexus]");
     const text = guide.querySelector("[data-nexus-guide-text]");
-    guide.dataset.nexusState = state;
+    guide.dataset.nexusState = canonicalState(state);
     setNexusState(avatar, state, message, { expression: trigger.dataset.nexusExpression, pose: trigger.dataset.nexusPose });
     if (text) text.textContent = message;
 
@@ -163,8 +193,8 @@ function setupHomeNexusFlow() {
 
   const states = [
     ["observe", "Nexus está observando tu operación.", "observing", "observing"],
-    ["organize", "Conectando señales, procesos y próximos pasos.", "thinking", "analyzing"],
-    ["design", "Ordenando la primera ruta antes de construir.", "designing", "designing"],
+    ["organize", "Priorizando señales, alcance y próximos pasos.", "thinking", "analyzing"],
+    ["design", "Convirtiendo la prioridad en una experiencia clara.", "designing", "designing"],
     ["build", "Convirtiendo la ruta en una primera fase verificable.", "building", "building"],
     ["support", "Acompañando el uso y la siguiente mejora.", "support-neutral", "supporting"],
   ];
@@ -191,18 +221,9 @@ function setupCardLinks() {
   document.querySelectorAll("[data-card-link]").forEach((card) => {
     const link = card.querySelector("a[href]");
     if (!link) return;
-    if (!card.hasAttribute("tabindex")) card.tabIndex = 0;
-    card.setAttribute("role", "link");
 
     card.addEventListener("click", (event) => {
       if (event.target.closest("a, button, input, select, textarea")) return;
-      link.click();
-    });
-
-    card.addEventListener("keydown", (event) => {
-      if (!["Enter", " "].includes(event.key)) return;
-      if (event.target.closest("a, button, input, select, textarea")) return;
-      event.preventDefault();
       link.click();
     });
   });
@@ -214,7 +235,6 @@ function setupBriefCompanion() {
   if (!form || !companion) return;
 
   const avatar = companion.querySelector("[data-nexus]");
-  const text = companion.querySelector("[data-nexus-form-text]");
   const messages = {
     observe: "Cu\u00e9ntanos qui\u00e9n eres y desde qu\u00e9 operaci\u00f3n nos contactas.",
     organize: "Ahora ordenemos el proceso, la fricci\u00f3n y el resultado que necesitas.",
@@ -234,7 +254,6 @@ function setupBriefCompanion() {
       error: { mode: "observe", expression: "soft-alert", pose: "observing", label: "Atenci\u00f3n", feedback: "error" },
     }[state] || { mode: "observe" };
     setNexusState(avatar, visual.mode, messages[state], visual);
-    if (text) text.textContent = messages[state];
   }
 
   form.addEventListener("yc:brief-step", (event) => {
@@ -251,11 +270,10 @@ function setupLivingMotion() {
   if (!characters.length || reducedMotion) return;
 
   characters.forEach((character) => {
-    let blinkTimer;
     const scheduleBlink = () => {
       const min = nexusConfig.motion?.blinkMin || 4000;
       const max = nexusConfig.motion?.blinkMax || 8000;
-      blinkTimer = window.setTimeout(() => {
+      window.setTimeout(() => {
         if (!character.hasAttribute("data-nexus-paused") && !document.hidden) {
           character.classList.add("is-blinking");
           window.setTimeout(() => character.classList.remove("is-blinking"), nexusConfig.motion?.blinkDuration || 160);
@@ -281,7 +299,6 @@ function setupLivingMotion() {
       });
     }
 
-    character.addEventListener("DOMNodeRemoved", () => window.clearTimeout(blinkTimer), { once: true });
   });
 
   document.querySelectorAll(".hero .button, .hero .text-link").forEach((cta) => {
@@ -334,9 +351,11 @@ function setupNexusEntrances() {
 function setupVisibilityPause() {
   const nexusElements = [...document.querySelectorAll("[data-nexus]")];
   if (!nexusElements.length || !("IntersectionObserver" in window)) return;
+  const intersectionState = new WeakMap();
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
+      intersectionState.set(entry.target, entry.isIntersecting);
       entry.target.toggleAttribute("data-nexus-paused", !entry.isIntersecting || document.hidden);
     });
   }, { threshold: 0.15 });
@@ -345,7 +364,7 @@ function setupVisibilityPause() {
 
   document.addEventListener("visibilitychange", () => {
     nexusElements.forEach((element) => {
-      element.toggleAttribute("data-nexus-paused", document.hidden);
+      element.toggleAttribute("data-nexus-paused", document.hidden || intersectionState.get(element) === false);
     });
   });
 }

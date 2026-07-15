@@ -14,7 +14,7 @@ YC Systems LLC keeps this repository limited to public website code, public copy
 - ownership percentages or sensitive corporate records
 - private customer data
 
-Use `.env.example` for variable names only.
+The public website currently requires no runtime environment variables. Never commit real values if integrations are added later.
 
 ## Reporting
 

@@ -1,8 +1,9 @@
 import { execFileSync } from "node:child_process";
 import { access, readFile, readdir } from "node:fs/promises";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = path.resolve(new URL("../..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1"));
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const siteRoot = path.join(root, "site");
 const failures = [];
 const ignoredDirs = new Set([".git", ".cache", "dist", "node_modules", "output", "tmp"]);
@@ -56,7 +57,6 @@ const quarantinedLegacy = path.join(siteRoot, "styles", "legacy-quarantine.css")
 const publicSocialAssets = path.join(siteRoot, "assets", "social");
 const publicProductsShowcase = path.join(siteRoot, "assets", "products-showcase");
 const stylesManifest = path.join(siteRoot, "styles.css");
-const envExample = path.join(root, ".env.example");
 const workflow = path.join(root, ".github", "workflows", "deploy-pages.yml");
 const publicRootEntries = [
   "about",
@@ -78,6 +78,8 @@ const publicRootEntries = [
   "industries",
   "internal-systems",
   "mvp-development",
+  "nexus-controller.js",
+  "nexus-lab",
   "operating-systems",
   "partners",
   "press",
@@ -126,10 +128,6 @@ if (await exists(publicProductsShowcase)) {
   fail("Private product showcase assets are not allowed in the public YC Systems site.");
 }
 
-if (!(await exists(envExample))) {
-  fail(".env.example is missing.");
-}
-
 const stylesManifestText = await readFile(stylesManifest, "utf8");
 if (stylesManifestText.includes("./styles/legacy-quarantine.css")) {
   fail("styles.css must not import legacy-quarantine.css.");
@@ -145,6 +143,7 @@ for (const file of [
   "styles/base.css",
   "styles/layout.css",
   "styles/components.css",
+  "styles/nexus.css",
   "styles/pages.css",
   "styles/utilities.css",
   "styles/responsive.css",
@@ -154,7 +153,10 @@ for (const file of [
   }
 }
 
-const trackedEnvFiles = gitLsFiles([".env", ".env.*"]).filter((file) => file !== ".env.example");
+const trackedEnvFiles = [];
+for (const file of gitLsFiles([".env", ".env.*"])) {
+  if (await exists(path.join(root, file))) trackedEnvFiles.push(file);
+}
 if (trackedEnvFiles.length) {
   fail(`tracked environment files are not allowed: ${trackedEnvFiles.join(", ")}`);
 }
@@ -210,12 +212,10 @@ for (const file of trackedFiles) {
     fail(`${file} contains replacement characters.`);
   }
 
-  if (file !== ".env.example") {
-    for (const pattern of secretPatterns) {
-      if (pattern.test(text)) {
-        fail(`${file} appears to contain a secret or credential.`);
-        break;
-      }
+  for (const pattern of secretPatterns) {
+    if (pattern.test(text)) {
+      fail(`${file} appears to contain a secret or credential.`);
+      break;
     }
   }
 }

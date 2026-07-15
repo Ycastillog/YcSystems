@@ -401,19 +401,6 @@
 .nexus-core[data-nexus-pose="building"] .nexus-core-visual::after { content: ""; position: absolute; z-index: 2; top: 17%; right: 9%; width: 10px; height: 10px; border: 1px solid var(--nexus-accent); border-radius: 2px; box-shadow: 0 18px 0 rgba(62, 221, 212, 0.18), 0 18px 0 1px var(--nexus-accent), -18px 18px 0 rgba(62, 221, 212, 0.16), -18px 18px 0 1px var(--nexus-accent); }
 .nexus-core[data-nexus-pose="supporting"] .nexus-core-visual::after { content: ""; position: absolute; z-index: 2; right: 10%; bottom: 12%; width: 20px; height: 9px; border-bottom: 2px solid var(--nexus-green); border-left: 2px solid var(--nexus-green); transform: rotate(-45deg); }
 
-.nexus-core[data-nexus-state="activate"],
-.nexus-core[data-nexus-state="success"] {
-  --nexus-accent: var(--color-success-500);
-}
-
-.nexus-core[data-nexus-state="caution"] {
-  --nexus-accent: #ffd176;
-}
-
-.nexus-core[data-nexus-state="error"] {
-  --nexus-accent: var(--color-error-500);
-}
-
 .nexus-core[data-nexus-paused] .nexus-core-visual,
 .nexus-core[data-nexus-paused] .nexus-core-face i,
 .nexus-core[data-nexus-paused] .nexus-core-node,
@@ -671,6 +658,13 @@ html.nexus-static-fallback .nexus-core-scan {
   transform: none !important;
 }
 
+html.nexus-static-fallback .nexus-character-media,
+html.nexus-static-fallback .nexus-context-signals,
+html.nexus-static-fallback .nexus-context-signals span,
+html.nexus-static-fallback .nexus-context-signals i {
+  animation: none !important;
+}
+
 @keyframes nexus-idle {
   0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
   45% { transform: translate3d(0, -4px, 0) scale(1.008); }
@@ -864,6 +858,13 @@ html.nexus-static-fallback .nexus-core-scan {
   max-height: none;
 }
 
+.nexus-character[data-nexus-paused] .nexus-character-media,
+.nexus-character[data-nexus-paused] .nexus-context-signals,
+.nexus-character[data-nexus-paused] .nexus-context-signals span,
+.nexus-character[data-nexus-paused] .nexus-context-signals i {
+  animation-play-state: paused;
+}
+
 .nexus-character--avatar .nexus-character-stage { aspect-ratio: 1; min-height: 0; }
 .nexus-character--avatar .nexus-character-media { width: 145%; margin-left: -22%; }
 .nexus-character--bust .nexus-character-stage { min-height: 280px; max-height: 340px; }
@@ -882,9 +883,9 @@ html.nexus-static-fallback .nexus-core-scan {
   margin-left: -9%;
 }
 
-.nexus-character--bust .nexus-character-media img,
-.nexus-character--half .nexus-character-media img,
-.nexus-character--hero .nexus-character-media img {
+.nexus-character--bust[data-nexus-asset-status="fallback"] .nexus-character-media img,
+.nexus-character--half[data-nexus-asset-status="fallback"] .nexus-character-media img,
+.nexus-character--hero[data-nexus-asset-status="fallback"] .nexus-character-media img {
   -webkit-mask-image: radial-gradient(circle at 0 100%, transparent 0 24%, rgba(0, 0, 0, 0.22) 31%, #000 43%);
   mask-image: radial-gradient(circle at 0 100%, transparent 0 24%, rgba(0, 0, 0, 0.22) 31%, #000 43%);
 }
@@ -994,7 +995,8 @@ html.nexus-static-fallback .nexus-core-scan {
   box-shadow: none;
 }
 
-.nexus-character[data-nexus-expression="focused"] .nexus-eye,
+.nexus-character[data-nexus-expression="happy"] .nexus-mouth { left: 34%; bottom: 14%; width: 32%; height: 16%; }
+
 .nexus-character[data-nexus-expression="processing"] .nexus-eye {
   top: 39%;
   width: 16%;
@@ -1006,7 +1008,6 @@ html.nexus-static-fallback .nexus-core-scan {
 .nexus-character[data-nexus-expression="curious"] .nexus-eye--right { width: 8%; height: 25%; top: 34%; }
 .nexus-character[data-nexus-expression="thinking"] .nexus-mouth { left: 45%; width: 16%; transform: rotate(-8deg); }
 .nexus-character[data-nexus-expression="curious"] .nexus-mouth { left: 43%; width: 14%; height: 14%; border: 3px solid currentColor; border-radius: 50%; }
-.nexus-character[data-nexus-expression="wink"] .nexus-eye--right { top: 43%; height: 4%; width: 14%; }
 .nexus-character[data-nexus-expression="observing"] .nexus-eye { width: 9%; height: 38%; }
 .nexus-character[data-nexus-expression="explaining"] .nexus-mouth { left: 43%; width: 15%; height: 13%; border: 3px solid currentColor; border-radius: 50%; }
 .nexus-character[data-nexus-expression="processing"] .nexus-mouth { left: 35%; width: 30%; border-bottom-style: dotted; }
@@ -1057,10 +1058,10 @@ html.nexus-static-fallback .nexus-core-scan {
 .nexus-core[data-nexus-expression="confirming"] { --nexus-accent: var(--nexus-green); }
 .nexus-core[data-nexus-expression="confirming"] .nexus-core-face b { left: 28%; bottom: 20%; width: 44%; height: 11px; }
 .nexus-core[data-nexus-expression="thinking"] .nexus-core-face i:nth-child(2) { top: 38%; height: 12px; }
-.nexus-core[data-nexus-expression="focused"] .nexus-core-face i,
 .nexus-core[data-nexus-expression="processing"] .nexus-core-face i { top: 44%; width: 13px; height: 4px; }
 .nexus-core[data-nexus-expression="processing"] .nexus-core-face b { width: 34%; left: 33%; border-bottom-style: dotted; }
 .nexus-core[data-nexus-expression="soft-alert"] { --nexus-accent: var(--nexus-amber); }
+.nexus-core[data-nexus-feedback="error"] { --nexus-accent: var(--color-error-500); }
 .nexus-core[data-nexus-expression="soft-alert"] .nexus-core-face i { height: 10px; transform: rotate(8deg); }
 .nexus-core[data-nexus-expression="soft-alert"] .nexus-core-face i:nth-child(2) { transform: rotate(-8deg); }
 .nexus-core[data-nexus-expression="designing"] .nexus-core-face i { top: 44%; width: 13px; height: 3px; transform: rotate(7deg); }
@@ -1115,11 +1116,14 @@ html.nexus-static-fallback .nexus-core-scan {
 .nexus-context-signals i { position: absolute; top: 42%; left: 13%; width: 68%; height: 1px; background: linear-gradient(90deg, transparent, var(--nexus-accent), transparent); opacity: 0.36; transform: rotate(-12deg); }
 
 .nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals,
+.nexus-character[data-nexus-pose="pointing"] .nexus-context-signals,
 .nexus-character[data-nexus-pose="observing"] .nexus-context-signals { border-style: dashed; }
 .nexus-character[data-nexus-pose="observing"] .nexus-context-signals i { animation: nexus-observe-scan 3.6s ease-in-out infinite; }
 
-.nexus-character[data-nexus-pose="analyzing"] { --nexus-pose-rotation: 2deg; }
-.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals {
+.nexus-character[data-nexus-pose="analyzing"],
+.nexus-character[data-nexus-pose="pointing"] { --nexus-pose-rotation: 2deg; }
+.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals,
+.nexus-character[data-nexus-pose="pointing"] .nexus-context-signals {
   z-index: 2;
   inset: 20% 3% 27% 64%;
   border-style: solid;
@@ -1127,31 +1131,32 @@ html.nexus-static-fallback .nexus-core-scan {
   background: rgba(2, 8, 23, 0.66);
   transform: rotate(-2deg);
 }
-.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals span:nth-child(1) { top: 20%; left: 18%; }
-.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals span:nth-child(2) { top: 46%; right: 18%; }
-.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals span:nth-child(3) { right: auto; bottom: 18%; left: 42%; }
-.nexus-character[data-nexus-pose="analyzing"] .nexus-context-signals::after { top: 18%; bottom: 18%; left: 50%; width: 1px; background: linear-gradient(var(--nexus-accent), transparent); opacity: 0.5; }
+.nexus-character:is([data-nexus-pose="analyzing"], [data-nexus-pose="pointing"]) .nexus-context-signals span:nth-child(1) { top: 20%; left: 18%; }
+.nexus-character:is([data-nexus-pose="analyzing"], [data-nexus-pose="pointing"]) .nexus-context-signals span:nth-child(2) { top: 46%; right: 18%; }
+.nexus-character:is([data-nexus-pose="analyzing"], [data-nexus-pose="pointing"]) .nexus-context-signals span:nth-child(3) { right: auto; bottom: 18%; left: 42%; }
+.nexus-character:is([data-nexus-pose="analyzing"], [data-nexus-pose="pointing"]) .nexus-context-signals::after { top: 18%; bottom: 18%; left: 50%; width: 1px; background: linear-gradient(var(--nexus-accent), transparent); opacity: 0.5; }
 
 .nexus-character[data-nexus-pose="designing"] { --nexus-pose-rotation: -1deg; }
-.nexus-character[data-nexus-pose="designing"] .nexus-context-signals {
+.nexus-character[data-nexus-pose="designing"][data-nexus-asset-status="fallback"] .nexus-context-signals {
   z-index: 2;
   inset: 18% 3% 24% 58%;
   border-radius: 12px;
   background: rgba(2, 8, 23, 0.72);
   transform: rotate(5deg);
 }
-.nexus-character[data-nexus-pose="designing"] .nexus-context-signals::before { inset: 14%; border-radius: 7px; background: linear-gradient(90deg, transparent 31%, rgba(122, 156, 255, 0.35) 32% 34%, transparent 35% 66%, rgba(122, 156, 255, 0.28) 67% 69%, transparent 70%), linear-gradient(transparent 30%, rgba(122, 156, 255, 0.34) 31% 33%, transparent 34% 64%, rgba(122, 156, 255, 0.25) 65% 67%, transparent 68%); }
-.nexus-character[data-nexus-pose="designing"] .nexus-context-signals::after { right: -10%; bottom: 3%; width: 58%; height: 3px; border-radius: 999px; background: #b7c7ff; box-shadow: 0 0 12px rgba(122, 156, 255, 0.7); transform: rotate(-48deg); transform-origin: right center; }
+.nexus-character[data-nexus-pose="designing"][data-nexus-asset-status="fallback"] .nexus-context-signals::before { inset: 14%; border-radius: 7px; background: linear-gradient(90deg, transparent 31%, rgba(122, 156, 255, 0.35) 32% 34%, transparent 35% 66%, rgba(122, 156, 255, 0.28) 67% 69%, transparent 70%), linear-gradient(transparent 30%, rgba(122, 156, 255, 0.34) 31% 33%, transparent 34% 64%, rgba(122, 156, 255, 0.25) 65% 67%, transparent 68%); }
+.nexus-character[data-nexus-pose="designing"][data-nexus-asset-status="fallback"] .nexus-context-signals::after { right: -10%; bottom: 3%; width: 58%; height: 3px; border-radius: 999px; background: #b7c7ff; box-shadow: 0 0 12px rgba(122, 156, 255, 0.7); transform: rotate(-48deg); transform-origin: right center; }
 
-.nexus-character[data-nexus-pose="building"] .nexus-context-signals {
+.nexus-character[data-nexus-pose="building"][data-nexus-asset-status="fallback"] .nexus-context-signals {
   z-index: 2;
   inset: 19% 3% 25% 61%;
   border-radius: 10px;
   background: rgba(2, 8, 23, 0.72);
 }
-.nexus-character[data-nexus-pose="building"] .nexus-context-signals i { height: 2px; box-shadow: 0 28px 0 color-mix(in srgb, var(--nexus-accent) 50%, transparent), 0 -28px 0 color-mix(in srgb, var(--nexus-accent) 34%, transparent); }
-.nexus-character[data-nexus-pose="building"] .nexus-context-signals::before { top: 22%; left: 18%; width: 13px; height: 13px; border: 1px solid var(--nexus-accent); border-radius: 3px; background: rgba(62, 221, 212, 0.16); box-shadow: 28px 0 0 rgba(62, 221, 212, 0.12), 28px 0 0 1px var(--nexus-accent), 0 28px 0 rgba(62, 221, 212, 0.12), 0 28px 0 1px var(--nexus-accent), 28px 28px 0 rgba(62, 221, 212, 0.22), 28px 28px 0 1px var(--nexus-accent); }
-.nexus-character[data-nexus-pose="building"] .nexus-context-signals::after { right: 14%; bottom: 13%; width: 22px; height: 10px; border-bottom: 3px solid var(--nexus-green); border-left: 3px solid var(--nexus-green); transform: rotate(-45deg); filter: drop-shadow(0 0 6px var(--nexus-green)); }
+.nexus-character[data-nexus-pose="building"][data-nexus-asset-status="fallback"] .nexus-context-signals i { height: 2px; box-shadow: 0 28px 0 color-mix(in srgb, var(--nexus-accent) 50%, transparent), 0 -28px 0 color-mix(in srgb, var(--nexus-accent) 34%, transparent); }
+.nexus-character[data-nexus-pose="building"][data-nexus-asset-status="fallback"] .nexus-context-signals::before { top: 22%; left: 18%; width: 13px; height: 13px; border: 1px solid var(--nexus-accent); border-radius: 3px; background: rgba(62, 221, 212, 0.16); box-shadow: 28px 0 0 rgba(62, 221, 212, 0.12), 28px 0 0 1px var(--nexus-accent), 0 28px 0 rgba(62, 221, 212, 0.12), 0 28px 0 1px var(--nexus-accent), 28px 28px 0 rgba(62, 221, 212, 0.22), 28px 28px 0 1px var(--nexus-accent); }
+.nexus-character[data-nexus-pose="building"][data-nexus-asset-status="fallback"] .nexus-context-signals::after { right: 14%; bottom: 13%; width: 22px; height: 10px; border-bottom: 3px solid var(--nexus-green); border-left: 3px solid var(--nexus-green); transform: rotate(-45deg); filter: drop-shadow(0 0 6px var(--nexus-green)); }
+.nexus-character:is([data-nexus-pose="designing"], [data-nexus-pose="building"])[data-nexus-asset-status="ready"] .nexus-context-signals { display: none; }
 
 .nexus-character[data-nexus-pose="supporting"] { --nexus-pose-rotation: 1deg; }
 .nexus-character[data-nexus-pose="supporting"] .nexus-context-signals { z-index: 2; inset: 22% 4% 25% 64%; border-radius: 48% 48% 58% 58%; background: rgba(2, 20, 22, 0.64); }
@@ -1236,7 +1241,7 @@ html.nexus-static-fallback [data-reveal] { opacity: 1 !important; transform: non
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nexus-character-media, .nexus-context-signals span, .nexus-loader i { animation: none !important; }
+  .nexus-character-media, .nexus-context-signals span, .nexus-context-signals i, .nexus-loader i { animation: none !important; }
   .nexus-character, .nexus-eye, .nexus-mouth { transition: none !important; }
 }
 

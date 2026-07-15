@@ -27,7 +27,7 @@ The public website should build trust without exposing internal operations, cred
 
 ## Environment Variables
 
-Use `.env.example` to document required variable names.
+The public website currently requires no runtime environment variables. If an integration introduces them later, document names only in a sanitized example and never commit real values.
 
 Real values stay local or in the secure provider where the automation runs. They must never be committed.
 

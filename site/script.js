@@ -119,6 +119,13 @@ briefNext?.addEventListener("click", () => {
   focusBriefStep(2);
 });
 
+briefForm?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" || briefForm.dataset.step !== "1") return;
+  if (!event.target.matches("input, select")) return;
+  event.preventDefault();
+  briefNext?.click();
+});
+
 briefBack?.addEventListener("click", () => {
   showBriefStep(1);
   focusBriefStep(1);
@@ -201,7 +208,7 @@ if (briefForm) {
 }
 
 if (document.querySelector("[data-nexus]")) {
-  import("./nexus-controller.js?v=20260714f").catch((error) => {
+  import("./nexus-controller.js?v=yc-nexus-live-20260714h").catch((error) => {
     console.error("[Nexus] No fue posible iniciar el controlador", error);
     document.documentElement.classList.add("nexus-static-fallback");
     window.reportClientError?.({

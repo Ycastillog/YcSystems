@@ -2,11 +2,15 @@
   "brand": {
     "name": "YC Systems",
     "legalName": "YC Systems LLC",
-    "tagline": "Software operativo para negocios reales",
-    "positioning": "YC Systems construye software operativo para empresas que necesitan controlar, medir y crecer."
+    "siteUrl": "https://ycsystems.io",
+    "logoPath": "/assets/apple-touch-icon.png",
+    "ogImagePath": "/assets/previews/yc-systems-og.png",
+    "tagline": "Software operativo para empresas que necesitan control, velocidad y crecimiento",
+    "positioning": "YC Systems diseña y construye software operativo para empresas que necesitan controlar, medir y crecer."
   },
   "contact": {
     "email": "contact@ycsystems.io",
+    "legalEmail": "legal@ycsystems.io",
     "whatsappLabel": "+1 809-941-1105",
     "whatsappUrl": "https://wa.me/18099411105",
     "instagramUrl": "https://www.instagram.com/yc.systems"
@@ -47,7 +51,10 @@
       "internalPath": "/brands/ghostwear/",
       "url": "https://ghostwear1.com/",
       "image": "/assets/screenshots/ghostwear-live-2026.webp",
-      "summary": "Catálogo, carrito y pedidos conectados a WhatsApp para convertir visitas en conversaciones de venta."
+      "summary": "Catálogo, carrito y pedidos conectados a WhatsApp para convertir visitas en conversaciones de venta.",
+      "objective": "Facilitar catálogo y pedidos desde móvil",
+      "delivery": "Catálogo, carrito y pedido por WhatsApp",
+      "evidence": "Sitio público y flujo de pedido accesibles"
     },
     {
       "name": "Antony Real Estate",
@@ -55,28 +62,40 @@
       "internalPath": "/case-studies/antony-real-estate/",
       "url": "https://antonyrealestate.com/",
       "image": "/assets/screenshots/antonyrealestate-live.webp",
-      "summary": "Presencia comercial enfocada en confianza, captación y contacto directo con compradores."
+      "summary": "Presencia comercial enfocada en confianza, captación y contacto directo con compradores.",
+      "objective": "Presentar propiedades y captar consultas",
+      "delivery": "Sitio comercial y contacto directo",
+      "evidence": "Experiencia pública disponible para compradores"
     },
     {
       "name": "LPS Company",
       "category": "Sitio corporativo",
       "url": "https://lps-company.com/",
       "image": "/assets/screenshots/lps-company-live.webp",
-      "summary": "Base digital para presentar la empresa, sus marcas y una propuesta comercial coherente."
+      "summary": "Base digital para presentar la empresa, sus marcas y una propuesta comercial coherente.",
+      "objective": "Unificar empresa, marcas y propuesta comercial",
+      "delivery": "Sitio corporativo con acceso a sus unidades",
+      "evidence": "Presencia corporativa pública y navegable"
     },
     {
       "name": "LucianoWash",
       "category": "Servicios",
       "url": "https://lucianowash.lps-company.com/",
       "image": "/assets/screenshots/lucianowash-live.webp",
-      "summary": "Experiencia móvil bilingüe con servicios, confianza y contacto rápido por WhatsApp."
+      "summary": "Experiencia móvil bilingüe con servicios, confianza y contacto rápido por WhatsApp.",
+      "objective": "Presentar servicios y reducir fricción de contacto",
+      "delivery": "Experiencia móvil bilingüe con WhatsApp",
+      "evidence": "Sitio público con oferta y contacto activos"
     },
     {
       "name": "Snackeria",
       "category": "Marca de conveniencia",
       "url": "https://snackeriado.lps-company.com/",
       "image": "/assets/screenshots/snackeriado-live.webp",
-      "summary": "Presentación digital compacta para explicar una oferta nueva y activar el primer contacto."
+      "summary": "Presentación digital compacta para explicar una oferta nueva y activar el primer contacto.",
+      "objective": "Explicar una oferta de conveniencia B2B",
+      "delivery": "Presentación comercial y canal de contacto",
+      "evidence": "Propuesta pública disponible para evaluación"
     }
   ]
 }

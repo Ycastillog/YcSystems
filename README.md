@@ -43,7 +43,9 @@ Important files:
 - `site/styles/`: active modular CSS system.
 - `site/script.js`: public website behavior.
 - `site/nexus-controller.js`: state, interaction and accessibility behavior for Nexus.
+- `site/styles.bundle.css`: generated public CSS bundle; edit the modules under `site/styles/` instead.
 - `site/assets/`: public brand, product and approved marketing assets.
+- `site/.well-known/security.txt`: public security and privacy reporting contact.
 - `config/routes-map.json`: source of truth for routes, sitemap and noindex behavior.
 - `config/nexus-system.json`: source of truth for Nexus modes, expressions, poses and asset status.
 - `scripts/build-site.mjs`: static page generator for the shared header, footer and page system.
@@ -125,6 +127,8 @@ Client proof routes can remain excluded from the public sitemap when they are ap
 Unreleased product names, screenshots, routes, launch plans and roadmaps must stay outside the public repository until they are approved for release.
 
 Compatibility routes such as `/projects/`, `/about/`, `/brands/`, `/services/` and `/ghostwear/` are kept only as legacy redirects.
+
+With the current GitHub Pages deployment, these compatibility files are client-side fallbacks built with `meta refresh` and JavaScript. They are served as HTML responses rather than edge-level HTTP redirects. A real `301` or `308` requires an explicit rule at the CDN, proxy or hosting edge; the route map intentionally records only the destination while that layer is unavailable.
 
 ## Quality Gates
 

@@ -13,9 +13,11 @@ GitHub Pages deploys the static artifact produced from `site/`.
 - `site/index.html`: home page.
 - `site/products/`, `site/solutions/`, `site/operating-systems/`, `site/industries/`, `site/case-studies/`, `site/process/`, `site/company/`, `site/contact/`, `site/trust-center/`, `site/documentation/`, `site/developers/`, `site/documents/`, `site/privacy/`, `site/terms/`: approved public route folders.
 - `site/assets/`: public brand, client-proof and preview assets that are safe to publish with the website.
+- `site/.well-known/security.txt`: public security and privacy reporting instructions.
 - `site/script.js`: public website behavior.
 - `site/nexus-controller.js`: Nexus state, interaction and accessibility behavior.
 - `site/styles.css`: CSS manifest only.
+- `site/styles.bundle.css`: generated public stylesheet assembled during the build.
 - `site/styles/`: active modular CSS system.
 - `site/nexus-lab/`: noindex visual QA surface, excluded from sitemap and crawler discovery. It is not a security boundary.
 
@@ -38,6 +40,8 @@ Legacy route folders remain only when they are required for redirects or backwar
 - `services/`
 
 These folders must not become new design surfaces. Client pages belong under canonical routes such as `case-studies/`. Product names, screenshots, prototypes, roadmaps and launch plans stay out of the public repository until they are approved for release.
+
+The current GitHub Pages artifact cannot assign HTTP status codes per static compatibility file. The generated legacy pages therefore use client-side navigation and are served as HTML responses. The route map records the destination, not an HTTP status. A redirect must not be described as an active `301` or `308` until the CDN, proxy or host is configured to return that status.
 
 ## Internal Or Generated Material
 

@@ -18,11 +18,19 @@ The public website currently requires no runtime environment variables. Never co
 
 ## Reporting
 
-For website security or privacy issues, contact:
+For security or privacy issues affecting the public website, contact:
 
 ```text
-contact@ycsystems.io
+legal@ycsystems.io
 ```
+
+The public disclosure instructions are also available at:
+
+```text
+https://ycsystems.io/.well-known/security.txt
+```
+
+Include the affected URL, a concise description of the impact and reproducible steps when they can be shared safely. Do not send credentials, private customer data or active secrets by email.
 
 ## Internal Rule
 

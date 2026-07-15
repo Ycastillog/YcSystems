@@ -16,6 +16,8 @@ const mime = {
   ".css": "text/css; charset=utf-8",
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".webmanifest": "application/manifest+json; charset=utf-8",
+  ".txt": "text/plain; charset=utf-8",
   ".png": "image/png",
   ".webp": "image/webp",
   ".jpg": "image/jpeg",
@@ -29,6 +31,14 @@ const mime = {
 function send(res, status, content, type = "text/plain; charset=utf-8") {
   res.writeHead(status, { "Content-Type": type });
   res.end(content);
+}
+
+function sendNotFound(res) {
+  const notFoundFile = path.join(root, "404.html");
+  fs.readFile(notFoundFile, (notFoundError, notFoundPage) => {
+    if (notFoundError) return send(res, 404, "Not found");
+    return send(res, 404, notFoundPage, mime[".html"]);
+  });
 }
 
 const server = http.createServer((req, res) => {
@@ -47,7 +57,7 @@ const server = http.createServer((req, res) => {
   }
 
   fs.readFile(safePath, (err, data) => {
-    if (err) return send(res, 404, "Not found");
+    if (err) return sendNotFound(res);
     const ext = path.extname(safePath).toLowerCase();
     return send(res, 200, data, mime[ext] || "application/octet-stream");
   });

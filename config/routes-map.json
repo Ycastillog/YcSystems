@@ -170,7 +170,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/solutions/",
-      "redirectStatus": 308,
       "label": "Servicios anterior"
     },
     {
@@ -181,7 +180,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/company/",
-      "redirectStatus": 308,
       "label": "Empresa anterior"
     },
     {
@@ -192,7 +190,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/case-studies/",
-      "redirectStatus": 308,
       "label": "Proyectos anterior"
     },
     {
@@ -203,7 +200,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/case-studies/",
-      "redirectStatus": 308,
       "label": "Marcas anterior"
     },
     {
@@ -214,7 +210,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/brands/ghostwear/",
-      "redirectStatus": 308,
       "label": "GhostWear anterior"
     },
     {
@@ -225,7 +220,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/contact/",
-      "redirectStatus": 308,
       "label": "Inicio de diagnóstico anterior"
     },
     {
@@ -236,7 +230,6 @@
       "indexable": false,
       "sitemap": false,
       "redirectTo": "/developers/",
-      "redirectStatus": 308,
       "label": "Tecnología anterior"
     },
     {

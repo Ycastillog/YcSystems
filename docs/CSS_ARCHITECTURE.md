@@ -4,7 +4,9 @@ YC Systems uses a modular CSS system. New visual work must go into the modular f
 
 ## Entry Point
 
-`site/styles.css` is a manifest. It should only import CSS files.
+`site/styles.css` is the source manifest. It should only import CSS files. The build combines those modules, in the same cascade-layer order, into `site/styles.bundle.css`; public pages load that generated bundle so CSS does not depend on a blocking `@import` chain.
+
+Never edit `site/styles.bundle.css` directly.
 
 Current order:
 
@@ -40,3 +42,16 @@ Current order:
 - Keep cards and panels on shared radii, spacing and grid rules.
 - Keep Nexus modes, expressions, poses and asset status registered in `config/nexus-system.json`.
 - Test desktop, tablet and mobile after touching layout or type.
+
+## Public Asset Cache Version
+
+`assetVersion` in `scripts/build-site.mjs` is the canonical release identifier for the generated stylesheet bundle and script references written into HTML.
+
+The same identifier also appears in:
+
+- every modular CSS import in `site/styles.css`;
+- the `nexus-controller.js` dynamic import in `site/script.js`.
+
+At the start of every build, `scripts/build-site.mjs` rewrites those two static entry points to the canonical identifier. After changing the release identifier, rebuild the site and run `scripts/quality/check-site.mjs`. The quality gate requires every public asset reference to resolve to one version and prevents partially updated cache keys from shipping.
+
+Do not edit version query strings in generated HTML or source entry points. Update the canonical release value, rebuild, and commit the synchronized sources with the generated output.

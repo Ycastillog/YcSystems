@@ -181,7 +181,7 @@ function setupNexusGuides() {
 
   triggers.forEach((trigger) => {
     trigger.addEventListener("mouseenter", () => activate(trigger));
-    trigger.addEventListener("focus", () => activate(trigger));
+    trigger.addEventListener("focusin", () => activate(trigger));
     trigger.addEventListener("click", () => activate(trigger));
   });
 }

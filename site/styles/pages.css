@@ -195,7 +195,13 @@
 .webs-nexus-guide { margin-top: 24px; }
 .webs-nexus-guide .nexus-guide-card { border-color: rgba(122, 146, 255, 0.34); background: linear-gradient(135deg, rgba(17, 29, 62, 0.84), rgba(5, 14, 29, 0.76)); }
 .web-delivery-flow { margin-top: 8px; }
-.web-evidence-grid .card-media { aspect-ratio: 16 / 7; }
+.web-work-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.web-work-card { grid-column: span 2; min-height: 100%; padding: 14px; }
+.web-work-card:nth-child(n+4) { grid-column: span 3; }
+.web-work-card .card-media { aspect-ratio: 16 / 8; margin: 0 0 14px; }
+.web-work-card .case-card-copy { flex: 1; }
+.web-work-card .case-card-copy p { margin-bottom: 0; }
+.web-work-card .case-actions { width: 100%; }
 
 .route-note { margin: 24px 0 0; color: var(--color-text-secondary); font-size: 0.94rem; }
 .nexus-section { background: var(--color-surface-800); }

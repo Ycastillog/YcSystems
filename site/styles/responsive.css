@@ -45,6 +45,9 @@
   .ecosystem-preview-grid { grid-template-columns: 1fr; }
   .company-human-panel { grid-template-columns: 1fr; }
   .nexus-panel { grid-template-columns: 1fr; }
+  .web-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .web-work-card,
+  .web-work-card:nth-child(n+4) { grid-column: auto; }
   .featured-case-preview,
   .company-signals { width: 100%; max-width: 720px; }
   .webs-showcase { width: 100%; max-width: 760px; }
@@ -134,6 +137,7 @@
   .webs-browser-bar { height: 28px; padding-inline: 8px; }
   .webs-browser-card img { height: calc(100% - 28px); }
   .webs-browser-card figcaption { right: 7px; bottom: 7px; padding: 5px 7px; font-size: 0.52rem; }
+  .web-work-grid { grid-template-columns: 1fr; }
   .actions { display: grid; }
   .actions .text-link { min-height: 44px; align-items: center; }
   .button { width: 100%; }

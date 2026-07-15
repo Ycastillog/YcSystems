@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714k";
+const assetVersion = "yc-nexus-live-20260714l";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],
@@ -424,6 +424,13 @@ function caseCards(prefix, limit = content.cases.length, offset = 0) {
   </article>`).join("");
 }
 
+function webWorkCards(prefix) {
+  return content.cases.map((item) => `<article class="case-card web-work-card">
+    <div class="card-media"><img src="${relativeHref(item.image, prefix)}" alt="Web publicada de ${item.name}" width="1440" height="1000" loading="lazy" decoding="async" /></div>
+    <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver enfoque</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener external">Visitar sitio</a></div></div>
+  </article>`).join("");
+}
+
 function finalCta(prefix, title = "Define la primera fase de tu sistema") {
   return `<section class="section cta-section"><div class="container cta-panel"><div><p class="kicker">Siguiente paso</p><h2>${title}</h2><p>Cu&eacute;ntanos qu&eacute; proceso necesitas controlar, medir o automatizar y recibe una recomendaci&oacute;n inicial de alcance y prioridades.</p></div><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></section>`;
 }
@@ -488,7 +495,7 @@ renderPage({
   <section class="section"><div class="container">${sectionHead("Tipos de proyecto", "Una web definida por lo que debe lograr", "Cada proyecto comienza con una audiencia, una acci&oacute;n principal y una forma concreta de continuar la relaci&oacute;n con el negocio.")}<div class="entry-route-grid web-project-grid">${webProjectTypes.map(([title, text], index) => `<a href="${productContactHref(prefix, title)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${title}</strong><p>${text}</p><small>Definir este proyecto</small></a>`).join("")}</div><div class="webs-nexus-guide">${nexusGuideCard("design", "La web es la entrada; la operaci&oacute;n comienza despu&eacute;s del clic", "Dise&ntilde;amos la experiencia p&uacute;blica y definimos c&oacute;mo cada formulario, pedido o consulta contin&uacute;a dentro del negocio.")}</div></div></section>
   <section class="section section-alt"><div class="container">${sectionHead("Base de entrega", "Dise&ntilde;o visible y fundamentos que sostienen la experiencia", "La calidad no termina en la pantalla. Preparamos la web para ser entendida, encontrada, utilizada y mantenida.")}<div class="value-grid">${infoCards([["Estrategia y contenido", "Objetivo, audiencia, propuesta, jerarqu&iacute;a y recorridos antes de construir."], ["UX y dise&ntilde;o adaptable", "Interfaces claras y consistentes en m&oacute;vil, tableta y escritorio."], ["Calidad t&eacute;cnica", "Rendimiento, accesibilidad, SEO t&eacute;cnico y validaci&oacute;n antes de publicar."], ["Conexi&oacute;n y continuidad", "Formularios, anal&iacute;tica, pagos, reservas o herramientas seg&uacute;n el alcance."]])}</div></div></section>
   <section class="section"><div class="container">${sectionHead("M&eacute;todo", "De la idea a una web publicada con decisiones visibles", "Cada fase produce algo revisable antes de avanzar y mantiene alineados contenido, experiencia y desarrollo.")}<ol class="method-preview-grid web-delivery-flow">${webDeliveryPhases.map(([number, title, output]) => `<li><span>${number}</span><div><strong>${title}</strong><small>${output}</small></div><em>Entregable</em></li>`).join("")}</ol></div></section>
-  <section class="section section-alt"><div class="container">${sectionHead("Trabajo publicado", "Experiencias reales, alcance visible", "Estos proyectos muestran c&oacute;mo convertimos una necesidad comercial en una presencia digital activa y verificable.")}<div class="case-grid case-grid-full web-evidence-grid">${caseCards(prefix, 2)}</div><div class="section-action"><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver todos los casos publicados</a></div></div></section>
+  <section class="section section-alt"><div class="container">${sectionHead("Portafolio web", "Cinco webs publicadas para clientes", "LPS Company, Snackeria, LucianoWash, Antony Real Estate y GhostWear muestran distintos objetivos, industrias y formas de convertir una presencia digital en un canal activo.")}<div class="web-work-grid">${webWorkCards(prefix)}</div><div class="section-action"><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver alcance y evidencia de los casos</a></div></div></section>
   <section class="section cta-section"><div class="container cta-panel"><div><p class="kicker">Siguiente paso</p><h2>Definamos qu&eacute; debe lograr tu pr&oacute;xima web</h2><p>Cu&eacute;ntanos qu&eacute; quieres presentar, vender o conectar y ordenaremos una primera fase con alcance, prioridades y criterio de lanzamiento.</p></div><a class="button primary" href="${productContactHref(prefix, "Desarrollo web")}">Solicitar diagn&oacute;stico web</a></div></section>`,
 });
 

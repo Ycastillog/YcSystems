@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714m";
+const assetVersion = "yc-nexus-live-20260714n";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],
@@ -118,7 +118,7 @@ function renderFooter(prefix) {
         <strong>${content.brand.legalName}</strong>
         <p>${content.brand.positioning}</p>
       </div>
-      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Empresa</a><a href="${relativeHref("/process/", prefix)}">M&eacute;todo</a><a href="${relativeHref("/case-studies/", prefix)}">Casos autorizados</a></div>
+      <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Qui&eacute;nes somos</a><a href="${relativeHref("/process/", prefix)}">M&eacute;todo</a><a href="${relativeHref("/case-studies/", prefix)}">Casos autorizados</a></div>
       <div><strong>Soluciones</strong><a href="${relativeHref("/solutions/", prefix)}">Software operativo</a><a href="${relativeHref("/web-development/", prefix)}">Desarrollo web</a><a href="${relativeHref("/products/", prefix)}">Ecosistema propio</a><a href="${relativeHref("/developers/", prefix)}">Ingenier&iacute;a</a></div>
       <div><strong>Informaci&oacute;n</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></div>
       <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
@@ -612,9 +612,100 @@ renderPage({
 
 renderPage({
   route: "/company/",
-  title: "Empresa | YC Systems",
-  description: "Informaci&oacute;n corporativa, enfoque y principios de YC Systems LLC.",
-  body: (prefix) => `<section class="page-hero company-hero"><div class="container interior-hero-grid"><div><p class="kicker">Empresa</p><h1>Construimos software desde la operaci&oacute;n, no desde la moda</h1><p class="lead">YC Systems dise&ntilde;a sistemas claros para que equipos reales trabajen con m&aacute;s control, colaboraci&oacute;n y continuidad.</p></div><div class="company-signals"><span><small>Entidad</small><strong>YC Systems LLC</strong></span><span><small>Forma de trabajo</small><strong>Digital e internacional</strong></span><span><small>Enfoque</small><strong>Software operativo</strong></span></div></div></section><section class="section"><div class="container split"><div>${sectionHead("Qui&eacute;nes somos", "Producto, ingenier&iacute;a y negocio alrededor de un problema real", "Entendemos primero el proceso, definimos una primera fase y construimos una base que pueda mantenerse y evolucionar.")}<p>Publicamos la informaci&oacute;n que podemos respaldar: identidad corporativa, canales oficiales, m&eacute;todo, pol&iacute;ticas y trabajos autorizados. La confianza se construye mostrando c&oacute;mo decidimos y qu&eacute; entregamos.</p></div><div class="company-scope"><span><small>01 &middot; Pensamiento</small><strong>Entender antes de construir</strong></span><span><small>02 &middot; Ejecuci&oacute;n</small><strong>Entregar por fases verificables</strong></span><span><small>03 &middot; Continuidad</small><strong>Acompa&ntilde;ar despu&eacute;s del lanzamiento</strong></span></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Qu&eacute; nos diferencia", "Decisiones visibles durante todo el proyecto")}<div class="value-grid">${infoCards([["Claridad operativa", "El cliente y el equipo entienden el problema, el alcance y el siguiente paso."], ["Arquitectura mantenible", "La primera fase se construye para evolucionar sin sobredimensionarla."], ["Entrega responsable", "Cada fase tiene un resultado, una validaci&oacute;n y l&iacute;mites conocidos."], ["Continuidad", "El lanzamiento abre una etapa de uso, soporte y aprendizaje."]])}</div><div class="company-human-panel"><div><p class="kicker">Las personas y el criterio</p><h2>La tecnolog&iacute;a apoya el trabajo; no sustituye la responsabilidad</h2><p>Nexus representa nuestro m&eacute;todo para observar, ordenar, dise&ntilde;ar, construir y acompa&ntilde;ar. No reemplaza al equipo ni presenta una identidad humana ficticia.</p></div>${nexusCore("support", "Una gu&iacute;a visual para hacer visible el criterio de trabajo.", "company-nexus-core")}</div></div></section>${finalCta(prefix)}`,
+  title: "Qui&eacute;nes somos | YC Systems",
+  description: "Conoce qui&eacute;nes somos, nuestra misi&oacute;n, visi&oacute;n y los valores que orientan el trabajo de YC Systems LLC.",
+  bodyClass: "company-page",
+  body: (prefix) => `<section class="page-hero company-hero">
+    <div class="container interior-hero-grid">
+      <div>
+        <p class="kicker">YC Systems LLC</p>
+        <h1>Construimos tecnolog&iacute;a alrededor de c&oacute;mo trabajan las empresas</h1>
+        <p class="lead">Somos una empresa de desarrollo de software y experiencias web. Convertimos necesidades operativas y comerciales en sistemas claros, utilizables y preparados para evolucionar.</p>
+      </div>
+      <div class="company-signals" aria-label="Identidad de YC Systems">
+        <span><small>Entidad</small><strong>YC Systems LLC</strong></span>
+        <span><small>Lo que hacemos</small><strong>Software y experiencias web</strong></span>
+        <span><small>Principio</small><strong>Claridad antes que complejidad</strong></span>
+      </div>
+    </div>
+  </section>
+  <div class="company-anchor-bar">
+    <nav class="container company-anchor-nav" aria-label="Contenido de la p&aacute;gina Nosotros">
+      <a href="#quienes-somos">Qui&eacute;nes somos</a>
+      <a href="#mision-vision">Misi&oacute;n y visi&oacute;n</a>
+      <a href="#valores">Valores</a>
+      <a href="#identidad">Identidad</a>
+    </nav>
+  </div>
+  <section class="section company-section-anchor" id="quienes-somos">
+    <div class="container split company-story-grid">
+      <div>
+        ${sectionHead("Qui&eacute;nes somos", "Producto, dise&ntilde;o e ingenier&iacute;a con un prop&oacute;sito com&uacute;n", "YC Systems LLC integra pensamiento de producto, dise&ntilde;o e ingenier&iacute;a para convertir problemas reales en soluciones digitales &uacute;tiles.")}
+        <p>Antes de construir, aclaramos qu&eacute; debe cambiar, para qui&eacute;n y c&oacute;mo podr&aacute; comprobarse. Trabajamos con alcances definidos, decisiones visibles y entregas por fases.</p>
+        <p>El detalle de nuestras soluciones, nuestro m&eacute;todo y los trabajos publicados vive en sus p&aacute;ginas correspondientes. Aqu&iacute; concentramos la identidad y la direcci&oacute;n que orientan a la empresa.</p>
+      </div>
+      <div class="company-scope" aria-label="Disciplinas que integra YC Systems">
+        <span><small>01 &middot; Producto</small><strong>Definir el problema y el resultado esperado</strong></span>
+        <span><small>02 &middot; Dise&ntilde;o</small><strong>Convertir complejidad en una experiencia clara</strong></span>
+        <span><small>03 &middot; Ingenier&iacute;a</small><strong>Construir una base &uacute;til y mantenible</strong></span>
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt company-section-anchor" id="mision-vision">
+    <div class="container">
+      ${sectionHead("Misi&oacute;n y visi&oacute;n", "La direcci&oacute;n que orienta nuestras decisiones", "Nuestro prop&oacute;sito define lo que hacemos hoy y la clase de empresa que buscamos construir.")}
+      <div class="company-purpose-grid">
+        <article class="company-purpose-card company-purpose-card--mission">
+          <span>01 &middot; Misi&oacute;n</span>
+          <h3>Convertir necesidades reales en soluciones digitales claras</h3>
+          <p>Convertir operaciones y necesidades comerciales en soluciones digitales que ayuden a las empresas a organizar su trabajo, conectar informaci&oacute;n y avanzar con mayor control.</p>
+        </article>
+        <article class="company-purpose-card company-purpose-card--vision">
+          <span>02 &middot; Visi&oacute;n</span>
+          <h3>Tecnolog&iacute;a &uacute;til, mantenible y comunicada con honestidad</h3>
+          <p>Ser una empresa tecnol&oacute;gica reconocida por crear sistemas &uacute;tiles, mantenibles y honestamente comunicados, capaces de acompa&ntilde;ar el crecimiento real de cada operaci&oacute;n.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section company-section-anchor" id="valores">
+    <div class="container">
+      ${sectionHead("Nuestros valores", "Principios que deben notarse en el trabajo", "Los valores solo importan cuando se convierten en decisiones, l&iacute;mites y comportamientos observables.")}
+      <div class="company-values-grid">
+        ${[
+          ["01", "Claridad", "Hacemos visibles el problema, el alcance, las decisiones y el siguiente paso."],
+          ["02", "Responsabilidad", "Comprometemos solo lo que podemos definir, construir y respaldar."],
+          ["03", "Criterio", "Elegimos herramientas y prioridades por su utilidad, no por tendencia."],
+          ["04", "Colaboraci&oacute;n", "Dise&ntilde;amos con las personas que conocen y utilizan la operaci&oacute;n."],
+          ["05", "Evidencia", "Preferimos resultados observables y afirmaciones que podamos comprobar."],
+          ["06", "Continuidad", "El lanzamiento abre una etapa de uso, mantenimiento y evoluci&oacute;n."],
+        ].map(([index, title, text]) => `<article class="company-value-card"><span>${index}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt company-section-anchor" id="identidad">
+    <div class="container">
+      <div class="company-human-panel company-identity-panel">
+        <div>
+          <p class="kicker">Identidad YC Systems</p>
+          <h2>Una identidad construida para convertir complejidad en direcci&oacute;n</h2>
+          <p>YC Systems es la identidad comercial de YC Systems LLC. Nuestra expresi&oacute;n combina estructura, contraste y se&ntilde;ales visuales para comunicar control sin perder cercan&iacute;a.</p>
+          <p>Nexus es nuestra gu&iacute;a visual: representa una forma de observar, ordenar y hacer visible el siguiente paso. No es un chatbot, un empleado ficticio ni un sustituto del criterio humano.</p>
+        </div>
+        ${nexusCore("observe", "Observar, ordenar y hacer visible el siguiente paso.", "company-nexus-core", "", { expression: "neutral", pose: "observing", label: "Nexus" })}
+      </div>
+      <div class="section-head company-route-head">
+        <p class="kicker">Conoce el trabajo</p>
+        <h2>Estos principios contin&uacute;an en cada parte de YC Systems</h2>
+      </div>
+      <div class="entry-route-grid company-route-grid">
+        <a href="${relativeHref("/solutions/", prefix)}"><span>01</span><strong>Soluciones</strong><p>Qu&eacute; construimos para ordenar operaciones reales.</p><small>Explorar soluciones</small></a>
+        <a href="${relativeHref("/web-development/", prefix)}"><span>02</span><strong>Webs</strong><p>Experiencias p&uacute;blicas conectadas con el siguiente paso del negocio.</p><small>Explorar desarrollo web</small></a>
+        <a href="${relativeHref("/process/", prefix)}"><span>03</span><strong>M&eacute;todo</strong><p>C&oacute;mo convertimos una prioridad en una entrega verificable.</p><small>Ver c&oacute;mo trabajamos</small></a>
+        <a href="${relativeHref("/trust-center/", prefix)}"><span>04</span><strong>Centro de confianza</strong><p>Principios p&uacute;blicos sobre seguridad, datos y continuidad.</p><small>Revisar informaci&oacute;n</small></a>
+      </div>
+    </div>
+  </section>${finalCta(prefix, "Conversemos sobre lo que necesita tu empresa")}`,
 });
 
 renderPage({

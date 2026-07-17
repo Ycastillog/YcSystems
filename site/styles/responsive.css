@@ -44,6 +44,8 @@
   .operational-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ecosystem-preview-grid { grid-template-columns: 1fr; }
   .company-human-panel { grid-template-columns: 1fr; }
+  .company-purpose-grid,
+  .company-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nexus-panel { grid-template-columns: 1fr; }
   .web-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .web-work-card,
@@ -175,6 +177,14 @@
   .solution-detail-grid .solution-card { min-height: 0; }
   .company-human-panel { padding: 18px; }
   .company-human-panel h2 { font-size: 1.65rem; }
+  .company-anchor-nav { min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding-block: 8px; overflow: visible; }
+  .company-anchor-nav a { justify-content: center; min-width: 0; padding-inline: 10px; font-size: 0.78rem; text-align: center; white-space: normal; }
+  .company-purpose-grid,
+  .company-values-grid { grid-template-columns: 1fr; }
+  .company-purpose-card { min-height: 0; padding: 22px; }
+  .company-purpose-card h3 { margin-top: 28px; font-size: 1.5rem; }
+  .company-value-card { min-height: 0; }
+  .company-route-head { margin-top: 38px; }
   .method-preview-grid { grid-template-columns: 1fr; }
   .method-preview-grid li, .method-preview-grid li:nth-child(3n), .method-preview-grid li:nth-last-child(-n+3) { min-height: 96px; border-right: 0; border-bottom: 1px solid var(--color-border-600); }
   .method-preview-grid li:last-child { border-bottom: 0; }

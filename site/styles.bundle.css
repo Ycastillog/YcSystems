@@ -1445,6 +1445,32 @@ html.nexus-static-fallback [data-reveal] { opacity: 1 !important; transform: non
 .company-human-panel p:last-child { margin-bottom: 0; }
 .company-nexus-core { min-height: 150px; }
 
+.company-anchor-bar { border-block: 1px solid var(--color-border-600); background: rgba(3, 11, 25, 0.94); }
+.company-anchor-nav { min-height: 62px; display: flex; align-items: center; justify-content: center; gap: 8px; overflow-x: auto; scrollbar-width: thin; }
+.company-anchor-nav a { min-height: 44px; display: inline-flex; align-items: center; flex: 0 0 auto; border: 1px solid transparent; border-radius: 999px; padding: 0 16px; color: var(--color-text-secondary); font-size: 0.86rem; font-weight: 700; white-space: nowrap; }
+.company-anchor-nav a:hover,
+.company-anchor-nav a:focus-visible { border-color: rgba(51, 200, 255, 0.38); color: var(--color-text-primary); background: rgba(51, 200, 255, 0.06); }
+.company-section-anchor { scroll-margin-top: calc(var(--header-height) + 18px); }
+.company-story-grid { align-items: start; }
+.company-story-grid > div:first-child > p:last-child { margin-bottom: 0; }
+
+.company-purpose-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.company-purpose-card { min-height: 300px; display: grid; align-content: start; border: 1px solid rgba(51, 200, 255, 0.3); border-radius: var(--radius-md); padding: 30px; background: radial-gradient(circle at 86% 12%, rgba(51, 200, 255, 0.12), transparent 34%), linear-gradient(145deg, rgba(8, 27, 51, 0.9), rgba(2, 8, 23, 0.78)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035); }
+.company-purpose-card--vision { border-color: rgba(50, 213, 131, 0.28); background: radial-gradient(circle at 86% 12%, rgba(50, 213, 131, 0.11), transparent 34%), linear-gradient(145deg, rgba(7, 28, 39, 0.9), rgba(2, 8, 23, 0.78)); }
+.company-purpose-card > span,
+.company-value-card > span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+.company-purpose-card--vision > span { color: var(--color-success-500); }
+.company-purpose-card h3 { max-width: 530px; margin: 42px 0 18px; font-size: clamp(1.5rem, 2.2vw, 2.15rem); }
+.company-purpose-card p { max-width: 620px; margin: 0; }
+
+.company-values-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.company-value-card { min-height: 205px; display: grid; align-content: start; border: 1px solid var(--color-border-600); border-radius: var(--radius-sm); padding: 22px; background: linear-gradient(145deg, rgba(11, 27, 50, 0.82), rgba(3, 10, 24, 0.76)); }
+.company-value-card h3 { margin: 28px 0 10px; font-size: 1.22rem; }
+.company-value-card p { margin: 0; }
+.company-identity-panel { margin-top: 0; }
+.company-route-head { margin-top: 52px; }
+.company-route-grid a { min-height: 220px; }
+
 .authority-band { border-bottom: 1px solid var(--color-border-600); background: #030b19; }
 .authority-list { min-height: 72px; display: grid; grid-template-columns: repeat(4, 1fr); align-items: stretch; }
 .mini-proof-band .authority-list { min-height: 58px; }
@@ -1692,6 +1718,8 @@ html.nexus-static-fallback [data-reveal] { opacity: 1 !important; transform: non
   .operational-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ecosystem-preview-grid { grid-template-columns: 1fr; }
   .company-human-panel { grid-template-columns: 1fr; }
+  .company-purpose-grid,
+  .company-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nexus-panel { grid-template-columns: 1fr; }
   .web-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .web-work-card,
@@ -1823,6 +1851,14 @@ html.nexus-static-fallback [data-reveal] { opacity: 1 !important; transform: non
   .solution-detail-grid .solution-card { min-height: 0; }
   .company-human-panel { padding: 18px; }
   .company-human-panel h2 { font-size: 1.65rem; }
+  .company-anchor-nav { min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding-block: 8px; overflow: visible; }
+  .company-anchor-nav a { justify-content: center; min-width: 0; padding-inline: 10px; font-size: 0.78rem; text-align: center; white-space: normal; }
+  .company-purpose-grid,
+  .company-values-grid { grid-template-columns: 1fr; }
+  .company-purpose-card { min-height: 0; padding: 22px; }
+  .company-purpose-card h3 { margin-top: 28px; font-size: 1.5rem; }
+  .company-value-card { min-height: 0; }
+  .company-route-head { margin-top: 38px; }
   .method-preview-grid { grid-template-columns: 1fr; }
   .method-preview-grid li, .method-preview-grid li:nth-child(3n), .method-preview-grid li:nth-last-child(-n+3) { min-height: 96px; border-right: 0; border-bottom: 1px solid var(--color-border-600); }
   .method-preview-grid li:last-child { border-bottom: 0; }

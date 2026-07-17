@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714o";
+const assetVersion = "yc-nexus-live-20260714p";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],
@@ -382,22 +382,22 @@ function infoCards(items) {
 
 function homeFrictionSection() {
   const items = [
-    ["Informaci&oacute;n dispersa", "Los datos est&aacute;n en demasiados lugares y no hay una vista completa.", "signal-nodes"],
-    ["Procesos manuales", "Tareas repetitivas que consumen tiempo y generan errores.", "signal-steps"],
-    ["Decisiones sin contexto", "Falta visibilidad para decidir con rapidez y seguridad.", "signal-chart"],
-    ["Herramientas desconectadas", "Sistemas que no comparten datos ni procesos.", "signal-links"],
+    ["Informaci&oacute;n dispersa", "Los datos est&aacute;n en demasiados lugares y no hay una vista completa.", "signal-nodes", "Fragmentaci&oacute;n"],
+    ["Procesos manuales", "Tareas repetitivas que consumen tiempo y generan errores.", "signal-steps", "Carga operativa"],
+    ["Decisiones sin contexto", "Falta visibilidad para decidir con rapidez y seguridad.", "signal-chart", "Visibilidad"],
+    ["Herramientas desconectadas", "Sistemas que no comparten datos ni procesos.", "signal-links", "Desconexi&oacute;n"],
   ];
-  return `<section class="section home-friction"><div class="container">${sectionHead("Se&ntilde;ales operativas", "Cuando la operaci&oacute;n crece, tambi&eacute;n crece la fricci&oacute;n")}<div class="operational-grid">${items.map(([title, text, visual]) => `<article class="operational-card"><div class="operational-signal ${visual}" aria-hidden="true"><i></i><i></i><i></i><i></i></div><h3>${title}</h3><p>${text}</p></article>`).join("")}</div></div></section>`;
+  return `<section class="section home-friction"><div class="container">${sectionHead("Se&ntilde;ales operativas", "Cuando la operaci&oacute;n crece, tambi&eacute;n crece la fricci&oacute;n", "Estas se&ntilde;ales suelen aparecer juntas. Identificarlas permite decidir qu&eacute; necesita orden antes de construir.")}<div class="operational-grid friction-grid">${items.map(([title, text, visual, label], index) => `<article class="operational-card friction-card friction-card--${visual}"><div class="operational-card-top"><span class="operational-eyebrow">Se&ntilde;al ${String(index + 1).padStart(2, "0")}</span><span class="operational-tag">${label}</span></div><div class="operational-signal ${visual}" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="operational-card-copy"><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div></div></section>`;
 }
 
 function homeSolutionsSection(prefix) {
   const items = [
-    ["Software empresarial", "Plataformas internas que concentran operaciones, usuarios, tareas y decisiones.", "system"],
-    ["Automatizaci&oacute;n de procesos", "Flujos que reducen seguimiento manual y hacen visible cada estado.", "automation"],
-    ["Datos e integraciones", "Herramientas conectadas mediante una base de informaci&oacute;n confiable.", "data"],
-    ["Portales y herramientas internas", "Experiencias adaptadas a clientes, equipos, proveedores y socios.", "portal"],
+    ["Software empresarial", "Plataformas internas que concentran operaciones, usuarios, tareas y decisiones.", "system", "Control central"],
+    ["Automatizaci&oacute;n de procesos", "Flujos que reducen seguimiento manual y hacen visible cada estado.", "automation", "Flujos visibles"],
+    ["Datos e integraciones", "Herramientas conectadas mediante una base de informaci&oacute;n confiable.", "data", "Base confiable"],
+    ["Portales y herramientas internas", "Experiencias adaptadas a clientes, equipos, proveedores y socios.", "portal", "Acceso por rol"],
   ];
-  return `<section class="section section-alt home-solutions"><div class="container">${sectionHead("Lo que construimos", "Una base operativa dise&ntilde;ada alrededor de tu empresa")}<div class="operational-grid solution-preview-grid">${items.map(([title, text, visual], index) => `<a class="operational-card solution-preview-card" href="${relativeHref("/solutions/", prefix)}"><div class="solution-symbol ${visual}" aria-hidden="true"><span></span><span></span><span></span></div><span class="card-index">${String(index + 1).padStart(2, "0")}</span><h3>${title}</h3><p>${text}</p><small>Ver soluci&oacute;n</small></a>`).join("")}</div></div></section>`;
+  return `<section class="section section-alt home-solutions"><div class="container">${sectionHead("Lo que construimos", "Una base operativa dise&ntilde;ada alrededor de tu empresa", "Cada soluci&oacute;n resuelve una fricci&oacute;n concreta y se integra gradualmente con el resto de la operaci&oacute;n.")}<div class="operational-grid solution-preview-grid">${items.map(([title, text, visual, label], index) => `<a class="operational-card solution-preview-card solution-preview-card--${visual}" href="${relativeHref("/solutions/", prefix)}"><div class="solution-preview-head"><div class="solution-symbol ${visual}" aria-hidden="true"><span></span><span></span><span></span></div><span class="card-index">${String(index + 1).padStart(2, "0")}</span></div><span class="solution-preview-label">${label}</span><h3>${title}</h3><p>${text}</p><small>Explorar soluci&oacute;n</small></a>`).join("")}</div></div></section>`;
 }
 
 function homeEcosystemSection(prefix) {
@@ -602,12 +602,22 @@ function nexusMethodExplorer(prefix) {
   </div></section>`;
 }
 
+function methodOutcomeGrid() {
+  const outcomes = [
+    ["Prioridades", "Qu&eacute; resolver primero y qu&eacute; puede esperar.", "Decisi&oacute;n", "priority"],
+    ["Alcance", "Qu&eacute; incluye la fase y cu&aacute;les son sus l&iacute;mites.", "L&iacute;mites", "scope"],
+    ["Entregables", "Qu&eacute; se dise&ntilde;a, construye, valida y publica.", "Resultado", "delivery"],
+    ["Continuidad", "C&oacute;mo se mantiene y evoluciona despu&eacute;s.", "Evoluci&oacute;n", "continuity"],
+  ];
+  return `<div class="method-outcome-grid">${outcomes.map(([title, text, label, visual], index) => `<article class="operational-card method-outcome-card method-outcome-card--${visual}"><div class="method-outcome-head"><span class="method-outcome-index">${String(index + 1).padStart(2, "0")}</span><div class="method-outcome-icon ${visual}" aria-hidden="true"><i></i><i></i><i></i></div></div><span class="method-outcome-label">${label}</span><h3>${title}</h3><p>${text}</p></article>`).join("")}</div>`;
+}
+
 
 renderPage({
   route: "/process/",
   title: "M&eacute;todo | YC Systems",
   description: "El m&eacute;todo de YC Systems para diagnosticar, dise&ntilde;ar, construir y mejorar software operativo.",
-  body: (prefix) => `<section class="page-hero method-hero"><div class="container interior-hero-grid"><div><p class="kicker">M&eacute;todo YC Systems</p><h1>Una ruta visible desde el problema hasta la operaci&oacute;n</h1><p class="lead">Cada fase toma una decisi&oacute;n concreta, produce un entregable y reduce un riesgo antes de avanzar.</p><div class="nexus-mini-system"><span><strong>Observa</strong><small>Procesos y fricci&oacute;n</small></span><span><strong>Ordena</strong><small>Prioridad y alcance</small></span><span><strong>Orienta</strong><small>Decisiones y siguiente paso</small></span></div></div><ol class="process-preview">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${step.title}</li>`).join("")}</ol></div></section>${nexusMethodExplorer(prefix)}<section class="section section-alt"><div class="container">${sectionHead("Qu&eacute; recibe el cliente", "Una ruta de trabajo entendible desde el inicio")}<div class="value-grid">${infoCards([["Prioridades", "Qu&eacute; resolver primero y qu&eacute; puede esperar."], ["Alcance", "Qu&eacute; incluye la fase y cu&aacute;les son sus l&iacute;mites."], ["Entregables", "Qu&eacute; se dise&ntilde;a, construye, valida y publica."], ["Continuidad", "C&oacute;mo se mantiene y evoluciona despu&eacute;s."]])}</div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero method-hero"><div class="container interior-hero-grid"><div><p class="kicker">M&eacute;todo YC Systems</p><h1>Una ruta visible desde el problema hasta la operaci&oacute;n</h1><p class="lead">Cada fase toma una decisi&oacute;n concreta, produce un entregable y reduce un riesgo antes de avanzar.</p><div class="nexus-mini-system"><span><strong>Observa</strong><small>Procesos y fricci&oacute;n</small></span><span><strong>Ordena</strong><small>Prioridad y alcance</small></span><span><strong>Orienta</strong><small>Decisiones y siguiente paso</small></span></div></div><ol class="process-preview">${processSteps.map((step, index) => `<li><span>${String(index + 1).padStart(2, "0")}</span>${step.title}</li>`).join("")}</ol></div></section>${nexusMethodExplorer(prefix)}<section class="section section-alt method-outcomes-section"><div class="container">${sectionHead("Qu&eacute; recibe el cliente", "Una ruta de trabajo entendible desde el inicio", "Desde la primera conversaci&oacute;n, cada fase deja una decisi&oacute;n, un l&iacute;mite y un resultado que el cliente puede revisar.")}${methodOutcomeGrid()}</div></section>${finalCta(prefix)}`,
 });
 
 renderPage({

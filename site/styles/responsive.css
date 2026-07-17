@@ -42,6 +42,7 @@
   .interior-hero-grid { grid-template-columns: 1fr; }
   .hero-copy { max-width: 720px; }
   .operational-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .method-outcome-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ecosystem-preview-grid { grid-template-columns: 1fr; }
   .company-human-panel { grid-template-columns: 1fr; }
   .company-purpose-grid,
@@ -160,6 +161,10 @@
   .nexus-mode-flow i { display: none; }
   .operational-grid { grid-template-columns: 1fr; }
   .operational-card { min-height: 0; padding: 20px; }
+  .friction-card h3,
+  .solution-preview-card h3 { min-height: 0; }
+  .method-outcome-grid { grid-template-columns: 1fr; }
+  .method-outcome-card { min-height: 0; }
   .ecosystem-preview-grid { gap: 28px; }
   .system-map { min-height: 430px; }
   .system-map > span { min-width: 96px; padding: 8px; font-size: 0.68rem; }

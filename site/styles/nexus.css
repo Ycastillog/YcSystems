@@ -931,6 +931,17 @@ html.nexus-static-fallback .nexus-context-signals i {
 .nexus-character[data-nexus-pose="supporting"] .nexus-context-signals { z-index: 2; inset: 22% 4% 25% 64%; border-radius: 48% 48% 58% 58%; background: rgba(2, 20, 22, 0.64); }
 .nexus-character[data-nexus-pose="supporting"] .nexus-context-signals::after { top: 36%; left: 30%; width: 34%; height: 16%; border-bottom: 3px solid var(--nexus-green); border-left: 3px solid var(--nexus-green); transform: rotate(-45deg); }
 .nexus-character[data-nexus-pose="launching"] .nexus-context-signals { transform: scale(1.05); border-color: color-mix(in srgb, var(--nexus-green) 56%, transparent); }
+
+/* Las poses grandes se reconocen por rostro y movimiento. Los paneles de
+   fallback se ocultaban tarde y quedaban como cuadros sobre el visor. */
+.nexus-character:is(
+  [data-nexus-pose="analyzing"],
+  [data-nexus-pose="pointing"],
+  [data-nexus-pose="designing"],
+  [data-nexus-pose="building"],
+  [data-nexus-pose="supporting"]
+) .nexus-context-signals { display: none; }
+
 .nexus-character[data-nexus-pose="confirming"] .nexus-character-media img,
 .nexus-character[data-nexus-pose="launching"] .nexus-character-media img { -webkit-mask-image: none; mask-image: none; }
 

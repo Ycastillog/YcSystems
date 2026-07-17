@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714n";
+const assetVersion = "yc-nexus-live-20260714o";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],

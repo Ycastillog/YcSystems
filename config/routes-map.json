@@ -16,7 +16,7 @@
       "public": true,
       "indexable": true,
       "sitemap": true,
-      "label": "Ecosistema reservado"
+      "label": "Arquitectura modular"
     },
     {
       "path": "/operating-systems/",
@@ -151,7 +151,7 @@
       "public": true,
       "indexable": false,
       "sitemap": false,
-      "label": "Nexus Lab"
+      "label": "Nen Lab"
     },
     {
       "path": "/brands/ghostwear/",

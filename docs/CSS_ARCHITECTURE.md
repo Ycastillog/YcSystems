@@ -27,7 +27,7 @@ Current order:
 - `base.css`: body, headings, paragraphs, links and default text behavior.
 - `layout.css`: containers, sections, page grids, header and footer structure.
 - `components.css`: buttons, cards, badges, forms and reusable UI pieces.
-- `nexus.css`: Nexus characters, faces, poses, guide cards, method explorer and reveal fallbacks.
+- `nexus.css`: Nen characters, faces, poses, guide cards, method explorer and reveal fallbacks.
 - `pages.css`: page-specific layouts and high-value visual sections.
 - `utilities.css`: small utility rules only.
 - `responsive.css`: breakpoint rules and mobile/tablet ownership.
@@ -40,7 +40,7 @@ Current order:
 - Avoid `!important`. Use it only for accessibility or reduced-motion safeguards.
 - Keep typography controlled by tokens. Do not create one-off hero sizes unless the page has a clear reason.
 - Keep cards and panels on shared radii, spacing and grid rules.
-- Keep Nexus modes, expressions, poses and asset status registered in `config/nexus-system.json`.
+- Keep Nen modes, expressions, poses and asset status registered in `config/nexus-system.json`; the `nexus-*` selectors remain the technical namespace.
 - Test desktop, tablet and mobile after touching layout or type.
 
 ## Public Asset Cache Version

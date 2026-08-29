@@ -15,6 +15,7 @@ const nexusConfig = configElement ? JSON.parse(configElement.textContent) : {
 };
 const canonicalState = (state) => nexusConfig.aliases?.[state] || (nexusConfig.modes?.[state] ? state : nexusConfig.defaultMode);
 const stateLabels = Object.fromEntries(Object.entries(nexusConfig.modes).map(([key, value]) => [key, value.label]));
+const nenName = nexusConfig.displayName || "Nen";
 
 function nexusMediaAsset(pose) {
   const assetKey = pose === "designing"
@@ -186,13 +187,82 @@ function setupNexusGuides() {
   });
 }
 
+function setupNenDiagnostic() {
+  const diagnostic = document.querySelector("[data-nen-diagnostic]");
+  if (!diagnostic) return;
+
+  let routes;
+  try {
+    routes = JSON.parse(diagnostic.querySelector("[data-nen-diagnostic-data]")?.textContent || "[]");
+  } catch {
+    return;
+  }
+
+  const choices = [...diagnostic.querySelectorAll("[data-nen-choice]")];
+  const result = diagnostic.querySelector("[data-nen-result]");
+  const core = diagnostic.querySelector("[data-nexus]");
+  const hero = document.querySelector(".home-hero-visual[data-nexus]");
+  const resultState = diagnostic.querySelector("[data-nen-result-state]");
+  const resultTitle = diagnostic.querySelector("[data-nen-result-title]");
+  const resultCopy = diagnostic.querySelector("[data-nen-result-copy]");
+  const resultPhase = diagnostic.querySelector("[data-nen-result-phase]");
+  const resultSignal = diagnostic.querySelector("[data-nen-result-signal]");
+  const cta = diagnostic.querySelector("[data-nen-cta]");
+  if (!routes.length || !choices.length || !result || !core) return;
+
+  function activate(key, { focus = false } = {}) {
+    const route = routes.find((item) => item.key === key) || routes[0];
+    const index = routes.indexOf(route);
+    const activeChoice = choices[index];
+    choices.forEach((choice, choiceIndex) => {
+      const selected = choiceIndex === index;
+      choice.setAttribute("aria-selected", String(selected));
+      choice.tabIndex = selected ? 0 : -1;
+    });
+    if (activeChoice && focus) activeChoice.focus({ preventScroll: true });
+
+    diagnostic.dataset.nenState = canonicalState(route.state);
+    result.setAttribute("aria-labelledby", activeChoice?.id || "");
+    if (resultState) resultState.textContent = stateLabels[canonicalState(route.state)] || stateLabels.observe;
+    if (resultTitle) resultTitle.textContent = route.title;
+    if (resultCopy) resultCopy.textContent = route.copy;
+    if (resultPhase) resultPhase.textContent = route.phase;
+    if (resultSignal) resultSignal.textContent = route.signal;
+    if (cta) {
+      const baseHref = cta.getAttribute("href")?.split("?")[0] || "./contact/";
+      const service = route.need === "Sitio web o comercio digital" ? "web" : "operations";
+      cta.setAttribute("href", `${baseHref}?service=${service}&product=${encodeURIComponent(route.need)}`);
+    }
+
+    setNexusState(core, route.state, route.message);
+    if (hero) {
+      hero.dataset.nenLocked = "true";
+      setNexusState(hero, route.state, `${nenName} recomienda empezar por ${route.phase.toLowerCase()}.`);
+    }
+  }
+
+  choices.forEach((choice, index) => {
+    choice.addEventListener("click", () => activate(choice.dataset.nenChoice, { focus: false }));
+    choice.addEventListener("focus", () => activate(choice.dataset.nenChoice));
+    choice.addEventListener("keydown", (event) => {
+      if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const direction = event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 1;
+      const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? choices.length - 1 : (index + direction + choices.length) % choices.length;
+      activate(choices[nextIndex].dataset.nenChoice, { focus: true });
+    });
+  });
+
+  activate(choices[0].dataset.nenChoice);
+}
+
 function setupHomeNexusFlow() {
   if (reducedMotion) return;
   const avatar = document.querySelector(".home-hero-visual[data-nexus]");
   if (!avatar) return;
 
   const states = [
-    ["observe", "Nexus está observando tu operación.", "observing", "observing"],
+    ["observe", `${nenName} está observando tu operación.`, "observing", "observing"],
     ["organize", "Priorizando señales, alcance y próximos pasos.", "thinking", "analyzing"],
     ["design", "Convirtiendo la prioridad en una experiencia clara.", "designing", "designing"],
     ["build", "Convirtiendo la ruta en una primera fase verificable.", "building", "building"],
@@ -211,7 +281,7 @@ function setupHomeNexusFlow() {
   active = !observer;
 
   window.setInterval(() => {
-    if (!active || document.hidden) return;
+    if (!active || document.hidden || avatar.dataset.nenLocked === "true") return;
     index = (index + 1) % states.length;
     setNexusState(avatar, states[index][0], states[index][1], { expression: states[index][2], pose: states[index][3] });
   }, 5600);
@@ -371,6 +441,7 @@ function setupVisibilityPause() {
 
 setupMethodExplorer();
 setupNexusGuides();
+setupNenDiagnostic();
 setupHomeNexusFlow();
 setupCardLinks();
 setupBriefCompanion();

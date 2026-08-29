@@ -1,6 +1,6 @@
-# Sistema visual Nexus
+# Sistema visual Nen
 
-Nexus representa visualmente el método operativo de YC Systems. No es un chatbot, un empleado ficticio ni una mascota decorativa que se repite sin propósito.
+Nen representa visualmente el método operativo de YC Systems. No es un chatbot, un empleado ficticio ni una mascota decorativa que se repite sin propósito.
 
 ## Fuentes de verdad
 
@@ -52,7 +52,7 @@ Cada expresión cambia al menos dos señales entre ojos, boca, mirada, inclinaci
 
 El catálogo independiente contiene exactamente estas doce expresiones: `neutral`, `happy`, `curious`, `thinking`, `explaining`, `greeting`, `waiting`, `confirming`, `soft-alert`, `empty`, `processing` y `celebration`.
 
-`support-neutral` es la expresión operativa del modo Acompañando. `confirming` se reserva para confirmaciones completadas; Nexus no mantiene los ojos cerrados durante soporte continuo.
+`support-neutral` es la expresión operativa del modo Acompañando. `confirming` se reserva para confirmaciones completadas; Nen no mantiene los ojos cerrados durante soporte continuo.
 
 ## Movimiento y accesibilidad
 
@@ -66,7 +66,7 @@ El catálogo independiente contiene exactamente estas doce expresiones: `neutral
 
 ## Fallback estático
 
-El HTML y la imagen oficial se muestran sin JavaScript. Si el controlador no carga, `nexus-static-fallback` detiene el movimiento y conserva un estado neutral legible. Ningún contenido o control esencial depende de Nexus.
+El HTML y la imagen oficial se muestran sin JavaScript. Si el controlador no carga, `nexus-static-fallback` detiene el movimiento y conserva un estado neutral legible. Ningún contenido o control esencial depende de Nen.
 
 ## Registro de assets
 
@@ -74,7 +74,8 @@ El HTML y la imagen oficial se muestran sin JavaScript. Si el controlador no car
 
 Listos:
 
-- `nexus-avatar-base`: raster oficial actual.
+- `nexus-avatar-clean`: avatar público actual de Nen, limpio y sin gesto promocional.
+- `nexus-avatar-base`: raster anterior, reservado para confirmaciones y fallback temporal.
 - `nexus-face-support-neutral`: rostro generado en CSS.
 - `nexus-face-confirming`: rostro generado en CSS.
 - `nexus-face-soft-alert`: rostro generado en CSS.
@@ -82,10 +83,9 @@ Listos:
 
 Pendientes de producción raster:
 
-- `nexus-avatar-clean`: busto transparente sin pulgar, mano o sombra residual.
-- `nexus-pose-designing`: Nexus trabajando con stylus y wireframe.
-- `nexus-pose-building`: Nexus ensamblando módulos o usando una herramienta.
+- `nexus-pose-designing`: Nen trabajando con stylus y wireframe.
+- `nexus-pose-building`: Nen ensamblando módulos o usando una herramienta.
 
-El raster actual es opaco y ya contiene un gesto de pulgar. Para no alterar el modelo corporativo con una recreación aproximada, las poses faltantes están registradas y cuentan con fallback visual en CSS, pero deben sustituirse por fuentes oficiales transparentes cuando estén disponibles.
+El namespace técnico `nexus-*` se conserva por compatibilidad interna; la identidad pública es Nen. Las poses faltantes están registradas y cuentan con fallback visual en CSS hasta que existan fuentes oficiales transparentes.
 
 No se deben extraer imágenes de los PDF de referencia ni usar la hoja antigua de expresiones como sprite de producción.

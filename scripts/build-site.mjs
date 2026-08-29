@@ -7,7 +7,8 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nexusSystem = JSON.parse(await readFile(path.join(root, "config", "nexus-system.json"), "utf8"));
-const assetVersion = "yc-nexus-live-20260714p";
+const assetVersion = "yc-nen-buyer-20260829e";
+const nenName = nexusSystem.displayName || "Nen";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const stylesheetModules = [
   ["reset", "reset.css"],
@@ -119,7 +120,7 @@ function renderFooter(prefix) {
         <p>${content.brand.positioning}</p>
       </div>
       <div><strong>Empresa</strong><a href="${relativeHref("/company/", prefix)}">Qui&eacute;nes somos</a><a href="${relativeHref("/process/", prefix)}">M&eacute;todo</a><a href="${relativeHref("/case-studies/", prefix)}">Casos autorizados</a></div>
-      <div><strong>Soluciones</strong><a href="${relativeHref("/solutions/", prefix)}">Software operativo</a><a href="${relativeHref("/web-development/", prefix)}">Desarrollo web</a><a href="${relativeHref("/products/", prefix)}">Ecosistema propio</a><a href="${relativeHref("/developers/", prefix)}">Ingenier&iacute;a</a></div>
+      <div><strong>Soluciones</strong><a href="${relativeHref("/solutions/", prefix)}">Software operativo</a><a href="${relativeHref("/web-development/", prefix)}">Desarrollo web</a><a href="${relativeHref("/products/", prefix)}">Arquitectura modular</a><a href="${relativeHref("/developers/", prefix)}">Ingenier&iacute;a</a></div>
       <div><strong>Informaci&oacute;n</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></div>
       <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
     </div>
@@ -273,7 +274,10 @@ function actions(prefix, secondary = "/products/") {
 }
 
 function productContactHref(prefix, product) {
-  return `${relativeHref("/contact/", prefix)}?product=${encodeURIComponent(product)}`;
+  const cleanProduct = decodeMetadata(product);
+  const normalized = cleanProduct.toLocaleLowerCase("es");
+  const service = /(web|sitio|cat[aá]logo|comercio|campa[nñ]a|captaci[oó]n|tienda|portal|experiencia)/.test(normalized) ? "web" : "operations";
+  return `${relativeHref("/contact/", prefix)}?service=${service}&product=${encodeURIComponent(cleanProduct)}`;
 }
 
 function sectionHead(kicker, title, text = "") {
@@ -318,6 +322,7 @@ function nexusCharacter(prefix, {
   modifier = "",
   priority = false,
   caption = "",
+  eyebrow = "",
   action = "",
 } = {}) {
   const mode = nexusMode(state);
@@ -325,16 +330,17 @@ function nexusCharacter(prefix, {
   const selectedExpression = expression || modeConfig.expression;
   const selectedPose = pose || modeConfig.pose;
   const mediaAsset = nexusMediaAsset(selectedPose);
+  const identityChip = modifier.includes("home-hero-visual") ? '<span class="home-hero-chip">YC SYSTEMS / OPERATING SYSTEMS</span>' : "";
   return `<figure class="nexus-character nexus-character--${size} ${modifier}" data-nexus data-reveal data-nexus-prefix="${prefix}" data-nexus-state="${mode}" data-nexus-expression="${selectedExpression}" data-nexus-pose="${selectedPose}" data-nexus-asset="${mediaAsset.key}" data-nexus-asset-status="${mediaAsset.status}" data-nexus-label="${modeConfig.label}">
-    ${nexusStatusChip(mode)}
+${identityChip ? `    ${identityChip}\n` : ""}    ${nexusStatusChip(mode)}
     <div class="nexus-character-stage">
       <div class="nexus-character-media">
-        <img src="${prefix}${mediaAsset.path}" alt="Nexus, guía visual de YC Systems" width="520" height="520" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} />
+        <img src="${prefix}${mediaAsset.path}" alt="${nenName}, guía visual de YC Systems" width="520" height="520" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} />
         <span class="nexus-visor" aria-hidden="true"><i class="nexus-eye nexus-eye--left"></i><i class="nexus-eye nexus-eye--right"></i><b class="nexus-mouth"></b></span>
       </div>
       <div class="nexus-context-signals" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
     </div>
-${caption || message || action ? `    <figcaption>${caption ? `<strong>${caption}</strong>` : ""}${message ? `<span data-nexus-message>${message}</span>` : ""}${action}</figcaption>\n` : ""}  </figure>`;
+${eyebrow || caption || message || action ? `    <figcaption>${eyebrow ? `<small class="nexus-caption-eyebrow">${eyebrow}</small>` : ""}${caption ? `<strong>${caption}</strong>` : ""}${message ? `<span data-nexus-message>${message}</span>` : ""}${action}</figcaption>\n` : ""}  </figure>`;
 }
 
 function nexusCore(state = "observe", message = "Primero entendamos el proceso.", modifier = "", action = "", options = {}) {
@@ -352,16 +358,16 @@ function nexusCore(state = "observe", message = "Primero entendamos el proceso."
       <span class="nexus-core-line line-b"></span>
       <span class="nexus-core-face"><i></i><i></i><b></b></span>
     </div>
-    <div class="nexus-core-copy"><strong>Nexus</strong><span data-nexus-message>${message}</span>${action}</div>
+    <div class="nexus-core-copy"><strong>${nenName}</strong><span data-nexus-message>${message}</span>${action}</div>
   </div>`;
 }
 
 function nexusGuideCard(state, title, message, modifier = "") {
-  return `<aside class="nexus-guide-card ${modifier}" data-reveal data-nexus-guide data-nexus-state="${nexusMode(state)}">${nexusCore(state, message, "nexus-guide-core")}<div><p class="kicker">Nexus &middot; Gu&iacute;a operativa</p><h3>${title}</h3><p data-nexus-guide-text>${message}</p></div></aside>`;
+  return `<aside class="nexus-guide-card ${modifier}" data-reveal data-nexus-guide data-nexus-state="${nexusMode(state)}">${nexusCore(state, message, "nexus-guide-core")}<div><p class="kicker">${nenName} &middot; Gu&iacute;a operativa</p><h3>${title}</h3><p data-nexus-guide-text>${message}</p></div></aside>`;
 }
 
 function nexusInsightCard(state, title, message) {
-  return `<article class="nexus-insight-card" data-reveal data-nexus-state="${nexusMode(state)}"><span>Lectura Nexus</span><h3>${title}</h3><p>${message}</p></article>`;
+  return `<article class="nexus-insight-card" data-reveal data-nexus-state="${nexusMode(state)}"><span>Lectura ${nenName}</span><h3>${title}</h3><p>${message}</p></article>`;
 }
 
 function nexusConfirmation(message = "Ruta inicial recibida") {
@@ -380,6 +386,22 @@ function infoCards(items) {
   return items.map(([title, text]) => `<div class="value-card"><strong>${title}</strong><p>${text}</p></div>`).join("");
 }
 
+function homeOperatingVisual(prefix) {
+  const signals = ["Informaci&oacute;n dispersa", "Tareas manuales", "Sistemas aislados"];
+  const outcomes = ["Estados visibles", "Datos conectados", "Decisiones con contexto"];
+  return `<aside class="home-operating-visual" aria-label="Mapa de una operaci&oacute;n que pasa de se&ntilde;ales dispersas a una base operativa">
+    <div class="home-operating-header"><span>YC SYSTEMS / MAPA OPERATIVO</span><strong><i aria-hidden="true"></i>Sistema en diagn&oacute;stico</strong></div>
+    <div class="home-operating-map">
+      <div class="home-operating-stack"><small>Se&ntilde;ales</small>${signals.map((item) => `<span>${item}</span>`).join("")}</div>
+      <span class="home-operating-arrow" aria-hidden="true">&rarr;</span>
+      <div class="home-operating-base"><small>Primera fase</small><strong>Base operativa</strong><span>Procesos &middot; roles &middot; reglas</span><div aria-hidden="true"><i></i><i></i><i></i></div></div>
+      <span class="home-operating-arrow" aria-hidden="true">&rarr;</span>
+      <div class="home-operating-stack home-operating-stack--outcome"><small>Cambio visible</small>${outcomes.map((item) => `<span>${item}</span>`).join("")}</div>
+    </div>
+    <div class="home-operating-footer">${nexusCore("observe", "Nen hace visible el estado; YC Systems define la prioridad.", "home-operating-nen", "", { label: "Nen / interfaz visual" })}<a class="text-link" href="#nen-diagnostic">Explorar una primera fase</a></div>
+  </aside>`;
+}
+
 function homeFrictionSection() {
   const items = [
     ["Informaci&oacute;n dispersa", "Los datos est&aacute;n en demasiados lugares y no hay una vista completa.", "signal-nodes", "Fragmentaci&oacute;n"],
@@ -388,6 +410,92 @@ function homeFrictionSection() {
     ["Herramientas desconectadas", "Sistemas que no comparten datos ni procesos.", "signal-links", "Desconexi&oacute;n"],
   ];
   return `<section class="section home-friction"><div class="container">${sectionHead("Se&ntilde;ales operativas", "Cuando la operaci&oacute;n crece, tambi&eacute;n crece la fricci&oacute;n", "Estas se&ntilde;ales suelen aparecer juntas. Identificarlas permite decidir qu&eacute; necesita orden antes de construir.")}<div class="operational-grid friction-grid">${items.map(([title, text, visual, label], index) => `<article class="operational-card friction-card friction-card--${visual}"><div class="operational-card-top"><span class="operational-eyebrow">Se&ntilde;al ${String(index + 1).padStart(2, "0")}</span><span class="operational-tag">${label}</span></div><div class="operational-signal ${visual}" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="operational-card-copy"><h3>${title}</h3><p>${text}</p></div></article>`).join("")}</div></div></section>`;
+}
+
+function homeNenDiagnosticSection(prefix) {
+  const routes = [
+    {
+      key: "visibility",
+      state: "observe",
+      label: "No veo la operación",
+      detail: "Datos repartidos y decisiones lentas.",
+      title: "Empieza por una vista completa de tu operación",
+      copy: "YC Systems reúne procesos, responsables y estados para que el equipo pueda decidir con el mismo contexto.",
+      phase: "Mapa operativo + prioridades",
+      signal: "Una vista compartida para decidir.",
+      need: "Operación interna",
+      message: "Observando señales y prioridades de tu operación.",
+    },
+    {
+      key: "automation",
+      state: "build",
+      label: "Repito demasiado",
+      detail: "Tareas manuales y seguimiento constante.",
+      title: "Empieza por el flujo que más tiempo consume",
+      copy: "En lugar de automatizar todo, elegimos un proceso crítico, hacemos visibles sus estados y construimos una primera mejora medible.",
+      phase: "Flujo crítico + automatización",
+      signal: "Menos seguimiento manual y más consistencia.",
+      need: "Automatización",
+      message: "Construyendo una ruta alrededor del proceso crítico.",
+    },
+    {
+      key: "integration",
+      state: "organize",
+      label: "Mis sistemas no hablan",
+      detail: "Herramientas conectadas a medias.",
+      title: "Empieza por ordenar cómo viaja la información",
+      copy: "Mapeamos las fuentes, reglas y decisiones para conectar lo que ya utilizas sin reemplazar todo de una vez.",
+      phase: "Mapa de datos + integraciones",
+      signal: "Información disponible donde hace falta.",
+      need: "Datos y reportes",
+      message: "Ordenando fuentes, reglas y decisiones compartidas.",
+    },
+    {
+      key: "growth",
+      state: "design",
+      label: "Necesito vender mejor",
+      detail: "Una web que no convierte suficiente.",
+      title: "Empieza por una entrada digital que haga avanzar la venta",
+      copy: "Diseñamos la experiencia, el mensaje y el siguiente paso para que cada visita tenga una ruta clara hacia una conversación o una acción.",
+      phase: "Experiencia comercial + conversión",
+      signal: "Más claridad entre visita, consulta y oportunidad.",
+      need: "Sitio web o comercio digital",
+      message: "Diseñando una entrada comercial con un siguiente paso claro.",
+    },
+  ];
+  const first = routes[0];
+  const diagnosticData = JSON.stringify(routes).replace(/</g, "\\u003c");
+  return `<section class="section nen-diagnostic-section" id="nen-diagnostic" data-nen-diagnostic>
+    <div class="container">
+      ${sectionHead("Diagnóstico rápido · 1 minuto", "Encuentra por dónde empezar", "Elige la fricción que más se parece a tu operación. YC Systems te mostrará una primera fase posible y te llevará a una conversación más útil.")}
+      <div class="nen-diagnostic-shell">
+        <div class="nen-choice-panel">
+          <p class="nen-choice-heading">¿Qué necesitas destrabar primero?</p>
+          <div class="nen-choice-list" role="tablist" aria-label="Puntos de fricción de la operación">
+            ${routes.map((route, index) => `<button id="nen-diagnostic-choice-${route.key}" class="nen-choice" type="button" role="tab" data-nen-choice="${route.key}" aria-controls="nen-diagnostic-result" aria-selected="${index === 0 ? "true" : "false"}"${index === 0 ? "" : " tabindex=\"-1\""}>
+              <span class="nen-choice-index">${String(index + 1).padStart(2, "0")}</span>
+              <span class="nen-choice-copy"><strong>${route.label}</strong><small>${route.detail}</small></span>
+              <span class="nen-choice-arrow" aria-hidden="true">&rarr;</span>
+            </button>`).join("")}
+          </div>
+          <p class="nen-choice-note">No necesitas tener el diagnóstico completo para comenzar.</p>
+        </div>
+        <div id="nen-diagnostic-result" class="nen-recommendation" role="tabpanel" aria-labelledby="nen-diagnostic-choice-${first.key}" aria-live="polite" data-nen-result>
+          ${nexusCore(first.state, first.message, "nen-diagnostic-core")}
+          <div class="nen-result-copy">
+            <div class="nen-result-top"><span>YC Systems / primera lectura</span><span data-nen-result-state>${nexusSystem.modes[nexusMode(first.state)].label}</span></div>
+            <h3 data-nen-result-title>${first.title}</h3>
+            <p data-nen-result-copy>${first.copy}</p>
+            <dl class="nen-result-facts"><div><dt>Primera fase</dt><dd data-nen-result-phase>${first.phase}</dd></div><div><dt>Señal de avance</dt><dd data-nen-result-signal>${first.signal}</dd></div></dl>
+            <a class="button primary" data-nen-cta href="${productContactHref(prefix, first.need)}">Hablar de esta primera fase</a>
+            <p class="nen-result-note">La recomendación es un punto de partida; la definimos contigo antes de construir.</p>
+          </div>
+        </div>
+      </div>
+      <p class="nen-diagnostic-footnote"><span aria-hidden="true">●</span> El objetivo no es añadir otra herramienta: es hacer visible qué debe cambiar primero.</p>
+    </div>
+    <script type="application/json" data-nen-diagnostic-data>${diagnosticData}</script>
+  </section>`;
 }
 
 function homeSolutionsSection(prefix) {
@@ -400,9 +508,56 @@ function homeSolutionsSection(prefix) {
   return `<section class="section section-alt home-solutions"><div class="container">${sectionHead("Lo que construimos", "Una base operativa dise&ntilde;ada alrededor de tu empresa", "Cada soluci&oacute;n resuelve una fricci&oacute;n concreta y se integra gradualmente con el resto de la operaci&oacute;n.")}<div class="operational-grid solution-preview-grid">${items.map(([title, text, visual, label], index) => `<a class="operational-card solution-preview-card solution-preview-card--${visual}" href="${relativeHref("/solutions/", prefix)}"><div class="solution-preview-head"><div class="solution-symbol ${visual}" aria-hidden="true"><span></span><span></span><span></span></div><span class="card-index">${String(index + 1).padStart(2, "0")}</span></div><span class="solution-preview-label">${label}</span><h3>${title}</h3><p>${text}</p><small>Explorar soluci&oacute;n</small></a>`).join("")}</div></div></section>`;
 }
 
+function homeProofSection(prefix) {
+  const featuredCases = content.cases.slice(0, 3);
+  if (!featuredCases.length) return "";
+  const first = featuredCases[0];
+  const proofData = JSON.stringify(featuredCases.map((item) => ({
+    name: item.name,
+    category: item.category,
+    summary: item.summary,
+    objective: item.objective,
+    delivery: item.delivery,
+    evidence: item.evidence,
+    image: relativeHref(item.image, prefix),
+    url: item.url,
+    internalPath: item.internalPath ? relativeHref(item.internalPath, prefix) : "",
+  }))).replace(/</g, "\\u003c");
+  return `<section class="section home-proof-section" id="trabajo-publicado" data-home-proof>
+    <div class="container">
+      ${sectionHead("Trabajo publicado", "La mejor forma de entenderlo es verlo en acci&oacute;n", "Explora proyectos p&uacute;blicos y autorizados: cada uno parte de un objetivo comercial distinto y termina en una experiencia que se puede recorrer.")}
+      <div class="home-proof-shell">
+        <div class="home-proof-selector">
+          <p class="home-proof-label">Explora el trabajo</p>
+          <div class="home-proof-tabs" role="tablist" aria-label="Casos p&uacute;blicos de YC Systems">
+            ${featuredCases.map((item, index) => `<button id="home-proof-tab-${index}" class="home-proof-tab" type="button" role="tab" data-home-proof-choice="${index}" aria-controls="home-proof-panel" aria-selected="${index === 0 ? "true" : "false"}"${index === 0 ? "" : " tabindex=\"-1\""}>
+              <span class="home-proof-tab-index">${String(index + 1).padStart(2, "0")}</span>
+              <span class="home-proof-tab-copy"><strong>${item.name}</strong><small>${item.category}</small></span>
+              <span class="home-proof-tab-arrow" aria-hidden="true">&rarr;</span>
+            </button>`).join("")}
+          </div>
+          <a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver todos los casos</a>
+        </div>
+        <article id="home-proof-panel" class="home-proof-panel" role="tabpanel" aria-labelledby="home-proof-tab-0" data-home-proof-panel>
+          <div class="home-proof-media"><img data-home-proof-image src="${relativeHref(first.image, prefix)}" alt="Sitio publicado de ${first.name}" width="1440" height="1000" loading="lazy" decoding="async" /></div>
+          <div class="home-proof-copy">
+            <div class="home-proof-meta"><span data-home-proof-category>${first.category}</span><span data-home-proof-evidence>${first.evidence}</span></div>
+            <h3 data-home-proof-title>${first.name}</h3>
+            <p data-home-proof-summary>${first.summary}</p>
+            <dl class="home-proof-facts"><div><dt>Objetivo</dt><dd data-home-proof-objective>${first.objective}</dd></div><div><dt>Entrega</dt><dd data-home-proof-delivery>${first.delivery}</dd></div></dl>
+            <div class="case-actions home-proof-actions"><a class="button secondary" data-home-proof-detail href="${first.internalPath ? relativeHref(first.internalPath, prefix) : ""}"${first.internalPath ? "" : " hidden"}>Ver enfoque</a><a class="text-link" data-home-proof-external href="${first.url}" target="_blank" rel="noopener external" aria-label="Visitar sitio de ${first.name} (abre en una pestaña nueva)">Visitar sitio</a></div>
+          </div>
+        </article>
+      </div>
+      <p class="home-proof-note"><span aria-hidden="true">●</span> Casos p&uacute;blicos y autorizados. Mostramos el alcance y la evidencia disponible sin atribuir resultados que no podamos comprobar.</p>
+    </div>
+    <script type="application/json" data-home-proof-data>${proofData}</script>
+  </section>`;
+}
+
 function homeEcosystemSection(prefix) {
   const nodes = ["Experiencia", "Procesos", "Automatizaciones", "Datos", "Integraciones", "M&eacute;tricas"];
-  return `<section class="section home-ecosystem-preview"><div class="container ecosystem-preview-grid"><div>${sectionHead("Ecosistema", "Sistemas que comparten contexto, datos y decisiones", "Cada m&oacute;dulo puede comenzar de forma independiente y conectarse gradualmente con el resto de la operaci&oacute;n.")}<div class="nexus-system-note">${nexusCore("organize", "Una operaci&oacute;n conectada comienza con una base clara.", "ecosystem-note-core")}</div><a class="text-link" href="${relativeHref("/products/", prefix)}">Explorar el ecosistema</a></div><div class="system-map" role="img" aria-label="Mapa del ecosistema operativo"><strong>Base operativa</strong>${nodes.map((node, index) => `<span style="--node:${index}">${node}</span>`).join("")}<i></i><i></i><i></i></div></div></section>`;
+  return `<section class="section home-ecosystem-preview"><div class="container ecosystem-preview-grid"><div>${sectionHead("Arquitectura", "Sistemas que comparten contexto, datos y decisiones", "Cada m&oacute;dulo puede comenzar de forma independiente y conectarse gradualmente con el resto de la operaci&oacute;n.")}<div class="nexus-system-note">${nexusCore("organize", "Una operaci&oacute;n conectada comienza con una base clara.", "ecosystem-note-core")}</div><a class="text-link" href="${relativeHref("/products/", prefix)}">Explorar la arquitectura</a></div><div class="system-map" role="img" aria-label="Mapa de la arquitectura operativa"><strong>Base operativa</strong>${nodes.map((node, index) => `<span style="--node:${index}">${node}</span>`).join("")}<i></i><i></i><i></i></div></div></section>`;
 }
 
 function homeMethodSection(prefix) {
@@ -417,41 +572,59 @@ function homeMethodSection(prefix) {
   return `<section class="section section-alt home-method-preview"><div class="container">${sectionHead("M&eacute;todo YC Systems", "Una ruta visible desde el problema hasta la operaci&oacute;n", "Cada fase toma una decisi&oacute;n, produce un entregable y reduce un riesgo antes de avanzar.")}<ol class="method-preview-grid">${phases.map(([number, title, state, output]) => `<li><span>${number}</span><div><strong>${title}</strong><small>${output}</small></div><em>${state}</em></li>`).join("")}</ol><div class="section-action"><a class="text-link" href="${relativeHref("/process/", prefix)}">Ver c&oacute;mo trabajamos</a></div></div></section>`;
 }
 
+function homeBuyerSection(prefix) {
+  const steps = [
+    ["01", "Comparte la fricci&oacute;n", "Dos pasos breves para explicar qu&eacute; est&aacute; frenando la operaci&oacute;n. No necesitas llegar con una soluci&oacute;n decidida."],
+    ["02", "Recibe una lectura inicial", "Respondemos habitualmente en 24&ndash;48 horas laborales con el siguiente paso recomendado."],
+    ["03", "Decide con alcance", "Si el proyecto avanza, la propuesta define alcance, fases, tiempos, pagos y responsabilidades antes de construir."],
+  ];
+  const assurances = [
+    ["Evidencia antes que promesas", "Mostramos trabajo p&uacute;blico y distinguimos claramente lo comprobado de lo que todav&iacute;a debe validarse."],
+    ["Una primera fase entendible", "Definimos qu&eacute; entra, qu&eacute; queda fuera y qu&eacute; cambio deber&iacute;a hacerse visible."],
+    ["Continuidad definida", "La propuesta indica qu&eacute; soporte, acompa&ntilde;amiento o evoluci&oacute;n queda incluido despu&eacute;s del lanzamiento."],
+  ];
+  return `<section class="section home-buyer-section"><div class="container">
+    <div class="home-buyer-grid">
+      <div class="home-buyer-copy">${sectionHead("C&oacute;mo empieza una compra", "Antes de invertir, debes saber qu&eacute; ocurrir&aacute; despu&eacute;s", "Una solicitud no te obliga a construir. Sirve para entender el contexto, reducir incertidumbre y decidir si existe una primera fase razonable.")}<div class="home-buyer-links"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Iniciar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/trust-center/", prefix)}">Revisar confianza y privacidad</a></div></div>
+      <ol class="home-buyer-steps">${steps.map(([number, title, text]) => `<li><span>${number}</span><div><strong>${title}</strong><p>${text}</p></div></li>`).join("")}</ol>
+    </div>
+    <div class="home-buyer-assurance">${assurances.map(([title, text]) => `<article><span aria-hidden="true">&check;</span><div><strong>${title}</strong><p>${text}</p></div></article>`).join("")}</div>
+  </div></section>`;
+}
+
 function caseCards(prefix, limit = content.cases.length, offset = 0) {
   return content.cases.slice(offset, offset + limit).map((item) => `<article class="case-card" data-card-link>
     <div class="card-media"><img src="${relativeHref(item.image, prefix)}" alt="Sitio publicado de ${item.name}" width="1440" height="1000" loading="lazy" decoding="async" /></div>
-    <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><dl class="case-facts"><div><dt>Objetivo</dt><dd>${item.objective}</dd></div><div><dt>Entrega</dt><dd>${item.delivery}</dd></div><div><dt>Evidencia</dt><dd>${item.evidence}</dd></div></dl><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver enfoque</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener external">Visitar sitio</a></div></div>
+    <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><dl class="case-facts"><div><dt>Objetivo</dt><dd>${item.objective}</dd></div><div><dt>Entrega</dt><dd>${item.delivery}</dd></div><div><dt>Evidencia</dt><dd>${item.evidence}</dd></div></dl><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver enfoque</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener external" aria-label="Visitar sitio de ${item.name} (abre en una pestaña nueva)">Visitar sitio</a></div></div>
   </article>`).join("");
 }
 
 function webWorkCards(prefix) {
   return content.cases.map((item) => `<article class="case-card web-work-card">
     <div class="card-media"><img src="${relativeHref(item.image, prefix)}" alt="Web publicada de ${item.name}" width="1440" height="1000" loading="lazy" decoding="async" /></div>
-    <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver enfoque</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener external">Visitar sitio</a></div></div>
+    <div class="case-card-copy"><span>${item.category}</span><h3>${item.name}</h3><p>${item.summary}</p><div class="case-actions">${item.internalPath ? `<a class="button secondary" href="${relativeHref(item.internalPath, prefix)}">Ver enfoque</a>` : ""}<a class="text-link" href="${item.url}" target="_blank" rel="noopener external" aria-label="Visitar sitio de ${item.name} (abre en una pestaña nueva)">Visitar sitio</a></div></div>
   </article>`).join("");
 }
 
 function finalCta(prefix, title = "Define la primera fase de tu sistema") {
-  return `<section class="section cta-section"><div class="container cta-panel"><div><p class="kicker">Siguiente paso</p><h2>${title}</h2><p>Cu&eacute;ntanos qu&eacute; proceso necesitas controlar, medir o automatizar y recibe una recomendaci&oacute;n inicial de alcance y prioridades.</p></div><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a></div></section>`;
+  return `<section class="section cta-section"><div class="container cta-panel"><div><p class="kicker">Siguiente paso</p><h2>${title}</h2><p>Cu&eacute;ntanos qu&eacute; proceso necesitas controlar, medir o automatizar y recibe una recomendaci&oacute;n inicial de alcance y prioridades.</p></div><div class="cta-actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><small>Dos pasos &middot; respuesta habitual en 24&ndash;48 horas laborales</small></div></div></section>`;
 }
 
 renderPage({
   route: "/",
-  title: "YC Systems | Software operativo para empresas",
-  description: "YC Systems dise&ntilde;a y construye software operativo para centralizar procesos, conectar datos y dar a las empresas m&aacute;s control sobre su operaci&oacute;n.",
+  title: "YC Systems | Software operativo para una operaci&oacute;n visible y controlable",
+  description: "Centralizamos datos, automatizamos tareas y conectamos herramientas mediante primeras fases con alcance y criterios claros.",
   bodyClass: "home-page",
-  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC &middot; Software operativo</p><h1>Software operativo para empresas que necesitan control, velocidad y crecimiento</h1><p class="lead">Dise&ntilde;amos plataformas empresariales que centralizan operaciones, automatizan procesos y convierten informaci&oacute;n dispersa en decisiones claras.</p>${actions(prefix, "/solutions/")}<p class="trust-line">Software empresarial &middot; implementaci&oacute;n por fases &middot; soporte continuo</p></div>${nexusCharacter(prefix, { state: "observe", expression: "observing", pose: "observing", size: "hero", modifier: "home-hero-visual", priority: true, caption: "Operaciones reales convertidas en sistemas claros.", message: "Primero entendemos c&oacute;mo trabaja tu empresa.", action: `<a class="text-link" href="${relativeHref("/contact/", prefix)}">Descubre d&oacute;nde comenzar</a>` })}</div></section>
-  <section class="authority-band mini-proof-band" aria-label="Capacidades principales"><div class="container authority-list"><span><small>01</small><strong>Software empresarial</strong></span><span><small>02</small><strong>Implementaci&oacute;n por fases</strong></span><span><small>03</small><strong>Datos conectados</strong></span><span><small>04</small><strong>Soporte continuo</strong></span></div></section>
-  ${homeFrictionSection()}${homeSolutionsSection(prefix)}
-  <section class="section nexus-section"><div class="container nexus-panel nexus-core-panel"><div class="nexus-system-visual">${nexusCore("observe", "Nexus identifica se&ntilde;ales y hace visible el siguiente paso.", "nexus-home-core")}<div class="nexus-mode-flow" role="img" aria-label="Modos de Nexus: observa, ordena, diseña, construye y acompaña"><span>Observa</span><i></i><span>Ordena</span><i></i><span>Dise&ntilde;a</span><i></i><span>Construye</span><i></i><span>Acompa&ntilde;a</span></div></div><div class="nexus-copy"><p class="kicker">Nexus &middot; Gu&iacute;a operativa</p><h2>Una forma visual de observar, ordenar y avanzar</h2><p>Nexus representa c&oacute;mo YC Systems entiende una operaci&oacute;n antes de construir: identifica las se&ntilde;ales, organiza la prioridad y hace visible el siguiente paso.</p><a class="text-link" href="${relativeHref("/process/", prefix)}">Ver c&oacute;mo trabaja Nexus</a></div></div></section>
-  ${homeEcosystemSection(prefix)}${homeMethodSection(prefix)}${finalCta(prefix, "Antes de construir, definamos qu&eacute; necesita m&aacute;s control")}`,
+  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC &middot; Software operativo para empresas en crecimiento</p><h1>Software operativo para convertir procesos dispersos en una operaci&oacute;n visible y controlable</h1><p class="lead">Centralizamos datos, automatizamos tareas y conectamos herramientas en una primera fase con alcance, plazo y criterios de aceptaci&oacute;n definidos antes de desarrollar.</p><div class="actions"><a class="button primary" href="#nen-diagnostic">Evaluar mi operaci&oacute;n</a><a class="button secondary" href="${relativeHref("/web-development/", prefix)}">Necesito una web comercial</a></div><p class="trust-line">Respuesta inicial en 24&ndash;48 horas laborales &middot; no necesitas requisitos t&eacute;cnicos</p></div>${homeOperatingVisual(prefix)}</div></section>
+  <section class="authority-band mini-proof-band" aria-label="Se&ntilde;ales de confianza"><div class="container authority-list"><span><small>Prueba</small><strong>${content.cases.length} trabajos p&uacute;blicos</strong></span><span><small>Inicio</small><strong>Diagn&oacute;stico en 2 pasos</strong></span><span><small>Respuesta</small><strong>24&ndash;48 horas laborales</strong></span><span><small>Entrega</small><strong>Alcance por fases</strong></span></div></section>
+  ${homeProofSection(prefix)}${homeFrictionSection()}${homeSolutionsSection(prefix)}${homeNenDiagnosticSection(prefix)}${homeMethodSection(prefix)}${homeBuyerSection(prefix)}${finalCta(prefix, "Definamos la primera fase con claridad")}`,
 });
 
 renderPage({
   route: "/products/",
-  title: "Ecosistema propio | YC Systems",
-  description: "YC Systems construye soluciones p&uacute;blicas y desarrollos implementados exclusivamente para organizaciones y clientes.",
-  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Ecosistema YC Systems</p><h1>Un ecosistema modular para operar, conectar y crecer</h1><p class="lead">Cada soluci&oacute;n puede comenzar de forma independiente y conectarse gradualmente con el resto de la operaci&oacute;n.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="button secondary" href="${relativeHref("/solutions/", prefix)}">Ver soluciones</a></div></div><div class="system-map compact-system-map" role="img" aria-label="Mapa del ecosistema operativo"><strong>Base operativa</strong>${["Procesos", "Usuarios", "Datos", "Automatizaciones", "Integraciones", "M&eacute;tricas"].map((node, index) => `<span style="--node:${index}">${node}</span>`).join("")}<i></i><i></i><i></i></div></div></section><section class="section"><div class="container">${sectionHead("C&oacute;mo se conecta", "Tres niveles, un mismo contexto operativo", "Cada nivel conserva su funci&oacute;n mientras comparte datos, reglas y decisiones con el resto del sistema.")}<div class="ecosystem-layers"><div><span>01</span><strong>Experiencia</strong><p>Lo que ven clientes, empleados, proveedores y socios.</p></div><div><span>02</span><strong>Operaci&oacute;n</strong><p>Procesos, permisos, estados, validaciones y automatizaciones.</p></div><div><span>03</span><strong>Base</strong><p>Datos, integraciones, seguridad, continuidad y m&eacute;tricas.</p></div></div><div class="nexus-guide ecosystem-guide">${nexusCore("organize", "Cada m&oacute;dulo conserva su funci&oacute;n, pero comparte el mismo contexto operativo.", "nexus-guide-core")}<div><p class="kicker">Nexus &middot; Vista del sistema</p><h3>Una base clara permite conectar sin reemplazar todo de una vez</h3><p>Cada implementaci&oacute;n avanza por m&oacute;dulos y prioridades verificables.</p></div></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Puntos de entrada", "No todas las empresas necesitan comenzar por el mismo lugar")}<div class="entry-route-grid">${[["Centralizar una operaci&oacute;n", "Reunir estados, responsables e informaci&oacute;n en una base visible."], ["Automatizar un proceso cr&iacute;tico", "Reducir seguimiento manual sin perder control ni trazabilidad."], ["Conectar sistemas existentes", "Compartir datos y decisiones entre herramientas que ya utiliza el equipo."], ["Crear un portal", "Dar a cada grupo acceso claro a la informaci&oacute;n y acciones que necesita."]].map(([title, text], index) => `<a href="${relativeHref("/contact/", prefix)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${title}</strong><p>${text}</p><small>Ver primera fase recomendada</small></a>`).join("")}</div></div></section>${finalCta(prefix)}`,
+  title: "Arquitectura modular | YC Systems",
+  description: "C&oacute;mo YC Systems conecta experiencia, operaci&oacute;n y datos en una arquitectura modular implementada por fases.",
+  body: (prefix) => `<section class="page-hero products-hero"><div class="container interior-hero-grid"><div><p class="kicker">Arquitectura YC Systems</p><h1>Un sistema modular para operar, conectar y crecer</h1><p class="lead">Cada m&oacute;dulo puede comenzar de forma independiente y conectarse gradualmente con el resto de la operaci&oacute;n.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="button secondary" href="${relativeHref("/solutions/", prefix)}">Ver soluciones</a></div></div><div class="system-map compact-system-map" role="img" aria-label="Mapa de la arquitectura operativa"><strong>Base operativa</strong>${["Procesos", "Usuarios", "Datos", "Automatizaciones", "Integraciones", "M&eacute;tricas"].map((node, index) => `<span style="--node:${index}">${node}</span>`).join("")}<i></i><i></i><i></i></div></div></section><section class="section"><div class="container">${sectionHead("C&oacute;mo se conecta", "Tres niveles, un mismo contexto operativo", "Cada nivel conserva su funci&oacute;n mientras comparte datos, reglas y decisiones con el resto del sistema.")}<div class="ecosystem-layers"><div><span>01</span><strong>Experiencia</strong><p>Lo que ven clientes, empleados, proveedores y socios.</p></div><div><span>02</span><strong>Operaci&oacute;n</strong><p>Procesos, permisos, estados, validaciones y automatizaciones.</p></div><div><span>03</span><strong>Base</strong><p>Datos, integraciones, seguridad, continuidad y m&eacute;tricas.</p></div></div><div class="nexus-guide ecosystem-guide">${nexusCore("organize", "Cada m&oacute;dulo conserva su funci&oacute;n, pero comparte el mismo contexto operativo.", "nexus-guide-core")}<div><p class="kicker">${nenName} &middot; Vista del sistema</p><h3>Una base clara permite conectar sin reemplazar todo de una vez</h3><p>Cada implementaci&oacute;n avanza por m&oacute;dulos y prioridades verificables.</p></div></div></div></section><section class="section section-alt"><div class="container">${sectionHead("Puntos de entrada", "No todas las empresas necesitan comenzar por el mismo lugar")}<div class="entry-route-grid">${[["Centralizar una operaci&oacute;n", "Reunir estados, responsables e informaci&oacute;n en una base visible."], ["Automatizar un proceso cr&iacute;tico", "Reducir seguimiento manual sin perder control ni trazabilidad."], ["Conectar sistemas existentes", "Compartir datos y decisiones entre herramientas que ya utiliza el equipo."], ["Crear un portal", "Dar a cada grupo acceso claro a la informaci&oacute;n y acciones que necesita."]].map(([title, text], index) => `<a href="${relativeHref("/contact/", prefix)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${title}</strong><p>${text}</p><small>Ver primera fase recomendada</small></a>`).join("")}</div></div></section>${finalCta(prefix)}`,
 });
 
 const solutions = [
@@ -465,7 +638,7 @@ renderPage({
   route: "/solutions/",
   title: "Soluciones | YC Systems",
   description: "Soluciones de software dise&ntilde;adas para resolver operaciones reales.",
-  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Del proceso disperso al sistema operativo</h1><p class="lead">Dise&ntilde;amos soluciones empresariales alrededor de c&oacute;mo trabajan realmente tus equipos, clientes y operaciones.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver casos</a></div></div><div class="before-after-map" role="img" aria-label="Del proceso disperso al sistema conectado"><div><small>Antes</small><span>Hojas</span><span>Mensajes</span><span>Tareas manuales</span></div><i></i><div><small>Despu&eacute;s</small><strong>Base operativa</strong><span>Estados</span><span>Datos</span><span>Decisiones</span></div></div></div></section><section class="section"><div class="container">${sectionHead("Lo que construimos", "Cuatro formas de ordenar una operaci&oacute;n", "Cada soluci&oacute;n parte del problema, define qu&eacute; se construye y hace visible el cambio esperado.")}<div class="nexus-guide" data-nexus-guide>${nexusCore("organize", "No comenzamos por la tecnolog&iacute;a. Comenzamos por el proceso, la prioridad y el resultado esperado.", "nexus-guide-core")}<div><p class="kicker">Nexus &middot; Ordenando</p><h3>Primero definimos qu&eacute; necesita cambiar</h3><p data-nexus-guide-text>No comenzamos por la tecnolog&iacute;a. Comenzamos por el proceso, la prioridad y el resultado esperado.</p></div></div><div class="solution-grid solution-detail-grid">${solutions.map((item, index) => `<article class="solution-card" data-nexus-trigger data-nexus-state="${index === 1 ? "build" : index === 2 ? "organize" : index === 3 ? "design" : "observe"}" data-nexus-message="${item.result}. ${item.problem.replace(/"/g, "&quot;")}"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item.title}</h2><p class="solution-problem"><strong>Qu&eacute; ordena</strong>${item.problem}</p><p><strong>Qu&eacute; construimos</strong>${item.build}</p><p><strong>Qu&eacute; cambia</strong>${item.result}</p><a class="text-link" href="${relativeHref("/contact/", prefix)}">Definir primera fase</a></article>`).join("")}</div></div></section><section class="section section-alt"><div class="container">${sectionHead("Criterio de construcci&oacute;n", "No necesitas reemplazar toda tu operaci&oacute;n para empezar", "Una primera fase debe ser comprensible, medible y suficientemente s&oacute;lida para evolucionar.")}<div class="value-grid">${infoCards([["Alcance claro", "Qu&eacute; entra, qu&eacute; queda fuera y qu&eacute; resultado debe observarse."], ["Arquitectura mantenible", "Una base preparada para cambios sin rehacer toda la soluci&oacute;n."], ["Entrega responsable", "Versiones, validaci&oacute;n y acompa&ntilde;amiento despu&eacute;s del lanzamiento."]])}</div></div></section>${finalCta(prefix, "Definamos una primera fase")}`,
+  body: (prefix) => `<section class="page-hero solutions-hero"><div class="container interior-hero-grid"><div><p class="kicker">Soluciones</p><h1>Del proceso disperso al sistema operativo</h1><p class="lead">Dise&ntilde;amos soluciones empresariales alrededor de c&oacute;mo trabajan realmente tus equipos, clientes y operaciones.</p><div class="actions"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Solicitar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/case-studies/", prefix)}">Ver casos</a></div></div><div class="before-after-map" role="img" aria-label="Del proceso disperso al sistema conectado"><div><small>Antes</small><span>Hojas</span><span>Mensajes</span><span>Tareas manuales</span></div><i></i><div><small>Despu&eacute;s</small><strong>Base operativa</strong><span>Estados</span><span>Datos</span><span>Decisiones</span></div></div></div></section><section class="section"><div class="container">${sectionHead("Lo que construimos", "Cuatro formas de ordenar una operaci&oacute;n", "Cada soluci&oacute;n parte del problema, define qu&eacute; se construye y hace visible el cambio esperado.")}<div class="nexus-guide" data-nexus-guide>${nexusCore("organize", "No comenzamos por la tecnolog&iacute;a. Comenzamos por el proceso, la prioridad y el resultado esperado.", "nexus-guide-core")}<div><p class="kicker">${nenName} &middot; Ordenando</p><h3>Primero definimos qu&eacute; necesita cambiar</h3><p data-nexus-guide-text>No comenzamos por la tecnolog&iacute;a. Comenzamos por el proceso, la prioridad y el resultado esperado.</p></div></div><div class="solution-grid solution-detail-grid">${solutions.map((item, index) => `<article class="solution-card" data-nexus-trigger data-nexus-state="${index === 1 ? "build" : index === 2 ? "organize" : index === 3 ? "design" : "observe"}" data-nexus-message="${item.result}. ${item.problem.replace(/"/g, "&quot;")}"><span>${String(index + 1).padStart(2, "0")}</span><h2>${item.title}</h2><p class="solution-problem"><strong>Qu&eacute; ordena</strong>${item.problem}</p><p><strong>Qu&eacute; construimos</strong>${item.build}</p><p><strong>Qu&eacute; cambia</strong>${item.result}</p><a class="text-link" href="${relativeHref("/contact/", prefix)}">Definir primera fase</a></article>`).join("")}</div></div></section><section class="section section-alt"><div class="container">${sectionHead("Criterio de construcci&oacute;n", "No necesitas reemplazar toda tu operaci&oacute;n para empezar", "Una primera fase debe ser comprensible, medible y suficientemente s&oacute;lida para evolucionar.")}<div class="value-grid">${infoCards([["Alcance claro", "Qu&eacute; entra, qu&eacute; queda fuera y qu&eacute; resultado debe observarse."], ["Arquitectura mantenible", "Una base preparada para cambios sin rehacer toda la soluci&oacute;n."], ["Entrega responsable", "Versiones, validaci&oacute;n y acompa&ntilde;amiento despu&eacute;s del lanzamiento."]])}</div></div></section>${finalCta(prefix, "Definamos una primera fase")}`,
 });
 
 const webProjectTypes = [
@@ -595,7 +768,7 @@ function nexusMethodExplorer(prefix) {
   const first = processSteps[0];
   return `<section class="section nexus-method-section"><div class="container nexus-method" data-nexus-method>
     <header class="nexus-method-active-head" role="status" aria-live="polite" aria-atomic="true"><p class="nexus-method-progress" data-nexus-progress>Fase 1 de ${processSteps.length}</p><p class="kicker" data-nexus-detail-state>${nexusStateLabels[first.state]}</p><h2 data-nexus-detail-title>${first.title}</h2></header>
-    <div class="nexus-method-stage">${nexusCharacter(prefix, { state: first.state, expression: first.expression, pose: first.pose, size: "half", message: first.message, modifier: "nexus-method-avatar", caption: "Nexus" })}<div class="nexus-method-diagram" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div></div>
+    <div class="nexus-method-stage">${nexusCharacter(prefix, { state: first.state, expression: first.expression, pose: first.pose, size: "half", message: first.message, modifier: "nexus-method-avatar", caption: nenName })}<div class="nexus-method-diagram" aria-hidden="true"><span></span><span></span><span></span><span></span><i></i></div></div>
     <article id="nexus-method-panel" class="nexus-method-detail" role="tabpanel" aria-labelledby="nexus-method-tab-0" data-nexus-detail><dl><div><dt>Prop&oacute;sito</dt><dd data-nexus-detail-summary>${first.summary}</dd></div><div><dt>Entregable</dt><dd data-nexus-detail-deliverable>${first.deliverable}</dd></div><div><dt>Riesgo que reduce</dt><dd data-nexus-detail-risk>${first.risk}</dd></div><div><dt>Decisi&oacute;n para avanzar</dt><dd data-nexus-detail-decision>${first.decision}</dd></div></dl><div class="nexus-method-controls"><button class="button secondary" type="button" data-nexus-prev>Anterior</button><button class="button secondary" type="button" data-nexus-next>Siguiente</button></div></article>
     <div class="nexus-method-steps" role="tablist" aria-label="Fases del método YC Systems">${processSteps.map((step, index) => `<button id="nexus-method-tab-${index}" type="button" role="tab" data-nexus-step="${index}" data-state="${step.state}" data-message="${step.message || step.summary}" aria-controls="nexus-method-panel" aria-selected="${index === 0 ? "true" : "false"}"${index === 0 ? ' aria-current="step" tabindex="0"' : ' tabindex="-1"'}><span>${String(index + 1).padStart(2, "0")}</span><strong>${step.title}</strong><small>${step.summary}</small></button>`).join("")}</div>
     <script type="application/json" data-nexus-steps>${JSON.stringify(processSteps).replace(/</g, "\u003c")}</script>
@@ -630,11 +803,11 @@ renderPage({
       <div>
         <p class="kicker">YC Systems LLC</p>
         <h1>Construimos tecnolog&iacute;a alrededor de c&oacute;mo trabajan las empresas</h1>
-        <p class="lead">Somos una empresa de desarrollo de software y experiencias web. Convertimos necesidades operativas y comerciales en sistemas claros, utilizables y preparados para evolucionar.</p>
+        <p class="lead">Somos una empresa de software operativo y experiencias web. Convertimos necesidades operativas y comerciales en sistemas claros, utilizables y preparados para evolucionar.</p>
       </div>
       <div class="company-signals" aria-label="Identidad de YC Systems">
         <span><small>Entidad</small><strong>YC Systems LLC</strong></span>
-        <span><small>Lo que hacemos</small><strong>Software y experiencias web</strong></span>
+        <span><small>Lo que hacemos</small><strong>Software operativo y experiencias web</strong></span>
         <span><small>Principio</small><strong>Claridad antes que complejidad</strong></span>
       </div>
     </div>
@@ -700,9 +873,9 @@ renderPage({
           <p class="kicker">Identidad YC Systems</p>
           <h2>Una identidad construida para convertir complejidad en direcci&oacute;n</h2>
           <p>YC Systems es la identidad comercial de YC Systems LLC. Nuestra expresi&oacute;n combina estructura, contraste y se&ntilde;ales visuales para comunicar control sin perder cercan&iacute;a.</p>
-          <p>Nexus es nuestra gu&iacute;a visual: representa una forma de observar, ordenar y hacer visible el siguiente paso. No es un chatbot, un empleado ficticio ni un sustituto del criterio humano.</p>
+          <p>${nenName} es nuestra gu&iacute;a visual: representa una forma de observar, ordenar y hacer visible el siguiente paso. No es un chatbot, un empleado ficticio ni un sustituto del criterio humano.</p>
         </div>
-        ${nexusCore("observe", "Observar, ordenar y hacer visible el siguiente paso.", "company-nexus-core", "", { expression: "neutral", pose: "observing", label: "Nexus" })}
+        ${nexusCore("observe", "Observar, ordenar y hacer visible el siguiente paso.", "company-nexus-core", "", { expression: "neutral", pose: "observing", label: nenName })}
       </div>
       <div class="section-head company-route-head">
         <p class="kicker">Conoce el trabajo</p>
@@ -720,11 +893,11 @@ renderPage({
 
 renderPage({
   route: "/nexus-lab/",
-  title: "Nexus Lab | YC Systems",
-  description: "Galería interna de estados, expresiones, tamaños y componentes del sistema visual Nexus.",
+  title: `${nenName} Lab | YC Systems`,
+  description: `Galería interna de estados, expresiones, tamaños y componentes del sistema visual ${nenName}.`,
   noindex: true,
   bodyClass: "nexus-lab-page",
-  body: (prefix) => `<section class="page-hero compact-hero"><div class="container"><p class="kicker">Nexus Lab &middot; Control interno</p><h1>Sistema visual vivo</h1><p class="lead">Galería no indexable para validar identidad, estados, expresiones, componentes y movimiento antes de publicarlos en una página.</p></div></section>
+  body: (prefix) => `<section class="page-hero compact-hero"><div class="container"><p class="kicker">${nenName} Lab &middot; Control interno</p><h1>Sistema visual vivo</h1><p class="lead">Galería no indexable para validar identidad, estados, expresiones, componentes y movimiento antes de publicarlos en una página.</p></div></section>
   <section class="section"><div class="container nexus-lab-section"><div class="section-head"><p class="kicker">Cinco modos operativos</p><h2>Un solo sistema, estados reconocibles</h2></div><div class="nexus-lab-grid nexus-lab-grid--modes">${Object.entries(nexusSystem.modes).map(([mode, config]) => nexusCharacter(prefix, { state: mode, expression: config.expression, pose: config.pose, size: "bust", caption: config.label, message: config.message })).join("")}</div></div></section>
   <section class="section section-alt"><div class="container nexus-lab-section"><div class="section-head"><p class="kicker">Expresiones</p><h2>Doce respuestas dentro de la misma identidad</h2></div><div class="nexus-expression-grid">${nexusSystem.expressions.map((expression, index) => `<article>${nexusCharacter(prefix, { state: index === 8 ? "observe" : index === 7 || index === 11 ? "support" : "organize", expression, pose: expression === "confirming" || expression === "celebration" ? "confirming" : "observing", size: "avatar" })}<h3>${nexusSystem.expressionLabels?.[expression] || expression}</h3></article>`).join("")}</div></div></section>
   <section class="section"><div class="container nexus-lab-section"><div class="section-head"><p class="kicker">Componentes</p><h2>Piezas reutilizables y fallbacks</h2></div><div class="nexus-component-grid">${nexusGuideCard("organize", "Prioridad antes de tecnología", "Primero definimos qué necesita cambiar y cómo observar el resultado.")}${nexusInsightCard("design", "Una primera fase visible", "El alcance debe poder explicarse, medirse y validarse sin depender de promesas vagas.")}${nexusConfirmation()}${nexusLoader()}${nexusEmptyState(prefix)}</div></div></section>`,
@@ -735,34 +908,38 @@ renderPage({
   title: "Solicitar diagn&oacute;stico | YC Systems",
   description: "Solicita un diagn&oacute;stico inicial para definir el software, producto o sistema que tu empresa necesita.",
   bodyClass: "contact-page",
-  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Contacto &middot; Diagn&oacute;stico</p><h1>Cu&eacute;ntanos qu&eacute; parte de tu operaci&oacute;n necesita m&aacute;s control</h1><p class="lead">Dos pasos breves para entender el contexto y recomendar una primera conversaci&oacute;n &uacute;til.</p><p class="response-time">Respuesta habitual: 24&ndash;48 horas laborales.</p></div></section>
+  body: (prefix) => `<section class="page-hero compact-hero"><div class="container narrow"><p class="kicker">Contacto &middot; Evaluaci&oacute;n inicial</p><h1 data-contact-title>Describe el proceso que quieres controlar, conectar o automatizar</h1><p class="lead" data-contact-lead>Completa este brief en 2&ndash;3 minutos. En 24&ndash;48 horas laborales recibir&aacute;s una confirmaci&oacute;n de encaje y el siguiente paso recomendado.</p><p class="response-time">Respuesta habitual: 24&ndash;48 horas laborales.</p></div></section>
   <section class="section contact-section"><div class="container contact-grid">
     <form class="brief-form" action="https://formsubmit.co/${content.contact.email}" method="post" data-brief-form data-step="1" novalidate>
       <input type="hidden" name="_subject" value="Nuevo diagn&oacute;stico desde ycsystems.io" />
-      <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
       <input type="hidden" name="consent_version" value="privacy-2026-07-14" />
+      <input type="hidden" name="source_service" data-source-service />
       <input type="hidden" name="source_product" data-source-product />
       <input type="hidden" name="source_path" data-source-path />
       <p class="form-step" data-brief-step>Paso 1 de 2 &middot; Contexto</p>
+      <p class="brief-intro" data-brief-intro>No necesitas tener la soluci&oacute;n decidida. Describe el problema; nosotros te ayudamos a ordenar el siguiente paso.</p>
+      <noscript><p class="brief-noscript">Si prefieres continuar sin JavaScript, escribe a <a href="mailto:${content.contact.email}">${content.contact.email}</a> o usa <a href="${content.contact.whatsappUrl}">WhatsApp</a>.</p></noscript>
       <div class="nexus-form-companion compact" data-nexus-form>${nexusCore("observe", "Cu&eacute;ntanos qui&eacute;n eres y desde qu&eacute; operaci&oacute;n nos contactas.", "nexus-form-core")}</div>
       <div data-step="1">
         <label>Nombre<input name="name" autocomplete="name" maxlength="120" aria-errormessage="error-name" required /><small class="field-error" id="error-name" data-field-error="name"></small></label>
-        <label>Correo de trabajo<input type="email" name="email" autocomplete="email" maxlength="254" aria-errormessage="error-email" required /><small class="field-error" id="error-email" data-field-error="email"></small></label>
-        <label>Empresa<input name="company" autocomplete="organization" maxlength="160" aria-errormessage="error-company" required /><small class="field-error" id="error-company" data-field-error="company"></small></label>
+        <label>Correo<input type="email" name="email" autocomplete="email" maxlength="254" aria-errormessage="error-email" required /><small class="field-error" id="error-email" data-field-error="email"></small></label>
+        <label>Empresa o proyecto <small>Opcional</small><input name="company" autocomplete="organization" maxlength="160" /></label>
         <label>Rol o responsabilidad <small>Opcional</small><input name="role" autocomplete="organization-title" maxlength="160" /></label>
         <button class="button primary" type="button" data-brief-next>Siguiente paso</button>
       </div>
       <div data-step="2" hidden>
         <label>&Aacute;rea o proceso<select name="need" aria-errormessage="error-need" required><option value="">Selecciona una opci&oacute;n</option><option>Sitio web o comercio digital</option><option>Operaci&oacute;n interna</option><option>Ventas o CRM</option><option>Datos y reportes</option><option>Automatizaci&oacute;n</option><option>Portal para clientes o socios</option><option>Producto digital</option><option>No estoy seguro</option></select><small class="field-error" id="error-need" data-field-error="need"></small></label>
         <label>Principal fricci&oacute;n<textarea name="current_process" rows="3" maxlength="2000" aria-errormessage="error-current-process" required placeholder="&iquest;Qu&eacute; est&aacute; frenando hoy al equipo?"></textarea><small class="field-error" id="error-current-process" data-field-error="current_process"></small></label>
+        <p class="brief-security-note">No incluyas contrase&ntilde;as, datos financieros ni informaci&oacute;n confidencial; basta con describir el proceso a alto nivel.</p>
         <label>Herramientas actuales <small>Opcional</small><input name="tools" maxlength="300" placeholder="Hojas, correo, CRM u otras" /></label>
-        <label>Resultado esperado<textarea name="desired_result" rows="3" maxlength="2000" aria-errormessage="error-desired-result" required placeholder="&iquest;Qu&eacute; cambio deber&iacute;a hacer visible la primera fase?"></textarea><small class="field-error" id="error-desired-result" data-field-error="desired_result"></small></label>
-        <label>Prioridad<select name="priority" aria-errormessage="error-priority" required><option value="">Selecciona una opci&oacute;n</option><option>Explorando opciones</option><option>Necesidad de este trimestre</option><option>Proceso cr&iacute;tico</option></select><small class="field-error" id="error-priority" data-field-error="priority"></small></label>
+        <label>Resultado esperado <small>Opcional</small><textarea name="desired_result" rows="3" maxlength="2000" placeholder="&iquest;Qu&eacute; cambio deber&iacute;a hacer visible la primera fase?"></textarea></label>
+        <label>Prioridad <small>Opcional</small><select name="priority"><option value="">Selecciona una opci&oacute;n</option><option>Explorando opciones</option><option>Necesidad de este trimestre</option><option>Proceso cr&iacute;tico</option></select></label>
         <label class="consent-field"><input type="checkbox" name="consent" value="accepted" aria-errormessage="error-consent" required /><span>Acepto que YC Systems use esta informaci&oacute;n para responder mi solicitud, conforme a la <a href="${relativeHref("/privacy/", prefix)}">Pol&iacute;tica de privacidad</a>.</span><small class="field-error" id="error-consent" data-field-error="consent"></small></label>
-        <div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit" data-brief-submit>Enviar diagn&oacute;stico</button></div>
+        <div class="form-actions"><button class="button secondary" type="button" data-brief-back>Volver</button><button class="button primary" type="submit" data-brief-submit>Enviar solicitud</button></div>
       </div>
       <p class="form-status" data-brief-status role="status" aria-live="polite"></p>
-      <div class="form-success" data-brief-success role="status" aria-live="polite" tabindex="-1" hidden><strong>Solicitud enviada</strong><p>Recibimos tu informaci&oacute;n. Te responderemos por correo con el siguiente paso recomendado.</p></div>
+      <div class="form-success" data-brief-success role="status" aria-live="polite" tabindex="-1" hidden><strong>Solicitud recibida</strong><p>Te responderemos por correo en 24&ndash;48 horas laborales con una confirmaci&oacute;n de encaje, preguntas pendientes o una invitaci&oacute;n a conversar.</p></div>
     </form>
     <div class="contact-copy"><p class="kicker">Qu&eacute; puedes esperar</p><h2>Una respuesta concreta, no una venta gen&eacute;rica</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener external">WhatsApp ${content.contact.whatsappLabel}</a></div></div>
   </div></section>`,
@@ -772,7 +949,7 @@ renderPage({
   route: "/operating-systems/",
   title: "Arquitectura operativa | YC Systems",
   description: "Cómo YC Systems conecta procesos, datos, automatización y decisiones en una arquitectura operativa.",
-  body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">Arquitectura operativa</p><h1>Una base compartida para operar, medir y mejorar</h1><p class="lead">Los productos de YC Systems conectan módulos, datos, automatización y asistencia inteligente alrededor de una misma forma de pensar la operación.</p>${actions(prefix)}</div></section><section class="section"><div class="container architecture"><div class="architecture-core"><span>Nexus</span><strong>Capa de inteligencia</strong><small>Contexto · flujo · decisiones</small></div><div class="architecture-grid"><div><span>01</span><strong>Usuarios y roles</strong></div><div><span>02</span><strong>Datos operativos</strong></div><div><span>03</span><strong>Flujos y estados</strong></div><div><span>04</span><strong>Alertas e integraciones</strong></div><div><span>05</span><strong>Indicadores</strong></div><div><span>06</span><strong>Soporte y evolución</strong></div></div></div></section>${finalCta(prefix)}`,
+  body: (prefix) => `<section class="page-hero"><div class="container narrow"><p class="kicker">Arquitectura operativa</p><h1>Una base compartida para operar, medir y mejorar</h1><p class="lead">Los productos de YC Systems conectan módulos, datos, automatización y asistencia inteligente alrededor de una misma forma de pensar la operación.</p>${actions(prefix)}</div></section><section class="section"><div class="container architecture"><div class="architecture-core"><span>${nenName}</span><strong>Capa de inteligencia</strong><small>Contexto · flujo · decisiones</small></div><div class="architecture-grid"><div><span>01</span><strong>Usuarios y roles</strong></div><div><span>02</span><strong>Datos operativos</strong></div><div><span>03</span><strong>Flujos y estados</strong></div><div><span>04</span><strong>Alertas e integraciones</strong></div><div><span>05</span><strong>Indicadores</strong></div><div><span>06</span><strong>Soporte y evolución</strong></div></div></div></section>${finalCta(prefix)}`,
 });
 
 renderPage({

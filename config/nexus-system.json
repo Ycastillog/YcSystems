@@ -1,5 +1,6 @@
 {
-  "version": "1.1.0",
+  "version": "1.3.0",
+  "displayName": "Nen",
   "defaultMode": "observe",
   "defaultExpression": "neutral",
   "defaultPose": "observing",
@@ -90,22 +91,22 @@
       "usage": "Confirmaciones y fallback temporal"
     },
     "nexus-avatar-clean": {
-      "status": "registered-pending-production",
+      "status": "ready",
       "type": "raster",
-      "fallback": "nexus-avatar-base",
-      "requirement": "Versión sin mano ni sombra residual para estados neutrales"
+      "path": "assets/brand/nexus/nen-avatar-v2.webp",
+      "usage": "Estados neutrales y hero de Nen; guía operativa sin gesto promocional"
     },
     "nexus-pose-designing": {
       "status": "registered-pending-production",
       "type": "raster",
       "fallbackPose": "designing",
-      "requirement": "Nexus trabajando sobre panel o wireframe con stylus"
+      "requirement": "Nen trabajando sobre panel o wireframe con stylus"
     },
     "nexus-pose-building": {
       "status": "registered-pending-production",
       "type": "raster",
       "fallbackPose": "building",
-      "requirement": "Nexus ensamblando módulos o usando una herramienta"
+      "requirement": "Nen ensamblando módulos o usando una herramienta"
     },
     "nexus-face-support-neutral": {
       "status": "ready-code-native",

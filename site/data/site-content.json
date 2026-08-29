@@ -5,7 +5,7 @@
     "siteUrl": "https://ycsystems.io",
     "logoPath": "/assets/apple-touch-icon.png",
     "ogImagePath": "/assets/previews/yc-systems-og.png",
-    "tagline": "Software operativo para empresas que necesitan control, velocidad y crecimiento",
+    "tagline": "Software operativo que convierte complejidad en control",
     "positioning": "YC Systems diseña y construye software operativo para empresas que necesitan controlar, medir y crecer."
   },
   "contact": {
@@ -22,7 +22,7 @@
         "path": "/solutions/"
       },
       {
-        "label": "Ecosistema",
+        "label": "Arquitectura",
         "path": "/products/"
       },
       {

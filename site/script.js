@@ -64,6 +64,89 @@ if (typeof navigationDesktopQuery.addEventListener === "function") {
   navigationDesktopQuery.addListener(closeNavigationOnDesktop);
 }
 
+function setupHomeProof() {
+  const section = document.querySelector("[data-home-proof]");
+  const dataElement = section?.querySelector("[data-home-proof-data]");
+  if (!section || !dataElement) return;
+
+  let items;
+  try {
+    items = JSON.parse(dataElement.textContent || "[]");
+  } catch (error) {
+    console.error("[YC Systems] No fue posible leer los casos publicados", error);
+    return;
+  }
+
+  const buttons = [...section.querySelectorAll("[data-home-proof-choice]")];
+  const panel = section.querySelector("[data-home-proof-panel]");
+  const image = section.querySelector("[data-home-proof-image]");
+  const category = section.querySelector("[data-home-proof-category]");
+  const evidence = section.querySelector("[data-home-proof-evidence]");
+  const title = section.querySelector("[data-home-proof-title]");
+  const summary = section.querySelector("[data-home-proof-summary]");
+  const objective = section.querySelector("[data-home-proof-objective]");
+  const delivery = section.querySelector("[data-home-proof-delivery]");
+  const detailLink = section.querySelector("[data-home-proof-detail]");
+  const externalLink = section.querySelector("[data-home-proof-external]");
+  if (!Array.isArray(items) || !items.length || !buttons.length || !panel || !image || !category || !evidence || !title || !summary || !objective || !delivery || !externalLink) return;
+
+  function activateHomeProof(index, { focus = false } = {}) {
+    const item = items[index];
+    if (!item) return;
+
+    buttons.forEach((button, buttonIndex) => {
+      const selected = buttonIndex === index;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+    });
+
+    image.src = item.image;
+    image.alt = `Sitio publicado de ${item.name}`;
+    category.textContent = item.category;
+    evidence.textContent = item.evidence;
+    title.textContent = item.name;
+    summary.textContent = item.summary;
+    objective.textContent = item.objective;
+    delivery.textContent = item.delivery;
+    panel.setAttribute("aria-labelledby", buttons[index].id);
+
+    if (detailLink) {
+      detailLink.hidden = !item.internalPath;
+      if (item.internalPath) detailLink.href = item.internalPath;
+      else detailLink.removeAttribute("href");
+    }
+    externalLink.href = item.url || "#";
+    externalLink.setAttribute("aria-label", `Visitar sitio de ${item.name} (abre en una pestaña nueva)`);
+
+    if (focus) buttons[index].focus({ preventScroll: true });
+  }
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => activateHomeProof(index));
+    button.addEventListener("focus", () => activateHomeProof(index));
+    button.addEventListener("keydown", (event) => {
+      const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
+      if (event.key === "Home") {
+        event.preventDefault();
+        activateHomeProof(0, { focus: true });
+        return;
+      }
+      if (event.key === "End") {
+        event.preventDefault();
+        activateHomeProof(buttons.length - 1, { focus: true });
+        return;
+      }
+      if (!direction) return;
+      event.preventDefault();
+      activateHomeProof((index + direction + buttons.length) % buttons.length, { focus: true });
+    });
+  });
+
+  activateHomeProof(0);
+}
+
+setupHomeProof();
+
 const briefForm = document.querySelector("[data-brief-form]");
 const briefStep = briefForm?.querySelector("[data-brief-step]");
 const briefNext = briefForm?.querySelector("[data-brief-next]");
@@ -271,15 +354,39 @@ if (briefForm) {
   briefForm.addEventListener("change", updateBriefField);
 
   const params = new URLSearchParams(window.location.search);
-  const allowedSourceParams = ["product", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const allowedSourceParams = ["service", "product", "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
   const sourceParams = new URLSearchParams();
   allowedSourceParams.forEach((name) => {
     const value = params.get(name)?.trim();
     if (value) sourceParams.set(name, value.slice(0, 120));
   });
   const sourceQuery = sourceParams.toString();
+  const requestedService = params.get("service")?.trim() || "general";
+  const sourceServiceField = briefForm.querySelector("[data-source-service]");
+  if (sourceServiceField) sourceServiceField.value = requestedService.slice(0, 40);
   briefForm.querySelector("[data-source-product]").value = (params.get("product")?.trim() || "General").slice(0, 120);
   briefForm.querySelector("[data-source-path]").value = `${window.location.pathname}${sourceQuery ? `?${sourceQuery}` : ""}`.slice(0, 600);
+  const needField = briefForm.querySelector('[name="need"]');
+  const requestedNeed = params.get("product")?.trim();
+  const needAliases = new Map([
+    ["Desarrollo web", "Sitio web o comercio digital"],
+    ["Sitios corporativos", "Sitio web o comercio digital"],
+    ["Catálogos y comercio", "Sitio web o comercio digital"],
+    ["Campañas y captación", "Sitio web o comercio digital"],
+    ["Portales y experiencias", "Sitio web o comercio digital"],
+  ]);
+  const preferredNeed = needAliases.get(requestedNeed) || (requestedService === "web" ? "Sitio web o comercio digital" : requestedNeed);
+  if (needField && preferredNeed) {
+    const matchingOption = [...needField.options].find((option) => option.value === preferredNeed || option.textContent.trim() === preferredNeed);
+    if (matchingOption) needField.value = matchingOption.value;
+  }
+
+  const contactTitle = document.querySelector("[data-contact-title]");
+  const contactLead = document.querySelector("[data-contact-lead]");
+  if (requestedService === "web") {
+    if (contactTitle) contactTitle.textContent = "Cuéntanos qué debe lograr tu próxima web";
+    if (contactLead) contactLead.textContent = "Completa este brief en 2–3 minutos. En 24–48 horas laborales recibirás una confirmación de encaje y el siguiente paso para estimar alcance, plazo e inversión.";
+  }
 
   briefForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -312,7 +419,7 @@ if (briefForm) {
 
       if (!response.ok) throw new Error(`Request failed with ${response.status}`);
 
-      briefForm.querySelectorAll("[data-step], [data-brief-step], [data-brief-status]").forEach((element) => {
+      briefForm.querySelectorAll("[data-step], [data-brief-step], [data-brief-status], [data-brief-intro], [data-nexus-form]").forEach((element) => {
         element.hidden = true;
       });
       briefSuccess.hidden = false;
@@ -328,14 +435,14 @@ if (briefForm) {
       window.clearTimeout(requestTimeout);
       briefSending = false;
       briefSubmit.disabled = false;
-      briefSubmit.textContent = "Enviar diagn\u00f3stico";
+      briefSubmit.textContent = "Enviar solicitud";
     }
   });
 }
 
 if (document.querySelector("[data-nexus]")) {
-  import("./nexus-controller.js?v=yc-nexus-live-20260714p").catch((error) => {
-    console.error("[Nexus] No fue posible iniciar el controlador", error);
+  import("./nexus-controller.js?v=yc-nen-buyer-20260829e").catch((error) => {
+    console.error("[Nen] No fue posible iniciar el controlador", error);
     document.documentElement.classList.add("nexus-static-fallback");
     window.reportClientError?.({
       component: "nexus-controller",

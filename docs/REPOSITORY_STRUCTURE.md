@@ -15,7 +15,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 - `site/assets/`: public brand, client-proof and preview assets that are safe to publish with the website.
 - `site/.well-known/security.txt`: public security and privacy reporting instructions.
 - `site/script.js`: public website behavior.
-- `site/nexus-controller.js`: Nexus state, interaction and accessibility behavior.
+- `site/nexus-controller.js`: Nen state, interaction and accessibility behavior.
 - `site/styles.css`: CSS manifest only.
 - `site/styles.bundle.css`: generated public stylesheet assembled during the build.
 - `site/styles/`: active modular CSS system.
@@ -27,7 +27,7 @@ GitHub Pages deploys the static artifact produced from `site/`.
 
 Before changing navigation, sitemap, noindex rules or redirects, update `config/routes-map.json` first.
 
-`config/nexus-system.json` defines the canonical Nexus modes, expressions, poses and asset readiness. Update it before adding a new visual state or replacing a registered asset.
+`config/nexus-system.json` defines the canonical Nen modes, expressions, poses and asset readiness. The `nexus-*` keys remain the technical namespace for backward-compatible assets and selectors.
 
 ## Legacy Compatibility
 

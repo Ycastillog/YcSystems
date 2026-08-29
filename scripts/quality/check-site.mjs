@@ -150,6 +150,8 @@ function validateMetadata(file, html, expectedCanonical, isRedirect) {
       fail(file, "home and company pages must identify the Organization.");
     }
     if (expectedCanonical === `${siteUrl}/` && !structuredTypes.has("WebSite")) fail(file, "home page must identify the WebSite.");
+    if (expectedCanonical === `${siteUrl}/` && !structuredTypes.has("ItemList")) fail(file, "home page must describe its starting routes.");
+    if (expectedCanonical === `${siteUrl}/` && !structuredTypes.has("FAQPage")) fail(file, "home page must describe its visible buyer FAQ.");
     if (expectedCanonical !== `${siteUrl}/` && !structuredTypes.has("BreadcrumbList")) fail(file, "non-home pages must include breadcrumbs.");
   }
 }
@@ -185,6 +187,9 @@ for (const file of htmlFiles) {
   if (!/<meta\s+name=["']viewport["'][^>]+width=device-width/i.test(html)) fail(file, "missing responsive viewport.");
   if (!/<title>[^<]+<\/title>/i.test(html)) fail(file, "missing title.");
   if (expectedCanonical) validateMetadata(file, html, expectedCanonical, isRedirect);
+  if (tagAttributes(html, "link").some((attributes) => relTokens(attributes).has("manifest"))) {
+    fail(file, "must not advertise an installable web app manifest.");
+  }
 
   if (!isRedirect) {
     if (count(html, /<main\b/gi) !== 1) fail(file, "must contain exactly one main element.");
@@ -292,9 +297,26 @@ for (const route of routesMap.routes) {
   }
 }
 
+const homeFile = path.join(siteRoot, "index.html");
+const home = await readFile(homeFile, "utf8");
+if (!Array.isArray(content.engagement?.routes) || content.engagement.routes.length !== 3) fail(homeFile, "engagement content must define exactly three starting routes.");
+if (!Array.isArray(content.engagement?.faqs) || content.engagement.faqs.length < 5) fail(homeFile, "engagement content must define at least five buyer questions.");
+for (const required of ["id=\"formas-de-empezar\"", "engagement-route-grid", "engagement-route-card--operations", "buyer-faq-list", "id=\"preguntas-antes-de-empezar\""]) {
+  if (!home.includes(required)) fail(homeFile, `buyer journey is missing ${required}.`);
+}
+for (const route of content.engagement?.routes ?? []) {
+  if (!route.key || !route.label || !route.description || !route.bestFor || !Array.isArray(route.includes) || route.includes.length !== 3 || !route.service || !route.product || !route.contactCopy) {
+    fail(homeFile, `starting route ${route.key || "unknown"} is incomplete.`);
+  }
+  if (!home.includes(route.label)) fail(homeFile, `starting route ${route.label} is not rendered.`);
+}
+for (const item of content.engagement?.faqs ?? []) {
+  if (!item.question || !item.answer || !home.includes(item.question) || !home.includes(item.answer)) fail(homeFile, `buyer FAQ ${item.question || "unknown"} is incomplete or not rendered.`);
+}
+
 const contactFile = path.join(siteRoot, "contact", "index.html");
 const contact = await readFile(contactFile, "utf8");
-for (const required of ["_honey", "consent_version", "source_product", "source_path", "name=\"consent\"", "aria-errormessage", "data-field-error", "data-brief-status", "data-brief-success"]) {
+for (const required of ["_honey", "consent_version", "source_product", "source_path", "name=\"consent\"", "aria-errormessage", "data-field-error", "data-brief-status", "data-brief-success", "data-brief-route", "data-contact-route-data", "contact-receives"]) {
   if (!contact.includes(required)) fail(contactFile, `contact form is missing ${required}.`);
 }
 if (!/<form\b[^>]*\bnovalidate\b/i.test(contact)) fail(contactFile, "contact form must use the custom accessible validation flow.");
@@ -356,7 +378,7 @@ if (!(await exists(securityFile))) {
 
 const scriptFile = path.join(siteRoot, "script.js");
 const script = await readFile(scriptFile, "utf8");
-for (const required of ["briefSending", "data-source-product", "formsubmit.co/ajax/", "aria-live", "allowedSourceParams", "AbortController", "aria-errormessage"]) {
+for (const required of ["briefSending", "data-source-product", "formsubmit.co/ajax/", "aria-live", "allowedSourceParams", "AbortController", "aria-errormessage", "selectedRoute", "data-brief-route-service"]) {
   if (!script.includes(required) && !contact.includes(required)) fail(scriptFile, `missing form behavior ${required}.`);
 }
 if (/style\.setProperty\([^)]*,\s*["']important["']\s*\)/.test(script)) fail(scriptFile, "uses runtime !important overrides.");

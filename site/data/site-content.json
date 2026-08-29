@@ -15,6 +15,84 @@
     "whatsappUrl": "https://wa.me/18099411105",
     "instagramUrl": "https://www.instagram.com/yc.systems"
   },
+  "engagement": {
+    "routes": [
+      {
+        "key": "fit",
+        "eyebrow": "Cuando todavía estás ordenando",
+        "label": "Diagnóstico de encaje",
+        "description": "Para empresas que reconocen una fricción, pero aún deben confirmar si el siguiente paso es software, automatización o una mejor experiencia web.",
+        "bestFor": "Definir el problema correcto",
+        "includes": [
+          "Lectura inicial del contexto",
+          "Preguntas que faltan por resolver",
+          "Ruta recomendada si existe encaje"
+        ],
+        "service": "general",
+        "product": "Diagnóstico de encaje",
+        "cta": "Evaluar encaje",
+        "contactCopy": "Revisaremos el contexto y te diremos qué conviene aclarar antes de estimar una solución."
+      },
+      {
+        "key": "operations",
+        "eyebrow": "Cuando el proceso ya genera fricción",
+        "label": "Primera fase operativa",
+        "description": "Para centralizar información, automatizar tareas, conectar herramientas o hacer visible un proceso crítico sin reemplazar toda la operación.",
+        "bestFor": "Controlar, conectar o automatizar",
+        "includes": [
+          "Problema y prioridad compartidos",
+          "Alcance de una primera fase",
+          "Criterios de aceptación verificables"
+        ],
+        "service": "operations",
+        "product": "Primera fase operativa",
+        "cta": "Definir primera fase",
+        "contactCopy": "Revisaremos el proceso, sus responsables y el cambio que una primera fase debería hacer visible."
+      },
+      {
+        "key": "web",
+        "eyebrow": "Cuando necesitas vender o explicar mejor",
+        "label": "Web comercial",
+        "description": "Para convertir una oferta en una experiencia clara, verificable y preparada para llevar al visitante hacia una consulta, pedido o decisión.",
+        "bestFor": "Sitios, catálogos y captación",
+        "includes": [
+          "Objetivo comercial y audiencia",
+          "Arquitectura de contenido",
+          "Ruta de entrega y conversión"
+        ],
+        "service": "web",
+        "product": "Sitio web o comercio digital",
+        "cta": "Planificar mi web",
+        "contactCopy": "Revisaremos qué debe entender, creer y hacer el visitante para definir una primera entrega comercial."
+      }
+    ],
+    "faqs": [
+      {
+        "question": "¿Necesito tener requisitos técnicos?",
+        "answer": "No. Puedes comenzar describiendo el proceso, la fricción y el cambio que necesitas observar. YC Systems organiza las preguntas técnicas después."
+      },
+      {
+        "question": "¿Cómo se define la inversión?",
+        "answer": "La inversión se presenta después de entender el alcance. Si existe encaje, la propuesta separa fases, entregables, tiempos, pagos y responsabilidades antes de desarrollar."
+      },
+      {
+        "question": "¿Qué recibo antes de empezar a desarrollar?",
+        "answer": "Una definición compartida del problema y, cuando corresponde, una propuesta de primera fase con límites, entregables y criterios de aceptación."
+      },
+      {
+        "question": "¿Tengo que reemplazar mis herramientas actuales?",
+        "answer": "No necesariamente. Primero evaluamos qué conviene conservar, conectar, simplificar o sustituir para evitar cambios más grandes de lo necesario."
+      },
+      {
+        "question": "¿También construyen sitios web?",
+        "answer": "Sí. Diseñamos sitios corporativos, catálogos y experiencias comerciales con una ruta clara hacia contacto, pedido o captación."
+      },
+      {
+        "question": "¿Qué información debo compartir en el primer contacto?",
+        "answer": "Solo contexto de alto nivel. No envíes contraseñas, datos financieros ni información confidencial; esos controles se acuerdan si el proyecto avanza."
+      }
+    ]
+  },
   "navigation": {
     "primary": [
       {

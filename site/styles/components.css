@@ -105,6 +105,12 @@
 .document-card h2 { margin: 20px 0 10px; font-size: 1.6rem; }
 
 .brief-form { scroll-margin-top: calc(var(--header-height) + 16px); border: 1px solid var(--color-border-600); border-radius: var(--radius-md); padding: 30px; background: var(--color-surface-800); box-shadow: var(--shadow-panel); }
+.brief-route-summary { display: grid; gap: 8px; margin-bottom: 24px; border: 1px solid rgba(51, 200, 255, 0.34); border-radius: var(--radius-sm); padding: 16px; background: linear-gradient(115deg, rgba(51, 200, 255, 0.1), rgba(5, 14, 29, 0.5)); }
+.brief-route-summary[data-route="operations"] { border-color: rgba(50, 213, 131, 0.45); background: linear-gradient(115deg, rgba(50, 213, 131, 0.1), rgba(5, 14, 29, 0.5)); }
+.brief-route-summary > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+.brief-route-summary > div small { color: var(--color-text-secondary); font: inherit; }
+.brief-route-summary > strong { color: var(--color-text-primary); font-size: 1.08rem; }
+.brief-route-summary > p { margin: 0; color: #b9c8da; font-size: 0.82rem; line-height: 1.5; }
 .brief-form [data-step] { display: grid; gap: 18px; }
 .brief-form label { display: grid; gap: 8px; color: var(--color-text-primary); font-weight: 600; }
 .brief-form input, .brief-form select, .brief-form textarea { width: 100%; min-height: 50px; border: 1px solid #36506f; border-radius: var(--radius-sm); padding: 13px 14px; background: #0b172a; color: var(--color-text-primary); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03); }

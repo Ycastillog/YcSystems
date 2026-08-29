@@ -56,6 +56,9 @@
   .company-human-panel { grid-template-columns: 1fr; }
   .company-purpose-grid,
   .company-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .engagement-route-grid,
+  .buyer-faq-grid { grid-template-columns: 1fr; }
+  .engagement-route-card > p { min-height: 0; }
   .nen-panel { grid-template-columns: 1fr; }
   .web-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .web-work-card,
@@ -192,6 +195,25 @@
   .solution-preview-label { font-size: 0.7rem; }
   .friction-card h3,
   .solution-preview-card h3 { min-height: 0; }
+  .engagement-route-grid {
+    max-width: 100%;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(86vw, 320px);
+    gap: 12px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 2px 2px 12px;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: rgba(50, 213, 131, 0.52) rgba(2, 8, 23, 0.42);
+    scrollbar-width: thin;
+  }
+  .engagement-route-card { min-height: 560px; padding: 20px; scroll-snap-align: start; }
+  .engagement-route-head small { white-space: normal; }
+  .home-buyer-process { margin-top: 32px; padding-top: 30px; }
+  .buyer-faq-list summary { min-height: 64px; padding: 15px 14px; }
+  .buyer-faq-list summary > span { grid-template-columns: 26px minmax(0, 1fr); gap: 8px; font-size: 0.9rem; }
+  .buyer-faq-list details > p { padding: 0 48px 18px 48px; font-size: 0.84rem; }
   .method-outcome-grid { grid-template-columns: 1fr; }
   .method-outcome-card { min-height: 0; }
   .ecosystem-preview-grid { gap: 28px; }
@@ -258,6 +280,7 @@
   .architecture { padding: 18px; }
   .architecture-grid { grid-template-columns: 1fr; }
   .brief-form { padding: 20px; }
+  .brief-route-summary { margin-bottom: 20px; padding: 14px; }
   .contact-copy { position: static; padding: 20px; }
   .nen-form-companion.compact {
     top: calc(var(--header-height) + 8px);

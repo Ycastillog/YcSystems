@@ -562,6 +562,32 @@
   overflow: hidden;
   background: radial-gradient(circle at 12% 22%, rgba(50, 213, 131, 0.07), transparent 30%), linear-gradient(180deg, rgba(5, 14, 29, 0.92), rgba(2, 8, 23, 0.96));
 }
+.engagement-route-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.engagement-route-card {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr auto auto;
+  border: 1px solid rgba(51, 200, 255, 0.26);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  background: linear-gradient(155deg, rgba(17, 31, 56, 0.78), rgba(5, 14, 29, 0.76));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+.engagement-route-card--operations { border-color: rgba(50, 213, 131, 0.52); background: linear-gradient(155deg, rgba(50, 213, 131, 0.12), rgba(5, 14, 29, 0.82)); box-shadow: inset 0 3px 0 rgba(50, 213, 131, 0.72), 0 22px 54px rgba(0, 0, 0, 0.18); }
+.engagement-route-head { min-width: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.engagement-route-head > span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.68rem; font-weight: 800; }
+.engagement-route-head small { overflow: hidden; color: var(--color-text-secondary); font-family: var(--font-mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.04em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.engagement-route-card h3 { margin: 24px 0 10px; font-size: 1.46rem; line-height: 1.12; }
+.engagement-route-card > p { min-height: 94px; color: #bdcadd; font-size: 0.88rem; line-height: 1.55; }
+.engagement-route-fit { display: grid; gap: 4px; border-block: 1px solid rgba(32, 52, 81, 0.82); padding-block: 14px; }
+.engagement-route-fit span { color: var(--color-text-secondary); font-family: var(--font-mono); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.engagement-route-fit strong { color: var(--color-text-primary); font-size: 0.86rem; }
+.engagement-route-card ul { display: grid; gap: 9px; margin: 18px 0 22px; padding: 0; list-style: none; }
+.engagement-route-card li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; color: #cbd6e5; font-size: 0.82rem; line-height: 1.42; }
+.engagement-route-card li span { color: var(--color-success-500); font-weight: 900; }
+.engagement-route-card .button { width: 100%; align-self: end; }
+.engagement-route-response { margin-top: 10px; color: var(--color-text-secondary); font-size: 0.68rem; line-height: 1.4; text-align: center; }
+.home-buyer-process { margin-top: 50px; border-top: 1px solid rgba(32, 52, 81, 0.82); padding-top: 46px; }
 .home-buyer-grid { display: grid; grid-template-columns: minmax(0, 0.78fr) minmax(420px, 1.22fr); gap: 48px; align-items: start; }
 .home-buyer-copy .section-head { margin-bottom: 24px; }
 .home-buyer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
@@ -576,6 +602,24 @@
 .home-buyer-assurance article > span { width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; color: #02110a; background: var(--color-success-500); font-size: 0.76rem; font-weight: 900; }
 .home-buyer-assurance strong { display: block; margin-bottom: 5px; color: var(--color-text-primary); font-size: 0.88rem; }
 .home-buyer-assurance p { margin: 0; color: var(--color-text-secondary); font-size: 0.78rem; line-height: 1.48; }
+
+.buyer-faq-section { border-top: 1px solid rgba(32, 52, 81, 0.72); }
+.buyer-faq-grid { display: grid; grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr); gap: 56px; align-items: start; }
+.buyer-faq-copy .section-head { margin-bottom: 22px; }
+.buyer-faq-list { overflow: hidden; border: 1px solid rgba(51, 200, 255, 0.24); border-radius: var(--radius-md); background: rgba(5, 14, 29, 0.72); }
+.buyer-faq-list details { border-bottom: 1px solid rgba(32, 52, 81, 0.82); }
+.buyer-faq-list details:last-child { border-bottom: 0; }
+.buyer-faq-list details[open] { background: linear-gradient(100deg, rgba(51, 200, 255, 0.08), rgba(5, 14, 29, 0.34)); }
+.buyer-faq-list summary { min-height: 72px; display: grid; grid-template-columns: minmax(0, 1fr) 26px; gap: 18px; align-items: center; padding: 18px 20px; color: var(--color-text-primary); cursor: pointer; list-style: none; }
+.buyer-faq-list summary::-webkit-details-marker { display: none; }
+.buyer-faq-list summary > span { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: center; font-weight: 700; line-height: 1.35; }
+.buyer-faq-list summary small { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.65rem; }
+.buyer-faq-list summary i { position: relative; width: 24px; height: 24px; border: 1px solid rgba(51, 200, 255, 0.35); border-radius: 50%; }
+.buyer-faq-list summary i::before,
+.buyer-faq-list summary i::after { content: ""; position: absolute; top: 50%; left: 50%; width: 10px; height: 1px; background: var(--color-brand-400); transform: translate(-50%, -50%); transition: transform var(--transition); }
+.buyer-faq-list summary i::after { transform: translate(-50%, -50%) rotate(90deg); }
+.buyer-faq-list details[open] summary i::after { transform: translate(-50%, -50%) rotate(0deg); }
+.buyer-faq-list details > p { max-width: 72ch; margin: 0; padding: 0 64px 20px 60px; color: #b8c6d9; font-size: 0.9rem; line-height: 1.6; }
 
 .cta-section { padding-block: 56px; background: var(--color-surface-800); }
 .cta-panel { display: flex; align-items: center; justify-content: space-between; gap: 36px; }
@@ -649,6 +693,12 @@
 .contact-copy ol { display: grid; gap: 20px; padding: 0; list-style: none; }
 .contact-copy li { display: flex; gap: 14px; align-items: center; color: #dbe6f6; }
 .contact-copy li span { color: var(--color-brand-400); font-family: var(--font-mono); font-size: 0.74rem; }
+.contact-receives { margin-top: 28px; border-top: 1px solid rgba(32, 52, 81, 0.82); padding-top: 22px; }
+.contact-receives > strong { display: block; margin-bottom: 12px; color: var(--color-text-primary); font-size: 0.9rem; }
+.contact-receives ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.contact-receives li { position: relative; display: block; padding-left: 20px; color: var(--color-text-secondary); font-size: 0.82rem; line-height: 1.45; }
+.contact-receives li::before { content: ""; position: absolute; top: 0.55em; left: 1px; width: 7px; height: 7px; border-radius: 50%; background: var(--color-success-500); box-shadow: 0 0 10px rgba(50, 213, 131, 0.5); }
+.contact-boundary { margin: 20px 0 0; border-left: 2px solid rgba(50, 213, 131, 0.66); padding: 9px 12px; color: #c9ead9; background: rgba(50, 213, 131, 0.055); font-size: 0.8rem; line-height: 1.45; }
 .contact-options { display: grid; gap: 10px; margin-top: 32px; }
 .contact-options a { width: fit-content; color: var(--color-brand-400); font-weight: 700; }
 .response-time { width: fit-content; margin: 20px auto 0; border: 1px solid rgba(50, 213, 131, 0.36); border-radius: 999px; padding: 8px 14px; color: #dfffee; background: rgba(50, 213, 131, 0.08); font-size: 0.9rem; font-weight: 700; }

@@ -374,6 +374,8 @@ if (briefForm) {
     ["Catálogos y comercio", "Sitio web o comercio digital"],
     ["Campañas y captación", "Sitio web o comercio digital"],
     ["Portales y experiencias", "Sitio web o comercio digital"],
+    ["Diagnóstico de encaje", "No estoy seguro"],
+    ["Primera fase operativa", "Operación interna"],
   ]);
   const preferredNeed = needAliases.get(requestedNeed) || (requestedService === "web" ? "Sitio web o comercio digital" : requestedNeed);
   if (needField && preferredNeed) {
@@ -381,11 +383,33 @@ if (briefForm) {
     if (matchingOption) needField.value = matchingOption.value;
   }
 
+  const routeDataElement = document.querySelector("[data-contact-route-data]");
+  let contactRoutes = [];
+  try {
+    contactRoutes = JSON.parse(routeDataElement?.textContent || "[]");
+  } catch {
+    contactRoutes = [];
+  }
+  const selectedRoute = contactRoutes.find((route) => route.product === requestedNeed)
+    || contactRoutes.find((route) => route.service === requestedService)
+    || contactRoutes[0];
+  const routeSummary = briefForm.querySelector("[data-brief-route]");
+  if (routeSummary && selectedRoute) {
+    const routeServiceLabels = { general: "Diagnóstico", operations: "Operación", web: "Web comercial" };
+    routeSummary.dataset.route = selectedRoute.key || requestedService;
+    routeSummary.querySelector("[data-brief-route-service]").textContent = routeServiceLabels[selectedRoute.service] || "Ruta inicial";
+    routeSummary.querySelector("[data-brief-route-title]").textContent = selectedRoute.label;
+    routeSummary.querySelector("[data-brief-route-copy]").textContent = selectedRoute.contactCopy;
+  }
+
   const contactTitle = document.querySelector("[data-contact-title]");
   const contactLead = document.querySelector("[data-contact-lead]");
   if (requestedService === "web") {
     if (contactTitle) contactTitle.textContent = "Cuéntanos qué debe lograr tu próxima web";
     if (contactLead) contactLead.textContent = "Completa este brief en 2–3 minutos. En 24–48 horas laborales recibirás una confirmación de encaje y el siguiente paso para estimar alcance, plazo e inversión.";
+  } else if (requestedService === "operations") {
+    if (contactTitle) contactTitle.textContent = "Cuéntanos qué parte de tu operación necesita más control";
+    if (contactLead) contactLead.textContent = "Describe el proceso y la fricción principal. En 24–48 horas laborales recibirás una confirmación de encaje y las preguntas necesarias para delimitar una primera fase.";
   }
 
   briefForm.addEventListener("submit", async (event) => {
@@ -441,7 +465,7 @@ if (briefForm) {
 }
 
 if (document.querySelector("[data-nen]")) {
-  import("./nen-controller.js?v=yc-nen-architecture-20260829f").catch((error) => {
+  import("./nen-controller.js?v=yc-conversion-trust-20260829g").catch((error) => {
     console.error("[Nen] No fue posible iniciar el controlador", error);
     document.documentElement.classList.add("nen-static-fallback");
     window.reportClientError?.({

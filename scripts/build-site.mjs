@@ -7,9 +7,16 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nenSystem = JSON.parse(await readFile(path.join(root, "config", "nen-system.json"), "utf8"));
-const assetVersion = "yc-nen-architecture-20260829f";
+const assetVersion = "yc-conversion-trust-20260829g";
 const nenName = nenSystem.displayName || "Nen";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
+const engagementRoutes = content.engagement?.routes ?? [];
+const buyerFaqs = content.engagement?.faqs ?? [];
+const defaultEngagementRoute = engagementRoutes[0] ?? {
+  key: "fit",
+  label: "Diagnóstico de encaje",
+  contactCopy: "Revisaremos el contexto y te orientaremos sobre el siguiente paso.",
+};
 const stylesheetModules = [
   ["reset", "reset.css"],
   ["tokens", "tokens.css"],
@@ -172,6 +179,39 @@ function structuredData({ route, title, description, canonical, ogImage }) {
       inLanguage: "es",
       publisher: { "@id": organizationId },
     });
+
+    if (engagementRoutes.length) {
+      graph.push({
+        "@type": "ItemList",
+        "@id": `${siteUrl}/#starting-routes`,
+        name: "Formas de empezar con YC Systems",
+        itemListElement: engagementRoutes.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Service",
+            name: item.label,
+            description: item.description,
+            provider: { "@id": organizationId },
+          },
+        })),
+      });
+    }
+
+    if (buyerFaqs.length) {
+      graph.push({
+        "@type": "FAQPage",
+        "@id": `${siteUrl}/#buyer-faq`,
+        mainEntity: buyerFaqs.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      });
+    }
   }
 
   graph.push({
@@ -236,7 +276,6 @@ function pageHead({ route, prefix, title, description, noindex = false, ogImage 
     <title>${title}</title>
     <link rel="icon" type="image/png" sizes="32x32" href="${prefix}assets/favicon-32.png" />
     <link rel="apple-touch-icon" href="${prefix}assets/apple-touch-icon.png" />
-    <link rel="manifest" href="${prefix}site.webmanifest" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -277,7 +316,13 @@ function productContactHref(prefix, product) {
   const cleanProduct = decodeMetadata(product);
   const normalized = cleanProduct.toLocaleLowerCase("es");
   const service = /(web|sitio|cat[aá]logo|comercio|campa[nñ]a|captaci[oó]n|tienda|portal|experiencia)/.test(normalized) ? "web" : "operations";
-  return `${relativeHref("/contact/", prefix)}?service=${service}&product=${encodeURIComponent(cleanProduct)}`;
+  return `${relativeHref("/contact/", prefix)}?service=${service}&amp;product=${encodeURIComponent(cleanProduct)}`;
+}
+
+function engagementContactHref(prefix, route) {
+  const service = encodeURIComponent(route.service || "general");
+  const product = encodeURIComponent(route.product || route.label || "Diagnóstico de encaje");
+  return `${relativeHref("/contact/", prefix)}?service=${service}&amp;product=${product}`;
 }
 
 function sectionHead(kicker, title, text = "") {
@@ -583,12 +628,33 @@ function homeBuyerSection(prefix) {
     ["Una primera fase entendible", "Definimos qu&eacute; entra, qu&eacute; queda fuera y qu&eacute; cambio deber&iacute;a hacerse visible."],
     ["Continuidad definida", "La propuesta indica qu&eacute; soporte, acompa&ntilde;amiento o evoluci&oacute;n queda incluido despu&eacute;s del lanzamiento."],
   ];
-  return `<section class="section home-buyer-section"><div class="container">
-    <div class="home-buyer-grid">
-      <div class="home-buyer-copy">${sectionHead("C&oacute;mo empieza una compra", "Antes de invertir, debes saber qu&eacute; ocurrir&aacute; despu&eacute;s", "Una solicitud no te obliga a construir. Sirve para entender el contexto, reducir incertidumbre y decidir si existe una primera fase razonable.")}<div class="home-buyer-links"><a class="button primary" href="${relativeHref("/contact/", prefix)}">Iniciar diagn&oacute;stico</a><a class="text-link" href="${relativeHref("/trust-center/", prefix)}">Revisar confianza y privacidad</a></div></div>
-      <ol class="home-buyer-steps">${steps.map(([number, title, text]) => `<li><span>${number}</span><div><strong>${title}</strong><p>${text}</p></div></li>`).join("")}</ol>
+  const routeCards = engagementRoutes.map((route, index) => `<article class="engagement-route-card engagement-route-card--${route.key}">
+      <div class="engagement-route-head"><span>${String(index + 1).padStart(2, "0")}</span><small>${route.eyebrow}</small></div>
+      <h3>${route.label}</h3>
+      <p>${route.description}</p>
+      <div class="engagement-route-fit"><span>Ideal para</span><strong>${route.bestFor}</strong></div>
+      <ul>${route.includes.map((item) => `<li><span aria-hidden="true">&check;</span>${item}</li>`).join("")}</ul>
+      <a class="button ${route.key === "operations" ? "primary" : "secondary"}" href="${engagementContactHref(prefix, route)}">${route.cta}</a>
+      <small class="engagement-route-response">Respuesta inicial habitual en 24&ndash;48 horas laborales</small>
+    </article>`).join("");
+  return `<section class="section home-buyer-section" id="formas-de-empezar"><div class="container">
+    ${sectionHead("Formas de empezar", "Elige una primera decisi&oacute;n, no un proyecto indefinido", "Cada ruta aclara para qui&eacute;n es, qu&eacute; ayuda a decidir y qu&eacute; contexto necesitamos antes de proponer una construcci&oacute;n.")}
+    <div class="engagement-route-grid">${routeCards}</div>
+    <div class="home-buyer-process">
+      <div class="home-buyer-grid">
+        <div class="home-buyer-copy">${sectionHead("Despu&eacute;s de enviar", "Antes de invertir, sabr&aacute;s qu&eacute; ocurrir&aacute; despu&eacute;s", "Una solicitud no te obliga a construir. Sirve para entender el contexto, reducir incertidumbre y decidir si existe una primera fase razonable.")}<div class="home-buyer-links"><a class="text-link" href="${relativeHref("/process/", prefix)}">Revisar el m&eacute;todo</a><a class="text-link" href="${relativeHref("/trust-center/", prefix)}">Confianza y privacidad</a></div></div>
+        <ol class="home-buyer-steps">${steps.map(([number, title, text]) => `<li><span>${number}</span><div><strong>${title}</strong><p>${text}</p></div></li>`).join("")}</ol>
+      </div>
+      <div class="home-buyer-assurance">${assurances.map(([title, text]) => `<article><span aria-hidden="true">&check;</span><div><strong>${title}</strong><p>${text}</p></div></article>`).join("")}</div>
     </div>
-    <div class="home-buyer-assurance">${assurances.map(([title, text]) => `<article><span aria-hidden="true">&check;</span><div><strong>${title}</strong><p>${text}</p></div></article>`).join("")}</div>
+  </div></section>`;
+}
+
+function homeBuyerFaqSection(prefix) {
+  if (!buyerFaqs.length) return "";
+  return `<section class="section section-alt buyer-faq-section" id="preguntas-antes-de-empezar"><div class="container buyer-faq-grid">
+    <div class="buyer-faq-copy">${sectionHead("Antes de decidir", "Respuestas claras a las preguntas que frenan una primera conversaci&oacute;n", "Sin requisitos t&eacute;cnicos, precios inventados ni compromisos ocultos: primero aclaramos el contexto y despu&eacute;s definimos el alcance.")}<a class="text-link" href="${relativeHref("/trust-center/", prefix)}">Revisar el centro de confianza</a></div>
+    <div class="buyer-faq-list">${buyerFaqs.map((item, index) => `<details${index === 0 ? " open" : ""}><summary><span><small>${String(index + 1).padStart(2, "0")}</small>${item.question}</span><i aria-hidden="true"></i></summary><p>${item.answer}</p></details>`).join("")}</div>
   </div></section>`;
 }
 
@@ -617,7 +683,7 @@ renderPage({
   bodyClass: "home-page",
   body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC &middot; Software operativo para empresas en crecimiento</p><h1>Software operativo para convertir procesos dispersos en una operaci&oacute;n visible y controlable</h1><p class="lead">Centralizamos datos, automatizamos tareas y conectamos herramientas en una primera fase con alcance, plazo y criterios de aceptaci&oacute;n definidos antes de desarrollar.</p><div class="actions"><a class="button primary" href="#nen-diagnostic">Evaluar mi operaci&oacute;n</a><a class="button secondary" href="${relativeHref("/web-development/", prefix)}">Necesito una web comercial</a></div><p class="trust-line">Respuesta inicial en 24&ndash;48 horas laborales &middot; no necesitas requisitos t&eacute;cnicos</p></div>${homeOperatingVisual(prefix)}</div></section>
   <section class="authority-band mini-proof-band" aria-label="Se&ntilde;ales de confianza"><div class="container authority-list"><span><small>Prueba</small><strong>${content.cases.length} trabajos p&uacute;blicos</strong></span><span><small>Inicio</small><strong>Diagn&oacute;stico en 2 pasos</strong></span><span><small>Respuesta</small><strong>24&ndash;48 horas laborales</strong></span><span><small>Entrega</small><strong>Alcance por fases</strong></span></div></section>
-  ${homeProofSection(prefix)}${homeFrictionSection()}${homeSolutionsSection(prefix)}${homeNenDiagnosticSection(prefix)}${homeMethodSection(prefix)}${homeBuyerSection(prefix)}${finalCta(prefix, "Definamos la primera fase con claridad")}`,
+  ${homeProofSection(prefix)}${homeFrictionSection()}${homeSolutionsSection(prefix)}${homeNenDiagnosticSection(prefix)}${homeMethodSection(prefix)}${homeBuyerSection(prefix)}${homeBuyerFaqSection(prefix)}${finalCta(prefix, "Definamos la primera fase con claridad")}`,
 });
 
 renderPage({
@@ -917,6 +983,11 @@ renderPage({
       <input type="hidden" name="source_service" data-source-service />
       <input type="hidden" name="source_product" data-source-product />
       <input type="hidden" name="source_path" data-source-path />
+      <div class="brief-route-summary" data-brief-route>
+        <div><span>Punto de partida sugerido</span><small data-brief-route-service>Diagn&oacute;stico</small></div>
+        <strong data-brief-route-title>${defaultEngagementRoute.label}</strong>
+        <p data-brief-route-copy>${defaultEngagementRoute.contactCopy}</p>
+      </div>
       <p class="form-step" data-brief-step>Paso 1 de 2 &middot; Contexto</p>
       <p class="brief-intro" data-brief-intro>No necesitas tener la soluci&oacute;n decidida. Describe el problema; nosotros te ayudamos a ordenar el siguiente paso.</p>
       <noscript><p class="brief-noscript">Si prefieres continuar sin JavaScript, escribe a <a href="mailto:${content.contact.email}">${content.contact.email}</a> o usa <a href="${content.contact.whatsappUrl}">WhatsApp</a>.</p></noscript>
@@ -941,8 +1012,8 @@ renderPage({
       <p class="form-status" data-brief-status role="status" aria-live="polite"></p>
       <div class="form-success" data-brief-success role="status" aria-live="polite" tabindex="-1" hidden><strong>Solicitud recibida</strong><p>Te responderemos por correo en 24&ndash;48 horas laborales con una confirmaci&oacute;n de encaje, preguntas pendientes o una invitaci&oacute;n a conversar.</p></div>
     </form>
-    <div class="contact-copy"><p class="kicker">Qu&eacute; puedes esperar</p><h2>Una respuesta concreta, no una venta gen&eacute;rica</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener external">WhatsApp ${content.contact.whatsappLabel}</a></div></div>
-  </div></section>`,
+    <div class="contact-copy"><p class="kicker">Qu&eacute; puedes esperar</p><h2>Una respuesta concreta, no una venta gen&eacute;rica</h2><ol><li><span>01</span>Entendemos el problema operativo</li><li><span>02</span>Ordenamos prioridad y primera fase</li><li><span>03</span>Respondemos con el siguiente paso recomendado</li></ol><div class="contact-receives"><strong>Si existe encaje, la propuesta debe aclarar</strong><ul><li>Qu&eacute; entra y qu&eacute; queda fuera</li><li>Entregables y criterios de aceptaci&oacute;n</li><li>Fases, tiempos, inversi&oacute;n y responsabilidades</li></ul></div><p class="contact-boundary">La evaluaci&oacute;n inicial no te obliga a construir.</p><div class="contact-options"><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener external">WhatsApp ${content.contact.whatsappLabel}</a></div></div>
+  </div></section><script type="application/json" data-contact-route-data>${JSON.stringify(engagementRoutes).replace(/</g, "\\u003c")}</script>`,
 });
 
 renderPage({

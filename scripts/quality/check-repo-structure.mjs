@@ -56,6 +56,7 @@ const siteLegacy = path.join(siteRoot, "styles.legacy.css");
 const quarantinedLegacy = path.join(siteRoot, "styles", "legacy-quarantine.css");
 const publicSocialAssets = path.join(siteRoot, "assets", "social");
 const publicProductsShowcase = path.join(siteRoot, "assets", "products-showcase");
+const installableAppManifest = path.join(siteRoot, "site.webmanifest");
 const stylesManifest = path.join(siteRoot, "styles.css");
 const workflow = path.join(root, ".github", "workflows", "deploy-pages.yml");
 const publicRootEntries = [
@@ -91,7 +92,6 @@ const publicRootEntries = [
   "saas-development",
   "script.js",
   "services",
-  "site.webmanifest",
   "sitemap.xml",
   "solutions",
   "start",
@@ -127,6 +127,10 @@ if (await exists(publicSocialAssets)) {
 
 if (await exists(publicProductsShowcase)) {
   fail("Private product showcase assets are not allowed in the public YC Systems site.");
+}
+
+if (await exists(installableAppManifest)) {
+  fail("site/site.webmanifest must not exist. YC Systems is a corporate website, not an installable web app.");
 }
 
 const stylesManifestText = await readFile(stylesManifest, "utf8");

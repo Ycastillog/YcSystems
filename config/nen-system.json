@@ -84,46 +84,46 @@
     "confirming"
   ],
   "assetRegistry": {
-    "nexus-avatar-base": {
+    "nen-avatar-base": {
       "status": "ready",
       "type": "raster",
-      "path": "assets/brand/nexus/nexus-avatar.webp",
+      "path": "assets/brand/nen/nen-avatar.webp",
       "usage": "Confirmaciones y fallback temporal"
     },
-    "nexus-avatar-clean": {
+    "nen-avatar-clean": {
       "status": "ready",
       "type": "raster",
-      "path": "assets/brand/nexus/nen-avatar-v2.webp",
+      "path": "assets/brand/nen/nen-avatar-v2.webp",
       "usage": "Estados neutrales y hero de Nen; guía operativa sin gesto promocional"
     },
-    "nexus-pose-designing": {
+    "nen-pose-designing": {
       "status": "registered-pending-production",
       "type": "raster",
       "fallbackPose": "designing",
       "requirement": "Nen trabajando sobre panel o wireframe con stylus"
     },
-    "nexus-pose-building": {
+    "nen-pose-building": {
       "status": "registered-pending-production",
       "type": "raster",
       "fallbackPose": "building",
       "requirement": "Nen ensamblando módulos o usando una herramienta"
     },
-    "nexus-face-support-neutral": {
+    "nen-face-support-neutral": {
       "status": "ready-code-native",
       "type": "css-expression",
       "expression": "support-neutral"
     },
-    "nexus-face-confirming": {
+    "nen-face-confirming": {
       "status": "ready-code-native",
       "type": "css-expression",
       "expression": "confirming"
     },
-    "nexus-face-soft-alert": {
+    "nen-face-soft-alert": {
       "status": "ready-code-native",
       "type": "css-expression",
       "expression": "soft-alert"
     },
-    "nexus-face-waiting": {
+    "nen-face-waiting": {
       "status": "ready-code-native",
       "type": "css-expression",
       "expression": "waiting"

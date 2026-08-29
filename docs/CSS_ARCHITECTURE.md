@@ -15,7 +15,7 @@ Current order:
 3. `site/styles/base.css`
 4. `site/styles/layout.css`
 5. `site/styles/components.css`
-6. `site/styles/nexus.css`
+6. `site/styles/nen.css`
 7. `site/styles/pages.css`
 8. `site/styles/utilities.css`
 9. `site/styles/responsive.css`
@@ -27,7 +27,7 @@ Current order:
 - `base.css`: body, headings, paragraphs, links and default text behavior.
 - `layout.css`: containers, sections, page grids, header and footer structure.
 - `components.css`: buttons, cards, badges, forms and reusable UI pieces.
-- `nexus.css`: Nen characters, faces, poses, guide cards, method explorer and reveal fallbacks.
+- `nen.css`: Nen characters, faces, poses, guide cards, method explorer and reveal fallbacks.
 - `pages.css`: page-specific layouts and high-value visual sections.
 - `utilities.css`: small utility rules only.
 - `responsive.css`: breakpoint rules and mobile/tablet ownership.
@@ -40,7 +40,7 @@ Current order:
 - Avoid `!important`. Use it only for accessibility or reduced-motion safeguards.
 - Keep typography controlled by tokens. Do not create one-off hero sizes unless the page has a clear reason.
 - Keep cards and panels on shared radii, spacing and grid rules.
-- Keep Nen modes, expressions, poses and asset status registered in `config/nexus-system.json`; the `nexus-*` selectors remain the technical namespace.
+- Keep Nen modes, expressions, poses and asset status registered in `config/nen-system.json`; the `nen-*` selectors remain the technical namespace.
 - Test desktop, tablet and mobile after touching layout or type.
 
 ## Public Asset Cache Version
@@ -50,7 +50,7 @@ Current order:
 The same identifier also appears in:
 
 - every modular CSS import in `site/styles.css`;
-- the `nexus-controller.js` dynamic import in `site/script.js`.
+- the `nen-controller.js` dynamic import in `site/script.js`.
 
 At the start of every build, `scripts/build-site.mjs` rewrites those two static entry points to the canonical identifier. After changing the release identifier, rebuild the site and run `scripts/quality/check-site.mjs`. The quality gate requires every public asset reference to resolve to one version and prevents partially updated cache keys from shipping.
 

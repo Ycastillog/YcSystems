@@ -42,12 +42,12 @@ Important files:
 - `site/styles.css`: stylesheet manifest only.
 - `site/styles/`: active modular CSS system.
 - `site/script.js`: public website behavior.
-- `site/nexus-controller.js`: state, interaction and accessibility behavior for Nen.
+- `site/nen-controller.js`: state, interaction and accessibility behavior for Nen.
 - `site/styles.bundle.css`: generated public CSS bundle; edit the modules under `site/styles/` instead.
 - `site/assets/`: public brand, product and approved marketing assets.
 - `site/.well-known/security.txt`: public security and privacy reporting contact.
 - `config/routes-map.json`: source of truth for routes, sitemap and noindex behavior.
-- `config/nexus-system.json`: source of truth for Nen modes, expressions, poses and asset status.
+- `config/nen-system.json`: source of truth for Nen modes, expressions, poses and asset status.
 - `scripts/build-site.mjs`: static page generator for the shared header, footer and page system.
 - `scripts/quality/`: automated checks.
 - `docs/`: repository architecture, CSS rules and public/private policy.
@@ -56,7 +56,7 @@ More detail:
 
 - [Repository structure](docs/REPOSITORY_STRUCTURE.md)
 - [CSS architecture](docs/CSS_ARCHITECTURE.md)
-- [Nen visual system](docs/NEXUS_SYSTEM.md)
+- [Nen visual system](docs/NEN_SYSTEM.md)
 - [Public repository policy](docs/PUBLIC_REPOSITORY_POLICY.md)
 - [Security policy](SECURITY.md)
 
@@ -72,7 +72,7 @@ site/styles/reset.css
 site/styles/base.css
 site/styles/layout.css
 site/styles/components.css
-site/styles/nexus.css
+site/styles/nen.css
 site/styles/pages.css
 site/styles/utilities.css
 site/styles/responsive.css
@@ -123,7 +123,7 @@ Client proof routes can remain excluded from the public sitemap when they are ap
 /brands/ghostwear/
 ```
 
-`/nexus-lab/` is a noindex visual QA surface. It is excluded from the sitemap and crawler rules, but it is not an authentication or privacy boundary.
+`/nen-lab/` is a noindex visual QA surface. It is excluded from the sitemap and crawler rules, but it is not an authentication or privacy boundary.
 
 Unreleased product names, screenshots, routes, launch plans and roadmaps must stay outside the public repository until they are approved for release.
 

@@ -29,12 +29,12 @@
   --shadow-panel: 0 22px 70px rgba(0, 0, 0, 0.28);
   --transition: 180ms ease;
 
-  --nexus-cyan: #5de7ff;
-  --nexus-blue: #2f7dff;
-  --nexus-green: #42e680;
-  --nexus-amber: #ffd166;
-  --nexus-red: #ff7089;
-  --nexus-visor: #010611;
-  --nexus-expression-duration: 220ms;
-  --nexus-entrance-duration: 320ms;
+  --nen-cyan: #5de7ff;
+  --nen-blue: #2f7dff;
+  --nen-green: #42e680;
+  --nen-amber: #ffd166;
+  --nen-red: #ff7089;
+  --nen-visor: #010611;
+  --nen-expression-duration: 220ms;
+  --nen-entrance-duration: 320ms;
 }

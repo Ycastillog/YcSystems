@@ -56,7 +56,7 @@
   .company-human-panel { grid-template-columns: 1fr; }
   .company-purpose-grid,
   .company-values-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .nexus-panel { grid-template-columns: 1fr; }
+  .nen-panel { grid-template-columns: 1fr; }
   .web-work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .web-work-card,
   .web-work-card:nth-child(n+4) { grid-column: auto; }
@@ -162,13 +162,13 @@
   .mini-proof-band .authority-list span { min-height: 48px; padding: 7px 12px; }
   .authority-list span:nth-child(odd) { border-right: 1px solid var(--color-border-600); }
   .authority-list span:nth-last-child(-n+2) { border-bottom: 0; }
-  .nexus-panel { padding: 18px; }
-  .nexus-core-panel { grid-template-columns: 1fr; }
-  .nexus-home-core { min-height: 0; grid-template-columns: 76px minmax(0, 1fr); padding: 12px; }
-  .nexus-home-core .nexus-core-visual { width: 68px; }
-  .nexus-mode-flow { grid-template-columns: 1fr; gap: 6px; }
-  .nexus-mode-flow span { border-left: 2px solid rgba(51, 200, 255, 0.42); padding: 7px 10px; background: rgba(2, 8, 23, 0.34); }
-  .nexus-mode-flow i { display: none; }
+  .nen-panel { padding: 18px; }
+  .nen-core-panel { grid-template-columns: 1fr; }
+  .nen-home-core { min-height: 0; grid-template-columns: 76px minmax(0, 1fr); padding: 12px; }
+  .nen-home-core .nen-core-visual { width: 68px; }
+  .nen-mode-flow { grid-template-columns: 1fr; gap: 6px; }
+  .nen-mode-flow span { border-left: 2px solid rgba(51, 200, 255, 0.42); padding: 7px 10px; background: rgba(2, 8, 23, 0.34); }
+  .nen-mode-flow i { display: none; }
   .operational-grid { grid-template-columns: 1fr; }
   .operational-card { min-height: 0; padding: 20px; }
   .home-page .friction-grid,
@@ -229,8 +229,8 @@
   .home-page .method-preview-grid li:nth-child(2n) { border-right: 0; }
   .home-page .method-preview-grid li:nth-last-child(-n+2) { border-bottom: 0; }
   .home-page .method-preview-grid em { font-size: 0.68rem; }
-  .nexus-copy h2 { font-size: 1.72rem; }
-  .nexus-mini-system { grid-template-columns: 1fr; gap: 8px; }
+  .nen-copy h2 { font-size: 1.72rem; }
+  .nen-mini-system { grid-template-columns: 1fr; gap: 8px; }
   .company-signals { padding: 16px; gap: 8px; }
   .company-signals span { min-height: 56px; grid-template-columns: 1fr; gap: 2px; padding: 10px; font-size: 0.82rem; }
   .case-actions { align-items: stretch; flex-direction: column; }
@@ -259,23 +259,23 @@
   .architecture-grid { grid-template-columns: 1fr; }
   .brief-form { padding: 20px; }
   .contact-copy { position: static; padding: 20px; }
-  .nexus-form-companion.compact {
+  .nen-form-companion.compact {
     top: calc(var(--header-height) + 8px);
     margin-inline: -8px;
     border-radius: 14px;
     padding: 7px;
     background: rgba(5, 14, 29, 0.97);
   }
-  .nexus-form-core,
-  .nexus-guide .nexus-core { grid-template-columns: 64px minmax(0, 1fr); gap: 10px; }
-  .nexus-form-core { grid-template-columns: 48px minmax(0, 1fr); min-height: 68px; padding: 8px 10px; }
-  .nexus-form-core .nexus-core-copy { padding-top: 22px; }
-  .nexus-form-core .nexus-core-copy span { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 0.78rem; }
-  .nexus-form-core::before { top: 8px; right: auto; left: 68px; }
-  .nexus-form-core .nexus-core-visual { width: 46px; border-radius: 15px; }
-  .nexus-guide .nexus-core-visual { width: 58px; border-radius: 18px; }
+  .nen-form-core,
+  .nen-guide .nen-core { grid-template-columns: 64px minmax(0, 1fr); gap: 10px; }
+  .nen-form-core { grid-template-columns: 48px minmax(0, 1fr); min-height: 68px; padding: 8px 10px; }
+  .nen-form-core .nen-core-copy { padding-top: 22px; }
+  .nen-form-core .nen-core-copy span { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 0.78rem; }
+  .nen-form-core::before { top: 8px; right: auto; left: 68px; }
+  .nen-form-core .nen-core-visual { width: 46px; border-radius: 15px; }
+  .nen-guide .nen-core-visual { width: 58px; border-radius: 18px; }
   .brief-form input, .brief-form select, .brief-form textarea { scroll-margin-top: calc(var(--header-height) + 96px); }
-  .nexus-guide { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+  .nen-guide { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
   .form-actions { display: grid; }
   .solution-grid { gap: 14px; }
   .solution-card { min-height: 0; padding: 18px; }
@@ -290,7 +290,7 @@
   .text-link,
   .card-link,
   .site-footer a,
-  .nexus-method-controls .button { min-height: 44px; display: inline-flex; align-items: center; }
+  .nen-method-controls .button { min-height: 44px; display: inline-flex; align-items: center; }
   .site-footer a { max-width: 100%; margin-block: 0; overflow-wrap: anywhere; }
   .footer-bottom { flex-direction: column; gap: 12px; padding-top: 16px; }
   .footer-bottom span:last-child { flex-wrap: wrap; }
@@ -323,8 +323,8 @@
     align-content: center;
     padding: 10px;
   }
-  .nen-diagnostic-core .nexus-core-visual { width: 66px; margin-inline: 0; }
-  .nen-diagnostic-core .nexus-core-copy { padding-top: 18px; }
+  .nen-diagnostic-core .nen-core-visual { width: 66px; margin-inline: 0; }
+  .nen-diagnostic-core .nen-core-copy { padding-top: 18px; }
   .home-operating-map {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 12px;

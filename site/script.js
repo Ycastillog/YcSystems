@@ -272,7 +272,7 @@ function focusBriefStep(step) {
   requestAnimationFrame(() => {
     const formRect = briefForm.getBoundingClientRect();
     const fieldRect = field?.getBoundingClientRect();
-    const companionRect = briefForm.querySelector("[data-nexus-form]")?.getBoundingClientRect();
+    const companionRect = briefForm.querySelector("[data-nen-form]")?.getBoundingClientRect();
     const headerHeight = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 72;
     const fieldIsObscured = fieldRect && companionRect && fieldRect.top < companionRect.bottom + 16;
     const fieldIsOutside = fieldRect && (fieldRect.top < headerHeight + 16 || fieldRect.bottom > window.innerHeight - 24);
@@ -419,7 +419,7 @@ if (briefForm) {
 
       if (!response.ok) throw new Error(`Request failed with ${response.status}`);
 
-      briefForm.querySelectorAll("[data-step], [data-brief-step], [data-brief-status], [data-brief-intro], [data-nexus-form]").forEach((element) => {
+      briefForm.querySelectorAll("[data-step], [data-brief-step], [data-brief-status], [data-brief-intro], [data-nen-form]").forEach((element) => {
         element.hidden = true;
       });
       briefSuccess.hidden = false;
@@ -440,12 +440,12 @@ if (briefForm) {
   });
 }
 
-if (document.querySelector("[data-nexus]")) {
-  import("./nexus-controller.js?v=yc-nen-buyer-20260829e").catch((error) => {
+if (document.querySelector("[data-nen]")) {
+  import("./nen-controller.js?v=yc-nen-architecture-20260829f").catch((error) => {
     console.error("[Nen] No fue posible iniciar el controlador", error);
-    document.documentElement.classList.add("nexus-static-fallback");
+    document.documentElement.classList.add("nen-static-fallback");
     window.reportClientError?.({
-      component: "nexus-controller",
+      component: "nen-controller",
       message: error?.message || "unknown",
     });
   });

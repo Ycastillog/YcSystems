@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /nexus-lab/
+Disallow: /nen-lab/
 
 Sitemap: https://ycsystems.io/sitemap.xml

@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nenSystem = JSON.parse(await readFile(path.join(root, "config", "nen-system.json"), "utf8"));
-const assetVersion = "yc-nen-identity-20260829h";
+const assetVersion = "yc-nen-live-20260829i";
 const nenName = nenSystem.displayName || "Nen";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const engagementRoutes = content.engagement?.routes ?? [];
@@ -355,7 +355,7 @@ function nenMediaAsset(pose) {
   const readyPath = asset?.status === "ready" && asset.path ? asset.path : null;
   const fallbackKey = asset?.fallback || "nen-avatar-base";
   const fallbackPath = registry[fallbackKey]?.path || registry["nen-avatar-base"]?.path || "assets/brand/nen/nen-avatar.webp";
-  return { key: assetKey, status: readyPath ? "ready" : "fallback", path: readyPath || fallbackPath };
+  return { key: assetKey, status: readyPath ? "ready" : "fallback", path: readyPath || fallbackPath, fallbackKey: readyPath ? "" : fallbackKey };
 }
 
 function nenCharacter(prefix, {
@@ -375,8 +375,8 @@ function nenCharacter(prefix, {
   const selectedExpression = expression || modeConfig.expression;
   const selectedPose = pose || modeConfig.pose;
   const mediaAsset = nenMediaAsset(selectedPose);
-  const identityChip = modifier.includes("home-hero-visual") ? '<span class="home-hero-chip">YC SYSTEMS / OPERATING SYSTEMS</span>' : "";
-  return `<figure class="nen-character nen-character--${size} ${modifier}" data-nen data-reveal data-nen-prefix="${prefix}" data-nen-state="${mode}" data-nen-expression="${selectedExpression}" data-nen-pose="${selectedPose}" data-nen-asset="${mediaAsset.key}" data-nen-asset-status="${mediaAsset.status}" data-nen-label="${modeConfig.label}">
+  const identityChip = modifier.includes("home-hero-visual") ? '<span class="home-hero-chip">NEN / GUÍA OPERATIVA</span>' : "";
+  return `<figure class="nen-character nen-character--${size} ${modifier}" data-nen data-reveal data-nen-prefix="${prefix}" data-nen-state="${mode}" data-nen-expression="${selectedExpression}" data-nen-pose="${selectedPose}" data-nen-asset="${mediaAsset.key}" data-nen-asset-status="${mediaAsset.status}" data-nen-fallback-asset="${mediaAsset.fallbackKey}" data-nen-label="${modeConfig.label}">
 ${identityChip ? `    ${identityChip}\n` : ""}    ${nenStatusChip(mode)}
     <div class="nen-character-stage">
       <div class="nen-character-media">
@@ -394,7 +394,7 @@ function nenCore(state = "observe", message = "Primero entendamos el proceso.", 
   const expression = options.expression || (state === "caution" || state === "error" ? "soft-alert" : nenSystem.modes[mode].expression);
   const pose = options.pose || nenSystem.modes[mode].pose;
   const mediaAsset = nenMediaAsset(pose);
-  return `<div class="nen-core ${modifier}" data-nen data-nen-prefix="/" data-nen-state="${mode}" data-nen-expression="${expression}" data-nen-pose="${pose}" data-nen-asset="${mediaAsset.key}" data-nen-asset-status="${mediaAsset.status}" data-nen-label="${label}">
+  return `<div class="nen-core ${modifier}" data-nen data-nen-prefix="/" data-nen-state="${mode}" data-nen-expression="${expression}" data-nen-pose="${pose}" data-nen-asset="${mediaAsset.key}" data-nen-asset-status="${mediaAsset.status}" data-nen-fallback-asset="${mediaAsset.fallbackKey}" data-nen-label="${label}">
     <div class="nen-core-visual" aria-hidden="true">
       <img class="nen-core-image" src="/${mediaAsset.path}" alt="" width="520" height="520" loading="lazy" decoding="async" />
       <span class="nen-core-scan"></span>
@@ -432,20 +432,19 @@ function infoCards(items) {
   return items.map(([title, text]) => `<div class="value-card"><strong>${title}</strong><p>${text}</p></div>`).join("");
 }
 
-function homeOperatingVisual(prefix) {
-  const signals = ["Informaci&oacute;n dispersa", "Tareas manuales", "Sistemas aislados"];
-  const outcomes = ["Estados visibles", "Datos conectados", "Decisiones con contexto"];
-  return `<aside class="home-operating-visual" aria-label="Mapa de una operaci&oacute;n que pasa de se&ntilde;ales dispersas a una base operativa">
-    <div class="home-operating-header"><span>YC SYSTEMS / MAPA OPERATIVO</span><strong><i aria-hidden="true"></i>Sistema en diagn&oacute;stico</strong></div>
-    <div class="home-operating-map">
-      <div class="home-operating-stack"><small>Se&ntilde;ales</small>${signals.map((item) => `<span>${item}</span>`).join("")}</div>
-      <span class="home-operating-arrow" aria-hidden="true">&rarr;</span>
-      <div class="home-operating-base"><small>Primera fase</small><strong>Base operativa</strong><span>Procesos &middot; roles &middot; reglas</span><div aria-hidden="true"><i></i><i></i><i></i></div></div>
-      <span class="home-operating-arrow" aria-hidden="true">&rarr;</span>
-      <div class="home-operating-stack home-operating-stack--outcome"><small>Cambio visible</small>${outcomes.map((item) => `<span>${item}</span>`).join("")}</div>
-    </div>
-    <div class="home-operating-footer">${nenCore("observe", "Nen hace visible el estado; YC Systems define la prioridad.", "home-operating-nen", "", { label: "Nen / interfaz visual" })}<a class="text-link" href="#nen-diagnostic">Explorar una primera fase</a></div>
-  </aside>`;
+function homeNenHero(prefix) {
+  return nenCharacter(prefix, {
+    state: "observe",
+    expression: "observing",
+    pose: "observing",
+    size: "hero",
+    modifier: "home-hero-visual",
+    priority: true,
+    eyebrow: "Nen · guía visual activa",
+    caption: "La fricción se entiende antes de construir",
+    message: "Nen observa señales, cambia de estado y te acompaña hacia una primera fase clara.",
+    action: '<a class="text-link" href="#nen-diagnostic">Probar con mi operación</a>',
+  });
 }
 
 function homeFrictionSection() {
@@ -527,7 +526,7 @@ function homeNenDiagnosticSection(prefix) {
           <p class="nen-choice-note">No necesitas tener el diagnóstico completo para comenzar.</p>
         </div>
         <div id="nen-diagnostic-result" class="nen-recommendation" role="tabpanel" aria-labelledby="nen-diagnostic-choice-${first.key}" aria-live="polite" data-nen-result>
-          ${nenCore(first.state, first.message, "nen-diagnostic-core")}
+          ${nenCharacter(prefix, { state: first.state, expression: nenSystem.modes[nenMode(first.state)].expression, pose: nenSystem.modes[nenMode(first.state)].pose, size: "bust", message: first.message, modifier: "nen-diagnostic-character", caption: nenName, eyebrow: "Lectura activa" })}
           <div class="nen-result-copy">
             <div class="nen-result-top"><span>YC Systems / primera lectura</span><span data-nen-result-state>${nenSystem.modes[nenMode(first.state)].label}</span></div>
             <h3 data-nen-result-title>${first.title}</h3>
@@ -682,7 +681,7 @@ renderPage({
   title: "YC Systems | Software operativo para una operaci&oacute;n visible y controlable",
   description: "Centralizamos datos, automatizamos tareas y conectamos herramientas mediante primeras fases con alcance y criterios claros.",
   bodyClass: "home-page",
-  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC &middot; Software operativo para empresas en crecimiento</p><h1>Software operativo para convertir procesos dispersos en una operaci&oacute;n visible y controlable</h1><p class="lead">Centralizamos datos, automatizamos tareas y conectamos herramientas en una primera fase con alcance, plazo y criterios de aceptaci&oacute;n definidos antes de desarrollar.</p><div class="actions"><a class="button primary" href="#nen-diagnostic">Evaluar mi operaci&oacute;n</a><a class="button secondary" href="${relativeHref("/web-development/", prefix)}">Necesito una web comercial</a></div><p class="trust-line">Respuesta inicial en 24&ndash;48 horas laborales &middot; no necesitas requisitos t&eacute;cnicos</p></div>${homeOperatingVisual(prefix)}</div></section>
+  body: (prefix) => `<section class="hero"><div class="container hero-grid"><div class="hero-copy"><p class="kicker">YC Systems LLC &middot; Software operativo para empresas en crecimiento</p><h1>Software operativo para convertir procesos dispersos en una operaci&oacute;n visible y controlable</h1><p class="lead">Centralizamos datos, automatizamos tareas y conectamos herramientas en una primera fase con alcance, plazo y criterios de aceptaci&oacute;n definidos antes de desarrollar.</p><div class="actions"><a class="button primary" href="#nen-diagnostic">Evaluar mi operaci&oacute;n</a><a class="button secondary" href="${relativeHref("/web-development/", prefix)}">Necesito una web comercial</a></div><p class="trust-line">Respuesta inicial en 24&ndash;48 horas laborales &middot; no necesitas requisitos t&eacute;cnicos</p></div>${homeNenHero(prefix)}</div></section>
   <section class="authority-band mini-proof-band" aria-label="Se&ntilde;ales de confianza"><div class="container authority-list"><span><small>Prueba</small><strong>${content.cases.length} trabajos p&uacute;blicos</strong></span><span><small>Inicio</small><strong>Diagn&oacute;stico en 2 pasos</strong></span><span><small>Respuesta</small><strong>24&ndash;48 horas laborales</strong></span><span><small>Entrega</small><strong>Alcance por fases</strong></span></div></section>
   ${homeProofSection(prefix)}${homeFrictionSection()}${homeSolutionsSection(prefix)}${homeNenDiagnosticSection(prefix)}${homeMethodSection(prefix)}${homeBuyerSection(prefix)}${homeBuyerFaqSection(prefix)}${finalCta(prefix, "Definamos la primera fase con claridad")}`,
 });

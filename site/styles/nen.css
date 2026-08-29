@@ -601,9 +601,9 @@ html.nen-static-fallback .nen-context-signals i {
   margin-left: -9%;
 }
 
-.nen-character--bust[data-nen-asset-status="fallback"] .nen-character-media img,
-.nen-character--half[data-nen-asset-status="fallback"] .nen-character-media img,
-.nen-character--hero[data-nen-asset-status="fallback"] .nen-character-media img {
+.nen-character--bust[data-nen-fallback-asset="nen-avatar-base"] .nen-character-media img,
+.nen-character--half[data-nen-fallback-asset="nen-avatar-base"] .nen-character-media img,
+.nen-character--hero[data-nen-fallback-asset="nen-avatar-base"] .nen-character-media img {
   -webkit-mask-image: radial-gradient(circle at 0 100%, transparent 0 24%, rgba(0, 0, 0, 0.22) 31%, #000 43%);
   mask-image: radial-gradient(circle at 0 100%, transparent 0 24%, rgba(0, 0, 0, 0.22) 31%, #000 43%);
 }

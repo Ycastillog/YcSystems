@@ -74,8 +74,8 @@ El HTML y la imagen oficial se muestran sin JavaScript. Si el controlador no car
 
 Listos:
 
-- `nen-avatar-clean`: avatar público actual de Nen, limpio y sin gesto promocional.
-- `nen-avatar-base`: raster anterior, reservado para confirmaciones y fallback temporal.
+- `nen-avatar-clean`: avatar público actual de Nen, limpio y sin gesto promocional; también sostiene los estados cuyas poses finales siguen en producción.
+- `nen-avatar-base`: raster anterior, reservado para confirmaciones, gestos positivos y recuperación automática cuando un recurso visual falla.
 - `nen-face-support-neutral`: rostro generado en CSS.
 - `nen-face-confirming`: rostro generado en CSS.
 - `nen-face-soft-alert`: rostro generado en CSS.

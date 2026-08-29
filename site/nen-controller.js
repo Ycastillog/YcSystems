@@ -30,7 +30,11 @@ function nenMediaAsset(pose) {
   const readyPath = asset?.status === "ready" && asset.path ? asset.path : null;
   const fallbackKey = asset?.fallback || "nen-avatar-base";
   const fallbackPath = registry[fallbackKey]?.path || registry["nen-avatar-base"]?.path;
-  return { key: assetKey, status: readyPath ? "ready" : "fallback", path: readyPath || fallbackPath };
+  return { key: assetKey, status: readyPath ? "ready" : "fallback", path: readyPath || fallbackPath, fallbackKey: readyPath ? "" : fallbackKey };
+}
+
+function nenImageSource(element, path) {
+  return `${element.dataset.nenPrefix || ""}${path}`;
 }
 
 function syncNenMedia(element, pose) {
@@ -38,10 +42,38 @@ function syncNenMedia(element, pose) {
   if (!image) return;
   const asset = nenMediaAsset(pose);
   if (!asset.path) return;
-  const source = `${element.dataset.nenPrefix || ""}${asset.path}`;
-  if (image.getAttribute("src") !== source) image.setAttribute("src", source);
+  const source = nenImageSource(element, asset.path);
+  if (image.getAttribute("src") !== source) {
+    delete image.dataset.nenFallbackApplied;
+    image.setAttribute("src", source);
+  }
   element.dataset.nenAsset = asset.key;
   element.dataset.nenAssetStatus = asset.status;
+  element.dataset.nenFallbackAsset = asset.fallbackKey;
+}
+
+function applyNenImageFallback(image, element) {
+  const fallbackPath = nenConfig.assetRegistry?.["nen-avatar-base"]?.path;
+  if (!fallbackPath || !element) return;
+  const fallbackSource = nenImageSource(element, fallbackPath);
+  if (image.dataset.nenFallbackApplied === "true" || image.getAttribute("src") === fallbackSource) {
+    element.dataset.nenAssetStatus = "missing";
+    return;
+  }
+  image.dataset.nenFallbackApplied = "true";
+  image.setAttribute("src", fallbackSource);
+  element.dataset.nenAsset = "nen-avatar-base";
+  element.dataset.nenAssetStatus = "fallback";
+  element.dataset.nenFallbackAsset = "nen-avatar-base";
+}
+
+function setupNenImageFallbacks() {
+  document.querySelectorAll(".nen-character-media img, .nen-core-image").forEach((image) => {
+    const element = image.closest("[data-nen]");
+    if (!element) return;
+    image.addEventListener("error", () => applyNenImageFallback(image, element));
+    if (image.complete && image.naturalWidth === 0) applyNenImageFallback(image, element);
+  });
 }
 
 function setNenState(element, state, message, options = {}) {
@@ -210,7 +242,7 @@ function setupNenDiagnostic() {
   const cta = diagnostic.querySelector("[data-nen-cta]");
   if (!routes.length || !choices.length || !result || !core) return;
 
-  function activate(key, { focus = false } = {}) {
+  function activate(key, { focus = false, lockHero = true } = {}) {
     const route = routes.find((item) => item.key === key) || routes[0];
     const index = routes.indexOf(route);
     const activeChoice = choices[index];
@@ -236,7 +268,7 @@ function setupNenDiagnostic() {
 
     setNenState(core, route.state, route.message);
     if (hero) {
-      hero.dataset.nenLocked = "true";
+      hero.dataset.nenLocked = String(lockHero);
       setNenState(hero, route.state, `${nenName} recomienda empezar por ${route.phase.toLowerCase()}.`);
     }
   }
@@ -253,7 +285,7 @@ function setupNenDiagnostic() {
     });
   });
 
-  activate(choices[0].dataset.nenChoice);
+  activate(choices[0].dataset.nenChoice, { lockHero: false });
 }
 
 function setupHomeNenFlow() {
@@ -439,6 +471,7 @@ function setupVisibilityPause() {
   });
 }
 
+setupNenImageFallbacks();
 setupMethodExplorer();
 setupNenGuides();
 setupNenDiagnostic();

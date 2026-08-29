@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "displayName": "Nen",
   "defaultMode": "observe",
   "defaultExpression": "neutral",
@@ -88,7 +88,7 @@
       "status": "ready",
       "type": "raster",
       "path": "assets/brand/nen/nen-avatar.webp",
-      "usage": "Confirmaciones y fallback temporal"
+      "usage": "Confirmaciones y gestos positivos aprobados"
     },
     "nen-avatar-clean": {
       "status": "ready",
@@ -99,12 +99,14 @@
     "nen-pose-designing": {
       "status": "registered-pending-production",
       "type": "raster",
+      "fallback": "nen-avatar-clean",
       "fallbackPose": "designing",
       "requirement": "Nen trabajando sobre panel o wireframe con stylus"
     },
     "nen-pose-building": {
       "status": "registered-pending-production",
       "type": "raster",
+      "fallback": "nen-avatar-clean",
       "fallbackPose": "building",
       "requirement": "Nen ensamblando módulos o usando una herramienta"
     },

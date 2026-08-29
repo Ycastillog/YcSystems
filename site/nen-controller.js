@@ -34,7 +34,7 @@ function nenMediaAsset(pose) {
 }
 
 function syncNenMedia(element, pose) {
-  const image = element.querySelector(".nen-character-media img");
+  const image = element.querySelector(".nen-character-media img, .nen-core-image");
   if (!image) return;
   const asset = nenMediaAsset(pose);
   if (!asset.path) return;

@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nenSystem = JSON.parse(await readFile(path.join(root, "config", "nen-system.json"), "utf8"));
-const assetVersion = "yc-conversion-trust-20260829g";
+const assetVersion = "yc-nen-identity-20260829h";
 const nenName = nenSystem.displayName || "Nen";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const engagementRoutes = content.engagement?.routes ?? [];
@@ -393,15 +393,16 @@ function nenCore(state = "observe", message = "Primero entendamos el proceso.", 
   const label = options.label || nenStateLabels[state] || nenStateLabels.observe;
   const expression = options.expression || (state === "caution" || state === "error" ? "soft-alert" : nenSystem.modes[mode].expression);
   const pose = options.pose || nenSystem.modes[mode].pose;
-  return `<div class="nen-core ${modifier}" data-nen data-nen-state="${mode}" data-nen-expression="${expression}" data-nen-pose="${pose}" data-nen-label="${label}">
+  const mediaAsset = nenMediaAsset(pose);
+  return `<div class="nen-core ${modifier}" data-nen data-nen-prefix="/" data-nen-state="${mode}" data-nen-expression="${expression}" data-nen-pose="${pose}" data-nen-asset="${mediaAsset.key}" data-nen-asset-status="${mediaAsset.status}" data-nen-label="${label}">
     <div class="nen-core-visual" aria-hidden="true">
+      <img class="nen-core-image" src="/${mediaAsset.path}" alt="" width="520" height="520" loading="lazy" decoding="async" />
       <span class="nen-core-scan"></span>
       <span class="nen-core-node node-a"></span>
       <span class="nen-core-node node-b"></span>
       <span class="nen-core-node node-c"></span>
       <span class="nen-core-line line-a"></span>
       <span class="nen-core-line line-b"></span>
-      <span class="nen-core-face"><i></i><i></i><b></b></span>
     </div>
     <div class="nen-core-copy"><strong>${nenName}</strong><span data-nen-message>${message}</span>${action}</div>
   </div>`;

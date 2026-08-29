@@ -325,6 +325,7 @@ small { font-size: 0.82rem; }
   position: relative;
   width: 84px;
   aspect-ratio: 1;
+  overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--nen-accent) 42%, transparent);
   border-radius: 26px;
   background:
@@ -336,39 +337,17 @@ small { font-size: 0.82rem; }
   animation: nen-core-idle 6.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
-.nen-core-face {
+.nen-core-image {
   position: absolute;
-  inset: 24% 17% 20%;
+  z-index: 0;
+  inset: 0;
   display: block;
-  border: 1px solid rgba(51, 200, 255, 0.28);
-  border-radius: 22px;
-  background: rgba(2, 8, 23, 0.88);
-  box-shadow: inset 0 0 26px rgba(51, 200, 255, 0.08);
-}
-
-.nen-core-face i {
-  position: absolute;
-  top: 34%;
-  width: 9px;
-  height: 18px;
-  border-radius: 999px;
-  background: #67e8ff;
-  box-shadow: 0 0 16px color-mix(in srgb, var(--nen-accent) 80%, transparent);
-  animation: nen-core-blink 7.2s ease-in-out infinite;
-}
-
-.nen-core-face i:first-child { left: 26%; }
-.nen-core-face i:nth-child(2) { right: 26%; animation-delay: 120ms; }
-
-.nen-core-face b {
-  position: absolute;
-  left: 36%;
-  bottom: 24%;
-  width: 28%;
-  height: 8px;
-  border-bottom: 2px solid #67e8ff;
-  border-radius: 0 0 999px 999px;
-  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--nen-accent) 64%, transparent));
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: center 14%;
+  filter: saturate(0.98) contrast(1.04) brightness(1.04);
 }
 
 .nen-core-node,
@@ -470,7 +449,6 @@ small { font-size: 0.82rem; }
 .nen-core[data-nen-pose="supporting"] .nen-core-visual::after { content: ""; position: absolute; z-index: 2; right: 10%; bottom: 12%; width: 20px; height: 9px; border-bottom: 2px solid var(--nen-green); border-left: 2px solid var(--nen-green); transform: rotate(-45deg); }
 
 .nen-core[data-nen-paused] .nen-core-visual,
-.nen-core[data-nen-paused] .nen-core-face i,
 .nen-core[data-nen-paused] .nen-core-node,
 .nen-core[data-nen-paused] .nen-core-scan {
   animation-play-state: paused;
@@ -716,7 +694,6 @@ small { font-size: 0.82rem; }
 }
 
 html.nen-static-fallback .nen-core-visual,
-html.nen-static-fallback .nen-core-face i,
 html.nen-static-fallback .nen-core-node,
 html.nen-static-fallback .nen-core-scan {
   animation: none !important;
@@ -746,11 +723,6 @@ html.nen-static-fallback .nen-context-signals i {
   0%, 100% { transform: translate3d(0, 0, 0); }
   44% { transform: translate3d(0, -3px, 0); }
   68% { transform: translate3d(1px, -1px, 0); }
-}
-
-@keyframes nen-core-blink {
-  0%, 91%, 100% { transform: scaleY(1); opacity: 1; }
-  94%, 96% { transform: scaleY(0.14); opacity: 0.76; }
 }
 
 @media (max-width: 980px) {
@@ -832,7 +804,6 @@ html.nen-static-fallback .nen-context-signals i {
 
 @media (prefers-reduced-motion: reduce) {
   .nen-core-visual,
-  .nen-core-face i,
   .nen-core-node,
   .nen-core-scan {
     animation: none !important;
@@ -1108,36 +1079,11 @@ html.nen-static-fallback .nen-context-signals i {
 .nen-character--avatar[data-nen-expression="soft-alert"] .nen-mouth { border-top-width: 2px; }
 .nen-character--avatar[data-nen-expression="celebration"] .nen-mouth { border-bottom-width: 2px; }
 
-.nen-core[data-nen-expression="happy"] .nen-core-face i,
-.nen-core[data-nen-expression="confirming"] .nen-core-face i { top: 43%; height: 4px; background: transparent; border-bottom: 2px solid #67e8ff; box-shadow: none; }
 .nen-core[data-nen-expression="confirming"] { --nen-accent: var(--nen-green); }
-.nen-core[data-nen-expression="confirming"] .nen-core-face b { left: 28%; bottom: 20%; width: 44%; height: 11px; }
-.nen-core[data-nen-expression="thinking"] .nen-core-face i:nth-child(2) { top: 38%; height: 12px; }
-.nen-core[data-nen-expression="processing"] .nen-core-face i { top: 44%; width: 13px; height: 4px; }
-.nen-core[data-nen-expression="processing"] .nen-core-face b { width: 34%; left: 33%; border-bottom-style: dotted; }
 .nen-core[data-nen-expression="soft-alert"] { --nen-accent: var(--nen-amber); }
 .nen-core[data-nen-feedback="error"] { --nen-accent: var(--color-error-500); }
-.nen-core[data-nen-expression="soft-alert"] .nen-core-face i { height: 10px; transform: rotate(8deg); }
-.nen-core[data-nen-expression="soft-alert"] .nen-core-face i:nth-child(2) { transform: rotate(-8deg); }
-.nen-core[data-nen-expression="designing"] .nen-core-face i { top: 44%; width: 13px; height: 3px; transform: rotate(7deg); }
-.nen-core[data-nen-expression="designing"] .nen-core-face i:nth-child(2) { transform: rotate(-7deg); }
-.nen-core[data-nen-expression="designing"] .nen-core-face b { left: 40%; width: 20%; }
-.nen-core[data-nen-expression="building"] .nen-core-face i { top: 36%; width: 10px; height: 14px; border-radius: 3px; clip-path: polygon(12% 0, 88% 0, 100% 100%, 0 100%); }
-.nen-core[data-nen-expression="building"] .nen-core-face b { left: 32%; width: 36%; }
 .nen-core[data-nen-expression="support-neutral"] { --nen-accent: var(--nen-green); }
-.nen-core[data-nen-expression="support-neutral"] .nen-core-face i { top: 37%; width: 8px; height: 14px; opacity: 0.9; }
-.nen-core[data-nen-expression="support-neutral"] .nen-core-face b { left: 32%; width: 36%; }
-.nen-core[data-nen-expression="waiting"] .nen-core-face i { top: 43%; width: 7px; height: 7px; opacity: 0.68; }
-.nen-core[data-nen-expression="waiting"] .nen-core-face b { left: 43%; width: 14%; height: 0; border-radius: 0; opacity: 0.68; }
-.nen-core[data-nen-expression="empty"] .nen-core-face i { top: 45%; width: 12px; height: 3px; opacity: 0.5; }
-.nen-core[data-nen-expression="empty"] .nen-core-face b { left: 44%; width: 12%; height: 0; border-radius: 0; opacity: 0.5; }
-.nen-core[data-nen-expression="explaining"] .nen-core-face i:nth-child(2) { top: 39%; width: 7px; height: 12px; }
-.nen-core[data-nen-expression="explaining"] .nen-core-face b { left: 42%; bottom: 20%; width: 16%; height: 10px; border: 2px solid #67e8ff; border-radius: 50%; }
-.nen-core[data-nen-expression="greeting"] .nen-core-face i:nth-child(2) { top: 46%; width: 12px; height: 3px; }
-.nen-core[data-nen-expression="greeting"] .nen-core-face b { left: 30%; width: 40%; }
 .nen-core[data-nen-expression="celebration"] { --nen-accent: var(--nen-green); }
-.nen-core[data-nen-expression="celebration"] .nen-core-face i { top: 40%; height: 4px; background: transparent; border-top: 2px solid #67e8ff; border-radius: 999px 999px 0 0; box-shadow: none; }
-.nen-core[data-nen-expression="celebration"] .nen-core-face b { left: 28%; bottom: 19%; width: 44%; height: 12px; }
 
 .nen-context-signals {
   position: absolute;

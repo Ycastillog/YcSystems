@@ -190,6 +190,9 @@ for (const file of htmlFiles) {
   if (tagAttributes(html, "link").some((attributes) => relTokens(attributes).has("manifest"))) {
     fail(file, "must not advertise an installable web app manifest.");
   }
+  if (expectedCanonical === `${siteUrl}/` && !/<img\b[^>]*class=["'][^"']*nen-core-image[^"']*["'][^>]*src=["']\/assets\/brand\/nen\//i.test(html)) {
+    fail(file, "home page must show the real Nen visual asset in compact guidance components.");
+  }
 
   if (!isRedirect) {
     if (count(html, /<main\b/gi) !== 1) fail(file, "must contain exactly one main element.");

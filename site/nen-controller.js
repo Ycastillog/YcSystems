@@ -233,7 +233,6 @@ function setupNenDiagnostic() {
   const choices = [...diagnostic.querySelectorAll("[data-nen-choice]")];
   const result = diagnostic.querySelector("[data-nen-result]");
   const core = diagnostic.querySelector("[data-nen]");
-  const hero = document.querySelector(".home-hero-visual[data-nen]");
   const resultState = diagnostic.querySelector("[data-nen-result-state]");
   const resultTitle = diagnostic.querySelector("[data-nen-result-title]");
   const resultCopy = diagnostic.querySelector("[data-nen-result-copy]");
@@ -242,7 +241,7 @@ function setupNenDiagnostic() {
   const cta = diagnostic.querySelector("[data-nen-cta]");
   if (!routes.length || !choices.length || !result || !core) return;
 
-  function activate(key, { focus = false, lockHero = true } = {}) {
+  function activate(key, { focus = false } = {}) {
     const route = routes.find((item) => item.key === key) || routes[0];
     const index = routes.indexOf(route);
     const activeChoice = choices[index];
@@ -267,10 +266,6 @@ function setupNenDiagnostic() {
     }
 
     setNenState(core, route.state, route.message);
-    if (hero) {
-      hero.dataset.nenLocked = String(lockHero);
-      setNenState(hero, route.state, `${nenName} recomienda empezar por ${route.phase.toLowerCase()}.`);
-    }
   }
 
   choices.forEach((choice, index) => {
@@ -285,38 +280,7 @@ function setupNenDiagnostic() {
     });
   });
 
-  activate(choices[0].dataset.nenChoice, { lockHero: false });
-}
-
-function setupHomeNenFlow() {
-  if (reducedMotion) return;
-  const avatar = document.querySelector(".home-hero-visual[data-nen]");
-  if (!avatar) return;
-
-  const states = [
-    ["observe", `${nenName} está observando tu operación.`, "observing", "observing"],
-    ["organize", "Priorizando señales, alcance y próximos pasos.", "thinking", "analyzing"],
-    ["design", "Convirtiendo la prioridad en una experiencia clara.", "designing", "designing"],
-    ["build", "Convirtiendo la ruta en una primera fase verificable.", "building", "building"],
-    ["support", "Acompañando el uso y la siguiente mejora.", "support-neutral", "supporting"],
-  ];
-  let index = 0;
-  let active = false;
-
-  const observer = "IntersectionObserver" in window
-    ? new IntersectionObserver((entries) => {
-        active = entries.some((entry) => entry.isIntersecting);
-      }, { threshold: 0.4 })
-    : null;
-
-  observer?.observe(avatar);
-  active = !observer;
-
-  window.setInterval(() => {
-    if (!active || document.hidden || avatar.dataset.nenLocked === "true") return;
-    index = (index + 1) % states.length;
-    setNenState(avatar, states[index][0], states[index][1], { expression: states[index][2], pose: states[index][3] });
-  }, 5600);
+  activate(choices[0].dataset.nenChoice);
 }
 
 function setupCardLinks() {
@@ -475,7 +439,6 @@ setupNenImageFallbacks();
 setupMethodExplorer();
 setupNenGuides();
 setupNenDiagnostic();
-setupHomeNenFlow();
 setupCardLinks();
 setupBriefCompanion();
 setupLivingMotion();

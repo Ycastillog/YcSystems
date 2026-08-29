@@ -192,9 +192,10 @@ for (const file of htmlFiles) {
   }
   if (expectedCanonical === `${siteUrl}/`) {
     const nenImages = tagAttributes(html, "img").filter((attributes) => /assets\/brand\/nen\//i.test(attribute(attributes, "src") || ""));
-    if (!html.includes("home-hero-visual") || !html.includes("nen-diagnostic-character") || nenImages.length < 2) {
-      fail(file, "home page must show real Nen assets in the hero and interactive diagnostic.");
+    if (!html.includes("home-operating-visual") || !html.includes("home-operating-nen") || !html.includes("nen-diagnostic-core") || nenImages.length < 2) {
+      fail(file, "home page must keep the commercial operating map and show real Nen assets only in compact guidance components.");
     }
+    if (html.includes("home-hero-visual") || html.includes("nen-diagnostic-character")) fail(file, "Nen must not dominate the home hero or diagnostic result.");
   }
 
   if (!isRedirect) {
@@ -456,9 +457,6 @@ const nenControllerFile = path.join(siteRoot, "nen-controller.js");
 const nenController = await readFile(nenControllerFile, "utf8");
 for (const required of ["!(\"IntersectionObserver\" in window)", "nen-reveal-enabled", "nen-static-fallback", "beforeprint", "nen-method--selector-docked", "setupNenImageFallbacks", "nenFallbackApplied"]) {
   if (!nenController.includes(required)) fail(nenControllerFile, `missing resilient Nen behavior ${required}.`);
-}
-if (!nenController.includes("lockHero = true") || !nenController.includes("{ lockHero: false }")) {
-  fail(nenControllerFile, "home Nen must remain autonomous until the visitor makes a diagnostic choice.");
 }
 
 const methodFile = path.join(siteRoot, "process", "index.html");

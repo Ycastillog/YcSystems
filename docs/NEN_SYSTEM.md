@@ -33,6 +33,15 @@ Los nombres heredados como `connect`, `monitor` y `activate` se normalizan media
 - `nenLoader`: estado breve de procesamiento.
 - `nenEmptyState`: ausencia útil con próximo paso.
 
+## Jerarquía comercial
+
+Nen acompaña la decisión; no sustituye la propuesta de valor, la evidencia ni la llamada a contratar a YC Systems.
+
+- En la portada se usa como presencia compacta dentro del mapa operativo y del diagnóstico.
+- La primera vista prioriza el problema del cliente, la transformación posible y el siguiente paso comercial.
+- Las apariciones grandes se reservan para espacios dedicados al sistema visual, como `nen-lab`, o para contextos donde el personaje sea el contenido principal.
+- Ninguna imagen de Nen debe competir con titulares, casos publicados, alcance, resultados o llamadas a contacto.
+
 ## API de estado
 
 Los elementos usan estos atributos:

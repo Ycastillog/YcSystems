@@ -465,7 +465,7 @@ if (briefForm) {
 }
 
 if (document.querySelector("[data-nen]")) {
-  import("./nen-controller.js?v=yc-nen-sales-20260829j").catch((error) => {
+  import("./nen-controller.js?v=yc-admin-access-20261011").catch((error) => {
     console.error("[Nen] No fue posible iniciar el controlador", error);
     document.documentElement.classList.add("nen-static-fallback");
     window.reportClientError?.({

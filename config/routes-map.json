@@ -1,4 +1,14 @@
 {
+  "externalLinks": [
+    {
+      "id": "administration",
+      "href": "https://admin.ycsystems.io/",
+      "label": "Acceso administrativo",
+      "placement": "footer-bottom",
+      "indexable": false,
+      "sitemap": false
+    }
+  ],
   "routes": [
     {
       "path": "/",

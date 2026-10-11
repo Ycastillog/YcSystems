@@ -7,7 +7,7 @@ const siteRoot = path.join(root, "site");
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-map.json"), "utf8"));
 const nenSystem = JSON.parse(await readFile(path.join(root, "config", "nen-system.json"), "utf8"));
-const assetVersion = "yc-nen-sales-20260829j";
+const assetVersion = "yc-admin-access-20261011";
 const nenName = nenSystem.displayName || "Nen";
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const engagementRoutes = content.engagement?.routes ?? [];
@@ -120,6 +120,7 @@ function renderHeader(route, prefix) {
 }
 
 function renderFooter(prefix) {
+  const administrativeAccess = routesMap.externalLinks.find((link) => link.id === "administration");
   return `<footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -131,7 +132,7 @@ function renderFooter(prefix) {
       <div><strong>Informaci&oacute;n</strong><a href="${relativeHref("/trust-center/", prefix)}">Centro de confianza</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></div>
       <div><strong>Contacto</strong><a href="mailto:${content.contact.email}">${content.contact.email}</a><a href="${content.contact.whatsappUrl}" target="_blank" rel="noopener">WhatsApp</a><a href="${content.contact.instagramUrl}" target="_blank" rel="noopener">Instagram</a></div>
     </div>
-    <div class="container footer-bottom"><span>&copy; 2026 ${content.brand.legalName}. Todos los derechos reservados.</span><span><a href="${relativeHref("/documents/", prefix)}">Documentos</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a></span></div>
+    <div class="container footer-bottom"><span>&copy; 2026 ${content.brand.legalName}. Todos los derechos reservados.</span><span><a href="${relativeHref("/documents/", prefix)}">Documentos</a><a href="${relativeHref("/privacy/", prefix)}">Privacidad</a><a href="${relativeHref("/terms/", prefix)}">T&eacute;rminos</a><a href="${administrativeAccess.href}" rel="nofollow noreferrer">${administrativeAccess.label}</a></span></div>
   </footer>`;
 }
 

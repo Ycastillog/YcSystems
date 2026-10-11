@@ -8,6 +8,14 @@ const routesMap = JSON.parse(await readFile(path.join(root, "config", "routes-ma
 const content = JSON.parse(await readFile(path.join(siteRoot, "data", "site-content.json"), "utf8"));
 const siteUrl = content.brand.siteUrl.replace(/\/$/, "");
 const failures = [];
+const administrativeAccess = routesMap.externalLinks?.find((link) => link.id === "administration");
+if (administrativeAccess?.href !== "https://admin.ycsystems.io/"
+  || administrativeAccess.label !== "Acceso administrativo"
+  || administrativeAccess.placement !== "footer-bottom"
+  || administrativeAccess.indexable !== false
+  || administrativeAccess.sitemap !== false) {
+  failures.push("config/routes-map.json: administrative access must be an external footer link, excluded from the public sitemap.");
+}
 
 async function exists(file) {
   try { await access(file); return true; } catch { return false; }
@@ -203,6 +211,16 @@ for (const file of htmlFiles) {
     if (count(html, /<h1\b/gi) !== 1) fail(file, "must contain exactly one h1.");
     if (!/<meta\s+name=["']description["']/i.test(html)) fail(file, "missing meta description.");
     if (!/class=["'][^"']*skip-link/i.test(html)) fail(file, "missing skip link.");
+    const footer = html.match(/<footer\b[^>]*>([\s\S]*?)<\/footer>/i)?.[1] || "";
+    const adminLinks = tagAttributes(html, "a").filter((attributes) => attribute(attributes, "href") === administrativeAccess?.href);
+    if (adminLinks.length !== 1 || !footer.includes(`href="${administrativeAccess?.href}"`)) {
+      fail(file, "must contain exactly one administrative access link, located in the footer.");
+    } else if (!relTokens(adminLinks[0]).has("nofollow") || !relTokens(adminLinks[0]).has("noreferrer")) {
+      fail(file, "administrative access link must not invite crawling or send the referring page.");
+    }
+    if (tagAttributes(html, "iframe").some((attributes) => /admin\.ycsystems\.io/i.test(attribute(attributes, "src") || ""))) {
+      fail(file, "the private administrative panel must not be embedded in the public site.");
+    }
   }
 
   for (const match of html.matchAll(/<img\b([^>]*)>/gi)) {
